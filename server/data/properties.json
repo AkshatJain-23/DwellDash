@@ -1,0 +1,214 @@
+[
+  {
+    "id": "1",
+    "title": "Comfortable PG for Working Professionals in Koramangala",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in the heart of Koramangala with easy access to IT companies, restaurants, and shopping centers. The property offers modern amenities including high-speed WiFi, AC rooms, and nutritious meals.",
+    "rent": 15000,
+    "deposit": 30000,
+    "city": "Bangalore",
+    "address": "123 Koramangala 5th Block, Near Forum Mall, Bangalore, Karnataka 560095",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "laundry",
+      "parking",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43210",
+    "availableFrom": "2024-01-15",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "2",
+    "title": "Premium Ladies PG in Bandra West",
+    "description": "Exclusive ladies-only PG accommodation in prime Bandra West location. Features include fully furnished rooms, 24/7 security, housekeeping services, and home-cooked meals. Walking distance to Bandra station and major corporate offices.",
+    "rent": 25000,
+    "deposit": 50000,
+    "city": "Mumbai",
+    "address": "456 Bandra West, Near Linking Road, Mumbai, Maharashtra 400050",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "laundry",
+      "security",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43211",
+    "availableFrom": "2024-02-01",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "3",
+    "title": "Budget-Friendly PG for Students in Lajpat Nagar",
+    "description": "Affordable PG accommodation designed for students and young professionals. Located near Delhi University and metro station. Includes basic amenities like WiFi, meals, and study area. Perfect for those looking for economical housing options.",
+    "rent": 8000,
+    "deposit": 16000,
+    "city": "Delhi",
+    "address": "789 Lajpat Nagar II, Near Metro Station, New Delhi, Delhi 110024",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "wifi",
+      "meals",
+      "study-area",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43212",
+    "availableFrom": "2024-01-20",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "4",
+    "title": "Luxury PG with Swimming Pool in Anna Nagar",
+    "description": "Premium PG accommodation with world-class amenities including swimming pool, gym, and recreational facilities. Located in upscale Anna Nagar with easy access to IT corridor and shopping malls. Perfect for professionals seeking luxury living.",
+    "rent": 20000,
+    "deposit": 40000,
+    "city": "Chennai",
+    "address": "321 Anna Nagar West, Near Express Avenue Mall, Chennai, Tamil Nadu 600040",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "gym",
+      "swimming-pool",
+      "parking",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43213",
+    "availableFrom": "2024-02-15",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "5",
+    "title": "Modern PG for IT Professionals in Hinjewadi",
+    "description": "State-of-the-art PG facility designed specifically for IT professionals working in Hinjewadi IT Park. Features include high-speed internet, power backup, modern kitchen, and shuttle service to major IT companies.",
+    "rent": 12000,
+    "deposit": 24000,
+    "city": "Pune",
+    "address": "654 Hinjewadi Phase 1, Near Rajiv Gandhi Infotech Park, Pune, Maharashtra 411057",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "shuttle",
+      "power-backup",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43214",
+    "availableFrom": "2024-01-10",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "6",
+    "title": "Cozy PG for Girls in Jubilee Hills",
+    "description": "Safe and comfortable PG accommodation exclusively for girls in the prestigious Jubilee Hills area. Features include CCTV surveillance, biometric access, nutritious meals, and proximity to major shopping and entertainment hubs.",
+    "rent": 18000,
+    "deposit": 36000,
+    "city": "Hyderabad",
+    "address": "987 Jubilee Hills, Near GVK One Mall, Hyderabad, Telangana 500033",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "security",
+      "cctv",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+91 98765 43215",
+    "availableFrom": "2024-02-10",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "1749359236592",
+    "title": "Comfortable PG for Bachelores",
+    "description": "Lavish PG with having all the great amenities. Located in the center of the city. Schools, Shopping Complex, Hospital all within range of 0.5km",
+    "rent": 20000,
+    "deposit": 1500,
+    "city": "Noida",
+    "address": "B-304, Samridhi Grand Avenue, Techzone 4, Noida",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "parking",
+      "security",
+      "ac",
+      "meals",
+      "gym",
+      "swimming-pool",
+      "laundry",
+      "study-area",
+      "power-backup",
+      "biometric",
+      "housekeeping"
+    ],
+    "images": [
+      "/uploads/images-1749359236583-792747616.png"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-15",
+    "ownerId": "1749359110145",
+    "createdAt": "2025-06-08T05:07:16.592Z",
+    "isActive": true
+  }
+]

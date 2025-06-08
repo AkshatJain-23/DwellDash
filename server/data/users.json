@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1749359110145",
+    "name": "Akshat Jain",
+    "email": "owner@test.com",
+    "password": "$2a$10$zm8QIOwoBa9XcMdWN50Gou/4MCnh5636OJwNHXi11/nnEnYP6pP.a",
+    "role": "owner",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-08T05:05:10.145Z"
+  },
+  {
+    "id": "1749360478855",
+    "name": "Akshat Jain",
+    "email": "tenant@test.com",
+    "password": "$2a$10$0yuR2uDdHx4UyYxSDJ0J3Oj1zUK6IEeaDlecyfYOSO6zUlIVtvPBi",
+    "role": "tenant",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-08T05:27:58.856Z"
+  },
+  {
+    "id": "1749363720176",
+    "name": "Akshat Jain",
+    "email": "akshatjain6574@gmail.com",
+    "password": "$2a$10$GmuXSjv4LvhteeyHq6isP./5pum0DQKPNA11vrkn8hR9qkzXwb/8a",
+    "role": "tenant",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-08T06:22:00.176Z"
+  },
+  {
+    "id": "1749368327735",
+    "name": "DwellDash Admin",
+    "email": "dwelldash3@gmail.com",
+    "password": "$2a$10$37K9Eg.cwt.sKn9dIF.DBOVLSGaEcu7Wh19Ork.nRW7VRfqPs564O",
+    "role": "owner",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-08T07:38:47.735Z"
+  }
+]
