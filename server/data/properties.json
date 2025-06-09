@@ -177,38 +177,5 @@
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
     "isActive": true
-  },
-  {
-    "id": "1749359236592",
-    "title": "Comfortable PG for Bachelores",
-    "description": "Lavish PG with having all the great amenities. Located in the center of the city. Schools, Shopping Complex, Hospital all within range of 0.5km",
-    "rent": 20000,
-    "deposit": 1500,
-    "city": "Noida",
-    "address": "B-304, Samridhi Grand Avenue, Techzone 4, Noida",
-    "propertyType": "shared-room",
-    "gender": "any",
-    "amenities": [
-      "wifi",
-      "parking",
-      "security",
-      "ac",
-      "meals",
-      "gym",
-      "swimming-pool",
-      "laundry",
-      "study-area",
-      "power-backup",
-      "biometric",
-      "housekeeping"
-    ],
-    "images": [
-      "/uploads/images-1749359236583-792747616.png"
-    ],
-    "contactPhone": "+918426076800",
-    "availableFrom": "2025-06-15",
-    "ownerId": "1749359110145",
-    "createdAt": "2025-06-08T05:07:16.592Z",
-    "isActive": true
   }
 ]
