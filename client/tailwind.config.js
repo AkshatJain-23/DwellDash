@@ -7,13 +7,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Beautiful aqua/mint palette
-        'app-primary': '#B3EBF2',    // Light aqua
-        'app-secondary': '#85D1DB',   // Medium aqua
-        'app-accent': '#B6F2D1',     // Light mint
-        'app-highlight': '#C9FDF2',   // Very light mint
-        'app-text': '#1a1a1a',       // Dark text
-        'app-surface': '#ffffff',     // White surfaces
+        // Professional real estate platform colors (NoBroker/MagicBricks inspired)
+        'app-primary': '#FF6B35',      // Orange-red primary (trust/action)
+        'app-secondary': '#004D76',    // Deep blue (professional/trust)
+        'app-accent': '#F8F9FA',       // Light gray (clean background)
+        'app-highlight': '#FFFFFF',    // Pure white (cards/surfaces)
+        'app-text': '#2C3E50',         // Dark blue-gray (readability)
+        'app-surface': '#FFFFFF',      // White surfaces
+        'app-success': '#27AE60',      // Green (verified/success)
+        'app-warning': '#F39C12',      // Orange (alerts/featured)
+        'app-border': '#E1E8ED',       // Light border
+        'app-muted': '#95A5A6',        // Muted text
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],

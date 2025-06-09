@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Menu, X, Home, Plus, User, LogOut, Eye, Users } from 'lucide-react'
+import { Menu, X, Home, Plus, User, LogOut, Eye, Users, Building2, Search, Heart } from 'lucide-react'
 import DwellDashLogo from './DwellDashLogo'
 
 const Navbar = () => {
@@ -50,153 +50,167 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white shadow-lg border-b border-gray-200 transition-colors duration-300">
-      <div className="container-fluid max-w-7xl mx-auto px-3 px-sm-4 px-lg-5">
-        <div className="d-flex justify-content-between align-items-center w-100" style={{ minHeight: '4rem' }}>
+    <nav className="bg-white shadow-sm border-b border-app-border sticky top-0 z-50">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center h-16">
           {/* Logo and brand */}
-          <div className="d-flex align-items-center">
-            <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
-              <DwellDashLogo 
-                className="h-10 w-10 me-2" 
-              />
-              <span className="text-xl font-bold text-gray-900">DwellDash</span>
+          <div className="flex items-center space-x-8">
+            <Link to="/" className="flex items-center space-x-3 text-decoration-none">
+              <DwellDashLogo className="h-8 w-8" />
+              <span className="text-2xl font-bold text-app-secondary">DwellDash</span>
             </Link>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center">
-            <ul className="flex items-center space-x-6 mb-0">
-              {/* Only show Properties link if user is not in Owner Mode */}
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center space-x-8">
               {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
-                <li>
-                  <Link
-                    to="/properties"
-                    className="text-gray-900 hover:text-app-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
-                  >
-                    Home
-                  </Link>
-                </li>
-              )}
-              <li>
                 <Link
-                  to="/about"
-                  className="text-gray-900 hover:text-app-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  to="/properties"
+                  className="flex items-center space-x-1 text-app-text hover:text-app-primary px-3 py-2 rounded-lg text-sm font-semibold transition-colors"
                 >
-                  About
+                  <Search className="w-4 h-4" />
+                  <span>Browse PGs</span>
                 </Link>
-              </li>
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-gray-900 hover:text-app-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-            
-            <div className="flex items-center ml-3">
-              {isAuthenticated ? (
-                <div className="flex items-center ml-3 space-x-4">
-                  {/* View Mode Toggle for Owners */}
-                  {user?.role === 'owner' && (
-                    <button
-                      onClick={handleViewModeToggle}
-                      className={`flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium transition-colors ${
-                        isBrowsingAsTenant() 
-                          ? 'bg-app-primary text-app-secondary hover:bg-app-secondary hover:text-white' 
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                      title={isBrowsingAsTenant() ? 'Switch to Owner View' : 'Browse as Tenant'}
-                    >
-                      {isBrowsingAsTenant() ? (
-                        <>
-                          <Users className="w-4 h-4" />
-                          <span>Tenant View</span>
-                        </>
-                      ) : (
-                        <>
-                          <Eye className="w-4 h-4" />
-                          <span>Owner View</span>
-                        </>
-                      )}
-                    </button>
-                  )}
-
-                  {user?.role === 'owner' && !isBrowsingAsTenant() && (
-                    <Link
-                      to="/add-property"
-                      className="bg-app-accent text-app-secondary px-4 py-2 rounded-md text-sm font-medium hover:bg-app-secondary hover:text-white transition-colors flex items-center"
-                    >
-                      <Plus className="w-4 h-4 mr-1" />
-                      Add Property
-                    </Link>
-                  )}
-                  
-                  <div className="relative" ref={profileDropdownRef}>
-                    <button 
-                      onClick={toggleProfileDropdown}
-                      className="flex items-center space-x-1 text-gray-900 hover:text-app-secondary px-3 py-2 rounded-md text-sm font-medium font-semibold"
-                    >
-                      <User className="w-4 h-4" />
-                      <span>{user?.name}</span>
-                      {isBrowsingAsTenant() && (
-                        <span className="ml-1 text-xs bg-app-primary text-app-secondary px-2 py-0.5 rounded-full">
-                          as Tenant
-                        </span>
-                      )}
-                    </button>
-                    {isProfileDropdownOpen && (
-                      <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-md shadow-lg py-1 z-50">
-                        <Link
-                          to="/dashboard"
-                          onClick={closeProfileDropdown}
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          Dashboard
-                        </Link>
-                        <button
-                          onClick={handleLogout}
-                          className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >
-                          <LogOut className="w-4 h-4 inline mr-2" />
-                          Logout
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ) : (
-                <div className="flex items-center ml-3 space-x-4">
-                  <Link
-                    to="/login"
-                    className="text-gray-900 hover:text-app-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
-                  >
-                    Login
-                  </Link>
-                  <Link
-                    to="/register"
-                    className="bg-app-secondary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-app-primary transition-colors"
-                  >
-                    Get Started
-                  </Link>
-                </div>
               )}
+              <Link
+                to="/about"
+                className="text-app-text hover:text-app-primary px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                About
+              </Link>
+              <Link
+                to="/contact"
+                className="text-app-text hover:text-app-primary px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+              >
+                Contact
+              </Link>
             </div>
           </div>
+          
+          {/* Right side actions */}
+          <div className="flex items-center space-x-4">
+            {isAuthenticated ? (
+              <>
+                {/* Owner specific actions */}
+                {user?.role === 'owner' && !isBrowsingAsTenant() && (
+                  <Link
+                    to="/add-property"
+                    className="hidden md:flex items-center space-x-2 bg-app-primary text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-app-primary/90 transition-colors"
+                  >
+                    <Plus className="w-4 h-4" />
+                    <span>List Property</span>
+                  </Link>
+                )}
 
-          {/* Mobile menu button */}
-          <div className="lg:hidden flex items-center">
+                {/* View Mode Toggle for Owners */}
+                {user?.role === 'owner' && (
+                  <button
+                    onClick={handleViewModeToggle}
+                    className={`hidden md:flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                      isBrowsingAsTenant() 
+                        ? 'bg-app-primary/10 text-app-primary border border-app-primary' 
+                        : 'bg-app-accent text-app-text hover:bg-app-border'
+                    }`}
+                    title={isBrowsingAsTenant() ? 'Switch to Owner View' : 'Browse as Tenant'}
+                  >
+                    {isBrowsingAsTenant() ? (
+                      <>
+                        <Users className="w-4 h-4" />
+                        <span>Tenant Mode</span>
+                      </>
+                    ) : (
+                      <>
+                        <Eye className="w-4 h-4" />
+                        <span>Owner Mode</span>
+                      </>
+                    )}
+                  </button>
+                )}
+
+                {/* Profile Dropdown */}
+                <div className="relative" ref={profileDropdownRef}>
+                  <button 
+                    onClick={toggleProfileDropdown}
+                    className="flex items-center space-x-2 text-app-text hover:text-app-primary px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                  >
+                    <div className="w-8 h-8 bg-app-secondary rounded-full flex items-center justify-center text-white font-semibold text-sm">
+                      {user?.name?.charAt(0)?.toUpperCase()}
+                    </div>
+                    <span className="hidden md:block">{user?.name}</span>
+                  </button>
+                  
+                  {isProfileDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-56 bg-white border border-app-border rounded-xl shadow-lg py-2 z-50">
+                      <div className="px-4 py-2 border-b border-app-border">
+                        <p className="text-sm font-semibold text-app-text">{user?.name}</p>
+                        <p className="text-xs text-app-muted">{user?.email}</p>
+                        {isBrowsingAsTenant() && (
+                          <span className="inline-block mt-1 text-xs bg-app-primary/10 text-app-primary px-2 py-1 rounded-full">
+                            Browsing as Tenant
+                          </span>
+                        )}
+                      </div>
+                      
+                      <Link
+                        to="/dashboard"
+                        onClick={closeProfileDropdown}
+                        className="flex items-center space-x-2 px-4 py-2 text-sm text-app-text hover:bg-app-accent transition-colors"
+                      >
+                        <Building2 className="w-4 h-4" />
+                        <span>Dashboard</span>
+                      </Link>
+                      
+                      {user?.role === 'tenant' && (
+                        <Link
+                          to="/favorites"
+                          onClick={closeProfileDropdown}
+                          className="flex items-center space-x-2 px-4 py-2 text-sm text-app-text hover:bg-app-accent transition-colors"
+                        >
+                          <Heart className="w-4 h-4" />
+                          <span>Favorites</span>
+                        </Link>
+                      )}
+                      
+                      <div className="border-t border-app-border mt-2 pt-2">
+                        <button
+                          onClick={handleLogout}
+                          className="flex items-center space-x-2 w-full px-4 py-2 text-sm text-app-muted hover:text-red-600 hover:bg-red-50 transition-colors"
+                        >
+                          <LogOut className="w-4 h-4" />
+                          <span>Sign Out</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div className="flex items-center space-x-3">
+                <Link
+                  to="/login"
+                  className="text-app-text hover:text-app-primary px-4 py-2 rounded-lg text-sm font-medium transition-colors"
+                >
+                  Sign In
+                </Link>
+                <Link
+                  to="/register"
+                  className="bg-app-primary text-white px-6 py-2 rounded-lg text-sm font-semibold hover:bg-app-primary/90 transition-colors shadow-sm"
+                >
+                  Join Free
+                </Link>
+              </div>
+            )}
+
+            {/* Mobile menu button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="ml-2 border-0 p-1"
+              className="lg:hidden p-2 rounded-lg text-app-text hover:bg-app-accent transition-colors"
               type="button"
               aria-label="Toggle navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-900" />
+                <X className="h-6 w-6" />
               ) : (
-                <Menu className="h-6 w-6 text-gray-900" />
+                <Menu className="h-6 w-6" />
               )}
             </button>
           </div>
@@ -204,108 +218,108 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
-              {/* Only show Properties link if user is not in Owner Mode */}
+          <div className="lg:hidden border-t border-app-border">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
                 <Link
                   to="/properties"
-                  className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                   onClick={closeMobileMenu}
+                  className="flex items-center space-x-2 text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
                 >
-                  <Home className="w-4 h-4 inline mr-2" />
-                  Home
+                  <Search className="w-5 h-5" />
+                  <span>Browse PGs</span>
                 </Link>
               )}
+              
               <Link
                 to="/about"
-                className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                 onClick={closeMobileMenu}
+                className="block text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
               >
                 About
               </Link>
+              
               <Link
                 to="/contact"
-                className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                 onClick={closeMobileMenu}
+                className="block text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
               >
                 Contact
               </Link>
 
               {isAuthenticated ? (
-                <>
+                <div className="pt-4 border-t border-app-border">
                   {/* View Mode Toggle for Mobile */}
                   {user?.role === 'owner' && (
                     <button
                       onClick={handleViewModeToggle}
-                      className={`w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center font-semibold ${
+                      className={`flex items-center justify-between w-full px-3 py-2 rounded-lg text-base font-medium transition-colors mb-2 ${
                         isBrowsingAsTenant() 
-                          ? 'bg-app-primary text-app-secondary' 
-                          : 'text-gray-900 hover:text-app-secondary'
+                          ? 'bg-app-primary/10 text-app-primary' 
+                          : 'bg-app-accent text-app-text'
                       }`}
                     >
-                      {isBrowsingAsTenant() ? (
-                        <>
-                          <Users className="w-4 h-4 mr-2" />
-                          Switch to Owner View
-                        </>
-                      ) : (
-                        <>
-                          <Eye className="w-4 h-4 mr-2" />
-                          Browse as Tenant
-                        </>
-                      )}
+                      <span className="flex items-center space-x-2">
+                        {isBrowsingAsTenant() ? (
+                          <>
+                            <Users className="w-5 h-5" />
+                            <span>Tenant Mode</span>
+                          </>
+                        ) : (
+                          <>
+                            <Eye className="w-5 h-5" />
+                            <span>Owner Mode</span>
+                          </>
+                        )}
+                      </span>
                     </button>
+                  )}
+
+                  {user?.role === 'owner' && !isBrowsingAsTenant() && (
+                    <Link
+                      to="/add-property"
+                      onClick={closeMobileMenu}
+                      className="flex items-center space-x-2 bg-app-primary text-white px-3 py-2 rounded-lg text-base font-medium hover:bg-app-primary/90 transition-colors mb-2"
+                    >
+                      <Plus className="w-5 h-5" />
+                      <span>List Property</span>
+                    </Link>
                   )}
                   
                   <Link
                     to="/dashboard"
-                    className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
+                    className="flex items-center space-x-2 text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
                   >
-                    <User className="w-4 h-4 inline mr-2" />
-                    Dashboard
-                    {isBrowsingAsTenant() && (
-                      <span className="ml-2 text-xs bg-app-primary text-app-secondary px-2 py-0.5 rounded-full">
-                        as Tenant
-                      </span>
-                    )}
+                    <Building2 className="w-5 h-5" />
+                    <span>Dashboard</span>
                   </Link>
-                  {user?.role === 'owner' && !isBrowsingAsTenant() && (
-                    <Link
-                      to="/add-property"
-                      className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
-                      onClick={closeMobileMenu}
-                    >
-                      <Plus className="w-4 h-4 inline mr-2" />
-                      Add Property
-                    </Link>
-                  )}
+                  
                   <button
                     onClick={handleLogout}
-                    className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium w-full text-left font-semibold"
+                    className="flex items-center space-x-2 w-full text-left text-app-muted hover:text-red-600 hover:bg-red-50 px-3 py-2 rounded-lg text-base font-medium transition-colors mt-2"
                   >
-                    <LogOut className="w-4 h-4 inline mr-2" />
-                    Logout
+                    <LogOut className="w-5 h-5" />
+                    <span>Sign Out</span>
                   </button>
-                </>
+                </div>
               ) : (
-                <>
+                <div className="pt-4 border-t border-app-border space-y-2">
                   <Link
                     to="/login"
-                    className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
+                    className="block text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
                   >
-                    Login
+                    Sign In
                   </Link>
                   <Link
                     to="/register"
-                    className="text-gray-900 hover:text-app-secondary block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
+                    className="block bg-app-primary text-white px-3 py-2 rounded-lg text-base font-medium hover:bg-app-primary/90 transition-colors text-center"
                   >
-                    Get Started
+                    Join Free
                   </Link>
-                </>
+                </div>
               )}
             </div>
           </div>
