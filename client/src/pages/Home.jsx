@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Search, MapPin, Shield, Users, Star, Building2, Wifi, Car, Utensils, Phone, Filter, Heart, Eye, CheckCircle, TrendingUp, Home as HomeIcon, Bed } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useAuth } from '../contexts/AuthContext'
+import useStats from '../hooks/useStats'
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState('')
@@ -11,6 +12,7 @@ const Home = () => {
   const [budgetRange, setBudgetRange] = useState('')
   const navigate = useNavigate()
   const { user, isBrowsingAsTenant } = useAuth()
+  const { stats, loading: statsLoading } = useStats()
 
   const handleSearch = (e) => {
     e.preventDefault()
@@ -99,6 +101,14 @@ const Home = () => {
     }
   ]
 
+  // Define colors for each stat
+  const statColors = [
+    'bg-blue-50 text-blue-600',
+    'bg-green-50 text-green-600', 
+    'bg-purple-50 text-purple-600',
+    'bg-orange-50 text-orange-600'
+  ]
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section with Search */}
@@ -179,24 +189,32 @@ const Home = () => {
               </form>
             </div>
 
-            {/* Quick Stats */}
+            {/* Live Statistics */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-              <div className="bg-blue-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-blue-600">3000+</div>
-                <div className="text-sm text-gray-600">Verified PGs</div>
-              </div>
-              <div className="bg-green-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-green-600">50K+</div>
-                <div className="text-sm text-gray-600">Happy Tenants</div>
-              </div>
-              <div className="bg-purple-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-purple-600">25+</div>
-                <div className="text-sm text-gray-600">Cities</div>
-              </div>
-              <div className="bg-orange-50 rounded-lg p-4">
-                <div className="text-2xl font-bold text-orange-600">Zero</div>
-                <div className="text-sm text-gray-600">Brokerage</div>
-              </div>
+              {stats.map((stat, index) => (
+                <motion.div 
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className={`${statColors[index]} rounded-lg p-4 ${statsLoading ? 'animate-pulse' : ''}`}
+                >
+                  <div className="text-2xl font-bold">
+                    {statsLoading ? (
+                      <div className="h-6 bg-gray-300 rounded animate-pulse"></div>
+                    ) : (
+                      stat.number
+                    )}
+                  </div>
+                  <div className="text-sm text-gray-600 mt-1">
+                    {statsLoading ? (
+                      <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                    ) : (
+                      stat.label
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </div>
         </div>
