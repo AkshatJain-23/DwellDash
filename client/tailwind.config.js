@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
@@ -15,6 +16,15 @@ export default {
           highlight: '#C9FDF2',   // Very light mint
           text: '#1a1a1a',       // Dark text for light mode
           surface: '#ffffff',     // White surfaces
+        },
+        // Dark theme colors
+        dark: {
+          primary: '#1a2332',     // Dark blue-gray
+          secondary: '#2d3748',   // Medium dark gray
+          accent: '#4a5568',      // Lighter dark gray
+          highlight: '#2c5282',   // Dark blue
+          text: '#f7fafc',        // Light text for dark mode
+          surface: '#1a202c',     // Dark surface
         }
       },
       fontFamily: {
