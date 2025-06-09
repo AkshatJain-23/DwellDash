@@ -1,4 +1,4 @@
-# PGFinder - Full Stack PG Listing Platform
+# DwellDash - Full Stack PG Listing Platform
 
 A comprehensive web application for finding and listing Paying Guest (PG) accommodations across India, similar to NoBroker, Makaan.com, and MagicBricks.
 
