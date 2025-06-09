@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { Menu, X, Home, Plus, User, LogOut, Eye, Users } from 'lucide-react'
-import ThemeToggle from './ThemeToggle'
 import DwellDashLogo from './DwellDashLogo'
 
 const Navbar = () => {
@@ -51,7 +50,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <nav className="navbar navbar-expand-lg bg-white shadow-lg border-b border-gray-200">
       <div className="container-fluid max-w-7xl mx-auto px-3 px-sm-4 px-lg-5">
         <div className="d-flex justify-content-between align-items-center w-100" style={{ minHeight: '4rem' }}>
           {/* Logo and brand */}
@@ -60,7 +59,7 @@ const Navbar = () => {
               <DwellDashLogo 
                 className="h-10 w-10 me-2" 
               />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">DwellDash</span>
+              <span className="text-xl font-bold text-gray-900">DwellDash</span>
             </Link>
           </div>
 
@@ -72,7 +71,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/properties"
-                    className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                    className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                   >
                     Home
                   </Link>
@@ -81,7 +80,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                 >
                   About
                 </Link>
@@ -89,15 +88,13 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
             <div className="flex items-center ml-3">
-              <ThemeToggle />
-            
               {isAuthenticated ? (
                 <div className="flex items-center ml-3 space-x-4">
                 {/* View Mode Toggle for Owners */}
@@ -128,7 +125,7 @@ const Navbar = () => {
                 {user?.role === 'owner' && !isBrowsingAsTenant() && (
                   <Link
                     to="/add-property"
-                    className="bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 dark:hover:bg-green-600 transition-colors flex items-center"
+                    className="bg-green-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 transition-colors flex items-center"
                   >
                     <Plus className="w-4 h-4 mr-1" />
                     Add Property
@@ -137,7 +134,7 @@ const Navbar = () => {
                 <div className="relative" ref={profileDropdownRef}>
                   <button 
                     onClick={toggleProfileDropdown}
-                    className="flex items-center space-x-1 text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium font-semibold"
+                    className="flex items-center space-x-1 text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium font-semibold"
                   >
                     <User className="w-4 h-4" />
                     <span>{user?.name}</span>
@@ -148,17 +145,17 @@ const Navbar = () => {
                     )}
                   </button>
                   {isProfileDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white dark:bg-gray-200 rounded-md shadow-lg py-1 z-50">
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
                       <Link
                         to="/dashboard"
                         onClick={closeProfileDropdown}
-                        className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-300"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         Dashboard
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-800 hover:bg-gray-100 dark:hover:bg-gray-300"
+                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       >
                         <LogOut className="w-4 h-4 inline mr-2" />
                         Logout
@@ -171,13 +168,13 @@ const Navbar = () => {
                 <div className="flex items-center ml-3 space-x-4">
                 <Link
                   to="/login"
-                  className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  className="text-gray-900 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
+                  className="bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 transition-colors"
                 >
                   Get Started
                 </Link>
@@ -188,7 +185,6 @@ const Navbar = () => {
 
           {/* Mobile menu button */}
           <div className="lg:hidden flex items-center">
-            <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="ml-2 border-0 p-1"
@@ -196,9 +192,9 @@ const Navbar = () => {
               aria-label="Toggle navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-black dark:text-white" />
+                <X className="h-6 w-6 text-gray-900" />
               ) : (
-                <Menu className="h-6 w-6 text-black dark:text-white" />
+                <Menu className="h-6 w-6 text-gray-900" />
               )}
             </button>
           </div>
@@ -207,12 +203,12 @@ const Navbar = () => {
         {/* Mobile Navigation */}
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white dark:bg-gray-100 border-t border-gray-200 dark:border-gray-300">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
               {/* Only show Properties link if user is not in Owner Mode */}
               {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
                 <Link
                   to="/properties"
-                  className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                  className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                   onClick={closeMobileMenu}
                 >
                   <Home className="w-4 h-4 inline mr-2" />
@@ -221,14 +217,14 @@ const Navbar = () => {
               )}
               <Link
                 to="/about"
-                className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                 onClick={closeMobileMenu}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                 onClick={closeMobileMenu}
               >
                 Contact
@@ -243,7 +239,7 @@ const Navbar = () => {
                       className={`w-full text-left px-3 py-2 rounded-md text-base font-medium flex items-center font-semibold ${
                         isBrowsingAsTenant() 
                           ? 'bg-blue-100 text-blue-800' 
-                          : 'text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600'
+                          : 'text-gray-900 hover:text-blue-600'
                       }`}
                     >
                       {isBrowsingAsTenant() ? (
@@ -262,7 +258,7 @@ const Navbar = () => {
                   
                   <Link
                     to="/dashboard"
-                    className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                    className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
                   >
                     <User className="w-4 h-4 inline mr-2" />
@@ -276,7 +272,7 @@ const Navbar = () => {
                   {user?.role === 'owner' && !isBrowsingAsTenant() && (
                     <Link
                       to="/add-property"
-                      className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                      className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                       onClick={closeMobileMenu}
                     >
                       <Plus className="w-4 h-4 inline mr-2" />
@@ -285,7 +281,7 @@ const Navbar = () => {
                   )}
                   <button
                     onClick={handleLogout}
-                    className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium w-full text-left font-semibold"
+                    className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium w-full text-left font-semibold"
                   >
                     <LogOut className="w-4 h-4 inline mr-2" />
                     Logout
@@ -295,14 +291,14 @@ const Navbar = () => {
                 <>
                   <Link
                     to="/login"
-                    className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                    className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
                   >
                     Login
                   </Link>
                   <Link
                     to="/register"
-                    className="text-black dark:text-gray-800 hover:text-blue-600 dark:hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
+                    className="text-gray-900 hover:text-blue-600 block px-3 py-2 rounded-md text-base font-medium font-semibold"
                     onClick={closeMobileMenu}
                   >
                     Get Started

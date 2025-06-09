@@ -235,7 +235,7 @@ const RAGChatbot = () => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 w-16 h-16 bg-light-secondary dark:bg-accent-dark rounded-full shadow-lg flex items-center justify-center text-white hover:bg-light-primary dark:hover:bg-accent-medium transition-colors z-50"
+            className="fixed bottom-6 right-6 w-16 h-16 bg-light-secondary rounded-full shadow-lg flex items-center justify-center text-white hover:bg-light-primary transition-colors z-50"
           >
             <MessageCircle className="w-6 h-6" />
           </motion.button>
@@ -249,19 +249,19 @@ const RAGChatbot = () => {
             initial={{ scale: 0, opacity: 0, x: 100, y: 100 }}
             animate={{ scale: 1, opacity: 1, x: 0, y: 0 }}
             exit={{ scale: 0, opacity: 0, x: 100, y: 100 }}
-            className={`fixed bottom-6 right-6 w-96 bg-white dark:bg-accent-dark rounded-lg shadow-2xl z-50 border border-gray-200 dark:border-accent-medium ${
+            className={`fixed bottom-6 right-6 w-96 bg-white rounded-lg shadow-2xl z-50 border border-gray-200 ${
               isMinimized ? 'h-16' : 'h-[500px]'
             } transition-all duration-300`}
           >
             {/* Chat Header */}
-            <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-accent-medium bg-light-secondary dark:bg-accent-black rounded-t-lg">
-              <div className="flex items-center space-x-3">
-                <div className="w-10 h-10 bg-light-accent dark:bg-accent-light rounded-full flex items-center justify-center">
-                  <Bot className="w-5 h-5 text-light-secondary dark:text-accent-dark" />
+            <div className="flex items-center justify-between p-4 border-b border-gray-200 bg-light-secondary rounded-t-lg">
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-light-accent rounded-full flex items-center justify-center">
+                  <Bot className="w-5 h-5 text-light-secondary" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-white">DwellBot</h3>
-                  <p className="text-sm text-white opacity-80">AI Assistant</p>
+                <div className="ml-3">
+                  <h3 className="text-white font-semibold">DwellBot</h3>
+                  <p className="text-xs text-blue-100">Ask me about properties</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
@@ -299,19 +299,19 @@ const RAGChatbot = () => {
                       <div className={`flex items-start space-x-2 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                         <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                           message.type === 'user' 
-                            ? 'bg-light-secondary dark:bg-accent-light' 
-                            : 'bg-light-accent dark:bg-accent-dark'
+                            ? 'bg-light-secondary' 
+                            : 'bg-light-accent'
                         }`}>
                           {message.type === 'user' ? (
                             <User className="w-4 h-4 text-white" />
                           ) : (
-                            <Bot className="w-4 h-4 text-light-secondary dark:text-accent-light" />
+                            <Bot className="w-4 h-4 text-light-secondary" />
                           )}
                         </div>
                         <div className={`rounded-lg p-3 ${
                           message.type === 'user'
-                            ? 'bg-light-secondary dark:bg-accent-light text-white'
-                            : 'bg-gray-100 dark:bg-accent-black text-gray-900 dark:text-white'
+                            ? 'bg-light-secondary text-white'
+                            : 'bg-gray-100 text-gray-900'
                         }`}>
                           <p className="text-sm whitespace-pre-line">{message.content}</p>
                           <p className="text-xs opacity-70 mt-1">
@@ -329,13 +329,13 @@ const RAGChatbot = () => {
                       className="flex justify-start"
                     >
                       <div className="flex items-start space-x-2">
-                        <div className="w-8 h-8 bg-light-accent dark:bg-accent-dark rounded-full flex items-center justify-center">
-                          <Bot className="w-4 h-4 text-light-secondary dark:text-accent-light" />
+                        <div className="w-8 h-8 bg-light-accent rounded-full flex items-center justify-center">
+                          <Bot className="w-4 h-4 text-light-secondary" />
                         </div>
-                        <div className="bg-gray-100 dark:bg-accent-black rounded-lg p-3">
-                          <div className="flex items-center space-x-2">
-                            <Loader className="w-4 h-4 animate-spin text-light-secondary dark:text-accent-light" />
-                            <p className="text-sm text-gray-900 dark:text-white">DwellBot is thinking...</p>
+                        <div className="bg-gray-100 rounded-lg p-3">
+                          <div className="flex items-center">
+                            <Loader className="w-4 h-4 animate-spin text-light-secondary" />
+                            <p className="text-sm text-gray-900">DwellBot is thinking...</p>
                           </div>
                         </div>
                       </div>
@@ -348,13 +348,13 @@ const RAGChatbot = () => {
                 {/* Quick Questions */}
                 {messages.length === 1 && (
                   <div className="px-4 pb-2">
-                    <p className="text-xs text-gray-600 dark:text-accent-light mb-2">Quick questions:</p>
+                    <p className="text-xs text-gray-600 mb-2">Quick questions:</p>
                     <div className="flex flex-wrap gap-1">
                       {quickQuestions.slice(0, 3).map((question, index) => (
                         <button
                           key={index}
                           onClick={() => setInputMessage(question)}
-                          className="text-xs bg-light-highlight dark:bg-accent-medium text-gray-700 dark:text-white px-2 py-1 rounded hover:bg-light-secondary hover:text-white dark:hover:bg-accent-light transition-colors"
+                          className="text-xs bg-light-highlight text-gray-700 px-2 py-1 rounded hover:bg-light-secondary hover:text-white transition-colors"
                         >
                           {question}
                         </button>
@@ -364,7 +364,7 @@ const RAGChatbot = () => {
                 )}
 
                 {/* Input */}
-                <div className="p-4 border-t border-gray-200 dark:border-accent-medium">
+                <div className="p-4 border-t border-gray-200">
                   <div className="flex space-x-2">
                     <input
                       ref={inputRef}
@@ -372,14 +372,14 @@ const RAGChatbot = () => {
                       value={inputMessage}
                       onChange={(e) => setInputMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
-                      placeholder="Ask me anything about DwellDash..."
-                      className="flex-1 border border-gray-300 dark:border-accent-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-light-secondary dark:focus:ring-accent-light dark:bg-accent-black dark:text-white"
+                      placeholder="Ask about properties, prices, locations..."
+                      className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-light-secondary"
                       disabled={isLoading}
                     />
                     <button
                       onClick={handleSendMessage}
                       disabled={!inputMessage.trim() || isLoading}
-                      className="bg-light-secondary dark:bg-accent-dark text-white p-2 rounded-lg hover:bg-light-primary dark:hover:bg-accent-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      className="bg-light-secondary text-white p-2 rounded-lg hover:bg-light-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       <Send className="w-4 h-4" />
                     </button>

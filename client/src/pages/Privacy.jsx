@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, Shield, Eye, Lock, Database, UserCheck, FileText } from 'lucide-react'
+import { Calendar, Shield, Eye, Lock, Database, UserCheck, FileText, Clock, AlertCircle, Trash2 } from 'lucide-react'
 import DwellDashLogo from '../components/DwellDashLogo'
 
 const Privacy = () => {
@@ -192,145 +192,146 @@ We will respond to your inquiries within 30 days and work with you to resolve an
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-accent-black transition-colors duration-300">
-      {/* Header */}
-      <section className="bg-light-primary dark:bg-primary-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <div className="flex justify-center mb-6">
-              <DwellDashLogo className="h-16 w-16" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="bg-light-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               Privacy Policy
             </h1>
-            <p className="text-xl text-gray-700 dark:text-accent-light mb-6">
-              Your privacy is important to us. Learn how we collect, use, and protect your information.
+            <p className="text-xl text-gray-700 mb-6">
+              Your privacy is important to us. This policy explains how we collect, use, and protect your personal information.
             </p>
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-accent-light">
+            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600">
               <div className="flex items-center">
-                <Calendar className="w-4 h-4 mr-2" />
-                <span>Last updated: January 15, 2024</span>
+                <Calendar className="w-4 h-4 mr-1" />
+                <span>Last updated: October 15, 2024</span>
               </div>
               <div className="flex items-center">
-                <Shield className="w-4 h-4 mr-2" />
-                <span>GDPR Compliant</span>
+                <Clock className="w-4 h-4 mr-1" />
+                <span>Version 2.0</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Key Points */}
-      <section className="py-12 bg-light-accent dark:bg-accent-dark transition-colors duration-300">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-8"
-          >
-            <h2 className="text-2xl font-bold text-white mb-4">Privacy at a Glance</h2>
-            <p className="text-white opacity-90">Key principles that guide our data practices</p>
-          </motion.div>
+      {/* Quick Overview */}
+      <section className="py-8 bg-light-accent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div
+              className="bg-white rounded-lg p-6 border-l-4 border-light-secondary"
+            >
+              <div className="flex">
+                <AlertCircle className="w-6 h-6 text-light-secondary mr-3 mt-0.5" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Overview</h3>
+                  <p className="text-gray-700">
+                    We collect minimal data necessary to provide our PG accommodation services, 
+                    never sell your information to third parties, and you have full control over your data.
+                    Contact us at privacy@dwelldash.com for any privacy-related queries.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Privacy Highlights */}
+      <section className="py-12 bg-light-accent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Privacy Rights</h2>
+            <p className="text-gray-700">Quick overview of your data protection rights with DwellDash</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: Lock,
-                title: "Secure by Design",
-                description: "We use industry-standard encryption and security measures to protect your data."
-              },
-              {
-                icon: UserCheck,
-                title: "You're in Control",
-                description: "Access, update, or delete your personal information at any time."
-              },
-              {
                 icon: Shield,
-                title: "Transparent Practices",
-                description: "We clearly explain what data we collect and how we use it."
+                title: "Data Protection",
+                description: "Your data is encrypted and stored securely"
+              },
+              {
+                icon: Lock,
+                title: "Access Control",
+                description: "You control who can see your information"
+              },
+              {
+                icon: Eye,
+                title: "Transparency",
+                description: "Clear information about data usage"
+              },
+              {
+                icon: Trash2,
+                title: "Right to Delete",
+                description: "Request deletion of your data anytime"
               }
             ].map((item, index) => (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white dark:bg-accent-black rounded-lg p-6 text-center"
+              <div
+                key={index}
+                className="bg-white rounded-lg p-6 text-center"
               >
-                <item.icon className="w-12 h-12 text-light-secondary dark:text-accent-light mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-gray-700 dark:text-accent-light">{item.description}</p>
-              </motion.div>
+                <item.icon className="w-12 h-12 text-light-secondary mx-auto mb-4" />
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
+                <p className="text-gray-700">{item.description}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Privacy Policy Content */}
-      <section className="py-16 bg-white dark:bg-accent-black transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8">
+      {/* Main Content */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
             {sections.map((section, index) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-light-highlight dark:bg-primary-900 rounded-lg p-6 shadow-sm"
+              <div
+                key={index}
+                className="bg-light-highlight rounded-lg p-6 shadow-sm"
               >
-                <div className="flex items-start mb-4">
-                  <div className="w-10 h-10 bg-light-accent dark:bg-accent-light rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <section.icon className="w-5 h-5 text-light-secondary dark:text-accent-dark" />
+                <div className="flex items-start">
+                  <div className="w-10 h-10 bg-light-accent rounded-lg flex items-center justify-center mr-4 mt-1">
+                    <section.icon className="w-5 h-5 text-light-secondary" />
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white">
-                    {section.title}
-                  </h2>
+                  <div>
+                    <h2 className="text-xl font-bold text-gray-900">
+                      {section.title}
+                    </h2>
+                  </div>
                 </div>
-                <div className="text-gray-700 dark:text-accent-light leading-relaxed whitespace-pre-line ml-14">
+                <div className="text-gray-700 leading-relaxed whitespace-pre-line ml-14">
                   {section.content}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="py-12 bg-light-secondary dark:bg-accent-dark transition-colors duration-300">
+      {/* Contact CTA */}
+      <section className="py-12 bg-light-secondary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Shield className="w-12 h-12 mx-auto mb-4 text-white" />
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Have Privacy Questions?
-            </h3>
-            <p className="text-white opacity-90 mb-6">
-              Our privacy team is here to help. Contact us if you have any questions about how we handle your data.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="bg-white text-light-secondary dark:text-accent-dark px-6 py-3 rounded-lg font-semibold hover:bg-light-highlight dark:hover:bg-accent-light transition-colors"
-              >
-                Contact Privacy Team
-              </a>
-              <a
-                href="/terms"
-                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-light-secondary dark:hover:text-accent-dark transition-colors"
-              >
-                View Terms of Service
-              </a>
-            </div>
-          </motion.div>
+          <h2 className="text-2xl font-bold mb-4">Questions About Your Privacy?</h2>
+          <p className="text-lg mb-6">
+            Our privacy team is here to help you understand how we protect your data.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:privacy@dwelldash.com"
+              className="bg-white text-light-secondary px-6 py-3 rounded-lg font-semibold hover:bg-light-highlight transition-colors"
+            >
+              Email Privacy Team
+            </a>
+            <a
+              href="/contact"
+              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-light-secondary transition-colors"
+            >
+              Contact Support
+            </a>
+          </div>
         </div>
       </section>
     </div>

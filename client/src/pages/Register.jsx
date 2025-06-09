@@ -239,15 +239,15 @@ const Register = () => {
                 id="terms"
                 name="terms"
                 type="checkbox"
-                className="h-4 w-4 text-light-secondary focus:ring-light-secondary dark:focus:ring-accent-light border-gray-300 rounded"
+                className="h-4 w-4 text-light-secondary focus:ring-light-secondary border-gray-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
                 I agree to the{' '}
-                <a href="/terms" className="text-light-secondary dark:text-accent-light hover:text-light-primary dark:hover:text-accent-medium">
+                <a href="/terms" className="text-light-secondary hover:text-light-primary">
                   Terms and Conditions
                 </a>{' '}
                 and{' '}
-                <a href="/privacy" className="text-light-secondary dark:text-accent-light hover:text-light-primary dark:hover:text-accent-medium">
+                <a href="/privacy" className="text-light-secondary hover:text-light-primary">
                   Privacy Policy
                 </a>
               </label>
@@ -260,7 +260,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-light-secondary dark:bg-accent-dark hover:bg-light-primary dark:hover:bg-accent-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-secondary dark:focus:ring-accent-light disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-light-secondary hover:bg-light-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? (
                   <div className="flex items-center">

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Calendar, Shield, AlertCircle, FileText } from 'lucide-react'
+import { Calendar, Shield, AlertCircle, FileText, Clock } from 'lucide-react'
 import DwellDashLogo from '../components/DwellDashLogo'
 
 const Terms = () => {
@@ -86,116 +86,94 @@ const Terms = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-white dark:bg-accent-black transition-colors duration-300">
-      {/* Header */}
-      <section className="bg-light-primary dark:bg-primary-900 transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <div className="flex justify-center mb-6">
-              <DwellDashLogo className="h-16 w-16" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              Terms and Conditions
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="bg-light-primary">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Terms of Service
             </h1>
-            <p className="text-xl text-gray-700 dark:text-accent-light mb-6">
-              Please read these terms carefully before using DwellDash
+            <p className="text-xl text-gray-700 mb-6">
+              Please read these terms carefully before using our PG accommodation platform.
             </p>
-            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600 dark:text-accent-light">
+            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600">
               <div className="flex items-center">
-                <Calendar className="w-4 h-4 mr-2" />
-                <span>Last updated: January 15, 2024</span>
+                <Calendar className="w-4 h-4 mr-1" />
+                <span>Effective Date: October 15, 2024</span>
               </div>
               <div className="flex items-center">
-                <FileText className="w-4 h-4 mr-2" />
-                <span>Version 1.2</span>
+                <Clock className="w-4 h-4 mr-1" />
+                <span>Version 2.0</span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Important Notice */}
-      <section className="py-8 bg-light-accent dark:bg-accent-dark transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="bg-white dark:bg-accent-black rounded-lg p-6 border-l-4 border-light-secondary dark:border-accent-light"
-          >
-            <div className="flex items-start">
-              <AlertCircle className="w-6 h-6 text-light-secondary dark:text-accent-light mr-3 mt-0.5" />
-              <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Important Notice</h3>
-                <p className="text-gray-700 dark:text-accent-light">
-                  By using DwellDash, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions. 
-                  If you do not agree with any part of these terms, you must not use our platform.
-                </p>
+      <section className="py-8 bg-light-accent">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-lg p-6 border-l-4 border-light-secondary">
+              <div className="flex">
+                <AlertCircle className="w-6 h-6 text-light-secondary mr-3 mt-0.5" />
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900 mb-2">Important Notice</h3>
+                  <p className="text-gray-700">
+                    By using DwellDash services, you agree to be bound by these terms. 
+                    If you do not agree with any part of these terms, please do not use our platform.
+                    For any questions, contact us at legal@dwelldash.com.
+                  </p>
+                </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Terms Content */}
-      <section className="py-16 bg-white dark:bg-accent-black transition-colors duration-300">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-8">
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
             {sections.map((section, index) => (
-              <motion.div
-                key={section.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-light-highlight dark:bg-primary-900 rounded-lg p-6 shadow-sm"
+              <div
+                key={index}
+                className="bg-light-highlight rounded-lg p-6 shadow-sm"
               >
-                <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
+                <h2 className="text-xl font-bold text-gray-900 mb-4">
                   {section.title}
                 </h2>
-                <div className="text-gray-700 dark:text-accent-light leading-relaxed whitespace-pre-line">
+                <div className="text-gray-700 leading-relaxed whitespace-pre-line">
                   {section.content}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer CTA */}
-      <section className="py-12 bg-light-secondary dark:bg-accent-dark transition-colors duration-300">
+      {/* Contact Section */}
+      <section className="py-12 bg-light-secondary text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <Shield className="w-12 h-12 mx-auto mb-4 text-white" />
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Questions About Our Terms?
-            </h3>
-            <p className="text-white opacity-90 mb-6">
-              Our legal team is here to help. Contact us if you need clarification on any of these terms.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="/contact"
-                className="bg-white text-light-secondary dark:text-accent-dark px-6 py-3 rounded-lg font-semibold hover:bg-light-highlight dark:hover:bg-accent-light transition-colors"
-              >
-                Contact Legal Team
-              </a>
-              <a
-                href="/privacy"
-                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-light-secondary dark:hover:text-accent-dark transition-colors"
-              >
-                View Privacy Policy
-              </a>
-            </div>
-          </motion.div>
+          <h2 className="text-2xl font-bold mb-4">Questions About Our Terms?</h2>
+          <p className="text-lg mb-6">
+            Need clarification on any of our terms? Our legal team is here to help.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="mailto:legal@dwelldash.com"
+              className="bg-white text-light-secondary px-6 py-3 rounded-lg font-semibold hover:bg-light-highlight transition-colors"
+            >
+              Contact Legal Team
+            </a>
+            <a
+              href="/contact"
+              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-light-secondary transition-colors"
+            >
+              General Support
+            </a>
+          </div>
         </div>
       </section>
     </div>

@@ -150,88 +150,74 @@ const IntegratedChatbot = () => {
   ]
 
   return (
-    <div className="bg-white dark:bg-accent-dark rounded-lg shadow-lg border border-gray-200 dark:border-accent-medium h-[600px] flex flex-col">
+    <div className="bg-white rounded-lg shadow-lg border border-gray-200 h-[600px] flex flex-col">
       {/* Chat Header */}
-      <div className="flex items-center p-4 border-b border-gray-200 dark:border-accent-medium bg-light-secondary dark:bg-accent-black rounded-t-lg">
-        <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 bg-light-accent dark:bg-accent-light rounded-full flex items-center justify-center">
-            <Bot className="w-5 h-5 text-light-secondary dark:text-accent-dark" />
+      <div className="flex items-center p-4 border-b border-gray-200 bg-light-secondary rounded-t-lg">
+        <div className="flex items-center">
+          <div className="w-10 h-10 bg-light-accent rounded-full flex items-center justify-center">
+            <Bot className="w-5 h-5 text-light-secondary" />
           </div>
-          <div>
-            <h3 className="font-semibold text-white">DwellBot</h3>
-            <p className="text-sm text-white opacity-80">AI Assistant • Online</p>
+          <div className="ml-3">
+            <h3 className="text-white font-semibold">DwellBot</h3>
+            <p className="text-xs text-blue-100">Ask me about properties</p>
           </div>
         </div>
       </div>
 
-      {/* Messages */}
+      {/* Chat Messages */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4">
-        {messages.map((message) => (
-          <motion.div
-            key={message.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className={`flex ${message.type === 'user' ? 'justify-end' : 'justify-start'}`}
+        {messages.map((message, index) => (
+          <div
+            key={index}
+            className={`flex items-start space-x-2 ${
+              message.type === 'user' ? 'justify-end' : 'justify-start'
+            }`}
           >
-            <div className={`flex items-start space-x-2 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
+            {message.type === 'bot' && (
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                 message.type === 'user' 
-                  ? 'bg-light-secondary dark:bg-accent-light' 
-                  : 'bg-light-accent dark:bg-accent-dark'
+                  ? 'bg-light-secondary' 
+                  : 'bg-light-accent'
               }`}>
-                {message.type === 'user' ? (
-                  <User className="w-4 h-4 text-white" />
-                ) : (
-                  <Bot className="w-4 h-4 text-light-secondary dark:text-accent-light" />
-                )}
+                <Bot className="w-4 h-4 text-light-secondary" />
               </div>
-              <div className={`rounded-lg p-3 ${
-                message.type === 'user'
-                  ? 'bg-light-secondary dark:bg-accent-light text-white'
-                  : 'bg-gray-100 dark:bg-accent-black text-gray-900 dark:text-white'
-              }`}>
-                <p className="text-sm whitespace-pre-line">{message.content}</p>
-                <p className="text-xs opacity-70 mt-1">
-                  {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                </p>
-              </div>
+            )}
+            <div className={`rounded-lg p-3 max-w-xs ${
+              message.type === 'user'
+                ? 'bg-light-secondary text-white'
+                : 'bg-gray-100 text-gray-900'
+            }`}>
+              <p className="text-sm whitespace-pre-line">{message.content}</p>
             </div>
-          </motion.div>
+          </div>
         ))}
-        
+
+        {/* Loading indicator */}
         {isLoading && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex justify-start"
-          >
-            <div className="flex items-start space-x-2">
-              <div className="w-8 h-8 bg-light-accent dark:bg-accent-dark rounded-full flex items-center justify-center">
-                <Bot className="w-4 h-4 text-light-secondary dark:text-accent-light" />
-              </div>
-              <div className="bg-gray-100 dark:bg-accent-black rounded-lg p-3">
-                <div className="flex items-center space-x-2">
-                  <Loader className="w-4 h-4 animate-spin text-light-secondary dark:text-accent-light" />
-                  <p className="text-sm text-gray-900 dark:text-white">DwellBot is thinking...</p>
-                </div>
+          <div className="flex items-start space-x-2">
+            <div className="w-8 h-8 bg-light-accent rounded-full flex items-center justify-center">
+              <Bot className="w-4 h-4 text-light-secondary" />
+            </div>
+            <div className="bg-gray-100 rounded-lg p-3">
+              <div className="flex items-center">
+                <Loader className="w-4 h-4 animate-spin text-light-secondary" />
+                <p className="text-sm text-gray-900">DwellBot is thinking...</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         )}
-        
-        <div ref={messagesEndRef} />
       </div>
 
       {/* Quick Questions */}
       {messages.length === 1 && (
-        <div className="px-4 pb-2 border-t border-gray-200 dark:border-accent-medium">
-          <p className="text-xs text-gray-600 dark:text-accent-light mb-2 mt-2">Try asking:</p>
-          <div className="grid grid-cols-2 gap-2">
-            {quickQuestions.map((question, index) => (
+        <div className="px-4 pb-2 border-t border-gray-200">
+          <p className="text-xs text-gray-600 mb-2 mt-2">Try asking:</p>
+          <div className="grid grid-cols-1 gap-1">
+            {quickQuestions.slice(0, 3).map((question, index) => (
               <button
                 key={index}
                 onClick={() => setInputMessage(question)}
-                className="text-xs bg-light-highlight dark:bg-accent-medium text-gray-700 dark:text-white px-3 py-2 rounded hover:bg-light-secondary hover:text-white dark:hover:bg-accent-light transition-colors text-left"
+                className="text-xs bg-light-highlight text-gray-700 px-3 py-2 rounded hover:bg-light-secondary hover:text-white transition-colors text-left"
               >
                 {question}
               </button>
@@ -241,22 +227,21 @@ const IntegratedChatbot = () => {
       )}
 
       {/* Input */}
-      <div className="p-4 border-t border-gray-200 dark:border-accent-medium">
+      <div className="p-4 border-t border-gray-200">
         <div className="flex space-x-2">
           <input
-            ref={inputRef}
             type="text"
             value={inputMessage}
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
-            placeholder="Ask me anything about DwellDash..."
-            className="flex-1 border border-gray-300 dark:border-accent-medium rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-light-secondary dark:focus:ring-accent-light dark:bg-accent-black dark:text-white"
+            placeholder="Ask about properties, prices, locations..."
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-light-secondary"
             disabled={isLoading}
           />
           <button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-light-secondary dark:bg-accent-dark text-white px-4 py-2 rounded-lg hover:bg-light-primary dark:hover:bg-accent-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
+            className="bg-light-secondary text-white px-4 py-2 rounded-lg hover:bg-light-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
           >
             <Send className="w-4 h-4" />
           </button>
