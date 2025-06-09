@@ -196,10 +196,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Why Choose DwellDash?
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-800">
+            <p className="text-xl text-gray-700 dark:text-gray-200">
               We make finding your perfect PG simple, safe, and stress-free
             </p>
           </motion.div>
@@ -233,10 +233,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-900 mb-4">
               Premium Amenities
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-200">
+            <p className="text-xl text-gray-700 dark:text-gray-800">
               Enjoy world-class facilities at affordable prices
             </p>
           </motion.div>
