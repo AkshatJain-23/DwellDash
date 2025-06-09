@@ -79,54 +79,54 @@ const Home = () => {
       icon: Shield,
       title: 'Zero Brokerage',
       description: 'Connect directly with property owners. No brokerage fees.',
-      color: 'bg-light-accent text-light-secondary dark:bg-dark-accent dark:text-dark-text'
+      color: 'bg-app-accent text-app-secondary'
     },
     {
       icon: CheckCircle,
       title: 'Verified Properties',
       description: 'All properties are verified through our quality checks.',
-      color: 'bg-light-primary text-light-secondary dark:bg-dark-secondary dark:text-dark-primary'
+      color: 'bg-app-primary text-app-secondary'
     },
     {
       icon: Users,
       title: '50,000+ Happy Tenants',
       description: 'Join thousands who found their perfect home with us.',
-      color: 'bg-light-secondary text-white dark:bg-dark-highlight dark:text-dark-text'
+      color: 'bg-app-secondary text-white'
     },
     {
       icon: TrendingUp,
       title: 'Best Market Prices',
       description: 'Compare prices and get the best deals in your area.',
-      color: 'bg-light-highlight text-light-secondary dark:bg-dark-surface dark:text-dark-secondary'
+      color: 'bg-app-highlight text-app-secondary'
     }
   ]
 
   // Define colors for each stat
   const statColors = [
-    'bg-light-primary text-light-secondary dark:bg-dark-highlight dark:text-dark-secondary',
-    'bg-light-accent text-light-secondary dark:bg-dark-accent dark:text-dark-text', 
-    'bg-light-highlight text-light-secondary dark:bg-dark-surface dark:text-dark-secondary',
-    'bg-light-secondary text-white dark:bg-dark-primary dark:text-dark-text'
+    'bg-app-primary text-app-secondary',
+    'bg-app-accent text-app-secondary', 
+    'bg-app-highlight text-app-secondary',
+    'bg-app-secondary text-white'
   ]
 
   return (
-    <div className="min-h-screen bg-light-highlight dark:bg-dark-surface">
+    <div className="min-h-screen bg-app-highlight">
       {/* Hero Section with Search */}
-      <section className="relative bg-white dark:bg-dark-primary border-b border-gray-200 dark:border-dark-highlight">
+      <section className="relative bg-white border-b border-gray-200">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-6xl mx-auto">
             {/* Main Heading */}
             <div className="text-center mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-dark-text mb-4">
-                Find Your Perfect <span className="text-light-secondary dark:text-dark-secondary">PG</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Find Your Perfect <span className="text-app-secondary">PG</span>
               </h1>
-              <p className="text-xl text-gray-600 dark:text-dark-accent max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
                 Discover verified PG accommodations with zero brokerage. Over 3000+ properties across major cities.
               </p>
             </div>
 
             {/* Search Form */}
-            <div className="bg-white dark:bg-dark-primary border border-gray-200 dark:border-dark-highlight rounded-lg shadow-lg p-6 mb-8">
+            <div className="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mb-8">
               <form onSubmit={handleSearch} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   {/* Location Search */}
@@ -179,7 +179,7 @@ const Home = () => {
                   <div className="flex items-end">
                     <button
                       type="submit"
-                      className="w-full bg-light-secondary hover:bg-light-primary dark:bg-dark-secondary dark:hover:bg-dark-text text-white dark:text-dark-primary py-3 px-6 rounded-lg font-semibold flex items-center justify-center transition-colors"
+                      className="w-full bg-app-secondary hover:bg-app-primary text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center transition-colors"
                     >
                       <Search className="w-5 h-5 mr-2" />
                       Search PGs
@@ -359,25 +359,25 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-light-secondary dark:bg-dark-primary text-white dark:text-dark-text">
+      <section className="py-12 bg-app-secondary text-white">
         <div className="container mx-auto px-4 text-center">
-          <HomeIcon className="w-16 h-16 mx-auto mb-6 text-light-primary dark:text-dark-secondary" />
+          <HomeIcon className="w-16 h-16 mx-auto mb-6 text-app-primary" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Find Your Dream PG?
           </h2>
-          <p className="text-xl mb-8 text-light-highlight dark:text-dark-accent max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-app-highlight max-w-2xl mx-auto">
             Join thousands of students and professionals who found their perfect accommodation through DwellDash
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Link 
               to="/properties" 
-              className="bg-white dark:bg-dark-text text-light-secondary dark:text-dark-primary hover:bg-light-highlight dark:hover:bg-dark-secondary px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="bg-white text-app-secondary hover:bg-app-highlight px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               Explore Properties
             </Link>
             <Link 
               to="/register" 
-              className="border-2 border-white dark:border-dark-text text-white dark:text-dark-text hover:bg-white dark:hover:bg-dark-text hover:text-light-secondary dark:hover:text-dark-primary px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="border-2 border-white text-white hover:bg-white hover:text-app-secondary px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               Sign Up Free
             </Link>

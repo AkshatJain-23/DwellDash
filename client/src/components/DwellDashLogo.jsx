@@ -13,35 +13,35 @@ const DwellDashLogo = ({ className = "h-8 w-auto" }) => {
         width="80"
         height="35"
         rx="2"
-        className="fill-light-secondary dark:fill-dark-secondary"
+        className="fill-app-secondary"
       />
       
       {/* Roof */}
       <path
         d="M5 20 L50 5 L95 20 L90 15 L50 2 L10 15 Z"
-        className="fill-light-primary dark:fill-dark-accent"
+        className="fill-app-primary"
       />
       
       {/* Windows - Left side */}
-      <rect x="20" y="25" width="8" height="8" rx="1" className="fill-gray-800 dark:fill-dark-primary" />
-      <rect x="32" y="25" width="8" height="8" rx="1" className="fill-gray-800 dark:fill-dark-primary" />
+      <rect x="20" y="25" width="8" height="8" rx="1" className="fill-gray-800" />
+      <rect x="32" y="25" width="8" height="8" rx="1" className="fill-gray-800" />
       
       {/* Door */}
-      <rect x="44" y="30" width="12" height="20" rx="1" className="fill-gray-800 dark:fill-dark-primary" />
+      <rect x="44" y="30" width="12" height="20" rx="1" className="fill-gray-800" />
       
       {/* Windows - Right side */}
-      <rect x="60" y="25" width="8" height="8" rx="1" className="fill-gray-800 dark:fill-dark-primary" />
-      <rect x="72" y="25" width="8" height="8" rx="1" className="fill-gray-800 dark:fill-dark-primary" />
+      <rect x="60" y="25" width="8" height="8" rx="1" className="fill-gray-800" />
+      <rect x="72" y="25" width="8" height="8" rx="1" className="fill-gray-800" />
       
       {/* Decorative elements - Left */}
-      <rect x="10" y="35" width="8" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
-      <rect x="5" y="40" width="10" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
-      <rect x="8" y="45" width="6" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
+      <rect x="10" y="35" width="8" height="2" rx="1" className="fill-app-accent" />
+      <rect x="5" y="40" width="10" height="2" rx="1" className="fill-app-accent" />
+      <rect x="8" y="45" width="6" height="2" rx="1" className="fill-app-accent" />
       
       {/* Decorative elements - Right */}
-      <rect x="82" y="35" width="8" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
-      <rect x="85" y="40" width="10" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
-      <rect x="86" y="45" width="6" height="2" rx="1" className="fill-light-accent dark:fill-dark-highlight" />
+      <rect x="82" y="35" width="8" height="2" rx="1" className="fill-app-accent" />
+      <rect x="85" y="40" width="10" height="2" rx="1" className="fill-app-accent" />
+      <rect x="86" y="45" width="6" height="2" rx="1" className="fill-app-accent" />
       
       {/* Chimney */}
       <rect
@@ -50,14 +50,14 @@ const DwellDashLogo = ({ className = "h-8 w-auto" }) => {
         width="6"
         height="12"
         rx="1"
-        className="fill-light-secondary dark:fill-dark-secondary"
+        className="fill-app-secondary"
       />
       
       {/* Smoke particles */}
-      <circle cx="68" cy="22" r="1" className="fill-light-primary dark:fill-dark-accent" />
-      <circle cx="70" cy="19" r="1" className="fill-light-primary dark:fill-dark-accent" />
-      <circle cx="67" cy="16" r="1" className="fill-light-primary dark:fill-dark-accent" />
-      <circle cx="69" cy="13" r="1" className="fill-light-primary dark:fill-dark-accent" />
+      <circle cx="68" cy="22" r="1" className="fill-app-primary" />
+      <circle cx="70" cy="19" r="1" className="fill-app-primary" />
+      <circle cx="67" cy="16" r="1" className="fill-app-primary" />
+      <circle cx="69" cy="13" r="1" className="fill-app-primary" />
     </svg>
   )
 }
