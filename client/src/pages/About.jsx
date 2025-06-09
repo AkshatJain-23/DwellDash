@@ -1,223 +1,240 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Users, Heart, Shield, Target, Award, MapPin } from 'lucide-react'
-import DwellDashLogo from '../components/DwellDashLogo'
-import { api } from '../utils/api'
-import toast from 'react-hot-toast'
+import { Users, Heart, Shield, Target, Award, MapPin, CheckCircle, Star, Building2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useStats } from '../contexts/StatsContext'
 
 const About = () => {
-  const [stats, setStats] = useState([
-    { number: "Loading...", label: "Happy Tenants" },
-    { number: "Loading...", label: "Verified Properties" },
-    { number: "Loading...", label: "Cities Covered" },
-    { number: "Loading...", label: "Satisfaction Rate" }
-  ])
-  const [isLoadingStats, setIsLoadingStats] = useState(true)
+  const { getStat, getRawStat } = useStats()
 
-  const features = [
+  // Dynamic stats using live data
+  const stats = [
+    { number: getStat('tenants'), label: "Happy Tenants", icon: Users, color: "text-app-success" },
+    { number: getStat('properties'), label: "Verified Properties", icon: Building2, color: "text-app-primary" },
+    { number: getStat('cities'), label: "Cities Covered", icon: MapPin, color: "text-app-secondary" },
+    { number: `${getRawStat('avgRating')}/5`, label: "Average Rating", icon: Star, color: "text-app-warning" }
+  ]
+
+  const values = [
     {
       icon: Target,
       title: "Our Mission",
-      description: "To make finding the perfect PG accommodation simple, safe, and stress-free for students and working professionals across India."
+      description: "To revolutionize PG accommodation discovery by connecting students and professionals with verified, quality living spaces across India.",
+      color: "bg-app-primary"
     },
     {
       icon: Shield,
       title: "Trust & Safety",
-      description: "Every property is verified and vetted to ensure our users find safe, clean, and reliable accommodations."
+      description: "Every property undergoes rigorous verification. Zero brokerage, complete transparency, and secure transactions guaranteed.",
+      color: "bg-app-success"
     },
     {
       icon: Heart,
       title: "Community First",
-      description: "We believe in building communities, not just finding rooms. Creating connections that last beyond your stay."
+      description: "Building more than accommodations - we create communities where people connect, grow, and thrive together.",
+      color: "bg-app-warning"
     },
     {
       icon: Award,
-      title: "Quality Assurance",
-      description: "Our rigorous quality standards ensure that every listed property meets our high standards for comfort and amenities."
+      title: "Quality Excellence",
+      description: "Maintaining the highest standards in property quality, customer service, and platform security across all touchpoints.",
+      color: "bg-app-secondary"
     }
   ]
 
-  // Fetch real statistics from API
-  useEffect(() => {
-    const fetchStats = async () => {
-      try {
-        setIsLoadingStats(true)
-        const response = await api.get('/stats')
-        
-        if (response.data.success) {
-          setStats(response.data.data)
-          
-          // Show a subtle notification about real data (optional)
-          if (response.data.rawData) {
-            console.log('Platform Statistics:', response.data.rawData)
-          }
-        } else {
-          throw new Error('Failed to fetch statistics')
-        }
-      } catch (error) {
-        console.error('Error fetching statistics:', error)
-        
-        // Fallback to static stats on error
-        setStats([
-          { number: "Growing", label: "Happy Tenants" },
-          { number: "Expanding", label: "Verified Properties" },
-          { number: "Multiple", label: "Cities Covered" },
-          { number: "High", label: "Satisfaction Rate" }
-        ])
-        
-        toast.error('Failed to load latest statistics')
-      } finally {
-        setIsLoadingStats(false)
-      }
-    }
-
-    fetchStats()
-  }, [])
+  // Dynamic milestones using live stats
+  const milestones = [
+    { year: "2023", title: "Founded", description: "DwellDash launched with a vision to transform PG hunting", achievement: "Platform Launch" },
+    { year: "2023", title: "First 1,000", description: "Reached our first 1,000 happy tenants across 5 cities", achievement: "1K Tenants" },
+    { year: "2024", title: "Major Expansion", description: `Expanded to ${getStat('cities')} with ${getStat('properties')} verified properties`, achievement: `${getStat('cities')} Cities` },
+    { year: "2024", title: `${getStat('tenants')} Community`, description: `Built India's largest PG community with ${getStat('tenants')} members`, achievement: `${getStat('tenants')} Users` }
+  ]
 
   const team = [
     {
       name: "Akshat Jain",
       role: "Founder & CEO",
-      description: "Former tech executive with 10+ years experience in PropTech and a passion for solving housing challenges."
+      description: "Visionary leader with expertise in PropTech and a passion for solving India's housing challenges."
     },
     {
       name: "Akshat Jain",
       role: "Co-Founder & CTO",
-      description: "Tech innovator focused on creating seamless digital experiences for property seekers and owners."
+      description: "Tech innovator focused on creating seamless digital experiences for modern property seekers."
     },
     {
       name: "Akshat Jain",
       role: "Head of Operations",
-      description: "Operations expert ensuring quality standards and smooth experiences across all our services."
+      description: "Operations excellence expert ensuring quality standards across all our platform services."
     }
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-              <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white">
-          <div className="absolute inset-0 bg-blue-500 opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <section className="relative bg-gradient-to-br from-blue-900 to-blue-800 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-app-primary/10 to-transparent"></div>
+        
+        <div className="relative container mx-auto px-4 py-20 lg:py-32">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center max-w-4xl mx-auto"
           >
-            <div className="flex justify-center mb-8">
-              <DwellDashLogo className="h-20 w-20" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-              About DwellDash
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              About <span className="text-orange-400">DwellDash</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-700">
-              Revolutionizing the way students and professionals find their perfect home away from home across India.
+            <p className="text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed">
+              India's most trusted PG booking platform, revolutionizing how students and professionals find their perfect home away from home.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <span className="inline-flex items-center px-6 py-3 bg-app-primary/20 rounded-full text-app-primary font-semibold">
+                <Shield className="w-5 h-5 mr-2" />
+                Zero Brokerage
+              </span>
+              <span className="inline-flex items-center px-6 py-3 bg-app-success/20 rounded-full text-app-success font-semibold">
+                <CheckCircle className="w-5 h-5 mr-2" />
+                Verified Properties
+              </span>
+              <span className="inline-flex items-center px-6 py-3 bg-app-warning/20 rounded-full text-app-warning font-semibold">
+                <Star className="w-5 h-5 mr-2" />
+                {getRawStat('avgRating')}+ Rating
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Our Story Section */}
+      {/* Stats Section */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="text-center group"
+              >
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-100 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="w-8 h-8 text-orange-600" />
+                </div>
+                <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
+                  {stat.number}
+                </div>
+                <div className="text-gray-600 font-medium">
+                  {stat.label}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Our Story Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Our Story
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-8">
+                Our <span className="text-orange-600">Story</span>
               </h2>
-              <p className="text-lg text-gray-700 mb-6">
-                Founded in 2023, DwellDash was born out of personal experiences with the challenges of finding quality PG accommodations in India's major cities. Our founders, having faced these struggles themselves, decided to create a platform that would eliminate the hassles and uncertainties of the traditional PG hunting process.
-              </p>
-              <p className="text-lg text-gray-700 mb-6">
-                What started as a simple idea to connect PG seekers with quality accommodations has grown into India's most trusted platform for PG rentals, helping thousands find their perfect home away from home.
-              </p>
-              <p className="text-lg text-gray-700">
-                Today, we're proud to serve students, working professionals, and property owners across 50+ cities, maintaining our commitment to quality, safety, and exceptional user experience.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-blue-100 rounded-lg p-8"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Impact</h3>
-              <div className="grid grid-cols-2 gap-6">
-                {stats.map((stat, index) => (
-                  <div 
-                    key={index} 
-                    className="text-center"
-                    initial={{ opacity: 0, scale: 0.5 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    <div className={`text-3xl font-bold text-blue-600 mb-2 ${
-                      isLoadingStats ? 'animate-pulse' : ''
-                    }`}>
-                      {stat.number}
-                    </div>
-                    <div className="text-sm text-gray-700">
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
+                <p>
+                  DwellDash was born from personal frustration with India's broken PG ecosystem. Our founders experienced firsthand the challenges of finding quality accommodations - hidden charges, unverified properties, and endless broker calls.
+                </p>
+                <p>
+                  In 2023, we decided to build the platform we wished existed. A place where trust comes first, transparency is guaranteed, and finding your perfect home is actually enjoyable.
+                </p>
+                <p>
+                  Today, we're proud to have revolutionized PG discovery for over {getStat('tenants')} Indians, proving that technology can solve real housing challenges when built with genuine care.
+                </p>
               </div>
               
-              {/* Real-time data indicator */}
-              {!isLoadingStats && (
-                <div 
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.5 }}
-                  className="mt-4 text-center"
+              <div className="mt-8 flex flex-wrap gap-4">
+                <Link
+                  to="/properties"
+                  className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700 transition-colors"
                 >
-                  <span className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-green-100 text-green-800">
-                    <span className="w-2 h-2 bg-green-400 rounded-full mr-1 animate-pulse"></span>
-                    Live Statistics
-                  </span>
+                  Explore Properties
+                  <ArrowRight className="w-5 h-5 ml-2" />
+                </Link>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-xl font-semibold hover:bg-orange-600 hover:text-white transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="relative"
+            >
+              <div className="bg-white rounded-2xl p-8 shadow-xl">
+                <h3 className="text-2xl font-bold text-app-text mb-6">Our Journey</h3>
+                <div className="space-y-6">
+                  {milestones.map((milestone, index) => (
+                    <div key={index} className="flex items-start space-x-4">
+                      <div className="flex-shrink-0 w-12 h-12 bg-app-primary rounded-full flex items-center justify-center text-white font-bold">
+                        {milestone.year.slice(-2)}
+                      </div>
+                      <div>
+                        <h4 className="font-semibold text-app-text">{milestone.title}</h4>
+                        <p className="text-app-muted text-sm mt-1">{milestone.description}</p>
+                        <span className="inline-block mt-2 px-3 py-1 bg-app-success/10 text-app-success text-xs rounded-full font-medium">
+                          {milestone.achievement}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              )}
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-              <section className="py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Values Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              What Drives Us
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Our <span className="text-orange-600">Values</span>
             </h2>
-            <p className="text-xl text-gray-700">
-              Our core values that guide everything we do
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The principles that guide everything we do and drive our commitment to revolutionizing India's PG ecosystem.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {features.map((feature, index) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {values.map((value, index) => (
               <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-all duration-300"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
               >
-                                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-6 h-6 text-blue-600" />
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${value.color} mb-6`}>
+                  <value.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-700">{feature.description}</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -225,37 +242,37 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Meet Our Team
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Meet Our <span className="text-orange-600">Team</span>
             </h2>
-            <p className="text-xl text-gray-700">
-              The passionate people behind DwellDash
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The passionate individuals working tirelessly to transform how India finds homes.
             </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                  className="bg-blue-50 rounded-lg p-6 text-center"
+                className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow"
               >
-                                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-10 h-10 text-blue-600" />
+                <div className="relative w-32 h-32 mx-auto mb-6 bg-orange-100 rounded-full flex items-center justify-center border-4 border-orange-200">
+                  <span className="text-4xl font-bold text-orange-600">AJ</span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                                  <p className="text-blue-600 font-medium mb-3">{member.role}</p>
-                <p className="text-gray-700 text-sm">{member.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-orange-600 font-semibold mb-4">{member.role}</p>
+                <p className="text-gray-600">{member.description}</p>
               </motion.div>
             ))}
           </div>
@@ -263,32 +280,34 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-              <section className="py-16 bg-blue-600 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
+        <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
           >
-            <MapPin className="w-16 h-16 mx-auto mb-6 text-light-highlight" />
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Join the DwellDash Community
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Ready to Find Your Perfect PG?
             </h2>
-            <p className="text-xl mb-8 text-white">
-              Whether you're looking for accommodation or want to list your property, we're here to help you every step of the way.
+            <p className="text-xl mb-8 text-orange-100">
+              Join {getStat('tenants')} happy tenants who found their ideal accommodation through DwellDash
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/properties" 
-                className="btn bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full font-semibold transition-colors"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                to="/properties"
+                className="inline-flex items-center px-8 py-4 bg-white text-orange-600 rounded-xl font-bold hover:bg-gray-100 transition-colors"
               >
-                Find Your PG
+                <Building2 className="w-5 h-5 mr-2" />
+                Browse Properties
               </Link>
-              <Link 
-                to="/contact" 
-                className="btn border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-full font-semibold transition-colors"
+              <Link
+                to="/register"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-orange-600 transition-colors"
               >
-                Get in Touch
+                <Users className="w-5 h-5 mr-2" />
+                Join Now
               </Link>
             </div>
           </motion.div>

@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageCircle, Headphones, Star, CheckCircle, ArrowRight } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
-import IntegratedChatbot from '../components/IntegratedChatbot'
-
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -21,55 +20,37 @@ const Contact = () => {
       icon: Mail,
       title: "Email Us",
       details: "dwelldash3@gmail.com",
-      subtext: "We'll respond within 24 hours"
+      subtext: "24/7 Email Support",
+      color: "bg-app-primary"
     },
     {
       icon: Phone,
       title: "Call Us",
-      details: "+91 98765 43210",
-      subtext: "Mon-Sat 9:00 AM - 8:00 PM"
+      details: "+91 84260 76800",
+      subtext: "Mon-Sat 9:00 AM - 8:00 PM",
+      color: "bg-app-success"
     },
     {
-      icon: MapPin,
-      title: "Visit Us",
-      details: "Cyber City, Gurgaon, Haryana",
-      subtext: "Corporate Office"
+      icon: MessageCircle,
+      title: "Live Chat",
+      details: "Available Now",
+      subtext: "Instant Help Available",
+      color: "bg-app-warning"
     },
     {
-      icon: Clock,
-      title: "Support Hours",
-      details: "9:00 AM - 8:00 PM",
-      subtext: "Monday to Saturday"
-    }
-  ]
-
-  const offices = [
-    {
-      city: "Gurgaon",
-      address: "Plot No. 123, Cyber City, Sector 39, Gurgaon, Haryana 122001",
-      phone: "+91 98765 43210",
-      email: "gurgaon@dwelldash.com"
-    },
-    {
-      city: "Bangalore",
-      address: "4th Floor, Prestige Tech Park, Marathahalli, Bangalore, Karnataka 560037",
-      phone: "+91 98765 43211",
-      email: "bangalore@dwelldash.com"
-    },
-    {
-      city: "Mumbai",
-      address: "Office 301, Business Center, Andheri East, Mumbai, Maharashtra 400069",
-      phone: "+91 98765 43212",
-      email: "mumbai@dwelldash.com"
+      icon: Headphones,
+      title: "24/7 Support",
+      details: "Always Here",
+      subtext: "Round the Clock Service",
+      color: "bg-app-secondary"
     }
   ]
 
   const onSubmit = async (data) => {
     setIsSubmitting(true)
     try {
-      // Simulate form submission
       await new Promise(resolve => setTimeout(resolve, 2000))
-      toast.success('Message sent successfully! We\'ll get back to you soon.')
+      toast.success('Message sent successfully! We\'ll respond within 24 hours.')
       reset()
     } catch (error) {
       toast.error('Failed to send message. Please try again.')
@@ -79,97 +60,133 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-app-accent">
       {/* Hero Section */}
-              <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white">
-          <div className="absolute inset-0 bg-blue-500 opacity-10"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      <section className="relative bg-gradient-to-br from-app-secondary to-app-secondary/90 text-white overflow-hidden">
+        <div className="absolute inset-0 bg-black/20"></div>
+        
+        <div className="relative container mx-auto px-4 py-20 lg:py-32">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center"
+            className="text-center max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-gray-900">
-              Get in Touch
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              Get in <span className="text-app-primary">Touch</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-gray-700">
-              Have questions about PG accommodation? Our team is here to help you find your perfect home away from home.
+            <p className="text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed">
+              Need help finding your perfect PG? Have questions about our platform? Our dedicated support team is here to assist you 24/7.
             </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <span className="inline-flex items-center px-6 py-3 bg-app-success/20 rounded-full text-app-success font-semibold">
+                <CheckCircle className="w-5 h-5 mr-2" />
+                24/7 Support
+              </span>
+              <span className="inline-flex items-center px-6 py-3 bg-app-primary/20 rounded-full text-app-primary font-semibold">
+                <Star className="w-5 h-5 mr-2" />
+                Expert Help
+              </span>
+              <span className="inline-flex items-center px-6 py-3 bg-app-warning/20 rounded-full text-app-warning font-semibold">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                Instant Response
+              </span>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Info Cards */}
+      {/* Contact Methods */}
       <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-app-text mb-4">
+              Choose Your Preferred <span className="text-app-primary">Contact Method</span>
+            </h2>
+            <p className="text-xl text-app-muted max-w-2xl mx-auto">
+              Multiple ways to reach us - pick what works best for you
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, index) => (
               <motion.div
-                key={info.title}
-                initial={{ opacity: 0, y: 20 }}
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                                  className="bg-blue-50 rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300"
+                className="group"
               >
-                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
-                                      <info.icon className="w-6 h-6 text-blue-600" />
+                <div className="bg-app-accent rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 group-hover:scale-105 border border-app-border">
+                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${info.color} text-white mb-6`}>
+                    <info.icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold text-app-text mb-2">{info.title}</h3>
+                  <p className="text-app-primary font-semibold mb-2">{info.details}</p>
+                  <p className="text-app-muted text-sm">{info.subtext}</p>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-                <p className="text-gray-800 font-medium mb-1">{info.details}</p>
-                <p className="text-sm text-gray-600">{info.subtext}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Form & Map Section */}
-              <section className="py-16 bg-blue-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+      {/* Contact Form */}
+      <section className="py-20 bg-app-accent">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="bg-white rounded-lg p-8 shadow-lg"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="bg-white rounded-2xl p-8 lg:p-12 shadow-xl"
             >
-              <h2 className="text-2xl font-bold text-gray-900 mb-6">Send us a Message</h2>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl lg:text-4xl font-bold text-app-text mb-4">Send us a Message</h2>
+                <p className="text-xl text-app-muted">
+                  Fill out the form below and we'll get back to you within 24 hours
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-semibold text-app-text mb-3">
                       First Name *
                     </label>
                     <input
                       {...register('firstName', { required: 'First name is required' })}
                       type="text"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full px-4 py-4 border-2 border-app-border rounded-xl focus:ring-2 focus:ring-app-primary focus:border-app-primary transition-colors text-lg"
                       placeholder="Enter your first name"
                     />
                     {errors.firstName && (
-                      <p className="mt-1 text-sm text-red-600">{errors.firstName.message}</p>
+                      <p className="mt-2 text-sm text-red-500">{errors.firstName.message}</p>
                     )}
                   </div>
                   <div>
-                    <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-semibold text-app-text mb-3">
                       Last Name *
                     </label>
                     <input
                       {...register('lastName', { required: 'Last name is required' })}
                       type="text"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      className="w-full px-4 py-4 border-2 border-app-border rounded-xl focus:ring-2 focus:ring-app-primary focus:border-app-primary transition-colors text-lg"
                       placeholder="Enter your last name"
                     />
                     {errors.lastName && (
-                      <p className="mt-1 text-sm text-red-600">{errors.lastName.message}</p>
+                      <p className="mt-2 text-sm text-red-500">{errors.lastName.message}</p>
                     )}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-app-text mb-3">
                     Email Address *
                   </label>
                   <input
@@ -181,168 +198,110 @@ const Contact = () => {
                       }
                     })}
                     type="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="Enter your email"
+                    className="w-full px-4 py-4 border-2 border-app-border rounded-xl focus:ring-2 focus:ring-app-primary focus:border-app-primary transition-colors text-lg"
+                    placeholder="Enter your email address"
                   />
                   {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
+                    <p className="mt-2 text-sm text-red-500">{errors.email.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700">
-                    Phone Number
-                  </label>
-                  <input
-                    {...register('phone')}
-                    type="tel"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
-                    placeholder="Enter your phone number"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-app-text mb-3">
                     Subject *
                   </label>
                   <select
-                    {...register('subject', { required: 'Subject is required' })}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    {...register('subject', { required: 'Please select a subject' })}
+                    className="w-full px-4 py-4 border-2 border-app-border rounded-xl focus:ring-2 focus:ring-app-primary focus:border-app-primary transition-colors text-lg"
                   >
                     <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="property">Property Related</option>
-                    <option value="technical">Technical Support</option>
-                    <option value="billing">Billing & Payments</option>
-                    <option value="partnership">Partnership Opportunities</option>
+                    <option value="booking">Booking Assistance</option>
+                    <option value="property">Property Listing</option>
+                    <option value="support">Technical Support</option>
+                    <option value="complaint">Complaint</option>
+                    <option value="feedback">Feedback</option>
+                    <option value="other">Other</option>
                   </select>
                   {errors.subject && (
-                    <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
+                    <p className="mt-2 text-sm text-red-500">{errors.subject.message}</p>
                   )}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label className="block text-sm font-semibold text-app-text mb-3">
                     Message *
                   </label>
                   <textarea
                     {...register('message', { required: 'Message is required' })}
-                    rows={5}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    rows={6}
+                    className="w-full px-4 py-4 border-2 border-app-border rounded-xl focus:ring-2 focus:ring-app-primary focus:border-app-primary transition-colors resize-none text-lg"
                     placeholder="Tell us how we can help you..."
                   />
                   {errors.message && (
-                    <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
+                    <p className="mt-2 text-sm text-red-500">{errors.message.message}</p>
                   )}
                 </div>
 
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                >
-                  {isSubmitting ? (
-                    <div className="flex items-center">
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                      Sending...
-                    </div>
-                  ) : (
-                    <>
-                      <Send className="w-4 h-4 mr-2" />
-                      Send Message
-                    </>
-                  )}
-                </button>
+                <div className="text-center">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="inline-flex items-center px-8 py-4 bg-app-primary text-white rounded-xl font-bold text-lg hover:bg-app-primary/90 transition-colors disabled:opacity-50"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-5 h-5 mr-3" />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </div>
               </form>
-            </motion.div>
-
-            {/* Integrated Chatbot */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="space-y-6"
-            >
-              <div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">Chat with DwellBot</h3>
-                <p className="text-gray-600 mb-4">
-                  Get instant answers from our AI assistant about properties, bookings, pricing, and more.
-                </p>
-                <IntegratedChatbot />
-              </div>
-
-              <div className="bg-white rounded-lg p-6 shadow-lg">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Other Ways to Reach Us</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center p-3 bg-blue-50 rounded-lg">
-                    <Phone className="w-6 h-6 text-blue-600 mr-3" />
-                    <div>
-                      <h5 className="font-medium text-gray-900 text-sm">Call Support</h5>
-                      <p className="text-xs text-gray-600">+91 98765 43210</p>
-                    </div>
-                  </div>
-                  <div className="flex items-center p-3 bg-blue-50 rounded-lg">
-                    <Mail className="w-6 h-6 text-blue-600 mr-3" />
-                    <div>
-                      <h5 className="font-medium text-gray-900 text-sm">Email Support</h5>
-                      <p className="text-xs text-gray-600">dwelldash3@gmail.com</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Office Locations */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-app-primary to-app-primary/90 text-white">
+        <div className="container mx-auto px-4 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Offices
+            <h2 className="text-3xl lg:text-5xl font-bold mb-6">
+              Ready to Find Your Perfect PG?
             </h2>
-            <p className="text-xl text-gray-700">
-              Visit us at any of our office locations across India
+            <p className="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
+              Don't wait! Start browsing thousands of verified PG accommodations today
             </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {offices.map((office, index) => (
-              <motion.div
-                key={office.city}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-blue-50 rounded-lg p-6"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/properties"
+                className="inline-flex items-center px-8 py-4 bg-white text-app-primary rounded-xl font-bold hover:bg-gray-100 transition-colors"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-4">{office.city} Office</h3>
-                <div className="space-y-3">
-                  <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
-                    <p className="text-sm text-gray-700">{office.address}</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-blue-600 mr-2" />
-                    <p className="text-sm text-gray-700">{office.phone}</p>
-                  </div>
-                  <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-blue-600 mr-2" />
-                    <p className="text-sm text-gray-700">{office.email}</p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                Browse Properties
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+              <a
+                href="tel:+919876543210"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-app-primary transition-colors"
+              >
+                <Phone className="w-5 h-5 mr-2" />
+                Call Now
+              </a>
+            </div>
+          </motion.div>
         </div>
       </section>
     </div>
   )
 }
 
-export default Contact 
+export default Contact

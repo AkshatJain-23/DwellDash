@@ -101,7 +101,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
           },
           {
             id: 2,
-            text: `I'm available to answer questions about rent, amenities, viewing schedule, or anything else you'd like to know! 😊`,
+            text: `Owner will get back to you shortly`,
             sender: 'owner',
             timestamp: new Date(Date.now() + 1000),
             status: 'read'
@@ -121,6 +121,13 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
           text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
           sender: 'owner',
           timestamp: new Date(),
+          status: 'read'
+        },
+        {
+          id: 2,
+          text: `Owner will get back to you shortly`,
+          sender: 'owner',
+          timestamp: new Date(Date.now() + 1000),
           status: 'read'
         }
       ])
@@ -360,13 +367,22 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
                     if (window.confirm('Clear chat history? This cannot be undone.')) {
                       const chatKey = `chat_${property?.id}_${getUserId()}`
                       localStorage.removeItem(chatKey)
-                      setMessages([{
-                        id: 1,
-                        text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
-                        sender: 'owner',
-                        timestamp: new Date(),
-                        status: 'read'
-                      }])
+                      setMessages([
+                        {
+                          id: 1,
+                          text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
+                          sender: 'owner',
+                          timestamp: new Date(),
+                          status: 'read'
+                        },
+                        {
+                          id: 2,
+                          text: `Owner will get back to you shortly`,
+                          sender: 'owner',
+                          timestamp: new Date(Date.now() + 1000),
+                          status: 'read'
+                        }
+                      ])
                       toast.success('Chat history cleared')
                     }
                   }}
@@ -389,7 +405,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
               {/* Property Card */}
               <div 
                 className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 mb-4 cursor-pointer hover:bg-gray-50 transition-colors"
-                onClick={() => window.open(`/properties/${property?.id}`, '_blank')}
+                onClick={() => window.open(`/property/${property?.id}`, '_blank')}
               >
                 <div className="flex items-center space-x-3">
                   {property?.images?.[0] ? (

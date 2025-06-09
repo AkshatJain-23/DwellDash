@@ -160,4 +160,87 @@ router.get('/all', authenticateToken, (req, res) => {
   }
 });
 
+// Delete account permanently
+router.delete('/delete-account', authenticateToken, [
+  body('password').exists().withMessage('Password is required for account deletion'),
+  body('confirmDelete').equals('DELETE').withMessage('Please type DELETE to confirm')
+], async (req, res) => {
+  try {
+    console.log('=== DELETE ACCOUNT REQUEST ===');
+    console.log('Request body:', req.body);
+    console.log('User from token:', req.user);
+    
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      console.log('Validation errors:', errors.array());
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    const { password } = req.body;
+    const userIndex = users.findIndex(u => u.id === req.user.userId);
+    
+    console.log('User index found:', userIndex);
+    
+    if (userIndex === -1) {
+      console.log('User not found for ID:', req.user.userId);
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const user = users[userIndex];
+    console.log('User found:', { id: user.id, email: user.email });
+
+    // Verify password before deletion
+    const isMatch = await bcrypt.compare(password, user.password);
+    console.log('Password match:', isMatch);
+    
+    if (!isMatch) {
+      console.log('Password verification failed');
+      return res.status(400).json({ error: 'Incorrect password' });
+    }
+
+    // Load properties to delete user's properties
+    const propertiesFile = path.join(__dirname, '../data/properties.json');
+    let properties = [];
+    
+    try {
+      if (fs.existsSync(propertiesFile)) {
+        properties = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
+        console.log('Loaded properties count:', properties.length);
+      }
+    } catch (error) {
+      console.log('No properties file found or error loading:', error.message);
+    }
+
+    // Remove all properties owned by this user
+    const updatedProperties = properties.filter(property => property.ownerId !== req.user.userId);
+    console.log('Properties after filtering:', updatedProperties.length);
+    
+    // Save updated properties
+    const dataDir = path.join(__dirname, '../data');
+    if (!fs.existsSync(dataDir)) {
+      fs.mkdirSync(dataDir, { recursive: true });
+    }
+    fs.writeFileSync(propertiesFile, JSON.stringify(updatedProperties, null, 2));
+    console.log('Properties file updated');
+
+    // Remove user from users array
+    users.splice(userIndex, 1);
+    saveUsers();
+    console.log('User removed and users file saved');
+
+    const deletedPropertiesCount = properties.length - updatedProperties.length;
+    console.log('Deleted properties count:', deletedPropertiesCount);
+
+    res.json({ 
+      message: 'Account deleted permanently',
+      deletedPropertiesCount
+    });
+    
+    console.log('=== DELETE ACCOUNT SUCCESS ===');
+  } catch (error) {
+    console.error('Account deletion error:', error);
+    res.status(500).json({ error: 'Server error during account deletion' });
+  }
+});
+
 module.exports = router; 

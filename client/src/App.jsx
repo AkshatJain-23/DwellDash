@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
+import { StatsProvider } from './contexts/StatsContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import EnhancedRAGChatbot from './components/EnhancedRAGChatbot'
@@ -18,47 +19,53 @@ import AddProperty from './pages/AddProperty'
 import EditProperty from './pages/EditProperty'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
+import Refund from './pages/Refund'
+import Sitemap from './pages/Sitemap'
 import ResetPassword from './pages/ResetPassword'
 
 function App() {
   return (
     <AuthProvider>
-      <Router>
-        <div className="min-h-screen bg-app-highlight flex flex-col transition-colors duration-300">
-          <Navbar />
-          <main className="flex-1">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/properties" element={<Properties />} />
-              <Route path="/property/:id" element={<PropertyDetail />} />
-              <Route path="/register" element={<Register />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
-              <Route path="/add-property" element={
-                <ProtectedRoute>
-                  <AddProperty />
-                </ProtectedRoute>
-              } />
-              <Route path="/edit-property/:id" element={
-                <ProtectedRoute>
-                  <EditProperty />
-                </ProtectedRoute>
-              } />
-            </Routes>
-          </main>
-          <Footer />
-          <EnhancedRAGChatbot />
-        </div>
-      </Router>
+      <StatsProvider>
+        <Router>
+          <div className="min-h-screen bg-app-highlight flex flex-col transition-colors duration-300">
+            <Navbar />
+            <main className="flex-1">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/properties" element={<Properties />} />
+                <Route path="/property/:id" element={<PropertyDetail />} />
+                <Route path="/register" element={<Register />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/reset-password" element={<ResetPassword />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/refund" element={<Refund />} />
+                <Route path="/sitemap" element={<Sitemap />} />
+                <Route path="/dashboard" element={
+                  <ProtectedRoute>
+                    <Dashboard />
+                  </ProtectedRoute>
+                } />
+                <Route path="/add-property" element={
+                  <ProtectedRoute>
+                    <AddProperty />
+                  </ProtectedRoute>
+                } />
+                <Route path="/edit-property/:id" element={
+                  <ProtectedRoute>
+                    <EditProperty />
+                  </ProtectedRoute>
+                } />
+              </Routes>
+            </main>
+            <Footer />
+            <EnhancedRAGChatbot />
+          </div>
+        </Router>
+      </StatsProvider>
     </AuthProvider>
   )
 }

@@ -1,10 +1,10 @@
 [
   {
     "id": "1",
-    "title": "Comfortable PG for Working Professionals in Koramangala",
-    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in the heart of Koramangala with easy access to IT companies, restaurants, and shopping centers. The property offers modern amenities including high-speed WiFi, AC rooms, and nutritious meals.",
-    "rent": 15000,
-    "deposit": 30000,
+    "title": "Premium PG in Koramangala Bangalore",
+    "description": "Luxury PG for working professionals in Koramangala with modern amenities.",
+    "rent": 18000,
+    "deposit": 36000,
     "city": "Bangalore",
     "address": "123 Koramangala 5th Block, Near Forum Mall, Bangalore, Karnataka 560095",
     "propertyType": "single-room",
@@ -15,15 +15,16 @@
       "meals",
       "laundry",
       "parking",
-      "security"
+      "security",
+      "gym"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=101",
+      "https://picsum.photos/800/600?random=102",
+      "https://picsum.photos/800/600?random=103",
+      "https://picsum.photos/800/600?random=104"
     ],
-    "contactPhone": "+91 98765 43210",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-01-15",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
@@ -31,13 +32,13 @@
   },
   {
     "id": "2",
-    "title": "Premium Ladies PG in Bandra West",
-    "description": "Exclusive ladies-only PG accommodation in prime Bandra West location. Features include fully furnished rooms, 24/7 security, housekeeping services, and home-cooked meals. Walking distance to Bandra station and major corporate offices.",
-    "rent": 25000,
-    "deposit": 50000,
+    "title": "Ladies PG in Bandra West Mumbai",
+    "description": "Exclusive ladies PG in prime Bandra location with 24/7 security.",
+    "rent": 28000,
+    "deposit": 56000,
     "city": "Mumbai",
     "address": "456 Bandra West, Near Linking Road, Mumbai, Maharashtra 400050",
-    "propertyType": "shared-room",
+    "propertyType": "single-room",
     "gender": "female",
     "amenities": [
       "wifi",
@@ -45,15 +46,16 @@
       "meals",
       "laundry",
       "security",
-      "housekeeping"
+      "housekeeping",
+      "cctv"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=201",
+      "https://picsum.photos/800/600?random=202",
+      "https://picsum.photos/800/600?random=203",
+      "https://picsum.photos/800/600?random=204"
     ],
-    "contactPhone": "+91 98765 43211",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-02-01",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
@@ -61,10 +63,10 @@
   },
   {
     "id": "3",
-    "title": "Budget-Friendly PG for Students in Lajpat Nagar",
-    "description": "Affordable PG accommodation designed for students and young professionals. Located near Delhi University and metro station. Includes basic amenities like WiFi, meals, and study area. Perfect for those looking for economical housing options.",
-    "rent": 8000,
-    "deposit": 16000,
+    "title": "Student PG in Lajpat Nagar Delhi",
+    "description": "Budget-friendly PG for students near Delhi University.",
+    "rent": 9000,
+    "deposit": 18000,
     "city": "Delhi",
     "address": "789 Lajpat Nagar II, Near Metro Station, New Delhi, Delhi 110024",
     "propertyType": "shared-room",
@@ -73,15 +75,16 @@
       "wifi",
       "meals",
       "study-area",
-      "security"
+      "security",
+      "library"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=301",
+      "https://picsum.photos/800/600?random=302",
+      "https://picsum.photos/800/600?random=303",
+      "https://picsum.photos/800/600?random=304"
     ],
-    "contactPhone": "+91 98765 43212",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-01-20",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
@@ -89,10 +92,10 @@
   },
   {
     "id": "4",
-    "title": "Luxury PG with Swimming Pool in Anna Nagar",
-    "description": "Premium PG accommodation with world-class amenities including swimming pool, gym, and recreational facilities. Located in upscale Anna Nagar with easy access to IT corridor and shopping malls. Perfect for professionals seeking luxury living.",
-    "rent": 20000,
-    "deposit": 40000,
+    "title": "Luxury PG with Pool in Anna Nagar Chennai",
+    "description": "Premium accommodation with swimming pool and gym.",
+    "rent": 22000,
+    "deposit": 44000,
     "city": "Chennai",
     "address": "321 Anna Nagar West, Near Express Avenue Mall, Chennai, Tamil Nadu 600040",
     "propertyType": "single-room",
@@ -107,12 +110,12 @@
       "security"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=401",
+      "https://picsum.photos/800/600?random=402",
+      "https://picsum.photos/800/600?random=403",
+      "https://picsum.photos/800/600?random=404"
     ],
-    "contactPhone": "+91 98765 43213",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-02-15",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
@@ -120,10 +123,10 @@
   },
   {
     "id": "5",
-    "title": "Modern PG for IT Professionals in Hinjewadi",
-    "description": "State-of-the-art PG facility designed specifically for IT professionals working in Hinjewadi IT Park. Features include high-speed internet, power backup, modern kitchen, and shuttle service to major IT companies.",
-    "rent": 12000,
-    "deposit": 24000,
+    "title": "IT Professional PG in Hinjewadi Pune",
+    "description": "Modern PG for IT professionals with shuttle service.",
+    "rent": 15000,
+    "deposit": 30000,
     "city": "Pune",
     "address": "654 Hinjewadi Phase 1, Near Rajiv Gandhi Infotech Park, Pune, Maharashtra 411057",
     "propertyType": "single-room",
@@ -137,12 +140,12 @@
       "parking"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=501",
+      "https://picsum.photos/800/600?random=502",
+      "https://picsum.photos/800/600?random=503",
+      "https://picsum.photos/800/600?random=504"
     ],
-    "contactPhone": "+91 98765 43214",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-01-10",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
@@ -150,10 +153,10 @@
   },
   {
     "id": "6",
-    "title": "Cozy PG for Girls in Jubilee Hills",
-    "description": "Safe and comfortable PG accommodation exclusively for girls in the prestigious Jubilee Hills area. Features include CCTV surveillance, biometric access, nutritious meals, and proximity to major shopping and entertainment hubs.",
-    "rent": 18000,
-    "deposit": 36000,
+    "title": "Safe Girls PG in Jubilee Hills Hyderabad",
+    "description": "Secure accommodation for girls with biometric access.",
+    "rent": 20000,
+    "deposit": 40000,
     "city": "Hyderabad",
     "address": "987 Jubilee Hills, Near GVK One Mall, Hyderabad, Telangana 500033",
     "propertyType": "single-room",
@@ -167,15 +170,1501 @@
       "biometric"
     ],
     "images": [
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
+      "https://picsum.photos/800/600?random=601",
+      "https://picsum.photos/800/600?random=602",
+      "https://picsum.photos/800/600?random=603",
+      "https://picsum.photos/800/600?random=604"
     ],
-    "contactPhone": "+91 98765 43215",
+    "contactPhone": "+91 84260 76800",
     "availableFrom": "2024-02-10",
     "ownerId": "1",
     "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "7",
+    "title": "Executive PG in Cyber City Gurgaon",
+    "description": "Premium executive accommodation in Cyber City.",
+    "rent": 25000,
+    "deposit": 50000,
+    "city": "Gurgaon",
+    "address": "101 Cyber City, Near DLF Phase 2, Gurgaon, Haryana 122002",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "gym",
+      "parking",
+      "security",
+      "housekeeping"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=701",
+      "https://picsum.photos/800/600?random=702",
+      "https://picsum.photos/800/600?random=703",
+      "https://picsum.photos/800/600?random=704"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-01",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "8",
+    "title": "Engineering Student PG near IIT Kanpur",
+    "description": "Affordable accommodation for engineering students with study facilities.",
+    "rent": 7500,
+    "deposit": 15000,
+    "city": "Kanpur",
+    "address": "45 Kalyanpur, Near IIT Kanpur, Kanpur, Uttar Pradesh 208016",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "wifi",
+      "meals",
+      "study-area",
+      "library",
+      "security"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=801",
+      "https://picsum.photos/800/600?random=802",
+      "https://picsum.photos/800/600?random=803",
+      "https://picsum.photos/800/600?random=804"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-20",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "9",
+    "title": "Modern Co-living in Salt Lake Kolkata",
+    "description": "Contemporary co-living space with rooftop terrace and gaming zone.",
+    "rent": 16000,
+    "deposit": 32000,
+    "city": "Kolkata",
+    "address": "78 Salt Lake City, Sector V, Kolkata, West Bengal 700091",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "gaming-zone",
+      "rooftop",
+      "security"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=901",
+      "https://picsum.photos/800/600?random=902",
+      "https://picsum.photos/800/600?random=903",
+      "https://picsum.photos/800/600?random=904"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-05",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "10",
+    "title": "Beachside PG for Girls in Panjim Goa",
+    "description": "Scenic PG accommodation near Miramar Beach.",
+    "rent": 18000,
+    "deposit": 36000,
+    "city": "Panjim",
+    "address": "23 Miramar Beach Road, Panjim, Goa 403001",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "beach-access",
+      "security",
+      "balcony"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1001",
+      "https://picsum.photos/800/600?random=1002",
+      "https://picsum.photos/800/600?random=1003",
+      "https://picsum.photos/800/600?random=1004"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-04-01",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "11",
+    "title": "Budget PG in Noida Sector 62",
+    "description": "Affordable accommodation for IT professionals in Noida.",
+    "rent": 12000,
+    "deposit": 24000,
+    "city": "Noida",
+    "address": "12 Sector 62, Near NSEZ Metro Station, Noida, Uttar Pradesh 201309",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "meals",
+      "laundry",
+      "security",
+      "parking"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1101",
+      "https://picsum.photos/800/600?random=1102",
+      "https://picsum.photos/800/600?random=1103",
+      "https://picsum.photos/800/600?random=1104"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-15",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "12",
+    "title": "Premium PG in Indiranagar Bangalore",
+    "description": "Luxury accommodation in vibrant Indiranagar with excellent connectivity.",
+    "rent": 20000,
+    "deposit": 40000,
+    "city": "Bangalore",
+    "address": "67 100 Feet Road, Indiranagar, Bangalore, Karnataka 560038",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "gym",
+      "parking",
+      "security",
+      "housekeeping"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1201",
+      "https://picsum.photos/800/600?random=1202",
+      "https://picsum.photos/800/600?random=1203",
+      "https://picsum.photos/800/600?random=1204"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-04-10",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "13",
+    "title": "Student PG in IT Hub Pune",
+    "description": "Quality accommodation in Pune with modern facilities and convenient location.",
+    "rent": 23074,
+    "deposit": 46148,
+    "city": "Pune",
+    "address": "97 IT Hub, Near Main Road, Pune, Maharashtra 557764",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "parking",
+      "gym",
+      "biometric"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1301",
+      "https://picsum.photos/800/600?random=1302",
+      "https://picsum.photos/800/600?random=1303",
+      "https://picsum.photos/800/600?random=1304"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-09-18",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "14",
+    "title": "Affordable PG in University Area Noida",
+    "description": "Quality accommodation in Noida with modern facilities and convenient location.",
+    "rent": 11184,
+    "deposit": 22368,
+    "city": "Noida",
+    "address": "386 University Area, Near Main Road, Noida, Uttar Pradesh 163707",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "wifi",
+      "rooftop",
+      "library"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1401",
+      "https://picsum.photos/800/600?random=1402",
+      "https://picsum.photos/800/600?random=1403",
+      "https://picsum.photos/800/600?random=1404"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-17",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "15",
+    "title": "Executive PG in IT Hub Mysore",
+    "description": "Quality accommodation in Mysore with modern facilities and convenient location.",
+    "rent": 6193,
+    "deposit": 12386,
+    "city": "Mysore",
+    "address": "654 IT Hub, Near Main Road, Mysore, Karnataka 748894",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "rooftop",
+      "security"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1501",
+      "https://picsum.photos/800/600?random=1502",
+      "https://picsum.photos/800/600?random=1503",
+      "https://picsum.photos/800/600?random=1504"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-05-10",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "16",
+    "title": "Urban PG in Tech Park Indore",
+    "description": "Quality accommodation in Indore with modern facilities and convenient location.",
+    "rent": 13661,
+    "deposit": 27322,
+    "city": "Indore",
+    "address": "267 Tech Park, Near Main Road, Indore, Madhya Pradesh 873614",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "cctv",
+      "study-area",
+      "rooftop",
+      "biometric",
+      "meals",
+      "gym",
+      "gaming-zone"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1601",
+      "https://picsum.photos/800/600?random=1602",
+      "https://picsum.photos/800/600?random=1603",
+      "https://picsum.photos/800/600?random=1604"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-22",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "17",
+    "title": "Comfortable PG in Market Area Chennai",
+    "description": "Quality accommodation in Chennai with modern facilities and convenient location.",
+    "rent": 18761,
+    "deposit": 37522,
+    "city": "Chennai",
+    "address": "322 Market Area, Near Main Road, Chennai, Tamil Nadu 711032",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "ac",
+      "library",
+      "power-backup",
+      "housekeeping",
+      "meals",
+      "swimming-pool",
+      "gaming-zone"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1701",
+      "https://picsum.photos/800/600?random=1702",
+      "https://picsum.photos/800/600?random=1703",
+      "https://picsum.photos/800/600?random=1704"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-23",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "18",
+    "title": "Executive PG in Residential Area Nagpur",
+    "description": "Quality accommodation in Nagpur with modern facilities and convenient location.",
+    "rent": 6923,
+    "deposit": 13846,
+    "city": "Nagpur",
+    "address": "472 Residential Area, Near Main Road, Nagpur, Maharashtra 949846",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "library",
+      "gym",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1801",
+      "https://picsum.photos/800/600?random=1802",
+      "https://picsum.photos/800/600?random=1803",
+      "https://picsum.photos/800/600?random=1804"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-04-7",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "19",
+    "title": "Luxury PG in Market Area Patna",
+    "description": "Quality accommodation in Patna with modern facilities and convenient location.",
+    "rent": 11502,
+    "deposit": 23004,
+    "city": "Patna",
+    "address": "481 Market Area, Near Main Road, Patna, Bihar 831471",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "swimming-pool",
+      "beach-access"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=1901",
+      "https://picsum.photos/800/600?random=1902",
+      "https://picsum.photos/800/600?random=1903",
+      "https://picsum.photos/800/600?random=1904"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-11",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "20",
+    "title": "Elite PG in Market Area Kochi",
+    "description": "Quality accommodation in Kochi with modern facilities and convenient location.",
+    "rent": 8751,
+    "deposit": 17502,
+    "city": "Kochi",
+    "address": "235 Market Area, Near Main Road, Kochi, Kerala 888382",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "balcony",
+      "rooftop",
+      "swimming-pool",
+      "gaming-zone",
+      "library"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2001",
+      "https://picsum.photos/800/600?random=2002",
+      "https://picsum.photos/800/600?random=2003",
+      "https://picsum.photos/800/600?random=2004"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-01-1",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "21",
+    "title": "Deluxe PG in University Area Kochi",
+    "description": "Quality accommodation in Kochi with modern facilities and convenient location.",
+    "rent": 16866,
+    "deposit": 33732,
+    "city": "Kochi",
+    "address": "526 University Area, Near Main Road, Kochi, Kerala 916317",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "parking",
+      "study-area",
+      "ac",
+      "beach-access"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2101",
+      "https://picsum.photos/800/600?random=2102",
+      "https://picsum.photos/800/600?random=2103",
+      "https://picsum.photos/800/600?random=2104"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-07-18",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "22",
+    "title": "Executive PG in Residential Area Patna",
+    "description": "Quality accommodation in Patna with modern facilities and convenient location.",
+    "rent": 13533,
+    "deposit": 27066,
+    "city": "Patna",
+    "address": "189 Residential Area, Near Main Road, Patna, Bihar 519577",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "biometric",
+      "shuttle",
+      "gaming-zone"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2201",
+      "https://picsum.photos/800/600?random=2202",
+      "https://picsum.photos/800/600?random=2203",
+      "https://picsum.photos/800/600?random=2204"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-04-12",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "23",
+    "title": "Executive PG in IT Hub Mumbai",
+    "description": "Quality accommodation in Mumbai with modern facilities and convenient location.",
+    "rent": 12725,
+    "deposit": 25450,
+    "city": "Mumbai",
+    "address": "811 IT Hub, Near Main Road, Mumbai, Maharashtra 402839",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "beach-access",
+      "gaming-zone",
+      "swimming-pool",
+      "shuttle",
+      "rooftop",
+      "housekeeping"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2301",
+      "https://picsum.photos/800/600?random=2302",
+      "https://picsum.photos/800/600?random=2303",
+      "https://picsum.photos/800/600?random=2304"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-12",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "24",
+    "title": "Royal PG in Shopping Complex Hyderabad",
+    "description": "Quality accommodation in Hyderabad with modern facilities and convenient location.",
+    "rent": 16148,
+    "deposit": 32296,
+    "city": "Hyderabad",
+    "address": "573 Shopping Complex, Near Main Road, Hyderabad, Telangana 430352",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "meals",
+      "shuttle",
+      "laundry",
+      "study-area",
+      "beach-access",
+      "rooftop",
+      "security",
+      "ac"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2401",
+      "https://picsum.photos/800/600?random=2402",
+      "https://picsum.photos/800/600?random=2403",
+      "https://picsum.photos/800/600?random=2404"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-08-14",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "25",
+    "title": "Modern PG in Business District Visakhapatnam",
+    "description": "Quality accommodation in Visakhapatnam with modern facilities and convenient location.",
+    "rent": 16531,
+    "deposit": 33062,
+    "city": "Visakhapatnam",
+    "address": "354 Business District, Near Main Road, Visakhapatnam, Andhra Pradesh 867264",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "gaming-zone",
+      "laundry",
+      "balcony",
+      "rooftop",
+      "security",
+      "wifi"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2501",
+      "https://picsum.photos/800/600?random=2502",
+      "https://picsum.photos/800/600?random=2503",
+      "https://picsum.photos/800/600?random=2504"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-05-27",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "26",
+    "title": "Standard PG in Metro Station Bangalore",
+    "description": "Quality accommodation in Bangalore with modern facilities and convenient location.",
+    "rent": 10915,
+    "deposit": 21830,
+    "city": "Bangalore",
+    "address": "77 Metro Station, Near Main Road, Bangalore, Karnataka 354435",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "shuttle",
+      "wifi",
+      "power-backup"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2601",
+      "https://picsum.photos/800/600?random=2602",
+      "https://picsum.photos/800/600?random=2603",
+      "https://picsum.photos/800/600?random=2604"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-2",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "27",
+    "title": "Urban PG in IT Hub Panjim",
+    "description": "Quality accommodation in Panjim with modern facilities and convenient location.",
+    "rent": 15516,
+    "deposit": 31032,
+    "city": "Panjim",
+    "address": "38 IT Hub, Near Main Road, Panjim, Goa 249638",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "wifi",
+      "beach-access",
+      "security",
+      "swimming-pool",
+      "power-backup"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2701",
+      "https://picsum.photos/800/600?random=2702",
+      "https://picsum.photos/800/600?random=2703",
+      "https://picsum.photos/800/600?random=2704"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-09-2",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "28",
+    "title": "Comfortable PG in Business District Surat",
+    "description": "Quality accommodation in Surat with modern facilities and convenient location.",
+    "rent": 13023,
+    "deposit": 26046,
+    "city": "Surat",
+    "address": "800 Business District, Near Main Road, Surat, Gujarat 243578",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "study-area",
+      "housekeeping",
+      "balcony",
+      "shuttle"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2801",
+      "https://picsum.photos/800/600?random=2802",
+      "https://picsum.photos/800/600?random=2803",
+      "https://picsum.photos/800/600?random=2804"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-08-13",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "29",
+    "title": "Executive PG in Shopping Complex Coimbatore",
+    "description": "Quality accommodation in Coimbatore with modern facilities and convenient location.",
+    "rent": 9489,
+    "deposit": 18978,
+    "city": "Coimbatore",
+    "address": "251 Shopping Complex, Near Main Road, Coimbatore, Tamil Nadu 627450",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "gym",
+      "study-area",
+      "biometric",
+      "ac",
+      "wifi"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=2901",
+      "https://picsum.photos/800/600?random=2902",
+      "https://picsum.photos/800/600?random=2903",
+      "https://picsum.photos/800/600?random=2904"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-07-14",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "30",
+    "title": "Modern PG in Business District Dehradun",
+    "description": "Quality accommodation in Dehradun with modern facilities and convenient location.",
+    "rent": 13921,
+    "deposit": 27842,
+    "city": "Dehradun",
+    "address": "21 Business District, Near Main Road, Dehradun, Uttarakhand 776482",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "biometric",
+      "wifi",
+      "ac"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3001",
+      "https://picsum.photos/800/600?random=3002",
+      "https://picsum.photos/800/600?random=3003",
+      "https://picsum.photos/800/600?random=3004"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-08-18",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "31",
+    "title": "Elite PG in Shopping Complex Thiruvananthapuram",
+    "description": "Quality accommodation in Thiruvananthapuram with modern facilities and convenient location.",
+    "rent": 13453,
+    "deposit": 26906,
+    "city": "Thiruvananthapuram",
+    "address": "997 Shopping Complex, Near Main Road, Thiruvananthapuram, Kerala 621818",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "gaming-zone",
+      "laundry",
+      "rooftop",
+      "balcony",
+      "library",
+      "shuttle",
+      "ac",
+      "study-area"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3101",
+      "https://picsum.photos/800/600?random=3102",
+      "https://picsum.photos/800/600?random=3103",
+      "https://picsum.photos/800/600?random=3104"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-07-14",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "32",
+    "title": "Affordable PG in Market Area Bhubaneswar",
+    "description": "Quality accommodation in Bhubaneswar with modern facilities and convenient location.",
+    "rent": 13656,
+    "deposit": 27312,
+    "city": "Bhubaneswar",
+    "address": "479 Market Area, Near Main Road, Bhubaneswar, Odisha 366134",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "security",
+      "swimming-pool",
+      "gaming-zone",
+      "power-backup",
+      "wifi",
+      "rooftop"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3201",
+      "https://picsum.photos/800/600?random=3202",
+      "https://picsum.photos/800/600?random=3203",
+      "https://picsum.photos/800/600?random=3204"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-20",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "33",
+    "title": "Deluxe PG in City Center Ahmedabad",
+    "description": "Quality accommodation in Ahmedabad with modern facilities and convenient location.",
+    "rent": 5054,
+    "deposit": 10108,
+    "city": "Ahmedabad",
+    "address": "46 City Center, Near Main Road, Ahmedabad, Gujarat 231142",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "gaming-zone",
+      "study-area",
+      "rooftop",
+      "wifi",
+      "ac",
+      "power-backup",
+      "parking",
+      "laundry"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3301",
+      "https://picsum.photos/800/600?random=3302",
+      "https://picsum.photos/800/600?random=3303",
+      "https://picsum.photos/800/600?random=3304"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-15",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "34",
+    "title": "Executive PG in Market Area Visakhapatnam",
+    "description": "Quality accommodation in Visakhapatnam with modern facilities and convenient location.",
+    "rent": 9491,
+    "deposit": 18982,
+    "city": "Visakhapatnam",
+    "address": "429 Market Area, Near Main Road, Visakhapatnam, Andhra Pradesh 389981",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "gaming-zone",
+      "biometric",
+      "study-area"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3401",
+      "https://picsum.photos/800/600?random=3402",
+      "https://picsum.photos/800/600?random=3403",
+      "https://picsum.photos/800/600?random=3404"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-08-15",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "35",
+    "title": "Budget PG in Market Area Surat",
+    "description": "Quality accommodation in Surat with modern facilities and convenient location.",
+    "rent": 5184,
+    "deposit": 10368,
+    "city": "Surat",
+    "address": "811 Market Area, Near Main Road, Surat, Gujarat 619527",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "security",
+      "parking",
+      "laundry",
+      "cctv",
+      "gym",
+      "rooftop",
+      "meals"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3501",
+      "https://picsum.photos/800/600?random=3502",
+      "https://picsum.photos/800/600?random=3503",
+      "https://picsum.photos/800/600?random=3504"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-09-12",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "36",
+    "title": "Elite PG in Metro Station Pune",
+    "description": "Quality accommodation in Pune with modern facilities and convenient location.",
+    "rent": 13397,
+    "deposit": 26794,
+    "city": "Pune",
+    "address": "218 Metro Station, Near Main Road, Pune, Maharashtra 440431",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "laundry",
+      "meals",
+      "gaming-zone"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3601",
+      "https://picsum.photos/800/600?random=3602",
+      "https://picsum.photos/800/600?random=3603",
+      "https://picsum.photos/800/600?random=3604"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-26",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "37",
+    "title": "Royal PG in Metro Station Pune",
+    "description": "Quality accommodation in Pune with modern facilities and convenient location.",
+    "rent": 14277,
+    "deposit": 28554,
+    "city": "Pune",
+    "address": "712 Metro Station, Near Main Road, Pune, Maharashtra 869818",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "wifi",
+      "biometric",
+      "meals"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3701",
+      "https://picsum.photos/800/600?random=3702",
+      "https://picsum.photos/800/600?random=3703",
+      "https://picsum.photos/800/600?random=3704"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-05-19",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "38",
+    "title": "Standard PG in IT Hub Nagpur",
+    "description": "Quality accommodation in Nagpur with modern facilities and convenient location.",
+    "rent": 15710,
+    "deposit": 31420,
+    "city": "Nagpur",
+    "address": "80 IT Hub, Near Main Road, Nagpur, Maharashtra 653262",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "power-backup",
+      "laundry",
+      "wifi"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3801",
+      "https://picsum.photos/800/600?random=3802",
+      "https://picsum.photos/800/600?random=3803",
+      "https://picsum.photos/800/600?random=3804"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-16",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "39",
+    "title": "Safe PG in IT Hub Pune",
+    "description": "Quality accommodation in Pune with modern facilities and convenient location.",
+    "rent": 24235,
+    "deposit": 48470,
+    "city": "Pune",
+    "address": "486 IT Hub, Near Main Road, Pune, Maharashtra 924297",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "shuttle",
+      "housekeeping",
+      "biometric",
+      "meals",
+      "ac",
+      "library",
+      "study-area"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=3901",
+      "https://picsum.photos/800/600?random=3902",
+      "https://picsum.photos/800/600?random=3903",
+      "https://picsum.photos/800/600?random=3904"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-12",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "40",
+    "title": "Royal PG in Medical College Panjim",
+    "description": "Quality accommodation in Panjim with modern facilities and convenient location.",
+    "rent": 12274,
+    "deposit": 24548,
+    "city": "Panjim",
+    "address": "508 Medical College, Near Main Road, Panjim, Goa 347630",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "biometric",
+      "shuttle",
+      "gym",
+      "study-area",
+      "power-backup",
+      "ac",
+      "gaming-zone",
+      "wifi"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4001",
+      "https://picsum.photos/800/600?random=4002",
+      "https://picsum.photos/800/600?random=4003",
+      "https://picsum.photos/800/600?random=4004"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-5",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "41",
+    "title": "Smart PG in Shopping Complex Pune",
+    "description": "Quality accommodation in Pune with modern facilities and convenient location.",
+    "rent": 18169,
+    "deposit": 36338,
+    "city": "Pune",
+    "address": "656 Shopping Complex, Near Main Road, Pune, Maharashtra 822505",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "parking",
+      "biometric"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4101",
+      "https://picsum.photos/800/600?random=4102",
+      "https://picsum.photos/800/600?random=4103",
+      "https://picsum.photos/800/600?random=4104"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-05-6",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "42",
+    "title": "Affordable PG in IT Hub Chandigarh",
+    "description": "Quality accommodation in Chandigarh with modern facilities and convenient location.",
+    "rent": 16123,
+    "deposit": 32246,
+    "city": "Chandigarh",
+    "address": "361 IT Hub, Near Main Road, Chandigarh, Punjab 536023",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "library",
+      "housekeeping",
+      "laundry",
+      "biometric",
+      "swimming-pool",
+      "beach-access",
+      "security"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4201",
+      "https://picsum.photos/800/600?random=4202",
+      "https://picsum.photos/800/600?random=4203",
+      "https://picsum.photos/800/600?random=4204"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-01-17",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "43",
+    "title": "Budget PG in University Area Lucknow",
+    "description": "Quality accommodation in Lucknow with modern facilities and convenient location.",
+    "rent": 9273,
+    "deposit": 18546,
+    "city": "Lucknow",
+    "address": "587 University Area, Near Main Road, Lucknow, Uttar Pradesh 618837",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "biometric",
+      "rooftop",
+      "laundry",
+      "security",
+      "shuttle",
+      "gaming-zone",
+      "meals"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4301",
+      "https://picsum.photos/800/600?random=4302",
+      "https://picsum.photos/800/600?random=4303",
+      "https://picsum.photos/800/600?random=4304"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-17",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "44",
+    "title": "Elite PG in Shopping Complex Hyderabad",
+    "description": "Quality accommodation in Hyderabad with modern facilities and convenient location.",
+    "rent": 29336,
+    "deposit": 58672,
+    "city": "Hyderabad",
+    "address": "824 Shopping Complex, Near Main Road, Hyderabad, Telangana 615042",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "security",
+      "study-area",
+      "beach-access",
+      "shuttle",
+      "balcony",
+      "wifi",
+      "gaming-zone",
+      "ac"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4401",
+      "https://picsum.photos/800/600?random=4402",
+      "https://picsum.photos/800/600?random=4403",
+      "https://picsum.photos/800/600?random=4404"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-26",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "45",
+    "title": "Deluxe PG in IT Hub Kochi",
+    "description": "Quality accommodation in Kochi with modern facilities and convenient location.",
+    "rent": 11025,
+    "deposit": 22050,
+    "city": "Kochi",
+    "address": "431 IT Hub, Near Main Road, Kochi, Kerala 597989",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "shuttle",
+      "beach-access",
+      "parking",
+      "security",
+      "power-backup",
+      "wifi",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4501",
+      "https://picsum.photos/800/600?random=4502",
+      "https://picsum.photos/800/600?random=4503",
+      "https://picsum.photos/800/600?random=4504"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-17",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "46",
+    "title": "Modern PG in Business District Mumbai",
+    "description": "Quality accommodation in Mumbai with modern facilities and convenient location.",
+    "rent": 16535,
+    "deposit": 33070,
+    "city": "Mumbai",
+    "address": "524 Business District, Near Main Road, Mumbai, Maharashtra 643284",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "security",
+      "swimming-pool",
+      "biometric",
+      "wifi",
+      "gaming-zone",
+      "ac"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4601",
+      "https://picsum.photos/800/600?random=4602",
+      "https://picsum.photos/800/600?random=4603",
+      "https://picsum.photos/800/600?random=4604"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-05-2",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "47",
+    "title": "Modern PG in City Center Dehradun",
+    "description": "Quality accommodation in Dehradun with modern facilities and convenient location.",
+    "rent": 7000,
+    "deposit": 14000,
+    "city": "Dehradun",
+    "address": "686 City Center, Near Main Road, Dehradun, Uttarakhand 667649",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "swimming-pool",
+      "library",
+      "balcony",
+      "rooftop",
+      "ac",
+      "gym"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4701",
+      "https://picsum.photos/800/600?random=4702",
+      "https://picsum.photos/800/600?random=4703",
+      "https://picsum.photos/800/600?random=4704"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-4",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "48",
+    "title": "Luxury PG in Residential Area Mysore",
+    "description": "Quality accommodation in Mysore with modern facilities and convenient location.",
+    "rent": 13904,
+    "deposit": 27808,
+    "city": "Mysore",
+    "address": "47 Residential Area, Near Main Road, Mysore, Karnataka 675916",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "swimming-pool",
+      "ac",
+      "power-backup",
+      "balcony",
+      "beach-access",
+      "housekeeping"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4801",
+      "https://picsum.photos/800/600?random=4802",
+      "https://picsum.photos/800/600?random=4803",
+      "https://picsum.photos/800/600?random=4804"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-08-9",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "49",
+    "title": "Smart PG in Business District Patna",
+    "description": "Quality accommodation in Patna with modern facilities and convenient location.",
+    "rent": 13604,
+    "deposit": 27208,
+    "city": "Patna",
+    "address": "732 Business District, Near Main Road, Patna, Bihar 736548",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "rooftop",
+      "gym",
+      "cctv",
+      "power-backup",
+      "laundry",
+      "ac",
+      "parking"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=4901",
+      "https://picsum.photos/800/600?random=4902",
+      "https://picsum.photos/800/600?random=4903",
+      "https://picsum.photos/800/600?random=4904"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-01-8",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "50",
+    "title": "Executive PG in Business District Delhi",
+    "description": "Quality accommodation in Delhi with modern facilities and convenient location.",
+    "rent": 10732,
+    "deposit": 21464,
+    "city": "Delhi",
+    "address": "212 Business District, Near Main Road, Delhi, Delhi 183525",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "rooftop",
+      "beach-access",
+      "library",
+      "balcony",
+      "swimming-pool",
+      "laundry"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5001",
+      "https://picsum.photos/800/600?random=5002",
+      "https://picsum.photos/800/600?random=5003",
+      "https://picsum.photos/800/600?random=5004"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-02-5",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "51",
+    "title": "Smart PG in City Center Vadodara",
+    "description": "Quality accommodation in Vadodara with modern facilities and convenient location.",
+    "rent": 15014,
+    "deposit": 30028,
+    "city": "Vadodara",
+    "address": "578 City Center, Near Main Road, Vadodara, Gujarat 241265",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "laundry",
+      "power-backup",
+      "meals"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5101",
+      "https://picsum.photos/800/600?random=5102",
+      "https://picsum.photos/800/600?random=5103",
+      "https://picsum.photos/800/600?random=5104"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-19",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "52",
+    "title": "Safe PG in Metro Station Coimbatore",
+    "description": "Quality accommodation in Coimbatore with modern facilities and convenient location.",
+    "rent": 9217,
+    "deposit": 18434,
+    "city": "Coimbatore",
+    "address": "380 Metro Station, Near Main Road, Coimbatore, Tamil Nadu 227691",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "beach-access",
+      "ac",
+      "library",
+      "rooftop"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5201",
+      "https://picsum.photos/800/600?random=5202",
+      "https://picsum.photos/800/600?random=5203",
+      "https://picsum.photos/800/600?random=5204"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-09-22",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "53",
+    "title": "Safe PG in Market Area Mysore",
+    "description": "Quality accommodation in Mysore with modern facilities and convenient location.",
+    "rent": 15459,
+    "deposit": 30918,
+    "city": "Mysore",
+    "address": "752 Market Area, Near Main Road, Mysore, Karnataka 684747",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "wifi",
+      "biometric",
+      "beach-access",
+      "ac",
+      "meals",
+      "rooftop",
+      "balcony"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5301",
+      "https://picsum.photos/800/600?random=5302",
+      "https://picsum.photos/800/600?random=5303",
+      "https://picsum.photos/800/600?random=5304"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-06-18",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "54",
+    "title": "Standard PG in University Area Delhi",
+    "description": "Quality accommodation in Delhi with modern facilities and convenient location.",
+    "rent": 29419,
+    "deposit": 58838,
+    "city": "Delhi",
+    "address": "779 University Area, Near Main Road, Delhi, Delhi 161666",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "gym",
+      "meals",
+      "beach-access",
+      "security",
+      "shuttle"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5401",
+      "https://picsum.photos/800/600?random=5402",
+      "https://picsum.photos/800/600?random=5403",
+      "https://picsum.photos/800/600?random=5404"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-01-17",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "55",
+    "title": "Premium PG in Residential Area Kanpur",
+    "description": "Quality accommodation in Kanpur with modern facilities and convenient location.",
+    "rent": 15663,
+    "deposit": 31326,
+    "city": "Kanpur",
+    "address": "7 Residential Area, Near Main Road, Kanpur, Uttar Pradesh 757710",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "laundry",
+      "wifi",
+      "balcony",
+      "rooftop",
+      "shuttle",
+      "security",
+      "parking",
+      "cctv"
+    ],
+    "images": [
+      "https://picsum.photos/800/600?random=5501",
+      "https://picsum.photos/800/600?random=5502",
+      "https://picsum.photos/800/600?random=5503",
+      "https://picsum.photos/800/600?random=5504"
+    ],
+    "contactPhone": "+91 84260 76800",
+    "availableFrom": "2024-03-11",
+    "ownerId": "1",
+    "createdAt": "2025-06-07T11:06:13.969Z",
+    "isActive": true
+  },
+  {
+    "id": "1749494896025",
+    "title": "Comfortable PG for Bachelores",
+    "description": "Located in the Heart of the City. Located near School, Hospital, Shopping Complex and many more amenities.",
+    "rent": 10000,
+    "deposit": 3000,
+    "city": "Jaipur",
+    "address": "C6-104, Chitrakoot, Vaishali Nagar, Jaipur",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "ac",
+      "meals",
+      "laundry",
+      "swimming-pool",
+      "gym",
+      "security",
+      "parking",
+      "study-area",
+      "cctv"
+    ],
+    "images": [
+      "/uploads/images-1749494895990-324166054.png",
+      "/uploads/images-1749494896005-633837882.png",
+      "/uploads/images-1749494896008-474350040.png"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-24",
+    "ownerId": "1749493895813",
+    "createdAt": "2025-06-09T18:48:16.025Z",
     "isActive": true
   }
 ]

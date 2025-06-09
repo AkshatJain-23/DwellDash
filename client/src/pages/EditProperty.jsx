@@ -330,7 +330,7 @@ const EditProperty = () => {
                   })}
                   type="tel"
                   className="input"
-                  placeholder="+91 98765 43210"
+                  placeholder="+91 84260 76800"
                 />
                 {errors.contactPhone && (
                   <p className="mt-1 text-sm text-red-600">{errors.contactPhone.message}</p>

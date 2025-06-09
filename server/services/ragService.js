@@ -73,34 +73,44 @@ class RAGService {
     return dotProduct / (magnitude1 * magnitude2);
   }
 
-  // Find relevant knowledge based on query
+  // Enhanced knowledge finding with better keyword matching
   findRelevantKnowledge(query, topK = 3) {
     const queryLower = query.toLowerCase();
     const relevantItems = [];
+
+    // Expand query with synonyms for better matching
+    const expandedQuery = this.expandQueryWithSynonyms(queryLower);
 
     // Search through knowledge base
     for (const item of this.knowledgeBase.knowledge_base) {
       let score = 0;
 
-      // Exact keyword matches
+      // Enhanced keyword matching
       for (const keyword of item.keywords) {
-        if (queryLower.includes(keyword.toLowerCase())) {
-          score += 2;
+        const keywordLower = keyword.toLowerCase();
+        if (expandedQuery.includes(keywordLower)) {
+          score += 3; // Higher weight for keyword matches
+        }
+        // Partial keyword matching
+        if (expandedQuery.split(' ').some(word => word.includes(keywordLower) || keywordLower.includes(word))) {
+          score += 1.5;
         }
       }
 
-      // Title similarity
-      score += this.calculateSimilarity(query, item.title) * 1.5;
+      // Title similarity with boosted weight
+      score += this.calculateSimilarity(expandedQuery, item.title.toLowerCase()) * 2;
 
       // Content similarity
-      score += this.calculateSimilarity(query, item.content) * 1;
+      score += this.calculateSimilarity(expandedQuery, item.content.toLowerCase()) * 1.2;
 
-      // Category match
-      if (queryLower.includes(item.category.toLowerCase())) {
-        score += 1;
+      // Category match with partial matching
+      const categoryLower = item.category.toLowerCase();
+      if (expandedQuery.includes(categoryLower) || categoryLower.includes('booking') && expandedQuery.includes('book')) {
+        score += 1.5;
       }
 
-      if (score > 0.1) {
+      // Lower threshold for better coverage
+      if (score > 0.05) {
         relevantItems.push({ ...item, score });
       }
     }
@@ -109,6 +119,28 @@ class RAGService {
     return relevantItems
       .sort((a, b) => b.score - a.score)
       .slice(0, topK);
+  }
+
+  // Add synonyms to improve query matching
+  expandQueryWithSynonyms(query) {
+    const synonyms = {
+      'book': ['reserve', 'rent', 'find'],
+      'list': ['add', 'post', 'upload'],
+      'price': ['cost', 'fee', 'charge', 'rate'],
+      'safe': ['secure', 'trust', 'verify'],
+      'help': ['support', 'assist', 'contact'],
+      'pg': ['accommodation', 'room', 'place'],
+      'owner': ['landlord', 'property owner'],
+      'tenant': ['renter', 'student']
+    };
+
+    let expandedQuery = query;
+    for (const [word, syns] of Object.entries(synonyms)) {
+      if (query.includes(word)) {
+        expandedQuery += ' ' + syns.join(' ');
+      }
+    }
+    return expandedQuery;
   }
 
   // Check for FAQ matches
@@ -168,27 +200,67 @@ Answer the user's question based on this context. Keep responses under 150 words
     }
   }
 
-  // Fallback response generation without LLM
+  // Enhanced fallback response generation
   generateFallbackResponse(query, context) {
     const queryLower = query.toLowerCase();
 
     // Greeting responses
-    if (queryLower.includes('hello') || queryLower.includes('hi') || queryLower.includes('hey')) {
+    if (queryLower.includes('hello') || queryLower.includes('hi') || queryLower.includes('hey') || queryLower.includes('good morning') || queryLower.includes('good evening')) {
       return "Hello! I'm DwellBot, your AI assistant for DwellDash. I can help you with finding PG accommodations, listing properties, pricing information, and platform support. What would you like to know?";
     }
 
     // Thank you responses
-    if (queryLower.includes('thank') || queryLower.includes('thanks')) {
+    if (queryLower.includes('thank') || queryLower.includes('thanks') || queryLower.includes('appreciate')) {
       return "You're welcome! I'm here to help with any questions about DwellDash. Is there anything else you'd like to know about our platform?";
+    }
+
+    // Booking related queries
+    if (queryLower.includes('book') || queryLower.includes('reserve') || queryLower.includes('rent')) {
+      return "To book a PG on DwellDash: 1) Search properties using our filters, 2) Browse verified listings with photos and reviews, 3) Contact property owners directly, 4) Schedule property visits, 5) Complete booking through our secure payment system. It's completely free for tenants! Need help with a specific step?";
+    }
+
+    // Listing property queries
+    if (queryLower.includes('list') || queryLower.includes('add property') || queryLower.includes('owner')) {
+      return "To list your property: 1) Register as a property owner at dwelldash.com/register, 2) Complete profile verification, 3) Add property details with high-quality photos, 4) Set pricing and availability, 5) Submit for verification. Our team reviews within 24-48 hours. Small 2-3% commission only after successful bookings!";
+    }
+
+    // Pricing queries
+    if (queryLower.includes('price') || queryLower.includes('cost') || queryLower.includes('fee') || queryLower.includes('charge')) {
+      return "DwellDash is completely FREE for tenants - no registration fees, booking charges, or hidden costs! For property owners, we charge only 2-3% commission after successful bookings. No upfront costs or listing fees. Transparent pricing for everyone!";
+    }
+
+    // Safety and verification
+    if (queryLower.includes('safe') || queryLower.includes('verify') || queryLower.includes('trust') || queryLower.includes('secure')) {
+      return "DwellDash ensures safety through: ✅ Comprehensive property verification, ✅ Document and background checks, ✅ Physical property inspection, ✅ Secure payment processing, ✅ 24/7 customer support, ✅ Review and rating system. Your safety is our top priority!";
+    }
+
+    // Location queries
+    if (queryLower.includes('city') || queryLower.includes('location') || queryLower.includes('area') || queryLower.includes('where')) {
+      return "DwellDash operates in 50+ cities across India including Delhi NCR, Mumbai, Bangalore, Chennai, Pune, Hyderabad, Kolkata, Ahmedabad, and many more! We're constantly expanding. If your city isn't listed, contact dwelldash3@gmail.com to request expansion.";
+    }
+
+    // Contact and support
+    if (queryLower.includes('contact') || queryLower.includes('support') || queryLower.includes('help') || queryLower.includes('phone') || queryLower.includes('email')) {
+      return "Contact DwellDash Support:\n📧 Email: dwelldash3@gmail.com\n📞 Phone: +91 84260 76800 (Mon-Sat, 9 AM-8 PM)\n💬 Live Chat: Available 24/7 through this bot\n🏢 Offices: Gurgaon, Bangalore, Mumbai\nAverage response time: 2 hours for urgent issues.";
+    }
+
+    // Payment queries
+    if (queryLower.includes('payment') || queryLower.includes('pay') || queryLower.includes('refund') || queryLower.includes('deposit')) {
+      return "Payment Options: UPI, Net Banking, Credit/Debit Cards, Digital Wallets. All payments are secure with 256-bit SSL encryption. Refund Policy: Full refund 7+ days before move-in, 50% refund 3-7 days before, no refund within 3 days. Security deposits refunded within 7-14 days after checkout.";
+    }
+
+    // Amenities queries
+    if (queryLower.includes('amenity') || queryLower.includes('facility') || queryLower.includes('wifi') || queryLower.includes('food') || queryLower.includes('meal')) {
+      return "DwellDash properties offer: WiFi, AC, attached bathrooms, 24/7 security, power backup, kitchens, laundry, parking, study rooms, gym access, home-cooked meals, and more! Use our advanced filters to find properties with your preferred amenities.";
     }
 
     // Use context if available
     if (context && context.trim()) {
-      return `Based on your query about DwellDash: ${context.substring(0, 200)}${context.length > 200 ? '...' : ''}\n\nFor more specific help, please contact our support at dwelldash3@gmail.com or +91 98765 43210.`;
+      return `Based on your query: ${context.substring(0, 250)}${context.length > 250 ? '...' : ''}\n\nFor more detailed information, contact our support at dwelldash3@gmail.com or +91 84260 76800.`;
     }
 
-    // Generic helpful response
-    return "I can help you with finding PG accommodations, listing properties, pricing information, safety features, and platform support. What specific information are you looking for?";
+    // Enhanced generic response with examples
+    return "I can help you with:\n🏠 Finding PG accommodations\n📝 Listing your property\n💰 Pricing and fees information\n🔒 Safety and verification\n📞 Customer support\n💳 Payment options\n\nTry asking: 'How to book a PG?', 'How to list property?', 'Is DwellDash safe?', 'What are your fees?'";
   }
 
   // Main chat function
@@ -209,12 +281,20 @@ Answer the user's question based on this context. Keep responses under 150 words
       // Find relevant knowledge
       const relevantKnowledge = this.findRelevantKnowledge(query);
       
+      // Always try fallback first for better coverage
+      const fallbackResponse = this.generateFallbackResponse(query, '');
+      
+      // If fallback handled the query (not the generic response), use it
+      if (!fallbackResponse.includes("I can help you with:")) {
+        return fallbackResponse;
+      }
+      
       if (relevantKnowledge.length === 0) {
-        // Handle irrelevant topics
+        // Handle clearly irrelevant topics
         const irrelevantTopics = [
-          'weather', 'food', 'movie', 'music', 'sports', 'politics', 'news', 'joke', 'game', 
-          'recipe', 'travel', 'health', 'fitness', 'fashion', 'entertainment', 'celebrity',
-          'technology', 'programming', 'science', 'math', 'history', 'geography'
+          'weather forecast', 'cooking recipe', 'movie review', 'music download', 'sports score', 
+          'political news', 'breaking news', 'tell me a joke', 'play a game', 'celebrity gossip',
+          'programming code', 'math problem', 'history lesson', 'geography quiz'
         ];
         
         const isIrrelevant = irrelevantTopics.some(topic => query.toLowerCase().includes(topic));
@@ -223,7 +303,8 @@ Answer the user's question based on this context. Keep responses under 150 words
           return "I'm specifically designed to help with DwellDash services. I can assist you with finding PG accommodations, listing properties, pricing information, safety features, and platform support. What would you like to know about DwellDash?";
         }
         
-        return this.generateFallbackResponse(query, '');
+        // For any other query, try to be helpful with general DwellDash info
+        return "I'd be happy to help you with DwellDash services! Here's what I can assist with:\n\n🏠 **Finding PG Accommodations**: Search and book verified properties\n📝 **Listing Properties**: Help property owners get started\n💰 **Pricing Information**: Transparent fee structure\n🔒 **Safety & Verification**: Our security measures\n📞 **Customer Support**: Get help when you need it\n\nWhat specific aspect of DwellDash would you like to know more about?";
       }
 
       // Create context from relevant knowledge
@@ -238,7 +319,7 @@ Answer the user's question based on this context. Keep responses under 150 words
 
     } catch (error) {
       console.error('RAG Service error:', error);
-      return "I apologize for the technical difficulty. Please try asking your question again, or contact our support team at dwelldash3@gmail.com for immediate assistance.";
+      return "I apologize for the technical difficulty. Please try asking your question again, or contact our support team at dwelldash3@gmail.com or +91 84260 76800 for immediate assistance.";
     }
   }
 
