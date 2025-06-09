@@ -58,17 +58,17 @@ const IntegratedChatbot = () => {
 
     // Check for DwellDash-related queries first
     if (queryLower.includes('list') || queryLower.includes('property') || queryLower.includes('owner')) {
-      response = "To list your property on DwellDash: 1) Register as a property owner, 2) Complete verification, 3) Add property details with photos and pricing, 4) Submit for review. Our team reviews listings within 24-48 hours."
-    } else if (queryLower.includes('book') || queryLower.includes('rent') || queryLower.includes('find')) {
-      response = "Finding a PG is easy! 1) Search by location and preferences, 2) View detailed listings with photos, 3) Contact property owners directly, 4) Schedule visits, 5) Book securely through our platform."
-    } else if (queryLower.includes('price') || queryLower.includes('cost') || queryLower.includes('fee')) {
-      response = "DwellDash is completely FREE for tenants! Property owners pay a small commission (2-3%) only after successful bookings. No upfront fees or hidden charges."
+      response = "To list your property on DwellDash: 📝\n\n1️⃣ Register as a property owner\n2️⃣ Complete verification\n3️⃣ Add property details with photos and pricing\n4️⃣ Submit for review\n\nOur team reviews listings within 24-48 hours! 🚀"
+    } else if (queryLower.includes('book') || queryLower.includes('rent') || queryLower.includes('find') || queryLower.includes('how do i')) {
+      response = "Finding a PG is easy! 🏠\n\n1️⃣ Search by location and preferences\n2️⃣ View detailed listings with photos\n3️⃣ Contact property owners directly\n4️⃣ Schedule visits\n5️⃣ Book securely through our platform\n\nNeed help with a specific location? 📍"
+    } else if (queryLower.includes('price') || queryLower.includes('cost') || queryLower.includes('fee') || queryLower.includes('free')) {
+      response = "DwellDash is completely FREE for tenants! 🆓\n\nProperty owners pay a small commission (2-3%) only after successful bookings. No upfront fees or hidden charges. 💰"
     } else if (queryLower.includes('safe') || queryLower.includes('secure') || queryLower.includes('trust')) {
-      response = "Safety is our priority! All properties are verified, owners undergo background checks, we have secure payments, 24/7 support, and a review system."
+      response = "Safety is our priority! 🔒\n\n✅ All properties are verified\n✅ Owner background checks\n✅ Secure payments\n✅ 24/7 support\n✅ Review system\n\nYour safety matters to us! 🛡️"
     } else if (queryLower.includes('cities') || queryLower.includes('location') || queryLower.includes('where')) {
-      response = "We operate in 50+ cities including Delhi, Mumbai, Bangalore, Chennai, Pune, Hyderabad, Gurgaon, Noida, Kolkata, Ahmedabad, and more. Which city are you looking for?"
+      response = "We operate in 50+ cities! 🏙️\n\nIncluding Delhi, Mumbai, Bangalore, Chennai, Pune, Hyderabad, Gurgaon, Noida, Kolkata, Ahmedabad, and more.\n\nWhich city are you looking for? 📍"
     } else if (queryLower.includes('contact') || queryLower.includes('support') || queryLower.includes('help')) {
-              response = "You can reach us via email at dwelldash3@gmail.com, call +91 98765 43210 (Mon-Sat 9AM-8PM), or visit our offices. I'm also here to help with any questions!"
+      response = "I'm here to help! 💬\n\n📧 Email: dwelldash3@gmail.com\n📞 Call: +91 98765 43210 (Mon-Sat 9AM-8PM)\n🏢 Visit our offices\n\nWhat can I help you with today?"
     } else {
       // Handle common conversational patterns and irrelevant topics
       const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening']

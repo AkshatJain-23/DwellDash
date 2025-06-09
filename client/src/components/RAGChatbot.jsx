@@ -91,81 +91,80 @@ const RAGChatbot = () => {
 
   // Simulate AI response using RAG
   const generateResponse = async (userMessage) => {
-    const relevantKnowledge = findRelevantKnowledge(userMessage)
-    
-    // Simulate API call delay
-    await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000))
-
-    let response = ""
-
-    if (relevantKnowledge.length > 0) {
-      // Use relevant knowledge to generate response
-      const context = relevantKnowledge.map(item => item.content).join(' ')
+    try {
+      console.log('Generating response for:', userMessage) // Debug log
       
+      const relevantKnowledge = findRelevantKnowledge(userMessage)
+      console.log('Relevant knowledge found:', relevantKnowledge) // Debug log
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 2000))
+
+      let response = ""
+
       // Simple response generation based on keywords
       const queryLower = userMessage.toLowerCase()
       
-      if (queryLower.includes('list') || queryLower.includes('property') || queryLower.includes('owner')) {
-        response = relevantKnowledge.find(item => item.topic === 'property_listing')?.content ||
+      // Direct keyword matching for common questions
+      if (queryLower.includes('book') || queryLower.includes('rent') || queryLower.includes('find') || queryLower.includes('how do i')) {
+        const bookingInfo = knowledgeBase.find(item => item.topic === 'booking_process')
+        response = bookingInfo ? bookingInfo.content : 
+                  "Finding and booking a PG is easy on DwellDash! 📱\n\n1️⃣ Search properties by location and preferences\n2️⃣ View detailed listings with photos and amenities\n3️⃣ Contact property owner directly through our platform\n4️⃣ Schedule a visit if needed\n5️⃣ Complete booking through our secure payment system\n\nNeed help with a specific location? 🏙️"
+      } else if (queryLower.includes('list') || queryLower.includes('property') || queryLower.includes('owner')) {
+        const listingInfo = knowledgeBase.find(item => item.topic === 'property_listing')
+        response = listingInfo ? listingInfo.content :
                   "To list your property, register as an owner and follow our simple verification process. Would you like me to guide you through the steps?"
-      } else if (queryLower.includes('book') || queryLower.includes('rent') || queryLower.includes('find')) {
-        response = relevantKnowledge.find(item => item.topic === 'booking_process')?.content ||
-                  "Finding and booking a PG is easy on DwellDash! Search by location, view verified properties, and book securely. Need help with specific area?"
-      } else if (queryLower.includes('price') || queryLower.includes('cost') || queryLower.includes('fee')) {
-        response = relevantKnowledge.find(item => item.topic === 'pricing_fees')?.content ||
-                  "DwellDash is completely free for tenants! Property owners pay a small commission only after successful bookings. No hidden fees!"
+      } else if (queryLower.includes('price') || queryLower.includes('cost') || queryLower.includes('fee') || queryLower.includes('free')) {
+        const pricingInfo = knowledgeBase.find(item => item.topic === 'pricing_fees')
+        response = pricingInfo ? pricingInfo.content :
+                  "DwellDash is completely free for tenants! 🆓 Property owners pay a small commission (2-3%) only after successful bookings. No hidden fees!"
       } else if (queryLower.includes('safe') || queryLower.includes('secure') || queryLower.includes('trust')) {
-        response = relevantKnowledge.find(item => item.topic === 'safety_security')?.content ||
+        const safetyInfo = knowledgeBase.find(item => item.topic === 'safety_security')
+        response = safetyInfo ? safetyInfo.content :
                   "Safety is our top priority! All properties are verified, owners are background-checked, and we have 24/7 support."
       } else if (queryLower.includes('payment') || queryLower.includes('pay')) {
-        response = relevantKnowledge.find(item => item.topic === 'payment_methods')?.content ||
+        const paymentInfo = knowledgeBase.find(item => item.topic === 'payment_methods')
+        response = paymentInfo ? paymentInfo.content :
                   "We accept UPI, cards, net banking, and digital wallets. All payments are secure and PCI DSS compliant."
       } else if (queryLower.includes('cancel') || queryLower.includes('refund')) {
-        response = relevantKnowledge.find(item => item.topic === 'cancellation_policy')?.content ||
+        const cancellationInfo = knowledgeBase.find(item => item.topic === 'cancellation_policy')
+        response = cancellationInfo ? cancellationInfo.content :
                   "You can cancel with full refund up to 7 days before move-in. Check our cancellation policy for detailed terms."
       } else if (queryLower.includes('contact') || queryLower.includes('support') || queryLower.includes('help')) {
-        response = relevantKnowledge.find(item => item.topic === 'support_help')?.content ||
-                  "I'm here to help! You can also email dwelldash3@gmail.com or call +91 98765 43210. What specific help do you need?"
+        const supportInfo = knowledgeBase.find(item => item.topic === 'support_help')
+        response = supportInfo ? supportInfo.content :
+                  "I'm here to help! 💬 You can also email dwelldash3@gmail.com or call +91 98765 43210. What specific help do you need?"
       } else if (queryLower.includes('cities') || queryLower.includes('location') || queryLower.includes('where')) {
-        response = relevantKnowledge.find(item => item.topic === 'locations_cities')?.content ||
+        const locationInfo = knowledgeBase.find(item => item.topic === 'locations_cities')
+        response = locationInfo ? locationInfo.content :
                   "We're available in 50+ cities including Delhi, Mumbai, Bangalore, Chennai, Pune, Hyderabad, and more. Which city are you looking for?"
+      } else if (relevantKnowledge.length > 0) {
+        // Use first relevant knowledge if no specific match
+        response = relevantKnowledge[0].content
       } else {
-        // General response using first relevant knowledge
-        response = relevantKnowledge[0]?.content || 
-                  "I'd be happy to help you with that! Could you please provide more specific details about what you're looking for?"
+        // Fallback responses for unmatched queries
+        const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening']
+        const thanks = ['thank', 'thanks', 'appreciate']
+        const goodbye = ['bye', 'goodbye', 'see you', 'farewell', 'take care']
+        
+        if (greetings.some(greeting => queryLower.includes(greeting))) {
+          response = "Hello! 👋 Welcome to DwellDash. I'm here to help you with PG accommodations, property listings, bookings, and any questions about our platform. What would you like to know?"
+        } else if (thanks.some(thank => queryLower.includes(thank))) {
+          response = "You're welcome! 😊 I'm glad I could help. Is there anything else you'd like to know about DwellDash?"
+        } else if (goodbye.some(bye => queryLower.includes(bye))) {
+          response = "Thank you for using DwellDash! Have a great day, and feel free to reach out whenever you need help with PG accommodations. Take care! 😊"
+        } else {
+          response = "I understand you're asking about something specific to DwellDash. I can help you with:\n\n• 🏠 Finding and booking PG accommodations\n• 📝 Listing your property\n• 💰 Payment and pricing information\n• 🔒 Safety and verification process\n• 📞 Platform features and support\n\nWhat would you like to know more about?"
+        }
       }
-    } else {
-      // Fallback responses for unmatched queries
-      const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening']
-      const thanks = ['thank', 'thanks', 'appreciate']
-      const goodbye = ['bye', 'goodbye', 'see you', 'farewell', 'take care']
-      
-      // Check for completely irrelevant topics
-      const irrelevantTopics = [
-        'weather', 'food', 'movie', 'music', 'sports', 'politics', 'news', 'joke', 'game', 
-        'recipe', 'travel', 'health', 'fitness', 'fashion', 'entertainment', 'celebrity',
-        'technology', 'programming', 'code', 'software', 'hardware', 'science', 'math',
-        'history', 'geography', 'literature', 'philosophy', 'religion', 'relationship',
-        'dating', 'marriage', 'family', 'education', 'job', 'career', 'investment',
-        'stock', 'cryptocurrency', 'bitcoin', 'shopping', 'product', 'review'
-      ]
-      
-      const isIrrelevant = irrelevantTopics.some(topic => queryLower.includes(topic))
-      
-      if (greetings.some(greeting => queryLower.includes(greeting))) {
-        response = "Hello! Welcome to DwellDash. I'm here to help you with PG accommodations, property listings, bookings, and any questions about our platform. What would you like to know?"
-      } else if (thanks.some(thank => queryLower.includes(thank))) {
-        response = "You're welcome! I'm glad I could help. Is there anything else you'd like to know about DwellDash?"
-      } else if (goodbye.some(bye => queryLower.includes(bye))) {
-        response = "Thank you for using DwellDash! Have a great day, and feel free to reach out whenever you need help with PG accommodations. Take care! 😊"
-      } else if (isIrrelevant) {
-        response = "Thank you for your question! While I'd love to help with that, I'm specifically designed to assist with DwellDash services. \n\nI can help you with finding PG accommodations, listing properties, pricing information, safety features, and general platform questions. What would you like to know more about?"
-      } else {
-        response = "I understand you're asking about something specific to DwellDash. I can help you with:\n\n• Finding and booking PG accommodations\n• Listing your property\n• Payment and pricing information\n• Safety and verification process\n• Platform features and support\n\nWhat would you like to know more about?"
-      }
-    }
 
-    return response
+      console.log('Generated response:', response) // Debug log
+      return response
+      
+    } catch (error) {
+      console.error('Error in generateResponse:', error)
+      throw error // Re-throw to be caught by handleSendMessage
+    }
   }
 
   const handleSendMessage = async () => {
