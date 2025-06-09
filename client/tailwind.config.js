@@ -17,14 +17,14 @@ export default {
           text: '#1a1a1a',       // Dark text for light mode
           surface: '#ffffff',     // White surfaces
         },
-        // Dark theme colors
+        // Dark theme colors (sophisticated gray/black palette)
         dark: {
-          primary: '#1a2332',     // Dark blue-gray
-          secondary: '#2d3748',   // Medium dark gray
-          accent: '#4a5568',      // Lighter dark gray
-          highlight: '#2c5282',   // Dark blue
+          primary: '#000000',     // Pure black
+          secondary: '#D1D0D0',   // Light gray
+          accent: '#988686',      // Medium gray
+          highlight: '#5C4E4E',   // Dark gray
           text: '#f7fafc',        // Light text for dark mode
-          surface: '#1a202c',     // Dark surface
+          surface: '#1a1a1a',     // Dark surface
         }
       },
       fontFamily: {

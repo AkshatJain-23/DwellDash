@@ -24,7 +24,7 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+        <div className="min-h-screen bg-light-highlight dark:bg-dark-surface flex flex-col transition-colors duration-300">
         <Navbar />
         <main className="flex-1">
           <Routes>

@@ -51,7 +51,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white dark:bg-gray-800 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
+    <nav className="navbar navbar-expand-lg bg-white dark:bg-dark-primary shadow-lg border-b border-gray-200 dark:border-dark-highlight transition-colors duration-300">
       <div className="container-fluid max-w-7xl mx-auto px-3 px-sm-4 px-lg-5">
         <div className="d-flex justify-content-between align-items-center w-100" style={{ minHeight: '4rem' }}>
           {/* Logo and brand */}
@@ -60,7 +60,7 @@ const Navbar = () => {
               <DwellDashLogo 
                 className="h-10 w-10 me-2" 
               />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">DwellDash</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-dark-text">DwellDash</span>
             </Link>
           </div>
 
@@ -72,7 +72,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/properties"
-                    className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                    className="text-gray-900 dark:text-dark-text hover:text-light-secondary dark:hover:text-dark-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                   >
                     Home
                   </Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  className="text-gray-900 dark:text-dark-text hover:text-light-secondary dark:hover:text-dark-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                 >
                   About
                 </Link>
@@ -89,7 +89,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-900 dark:text-gray-100 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
+                  className="text-gray-900 dark:text-dark-text hover:text-light-secondary dark:hover:text-dark-secondary px-3 py-2 rounded-md text-sm font-medium transition-colors font-semibold"
                 >
                   Contact
                 </Link>

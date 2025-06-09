@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react'
 
 const ThemeContext = createContext()
 
@@ -12,25 +12,24 @@ export const useTheme = () => {
 
 export const ThemeProvider = ({ children }) => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
-    // Check if there's a saved theme preference
-    const savedTheme = localStorage.getItem('dwelldash-theme')
-    if (savedTheme) {
-      return savedTheme === 'dark'
+    // Check localStorage first, then system preference
+    const saved = localStorage.getItem('theme')
+    if (saved) {
+      return saved === 'dark'
     }
-    // Default to system preference
     return window.matchMedia('(prefers-color-scheme: dark)').matches
   })
 
   useEffect(() => {
-    // Save theme preference to localStorage
-    localStorage.setItem('dwelldash-theme', isDarkMode ? 'dark' : 'light')
-    
-    // Update document class for Tailwind dark mode
+    // Apply theme to document
     if (isDarkMode) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
     }
+    
+    // Save to localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light')
   }, [isDarkMode])
 
   const toggleTheme = () => {

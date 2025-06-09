@@ -79,59 +79,59 @@ const Home = () => {
       icon: Shield,
       title: 'Zero Brokerage',
       description: 'Connect directly with property owners. No brokerage fees.',
-      color: 'bg-green-100 text-green-600'
+      color: 'bg-light-accent text-light-secondary dark:bg-dark-accent dark:text-dark-text'
     },
     {
       icon: CheckCircle,
       title: 'Verified Properties',
       description: 'All properties are verified through our quality checks.',
-      color: 'bg-blue-100 text-blue-600'
+      color: 'bg-light-primary text-light-secondary dark:bg-dark-secondary dark:text-dark-primary'
     },
     {
       icon: Users,
       title: '50,000+ Happy Tenants',
       description: 'Join thousands who found their perfect home with us.',
-      color: 'bg-purple-100 text-purple-600'
+      color: 'bg-light-secondary text-white dark:bg-dark-highlight dark:text-dark-text'
     },
     {
       icon: TrendingUp,
       title: 'Best Market Prices',
       description: 'Compare prices and get the best deals in your area.',
-      color: 'bg-orange-100 text-orange-600'
+      color: 'bg-light-highlight text-light-secondary dark:bg-dark-surface dark:text-dark-secondary'
     }
   ]
 
   // Define colors for each stat
   const statColors = [
-    'bg-blue-50 text-blue-600',
-    'bg-green-50 text-green-600', 
-    'bg-purple-50 text-purple-600',
-    'bg-orange-50 text-orange-600'
+    'bg-light-primary text-light-secondary dark:bg-dark-highlight dark:text-dark-secondary',
+    'bg-light-accent text-light-secondary dark:bg-dark-accent dark:text-dark-text', 
+    'bg-light-highlight text-light-secondary dark:bg-dark-surface dark:text-dark-secondary',
+    'bg-light-secondary text-white dark:bg-dark-primary dark:text-dark-text'
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-light-highlight dark:bg-dark-surface">
       {/* Hero Section with Search */}
-      <section className="relative bg-white border-b">
+      <section className="relative bg-white dark:bg-dark-primary border-b border-gray-200 dark:border-dark-highlight">
         <div className="container mx-auto px-4 py-8">
           <div className="max-w-6xl mx-auto">
             {/* Main Heading */}
             <div className="text-center mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Find Your Perfect <span className="text-blue-600">PG</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-dark-text mb-4">
+                Find Your Perfect <span className="text-light-secondary dark:text-dark-secondary">PG</span>
               </h1>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="text-xl text-gray-600 dark:text-dark-accent max-w-2xl mx-auto">
                 Discover verified PG accommodations with zero brokerage. Over 3000+ properties across major cities.
               </p>
             </div>
 
             {/* Search Form */}
-            <div className="bg-white border rounded-lg shadow-lg p-6 mb-8">
+            <div className="bg-white dark:bg-dark-primary border border-gray-200 dark:border-dark-highlight rounded-lg shadow-lg p-6 mb-8">
               <form onSubmit={handleSearch} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                   {/* Location Search */}
                   <div className="relative">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">Location</label>
                     <div className="relative">
                       <MapPin className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
                       <input
@@ -139,18 +139,18 @@ const Home = () => {
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                         placeholder="Search by city, area..."
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-dark-highlight bg-white dark:bg-dark-surface text-gray-900 dark:text-dark-text rounded-lg focus:ring-2 focus:ring-light-secondary dark:focus:ring-dark-secondary focus:border-light-secondary dark:focus:border-dark-secondary"
                       />
                     </div>
                   </div>
 
                   {/* Property Type */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Property Type</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">Property Type</label>
                     <select
                       value={propertyType}
                       onChange={(e) => setPropertyType(e.target.value)}
-                      className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full py-3 px-4 border border-gray-300 dark:border-dark-highlight bg-white dark:bg-dark-surface text-gray-900 dark:text-dark-text rounded-lg focus:ring-2 focus:ring-light-secondary dark:focus:ring-dark-secondary focus:border-light-secondary dark:focus:border-dark-secondary"
                     >
                       <option value="">All Types</option>
                       <option value="private">Private Room</option>
@@ -161,11 +161,11 @@ const Home = () => {
 
                   {/* Budget Range */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Budget</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-dark-text mb-2">Budget</label>
                     <select
                       value={budgetRange}
                       onChange={(e) => setBudgetRange(e.target.value)}
-                      className="w-full py-3 px-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      className="w-full py-3 px-4 border border-gray-300 dark:border-dark-highlight bg-white dark:bg-dark-surface text-gray-900 dark:text-dark-text rounded-lg focus:ring-2 focus:ring-light-secondary dark:focus:ring-dark-secondary focus:border-light-secondary dark:focus:border-dark-secondary"
                     >
                       <option value="">Any Budget</option>
                       <option value="5000-10000">₹5,000 - ₹10,000</option>
@@ -179,7 +179,7 @@ const Home = () => {
                   <div className="flex items-end">
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-6 rounded-lg font-semibold flex items-center justify-center transition-colors"
+                      className="w-full bg-light-secondary hover:bg-light-primary dark:bg-dark-secondary dark:hover:bg-dark-text text-white dark:text-dark-primary py-3 px-6 rounded-lg font-semibold flex items-center justify-center transition-colors"
                     >
                       <Search className="w-5 h-5 mr-2" />
                       Search PGs
@@ -221,14 +221,14 @@ const Home = () => {
       </section>
 
       {/* Featured Properties */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-dark-primary">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">Featured Properties</h2>
-              <p className="text-gray-600 mt-2">Hand-picked premium PG accommodations</p>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-dark-text">Featured Properties</h2>
+              <p className="text-gray-600 dark:text-dark-accent mt-2">Hand-picked premium PG accommodations</p>
             </div>
-            <Link to="/properties" className="text-blue-600 hover:text-blue-700 font-semibold">
+            <Link to="/properties" className="text-light-secondary hover:text-light-primary dark:text-dark-secondary dark:hover:text-dark-text font-semibold">
               View All →
             </Link>
           </div>
@@ -301,11 +301,11 @@ const Home = () => {
       </section>
 
       {/* Top Cities */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-12 bg-light-highlight dark:bg-dark-surface">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Top Cities</h2>
-            <p className="text-gray-600">Explore PG accommodations in popular cities</p>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-4">Top Cities</h2>
+            <p className="text-gray-600 dark:text-dark-accent">Explore PG accommodations in popular cities</p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -313,20 +313,20 @@ const Home = () => {
               <div
                 key={city.name}
                 onClick={() => handleCityClick(city.name)}
-                className="bg-white rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all border"
+                className="bg-white dark:bg-dark-primary rounded-lg p-6 cursor-pointer hover:shadow-lg transition-all border border-gray-200 dark:border-dark-highlight"
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
                     <div className="text-3xl mr-3">{city.image}</div>
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900">{city.name}</h3>
-                      <p className="text-gray-600">{city.count} Properties</p>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-dark-text">{city.name}</h3>
+                      <p className="text-gray-600 dark:text-dark-accent">{city.count} Properties</p>
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-between items-center">
-                  <div className="text-sm text-gray-600">Price Range</div>
-                  <div className="font-semibold text-gray-900">{city.price}</div>
+                  <div className="text-sm text-gray-600 dark:text-dark-accent">Price Range</div>
+                  <div className="font-semibold text-gray-900 dark:text-dark-text">{city.price}</div>
                 </div>
               </div>
             ))}
@@ -335,11 +335,11 @@ const Home = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-12 bg-white">
+      <section className="py-12 bg-white dark:bg-dark-primary">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Choose DwellDash?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-dark-text mb-4">Why Choose DwellDash?</h2>
+            <p className="text-gray-600 dark:text-dark-accent max-w-2xl mx-auto">
               We make finding your perfect PG accommodation simple, transparent, and hassle-free
             </p>
           </div>
@@ -350,8 +350,8 @@ const Home = () => {
                 <div className={`w-16 h-16 ${feature.color} rounded-full flex items-center justify-center mx-auto mb-4`}>
                   <feature.icon className="w-8 h-8" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-dark-text mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-dark-accent text-sm">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -359,25 +359,25 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-12 bg-blue-600 text-white">
+      <section className="py-12 bg-light-secondary dark:bg-dark-primary text-white dark:text-dark-text">
         <div className="container mx-auto px-4 text-center">
-          <HomeIcon className="w-16 h-16 mx-auto mb-6 text-blue-200" />
+          <HomeIcon className="w-16 h-16 mx-auto mb-6 text-light-primary dark:text-dark-secondary" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Ready to Find Your Dream PG?
           </h2>
-          <p className="text-xl mb-8 text-blue-100 max-w-2xl mx-auto">
+          <p className="text-xl mb-8 text-light-highlight dark:text-dark-accent max-w-2xl mx-auto">
             Join thousands of students and professionals who found their perfect accommodation through DwellDash
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center">
             <Link 
               to="/properties" 
-              className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="bg-white dark:bg-dark-text text-light-secondary dark:text-dark-primary hover:bg-light-highlight dark:hover:bg-dark-secondary px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               Explore Properties
             </Link>
             <Link 
               to="/register" 
-              className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-colors"
+              className="border-2 border-white dark:border-dark-text text-white dark:text-dark-text hover:bg-white dark:hover:bg-dark-text hover:text-light-secondary dark:hover:text-dark-primary px-8 py-3 rounded-lg font-semibold transition-colors"
             >
               Sign Up Free
             </Link>
