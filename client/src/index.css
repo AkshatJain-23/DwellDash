@@ -2,12 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Bootstrap compatibility - prevent conflicts */
+.btn:not(.btn-primary):not(.btn-secondary):not(.btn-outline) {
+  @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+}
+
 @layer base {
   * {
     box-sizing: border-box;
   }
   body {
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Mobile-first responsive design */
+  html {
+    font-size: 16px;
+  }
+  
+  @media (max-width: 768px) {
+    html {
+      font-size: 14px;
+    }
   }
 }
 
@@ -51,11 +67,59 @@
   .property-card:hover {
     @apply shadow-lg;
   }
+  
+  /* Mobile responsive utilities */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+  
+  .mobile-heading {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+  
+  .mobile-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+  }
+  
+  .mobile-btn {
+    @apply w-full sm:w-auto px-4 py-2 text-sm sm:text-base;
+  }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+  
+  /* Mobile-specific utilities */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .mobile-safe-area {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Bootstrap component overrides for mobile */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .modal-dialog {
+    margin: 0.5rem !important;
+  }
+  
+  .btn {
+    padding: 0.75rem 1rem !important;
+    font-size: 1rem !important;
   }
 }
 
@@ -77,13 +141,57 @@
   background: #a8a8a8;
 }
 
-/* Image gallery overrides */
+/* Image gallery overrides - mobile responsive */
 .image-gallery-slide img {
-  max-height: 400px;
+  max-height: 300px;
   object-fit: cover;
 }
 
+@media (min-width: 768px) {
+  .image-gallery-slide img {
+    max-height: 400px;
+  }
+}
+
 .image-gallery-thumbnail img {
-  height: 60px;
+  height: 50px;
   object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .image-gallery-thumbnail img {
+    height: 60px;
+  }
+}
+
+/* Mobile navigation improvements */
+@media (max-width: 768px) {
+  .navbar-nav {
+    margin-top: 1rem;
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.75rem 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+}
+
+/* Touch-friendly form inputs on mobile */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important; /* Prevents zoom on iOS */
+    padding: 0.75rem !important;
+  }
+}
+
+/* Card responsiveness */
+@media (max-width: 576px) {
+  .card {
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  .card-body {
+    padding: 1rem !important;
+  }
 } 

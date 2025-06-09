@@ -51,46 +51,55 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="bg-white dark:bg-accent-black shadow-lg border-b border-gray-200 dark:border-accent-dark transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+    <nav className="navbar navbar-expand-lg bg-white dark:bg-accent-black shadow-lg border-b border-gray-200 dark:border-accent-dark transition-colors duration-300">
+      <div className="container-fluid max-w-7xl mx-auto px-3 px-sm-4 px-lg-5">
+        <div className="d-flex justify-content-between align-items-center w-100" style={{ minHeight: '4rem' }}>
           {/* Logo and brand */}
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-3">
+          <div className="d-flex align-items-center">
+            <Link to="/" className="navbar-brand d-flex align-items-center text-decoration-none">
               <DwellDashLogo 
-                className="h-10 w-10" 
+                className="h-10 w-10 me-2" 
               />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">DwellDash</span>
+              <span className="fs-4 fw-bold text-gray-900 dark:text-white">DwellDash</span>
             </Link>
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {/* Only show Properties link if user is not in Owner Mode */}
-            {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
-              <Link
-                to="/properties"
-                className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                Home
-              </Link>
-            )}
-            <Link
-              to="/about"
-              className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              About
-            </Link>
-            <Link
-              to="/contact"
-              className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
-            >
-              Contact
-            </Link>
-            <ThemeToggle />
+          <div className="d-none d-lg-flex align-items-center">
+            <ul className="navbar-nav me-auto mb-0">
+              {/* Only show Properties link if user is not in Owner Mode */}
+              {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
+                <li className="nav-item">
+                  <Link
+                    to="/properties"
+                    className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                  >
+                    Home
+                  </Link>
+                </li>
+              )}
+              <li className="nav-item">
+                <Link
+                  to="/about"
+                  className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                >
+                  About
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link
+                  to="/contact"
+                  className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+            <div className="d-flex align-items-center ms-3">
+              <ThemeToggle />
             
-            {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
+              {isAuthenticated ? (
+                <div className="d-flex align-items-center ms-3">
                 {/* View Mode Toggle for Owners */}
                 {user?.role === 'owner' && (
                   <button
@@ -157,9 +166,9 @@ const Navbar = () => {
                     </div>
                   )}
                 </div>
-              </div>
-            ) : (
-              <div className="flex items-center space-x-4">
+                </div>
+              ) : (
+                <div className="d-flex align-items-center ms-3">
                 <Link
                   to="/login"
                   className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -171,22 +180,25 @@ const Navbar = () => {
                   className="bg-light-secondary dark:bg-accent-dark text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-light-primary dark:hover:bg-accent-medium transition-colors"
                 >
                   Get Started
-                </Link>
-              </div>
-            )}
+                                  </Link>
+                </div>
+              )}
+            </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden flex items-center space-x-2">
+          <div className="d-lg-none d-flex align-items-center">
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light"
+              className="navbar-toggler ms-2 border-0 p-1"
+              type="button"
+              aria-label="Toggle navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-gray-700 dark:text-white" />
               ) : (
-                <Menu className="h-6 w-6" />
+                <Menu className="h-6 w-6 text-gray-700 dark:text-white" />
               )}
             </button>
           </div>
