@@ -201,14 +201,14 @@ const Home = () => {
                 >
                   <div className="text-2xl font-bold">
                     {statsLoading ? (
-                      <div className="h-6 bg-gray-300 rounded animate-pulse"></div>
+                      <div className="h-6 bg-gray-300 dark:bg-dark-accent rounded animate-pulse"></div>
                     ) : (
                       stat.number
                     )}
                   </div>
-                  <div className="text-sm text-gray-600 mt-1">
+                  <div className="text-sm text-gray-600 dark:text-dark-accent mt-1">
                     {statsLoading ? (
-                      <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 dark:bg-dark-highlight rounded animate-pulse"></div>
                     ) : (
                       stat.label
                     )}
@@ -235,7 +235,7 @@ const Home = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredProperties.map((property) => (
-              <div key={property.id} className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow border">
+              <div key={property.id} className="bg-white dark:bg-dark-primary rounded-lg shadow-md hover:shadow-lg transition-shadow border border-gray-200 dark:border-dark-highlight">
                 <div className="relative">
                   <img
                     src={property.image}
@@ -248,48 +248,48 @@ const Home = () => {
                       Verified
                     </div>
                   )}
-                  <button className="absolute top-3 right-3 bg-white rounded-full p-2 shadow-md hover:bg-gray-50">
-                    <Heart className="w-4 h-4 text-gray-600" />
+                  <button className="absolute top-3 right-3 bg-white dark:bg-dark-surface rounded-full p-2 shadow-md hover:bg-gray-50 dark:hover:bg-dark-accent">
+                    <Heart className="w-4 h-4 text-gray-600 dark:text-dark-text" />
                   </button>
                 </div>
                 
                 <div className="p-4">
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="font-semibold text-gray-900 text-lg">{property.title}</h3>
+                    <h3 className="font-semibold text-gray-900 dark:text-dark-text text-lg">{property.title}</h3>
                     <div className="text-right">
-                      <div className="text-xl font-bold text-gray-900">{property.price}</div>
-                      <div className="text-sm text-gray-500">per month</div>
+                      <div className="text-xl font-bold text-gray-900 dark:text-dark-text">{property.price}</div>
+                      <div className="text-sm text-gray-500 dark:text-dark-accent">per month</div>
                     </div>
                   </div>
                   
-                  <div className="flex items-center text-gray-600 mb-3">
+                  <div className="flex items-center text-gray-600 dark:text-dark-accent mb-3">
                     <MapPin className="w-4 h-4 mr-1" />
                     <span className="text-sm">{property.location}</span>
                   </div>
                   
                   <div className="flex items-center justify-between mb-3">
-                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-light-primary dark:bg-dark-highlight text-light-secondary dark:text-dark-text px-2 py-1 rounded-full text-xs font-medium">
                       {property.type}
                     </span>
                     <div className="flex items-center">
                       <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-sm font-medium ml-1">{property.rating}</span>
+                      <span className="text-sm font-medium ml-1 text-gray-900 dark:text-dark-text">{property.rating}</span>
                     </div>
                   </div>
                   
                   <div className="flex flex-wrap gap-2 mb-4">
                     {property.amenities.map((amenity, index) => (
-                      <span key={index} className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">
+                      <span key={index} className="bg-gray-100 dark:bg-dark-surface text-gray-700 dark:text-dark-text px-2 py-1 rounded text-xs">
                         {amenity}
                       </span>
                     ))}
                   </div>
                   
                   <div className="flex gap-2">
-                    <button className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg font-medium transition-colors">
+                    <button className="flex-1 bg-light-secondary dark:bg-dark-secondary hover:bg-light-primary dark:hover:bg-dark-text text-white dark:text-dark-primary py-2 px-4 rounded-lg font-medium transition-colors">
                       View Details
                     </button>
-                    <button className="bg-gray-100 hover:bg-gray-200 text-gray-700 py-2 px-4 rounded-lg transition-colors">
+                    <button className="bg-gray-100 dark:bg-dark-surface hover:bg-gray-200 dark:hover:bg-dark-accent text-gray-700 dark:text-dark-text py-2 px-4 rounded-lg transition-colors">
                       <Phone className="w-4 h-4" />
                     </button>
                   </div>
