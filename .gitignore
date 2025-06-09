@@ -1,11 +1,21 @@
 # Dependencies
 node_modules/
-*/node_modules/
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
-*/package-lock.json
+
+# Build outputs
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
 
 # Environment variables
 .env
@@ -13,23 +23,6 @@ package-lock.json
 .env.development.local
 .env.test.local
 .env.production.local
-
-# Build outputs
-dist/
-build/
-.vite/
-.cache/
-.parcel-cache/
-
-# Logs
-*.log
-logs/
-
-# Runtime data
-pids/
-*.pid
-*.seed
-*.pid.lock
 
 # Coverage directory used by tools like istanbul
 coverage/
@@ -82,8 +75,6 @@ tmp/
 temp/
 
 # Editor directories and files
-.vscode/
-.idea/
 *.suo
 *.ntvs*
 *.njsproj
@@ -91,13 +82,10 @@ temp/
 *.sw?
 
 # OS generated files
-.DS_Store
-.DS_Store?
 ._*
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db
 
 # User uploads (if containing sensitive data)
 server/uploads/*
