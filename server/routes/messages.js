@@ -79,8 +79,8 @@ router.post('/', [
   body('ownerId').notEmpty().withMessage('Owner ID is required'),
   body('senderName').trim().isLength({ min: 2 }).withMessage('Sender name must be at least 2 characters'),
   body('senderEmail').isEmail().withMessage('Valid email is required'),
-  body('senderPhone').matches(/^[+]?[0-9\s\-\(\)]{10,15}$/).withMessage('Valid phone number is required'),
-  body('message').trim().isLength({ min: 10 }).withMessage('Message must be at least 10 characters'),
+  body('senderPhone').optional({ nullable: true, checkFalsy: true }).matches(/^[+]?[0-9\s\-\(\)]{10,15}$/).withMessage('Valid phone number required if provided'),
+  body('message').trim().isLength({ min: 1 }).withMessage('Message cannot be empty'),
   body('propertyTitle').trim().notEmpty().withMessage('Property title is required')
 ], (req, res) => {
   try {

@@ -26,6 +26,11 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
 
   const messageValue = watch('message')
 
+  // Helper function to get user ID
+  const getUserId = () => {
+    return user?.id || user?.email || 'anonymous'
+  }
+
   const quickMessageCategories = {
     "💬 General": [
       "Hello! I'm interested in this property.",
@@ -154,15 +159,18 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
     setIsTyping(true)
 
     try {
-      const response = await api.post('/messages', {
+      const messageData = {
         propertyId: property.id,
         ownerId: property.ownerId,
         senderName: user.name,
         senderEmail: user.email,
-        senderPhone: user.phone || '',
+        senderPhone: user.phone || '+91 0000000000',
         message: data.message,
         propertyTitle: property.title
-      })
+      };
+      
+      console.log('Sending message with data:', messageData);
+      const response = await api.post('/messages', messageData)
 
       // Update message status to sent
       setMessages(prev => 
@@ -191,6 +199,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
       toast.success('Message sent! The owner will respond shortly.')
     } catch (error) {
       console.error('Send message error:', error)
+      console.error('Error response:', error.response?.data)
       setIsTyping(false)
       // Update message status to failed
       setMessages(prev => 
@@ -200,7 +209,12 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
             : msg
         )
       )
-      toast.error('Failed to send message')
+      
+      // Show specific error message if available
+      const errorMessage = error.response?.data?.errors?.[0]?.msg || 
+                          error.response?.data?.error || 
+                          'Failed to send message'
+      toast.error(errorMessage)
     }
   }
 
@@ -229,7 +243,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
     } else if (lowerMessage.includes('location') || lowerMessage.includes('metro') || lowerMessage.includes('transport')) {
       reply = `Great location! Nearest metro is just 5 mins walk. Bus stop right outside. Easy connectivity to major IT hubs and colleges. Very convenient for daily commute.`
     } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('interested')) {
-      reply = `Hello! Thanks for your interest in the property. I'd be happy to help you with all details. What would you like to know first - rent, amenities, or visit timing?`
+      reply = `Owner will get back to you shortly`
     } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
       reply = `You're welcome! Feel free to ask any other questions. I'm here to help. When would you like to visit the property?`
     } else {

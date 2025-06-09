@@ -164,7 +164,7 @@ const ContactOwnerModal = ({ isOpen, onClose, property }) => {
                   <textarea
                     {...register('message', { 
                       required: 'Message is required',
-                      minLength: { value: 10, message: 'Message must be at least 10 characters' }
+                      minLength: { value: 1, message: 'Message cannot be empty' }
                     })}
                     rows={4}
                     className="input"
