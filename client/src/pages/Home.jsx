@@ -236,7 +236,7 @@ const Home = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
               Premium Amenities
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300">
+            <p className="text-xl text-gray-700 dark:text-white">
               Enjoy world-class facilities at affordable prices
             </p>
           </motion.div>
