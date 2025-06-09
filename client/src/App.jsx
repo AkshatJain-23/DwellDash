@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import RAGChatbot from './components/RAGChatbot'
+import EnhancedRAGChatbot from './components/EnhancedRAGChatbot'
 import ProtectedRoute from './components/ProtectedRoute'
 
 // Pages
@@ -56,7 +56,7 @@ function App() {
             </Routes>
           </main>
           <Footer />
-          <RAGChatbot />
+          <EnhancedRAGChatbot />
         </div>
       </Router>
     </AuthProvider>
