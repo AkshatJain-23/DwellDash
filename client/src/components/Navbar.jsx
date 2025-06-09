@@ -72,7 +72,7 @@ const Navbar = () => {
                 <li>
                   <Link
                     to="/properties"
-                    className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                    className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     Home
                   </Link>
@@ -81,7 +81,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/about"
-                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
                 </Link>
@@ -89,7 +89,7 @@ const Navbar = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
                 </Link>
@@ -128,7 +128,7 @@ const Navbar = () => {
                 {user?.role === 'owner' && !isBrowsingAsTenant() && (
                   <Link
                     to="/add-property"
-                    className="bg-light-secondary dark:bg-accent-dark text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-light-primary dark:hover:bg-accent-medium transition-colors flex items-center"
+                    className="bg-green-600 dark:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-700 dark:hover:bg-green-600 transition-colors flex items-center"
                   >
                     <Plus className="w-4 h-4 mr-1" />
                     Add Property
@@ -137,7 +137,7 @@ const Navbar = () => {
                 <div className="relative" ref={profileDropdownRef}>
                   <button 
                     onClick={toggleProfileDropdown}
-                    className="flex items-center space-x-1 text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium"
+                    className="flex items-center space-x-1 text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium"
                   >
                     <User className="w-4 h-4" />
                     <span>{user?.name}</span>
@@ -171,16 +171,16 @@ const Navbar = () => {
                 <div className="flex items-center ml-3 space-x-4">
                 <Link
                   to="/login"
-                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-light-secondary dark:bg-accent-dark text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-light-primary dark:hover:bg-accent-medium transition-colors"
+                  className="bg-blue-600 dark:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
                 >
                   Get Started
-                                  </Link>
+                </Link>
                 </div>
               )}
             </div>
@@ -212,7 +212,7 @@ const Navbar = () => {
               {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
                 <Link
                   to="/properties"
-                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light block px-3 py-2 rounded-md text-base font-medium"
+                  className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
                   onClick={closeMobileMenu}
                 >
                   <Home className="w-4 h-4 inline mr-2" />
@@ -221,14 +221,14 @@ const Navbar = () => {
               )}
               <Link
                 to="/about"
-                className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={closeMobileMenu}
               >
                 About
               </Link>
               <Link
                 to="/contact"
-                className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light block px-3 py-2 rounded-md text-base font-medium"
+                className="text-gray-700 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400 block px-3 py-2 rounded-md text-base font-medium"
                 onClick={closeMobileMenu}
               >
                 Contact
