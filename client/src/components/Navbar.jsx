@@ -65,41 +65,41 @@ const Navbar = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="d-none d-lg-flex align-items-center">
-            <ul className="navbar-nav me-auto mb-0">
+          <div className="hidden lg:flex items-center">
+            <ul className="flex items-center space-x-6 mb-0">
               {/* Only show Properties link if user is not in Owner Mode */}
               {(!user || user.role !== 'owner' || isBrowsingAsTenant()) && (
-                <li className="nav-item">
+                <li>
                   <Link
                     to="/properties"
-                    className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                    className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
                   >
                     Home
                   </Link>
                 </li>
               )}
-              <li className="nav-item">
+              <li>
                 <Link
                   to="/about"
-                  className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   About
                 </Link>
               </li>
-              <li className="nav-item">
+              <li>
                 <Link
                   to="/contact"
-                  className="nav-link text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 text-decoration-none"
+                  className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Contact
                 </Link>
               </li>
             </ul>
-            <div className="d-flex align-items-center ms-3">
+            <div className="flex items-center ml-3">
               <ThemeToggle />
             
               {isAuthenticated ? (
-                <div className="d-flex align-items-center ms-3">
+                <div className="flex items-center ml-3 space-x-4">
                 {/* View Mode Toggle for Owners */}
                 {user?.role === 'owner' && (
                   <button
@@ -168,7 +168,7 @@ const Navbar = () => {
                 </div>
                 </div>
               ) : (
-                <div className="d-flex align-items-center ms-3">
+                <div className="flex items-center ml-3 space-x-4">
                 <Link
                   to="/login"
                   className="text-gray-700 dark:text-white hover:text-light-secondary dark:hover:text-accent-light px-3 py-2 rounded-md text-sm font-medium transition-colors"
@@ -187,11 +187,11 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <div className="d-lg-none d-flex align-items-center">
+          <div className="lg:hidden flex items-center">
             <ThemeToggle />
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="navbar-toggler ms-2 border-0 p-1"
+              className="ml-2 border-0 p-1"
               type="button"
               aria-label="Toggle navigation"
             >
