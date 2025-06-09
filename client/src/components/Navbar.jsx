@@ -51,7 +51,7 @@ const Navbar = () => {
   }, [])
 
   return (
-    <nav className="navbar navbar-expand-lg bg-white dark:bg-accent-black shadow-lg border-b border-gray-200 dark:border-accent-dark transition-colors duration-300">
+    <nav className="navbar navbar-expand-lg bg-white dark:bg-gray-900 shadow-lg border-b border-gray-200 dark:border-gray-700 transition-colors duration-300">
       <div className="container-fluid max-w-7xl mx-auto px-3 px-sm-4 px-lg-5">
         <div className="d-flex justify-content-between align-items-center w-100" style={{ minHeight: '4rem' }}>
           {/* Logo and brand */}
@@ -196,9 +196,9 @@ const Navbar = () => {
               aria-label="Toggle navigation"
             >
               {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-black dark:text-gray-800" />
+                <X className="h-6 w-6 text-black dark:text-white" />
               ) : (
-                <Menu className="h-6 w-6 text-black dark:text-gray-800" />
+                <Menu className="h-6 w-6 text-black dark:text-white" />
               )}
             </button>
           </div>
