@@ -98,3 +98,5 @@ server/uploads/*
 
 # Local configuration files
 config/local.js 
+node_modules
+node_modules
