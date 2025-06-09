@@ -160,10 +160,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-800 mb-4">
               Popular Cities
             </h2>
-            <p className="text-xl text-gray-700 dark:text-accent-light">
+            <p className="text-xl text-gray-700 dark:text-gray-700">
               Explore PG accommodations in top cities across India
             </p>
           </motion.div>
@@ -179,8 +179,8 @@ const Home = () => {
                 onClick={() => handleCityClick(city.name)}
               >
                 <div className="text-4xl mb-3">{city.image}</div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">{city.name}</h3>
-                <p className="text-sm text-gray-600 dark:text-accent-light">{city.count}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-800 mb-1">{city.name}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-700">{city.count}</p>
               </motion.div>
             ))}
           </div>
@@ -196,10 +196,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-800 mb-4">
               Why Choose DwellDash?
             </h2>
-            <p className="text-xl text-gray-700 dark:text-accent-light">
+            <p className="text-xl text-gray-700 dark:text-gray-700">
               We make finding your perfect PG simple, safe, and stress-free
             </p>
           </motion.div>
@@ -216,8 +216,8 @@ const Home = () => {
                 <div className="w-12 h-12 bg-light-accent dark:bg-accent-light rounded-lg flex items-center justify-center mx-auto mb-4">
                   <feature.icon className="w-6 h-6 text-light-secondary dark:text-accent-dark" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">{feature.title}</h3>
-                <p className="text-gray-700 dark:text-accent-light">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-800 mb-2">{feature.title}</h3>
+                <p className="text-gray-700 dark:text-gray-700">{feature.description}</p>
               </motion.div>
             ))}
           </div>
@@ -233,10 +233,10 @@ const Home = () => {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-800 mb-4">
               Premium Amenities
             </h2>
-            <p className="text-xl text-gray-700 dark:text-accent-light">
+            <p className="text-xl text-gray-700 dark:text-gray-700">
               Enjoy world-class facilities at affordable prices
             </p>
           </motion.div>
@@ -253,7 +253,7 @@ const Home = () => {
                 <div className="w-16 h-16 bg-light-accent dark:bg-accent-light rounded-full flex items-center justify-center mx-auto mb-4">
                   <amenity.icon className="w-8 h-8 text-light-secondary dark:text-accent-dark" />
                 </div>
-                <h3 className="text-lg font-medium text-gray-900 dark:text-white">{amenity.name}</h3>
+                <h3 className="text-lg font-medium text-gray-900 dark:text-gray-800">{amenity.name}</h3>
               </motion.div>
             ))}
           </div>
