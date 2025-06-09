@@ -60,7 +60,7 @@ const Navbar = () => {
               <DwellDashLogo 
                 className="h-10 w-10 me-2" 
               />
-              <span className="fs-4 fw-bold text-gray-900 dark:text-white">DwellDash</span>
+              <span className="text-xl font-bold text-gray-900 dark:text-white">DwellDash</span>
             </Link>
           </div>
 
