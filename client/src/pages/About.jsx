@@ -1,19 +1,15 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Users, Heart, Shield, Target, Award, MapPin } from 'lucide-react'
-import DwellDashLogo from '../components/DwellDashLogo'
-import { api } from '../utils/api'
-import toast from 'react-hot-toast'
+import { Users, Heart, Shield, Target, Award, MapPin, CheckCircle, Star, Building2, TrendingUp, Clock, Eye, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const About = () => {
   const [stats, setStats] = useState([
-    { number: "Loading...", label: "Happy Tenants" },
-    { number: "Loading...", label: "Verified Properties" },
-    { number: "Loading...", label: "Cities Covered" },
-    { number: "Loading...", label: "Satisfaction Rate" }
+    { number: "50,000+", label: "Happy Tenants", icon: Users, color: "text-app-success" },
+    { number: "8,000+", label: "Verified Properties", icon: Building2, color: "text-app-primary" },
+    { number: "25+", label: "Cities Covered", icon: MapPin, color: "text-app-secondary" },
+    { number: "4.8/5", label: "Average Rating", icon: Star, color: "text-app-warning" }
   ])
-  const [isLoadingStats, setIsLoadingStats] = useState(true)
 
   const features = [
     {
