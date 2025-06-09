@@ -67,9 +67,9 @@ const About = () => {
   ]
 
   return (
-    <div className="min-h-screen bg-app-accent">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-app-secondary to-app-secondary/90 text-white overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-900 to-blue-800 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-app-primary/10 to-transparent"></div>
         
@@ -81,7 +81,7 @@ const About = () => {
             className="text-center max-w-4xl mx-auto"
           >
             <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              About <span className="text-app-primary">DwellDash</span>
+              About <span className="text-orange-400">DwellDash</span>
             </h1>
             <p className="text-xl lg:text-2xl mb-8 text-gray-200 leading-relaxed">
               India's most trusted PG booking platform, revolutionizing how students and professionals find their perfect home away from home.
@@ -116,13 +116,13 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="text-center group"
               >
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${stat.color} bg-opacity-10 mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <stat.icon className={`w-8 h-8 ${stat.color}`} />
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-orange-100 mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <stat.icon className="w-8 h-8 text-orange-600" />
                 </div>
-                <div className="text-3xl lg:text-4xl font-bold text-app-text mb-2">
+                <div className="text-3xl lg:text-4xl font-bold text-gray-900 mb-2">
                   {stat.number}
                 </div>
-                <div className="text-app-muted font-medium">
+                <div className="text-gray-600 font-medium">
                   {stat.label}
                 </div>
               </motion.div>
@@ -132,7 +132,7 @@ const About = () => {
       </section>
 
       {/* Our Story Section */}
-      <section className="py-20 bg-app-accent">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div
@@ -140,10 +140,10 @@ const About = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h2 className="text-3xl lg:text-5xl font-bold text-app-text mb-8">
-                Our <span className="text-app-primary">Story</span>
+              <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-8">
+                Our <span className="text-orange-600">Story</span>
               </h2>
-              <div className="space-y-6 text-lg text-app-muted leading-relaxed">
+              <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                 <p>
                   DwellDash was born from personal frustration with India's broken PG ecosystem. Our founders experienced firsthand the challenges of finding quality accommodations - hidden charges, unverified properties, and endless broker calls.
                 </p>
@@ -158,14 +158,14 @@ const About = () => {
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
                   to="/properties"
-                  className="inline-flex items-center px-6 py-3 bg-app-primary text-white rounded-xl font-semibold hover:bg-app-primary/90 transition-colors"
+                  className="inline-flex items-center px-6 py-3 bg-orange-600 text-white rounded-xl font-semibold hover:bg-orange-700 transition-colors"
                 >
                   Explore Properties
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
                 <Link
                   to="/contact"
-                  className="inline-flex items-center px-6 py-3 border-2 border-app-primary text-app-primary rounded-xl font-semibold hover:bg-app-primary hover:text-white transition-colors"
+                  className="inline-flex items-center px-6 py-3 border-2 border-orange-600 text-orange-600 rounded-xl font-semibold hover:bg-orange-600 hover:text-white transition-colors"
                 >
                   Contact Us
                 </Link>
@@ -192,9 +192,9 @@ const About = () => {
                         <span className="inline-block mt-2 px-3 py-1 bg-app-success/10 text-app-success text-xs rounded-full font-medium">
                           {milestone.achievement}
                         </span>
-                      </div>
                     </div>
-                  ))}
+                  </div>
+                ))}
                 </div>
               </div>
             </motion.div>
@@ -300,14 +300,14 @@ const About = () => {
               Join 50,000+ students and professionals who've found their ideal home with DwellDash
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/properties"
+              <Link 
+                to="/properties" 
                 className="inline-flex items-center px-8 py-4 bg-white text-app-primary rounded-xl font-bold hover:bg-gray-100 transition-colors"
               >
                 Browse Properties
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link
+              <Link 
                 to="/register"
                 className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-app-primary transition-colors"
               >
