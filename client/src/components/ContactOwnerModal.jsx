@@ -148,7 +148,7 @@ const ContactOwnerModal = ({ isOpen, onClose, property }) => {
                       })}
                       type="tel"
                       className="input pl-10"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 84260 76800"
                     />
                   </div>
                   {errors.phone && (
@@ -164,7 +164,7 @@ const ContactOwnerModal = ({ isOpen, onClose, property }) => {
                   <textarea
                     {...register('message', { 
                       required: 'Message is required',
-                      minLength: { value: 10, message: 'Message must be at least 10 characters' }
+                      minLength: { value: 1, message: 'Message cannot be empty' }
                     })}
                     rows={4}
                     className="input"

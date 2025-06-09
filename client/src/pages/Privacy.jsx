@@ -181,8 +181,8 @@ Your continued use of our services after the effective date of the updated polic
       icon: UserCheck,
       content: `If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
 
-Email: privacy@dwelldash.com
-Phone: +91 98765 43210
+Email: dwelldash3@gmail.com<br />
+Phone: +91 84260 76800
 Address: Plot No. 123, Cyber City, Sector 39, Gurgaon, Haryana 122001
 
 Data Protection Officer: dpo@dwelldash.com

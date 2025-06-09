@@ -32,7 +32,7 @@
       "id": "support_help",
       "category": "Customer Support",
       "title": "Getting Help and Customer Support",
-      "content": "DwellDash provides comprehensive customer support: 1) Instant help through DwellBot (this AI chatbot) available 24/7, 2) Email support at dwelldash3@gmail.com with average response time of 2 hours for urgent issues, 3) Phone support at +91 98765 43210 (Monday-Saturday, 9 AM-8 PM), 4) Physical offices in Gurgaon, Bangalore, and Mumbai for in-person assistance. Our dedicated support team handles booking issues, payment problems, property disputes, and general inquiries with a customer-first approach.",
+      "content": "DwellDash provides comprehensive customer support: 1) Instant help through DwellBot (this AI chatbot) available 24/7, 2) Email support at dwelldash3@gmail.com with average response time of 2 hours for urgent issues, 3) Phone support at +91 84260 76800 (Monday-Saturday, 9 AM-8 PM), 4) Physical offices in Gurgaon, Bangalore, and Mumbai for in-person assistance. Our dedicated support team handles booking issues, payment problems, property disputes, and general inquiries with a customer-first approach.",
       "keywords": ["support", "help", "contact", "customer service", "phone", "email", "assistance", "problem", "issue"]
     },
     {
@@ -100,17 +100,46 @@
     },
     {
       "question": "What if I face issues with my accommodation?",
-      "answer": "Contact our 24/7 support at dwelldash3@gmail.com or +91 98765 43210. We have dedicated teams to resolve property-related issues quickly."
+      "answer": "Contact our 24/7 support at dwelldash3@gmail.com or +91 84260 76800. We have dedicated teams to resolve property-related issues quickly."
     },
     {
       "question": "How secure are online payments?",
       "answer": "All payments are processed through PCI DSS compliant secure gateways with 256-bit SSL encryption. Your financial information is completely safe."
+    },
+    {
+      "question": "How can I contact customer support?",
+      "answer": "You can contact our support team through: 1) Live chat on our website, 2) Email at dwelldash3@gmail.com for urgent issues, 3) Phone support at +91 84260 76800 (Monday-Saturday, 9 AM-8 PM), 4) Physical offices in Gurgaon, Bangalore, and Mumbai for in-person assistance. Our dedicated support team handles booking issues, payment problems, property concerns, and general inquiries with an average response time of 2 hours for urgent matters.",
+      "category": "support"
+    },
+    {
+      "question": "What is DwellDash?",
+      "answer": "DwellDash is India's most trusted PG booking platform that connects tenants with verified property owners. We offer zero brokerage for tenants, comprehensive property verification, and operate in 50+ cities across India with 24/7 customer support."
+    },
+    {
+      "question": "How do I search for properties?",
+      "answer": "Use our advanced search filters on the homepage or properties page. Filter by location, budget, room type, amenities, and more. You can also sort results by price, rating, or distance from landmarks."
+    },
+    {
+      "question": "Can I get a refund if I cancel my booking?",
+      "answer": "Yes! Our refund policy offers: Full refund (100%) for cancellations 7+ days before move-in, 50% refund for cancellations 3-7 days before move-in, and no refund for cancellations within 3 days. Emergency exceptions are considered case-by-case."
+    },
+    {
+      "question": "Are there any hidden charges?",
+      "answer": "No hidden charges at all! DwellDash is completely free for tenants. No registration fees, booking charges, or commission. For property owners, we charge only 2-3% commission after successful bookings."
+    },
+    {
+      "question": "How do I know if a property is genuine?",
+      "answer": "All properties on DwellDash undergo strict verification: document verification, physical inspection, owner background checks, and amenity confirmation. Look for the 'Verified' badge on listings."
+    },
+    {
+      "question": "What payment methods do you accept?",
+      "answer": "We accept UPI, net banking, credit/debit cards, and digital wallets. All payments are secured with 256-bit SSL encryption and processed through PCI DSS compliant gateways."
     }
   ],
   "quick_responses": [
     "I can help you with finding PG accommodations, listing properties, pricing information, safety features, and platform support.",
     "DwellDash is India's most trusted PG booking platform with 50+ cities, verified properties, and zero brokerage for tenants.",
     "Our verification process ensures all properties are genuine, safe, and exactly as described in the listings.",
-    "You can reach our support team at dwelldash3@gmail.com or +91 98765 43210 for immediate assistance."
+    "You can reach our support team at dwelldash3@gmail.com or +91 84260 76800 for immediate assistance."
   ]
 } 

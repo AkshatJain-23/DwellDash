@@ -146,6 +146,20 @@ router.get('/', (req, res) => {
       );
     }
 
+    // Sort properties: Featured first, then verified, then by creation date
+    filteredProperties.sort((a, b) => {
+      // Featured properties first
+      if (a.isFeatured && !b.isFeatured) return -1;
+      if (!a.isFeatured && b.isFeatured) return 1;
+      
+      // Then verified properties
+      if (a.isVerified && !b.isVerified) return -1;
+      if (!a.isVerified && b.isVerified) return 1;
+      
+      // Finally by creation date (newest first)
+      return new Date(b.createdAt) - new Date(a.createdAt);
+    });
+
     // Pagination
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
@@ -155,7 +169,9 @@ router.get('/', (req, res) => {
       properties: paginatedProperties,
       totalCount: filteredProperties.length,
       currentPage: parseInt(page),
-      totalPages: Math.ceil(filteredProperties.length / limit)
+      totalPages: Math.ceil(filteredProperties.length / limit),
+      featuredCount: filteredProperties.filter(p => p.isFeatured).length,
+      verifiedCount: filteredProperties.filter(p => p.isVerified).length
     });
   } catch (error) {
     console.error('Properties fetch error:', error);
@@ -305,6 +321,152 @@ router.get('/owner/my-properties', authenticateToken, (req, res) => {
     const ownerProperties = properties.filter(p => p.ownerId === req.user.userId);
     res.json(ownerProperties);
   } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Admin route to verify property (admin only)
+router.put('/:id/verify', authenticateToken, async (req, res) => {
+  try {
+    // Check if user is admin (you can modify this check based on your admin system)
+    const usersFile = path.join(__dirname, '../data/users.json');
+    let users = [];
+    
+    try {
+      if (fs.existsSync(usersFile)) {
+        users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+      }
+    } catch (error) {
+      console.log('No users file found');
+    }
+
+    const user = users.find(u => u.id === req.user.userId);
+    
+    // For now, allow any authenticated user to verify (you can add admin role check later)
+    // if (user?.role !== 'admin') {
+    //   return res.status(403).json({ error: 'Only admins can verify properties' });
+    // }
+
+    const propertyIndex = properties.findIndex(p => p.id === req.params.id);
+    if (propertyIndex === -1) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    const { isVerified } = req.body;
+    
+    properties[propertyIndex].isVerified = isVerified;
+    properties[propertyIndex].verifiedAt = isVerified ? new Date().toISOString() : null;
+    properties[propertyIndex].verifiedBy = isVerified ? req.user.userId : null;
+    properties[propertyIndex].updatedAt = new Date().toISOString();
+
+    saveProperties();
+
+    res.json({ 
+      message: `Property ${isVerified ? 'verified' : 'unverified'} successfully`,
+      property: properties[propertyIndex]
+    });
+  } catch (error) {
+    console.error('Property verification error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Admin route to feature property (admin only)
+router.put('/:id/feature', authenticateToken, async (req, res) => {
+  try {
+    // Check if user is admin (you can modify this check based on your admin system)
+    const usersFile = path.join(__dirname, '../data/users.json');
+    let users = [];
+    
+    try {
+      if (fs.existsSync(usersFile)) {
+        users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+      }
+    } catch (error) {
+      console.log('No users file found');
+    }
+
+    const user = users.find(u => u.id === req.user.userId);
+    
+    // For now, allow any authenticated user to feature (you can add admin role check later)
+    // if (user?.role !== 'admin') {
+    //   return res.status(403).json({ error: 'Only admins can feature properties' });
+    // }
+
+    const propertyIndex = properties.findIndex(p => p.id === req.params.id);
+    if (propertyIndex === -1) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    const { isFeatured, featuredUntil } = req.body;
+    
+    properties[propertyIndex].isFeatured = isFeatured;
+    properties[propertyIndex].featuredAt = isFeatured ? new Date().toISOString() : null;
+    properties[propertyIndex].featuredUntil = featuredUntil || null;
+    properties[propertyIndex].featuredBy = isFeatured ? req.user.userId : null;
+    properties[propertyIndex].updatedAt = new Date().toISOString();
+
+    saveProperties();
+
+    res.json({ 
+      message: `Property ${isFeatured ? 'featured' : 'unfeatured'} successfully`,
+      property: properties[propertyIndex]
+    });
+  } catch (error) {
+    console.error('Property featuring error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Get featured properties
+router.get('/featured', (req, res) => {
+  try {
+    const now = new Date().toISOString();
+    
+    const featuredProperties = properties.filter(property => 
+      property.isFeatured && 
+      property.isActive &&
+      (!property.featuredUntil || property.featuredUntil > now)
+    ).sort((a, b) => new Date(b.featuredAt) - new Date(a.featuredAt));
+
+    res.json(featuredProperties);
+  } catch (error) {
+    console.error('Featured properties fetch error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Get verified properties
+router.get('/verified', (req, res) => {
+  try {
+    const verifiedProperties = properties.filter(property => 
+      property.isVerified && property.isActive
+    ).sort((a, b) => new Date(b.verifiedAt) - new Date(a.verifiedAt));
+
+    res.json(verifiedProperties);
+  } catch (error) {
+    console.error('Verified properties fetch error:', error);
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Admin route to get property verification stats
+router.get('/admin/verification-stats', authenticateToken, (req, res) => {
+  try {
+    const totalProperties = properties.length;
+    const verifiedProperties = properties.filter(p => p.isVerified).length;
+    const featuredProperties = properties.filter(p => p.isFeatured).length;
+    const pendingVerification = properties.filter(p => !p.isVerified && p.isActive).length;
+
+    res.json({
+      totalProperties,
+      verifiedProperties,
+      featuredProperties,
+      pendingVerification,
+      verificationRate: totalProperties > 0 ? (verifiedProperties / totalProperties * 100).toFixed(1) : 0
+    });
+  } catch (error) {
+    console.error('Verification stats error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

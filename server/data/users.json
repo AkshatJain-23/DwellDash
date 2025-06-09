@@ -25,5 +25,23 @@
     "role": "owner",
     "phone": "+918426076800",
     "createdAt": "2025-06-08T07:38:47.735Z"
+  },
+  {
+    "id": "1749493895813",
+    "name": "Akshat Jain",
+    "email": "akshatjain6574@gmail.com",
+    "password": "$2a$10$eOaWHFGCh8CUW4KBd80wT.XWOu4b9ef0Z1KRg5c.oX7L1nxAaFIYW",
+    "role": "owner",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-09T18:31:35.813Z"
+  },
+  {
+    "id": "1749494536598",
+    "name": "Akshat Jain",
+    "email": "jain2003akshat@gmail.com",
+    "password": "$2a$10$xfh7sKeqDK7pEEzKKv/bG.DlZC4xktXdnaPXDOY.ChMbXLb8aeGga",
+    "role": "tenant",
+    "phone": "+918426076800",
+    "createdAt": "2025-06-09T18:42:16.598Z"
   }
 ]

@@ -67,7 +67,7 @@ router.post('/chat', chatbotRateLimit, async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'Internal server error. Please try again.',
-      fallback: "I apologize for the technical difficulty. Please contact our support team at dwelldash3@gmail.com or +91 98765 43210 for immediate assistance."
+      fallback: "I apologize for the technical difficulty. Please contact our support team at dwelldash3@gmail.com or +91 84260 76800 for immediate assistance."
     });
   }
 });

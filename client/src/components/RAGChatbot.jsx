@@ -39,7 +39,7 @@ const RAGChatbot = () => {
     },
     {
       topic: "support_help",
-        content: "Get support: 1) Use this chat for instant help, 2) Email us at dwelldash3@gmail.com, 3) Call +91 98765 43210 (Mon-Sat 9AM-8PM), 4) Visit our offices in Gurgaon, Bangalore, or Mumbai. Average response time: 2 hours for urgent issues."
+        content: "Get support: 1) Use this chat for instant help, 2) Email us at dwelldash3@gmail.com, 3) Call +91 84260 76800 (Mon-Sat 9AM-8PM), 4) Visit our offices in Gurgaon, Bangalore, or Mumbai. Average response time: 2 hours for urgent issues."
     },
     {
       topic: "safety_security",
@@ -133,7 +133,7 @@ const RAGChatbot = () => {
       } else if (queryLower.includes('contact') || queryLower.includes('support') || queryLower.includes('help')) {
         const supportInfo = knowledgeBase.find(item => item.topic === 'support_help')
         response = supportInfo ? supportInfo.content :
-                  "I'm here to help! 💬 You can also email dwelldash3@gmail.com or call +91 98765 43210. What specific help do you need?"
+                  "I'm here to help! 💬 You can also email dwelldash3@gmail.com or call +91 84260 76800. What specific help do you need?"
       } else if (queryLower.includes('cities') || queryLower.includes('location') || queryLower.includes('where')) {
         const locationInfo = knowledgeBase.find(item => item.topic === 'locations_cities')
         response = locationInfo ? locationInfo.content :

@@ -1,1 +1,15 @@
-[]
+[
+  {
+    "id": "1749495851028",
+    "propertyId": "1749494896025",
+    "ownerId": "1749493895813",
+    "senderName": "Akshat Jain",
+    "senderEmail": "jain2003akshat@gmail.com",
+    "senderPhone": "+918426076800",
+    "message": "when can i checkout this property?",
+    "propertyTitle": "Comfortable PG for Bachelores",
+    "sentAt": "2025-06-09T19:04:11.029Z",
+    "isRead": false,
+    "status": "sent"
+  }
+]

@@ -2,14 +2,18 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Users, Heart, Shield, Target, Award, MapPin, CheckCircle, Star, Building2, ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useStats } from '../contexts/StatsContext'
 
 const About = () => {
-  const [stats] = useState([
-    { number: "50,000+", label: "Happy Tenants", icon: Users, color: "text-app-success" },
-    { number: "8,000+", label: "Verified Properties", icon: Building2, color: "text-app-primary" },
-    { number: "25+", label: "Cities Covered", icon: MapPin, color: "text-app-secondary" },
-    { number: "4.8/5", label: "Average Rating", icon: Star, color: "text-app-warning" }
-  ])
+  const { getStat, getRawStat } = useStats()
+
+  // Dynamic stats using live data
+  const stats = [
+    { number: getStat('tenants'), label: "Happy Tenants", icon: Users, color: "text-app-success" },
+    { number: getStat('properties'), label: "Verified Properties", icon: Building2, color: "text-app-primary" },
+    { number: getStat('cities'), label: "Cities Covered", icon: MapPin, color: "text-app-secondary" },
+    { number: `${getRawStat('avgRating')}/5`, label: "Average Rating", icon: Star, color: "text-app-warning" }
+  ]
 
   const values = [
     {
@@ -38,31 +42,29 @@ const About = () => {
     }
   ]
 
+  // Dynamic milestones using live stats
   const milestones = [
     { year: "2023", title: "Founded", description: "DwellDash launched with a vision to transform PG hunting", achievement: "Platform Launch" },
     { year: "2023", title: "First 1,000", description: "Reached our first 1,000 happy tenants across 5 cities", achievement: "1K Tenants" },
-    { year: "2024", title: "Major Expansion", description: "Expanded to 25+ cities with 8,000+ verified properties", achievement: "25 Cities" },
-    { year: "2024", title: "50K+ Community", description: "Built India's largest PG community with 50,000+ members", achievement: "50K Users" }
+    { year: "2024", title: "Major Expansion", description: `Expanded to ${getStat('cities')} with ${getStat('properties')} verified properties`, achievement: `${getStat('cities')} Cities` },
+    { year: "2024", title: `${getStat('tenants')} Community`, description: `Built India's largest PG community with ${getStat('tenants')} members`, achievement: `${getStat('tenants')} Users` }
   ]
 
   const team = [
     {
       name: "Akshat Jain",
       role: "Founder & CEO",
-      description: "Visionary leader with expertise in PropTech and a passion for solving India's housing challenges.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face"
+      description: "Visionary leader with expertise in PropTech and a passion for solving India's housing challenges."
     },
     {
-      name: "Sarah Chen",
+      name: "Akshat Jain",
       role: "Co-Founder & CTO",
-      description: "Tech innovator focused on creating seamless digital experiences for modern property seekers.",
-      image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop&crop=face"
+      description: "Tech innovator focused on creating seamless digital experiences for modern property seekers."
     },
     {
-      name: "Rahul Sharma",
+      name: "Akshat Jain",
       role: "Head of Operations",
-      description: "Operations excellence expert ensuring quality standards across all our platform services.",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face"
+      description: "Operations excellence expert ensuring quality standards across all our platform services."
     }
   ]
 
@@ -97,7 +99,7 @@ const About = () => {
               </span>
               <span className="inline-flex items-center px-6 py-3 bg-app-warning/20 rounded-full text-app-warning font-semibold">
                 <Star className="w-5 h-5 mr-2" />
-                4.8+ Rating
+                {getRawStat('avgRating')}+ Rating
               </span>
             </div>
           </motion.div>
@@ -151,7 +153,7 @@ const About = () => {
                   In 2023, we decided to build the platform we wished existed. A place where trust comes first, transparency is guaranteed, and finding your perfect home is actually enjoyable.
                 </p>
                 <p>
-                  Today, we're proud to have revolutionized PG discovery for over 50,000 Indians, proving that technology can solve real housing challenges when built with genuine care.
+                  Today, we're proud to have revolutionized PG discovery for over {getStat('tenants')} Indians, proving that technology can solve real housing challenges when built with genuine care.
                 </p>
               </div>
               
@@ -192,9 +194,9 @@ const About = () => {
                         <span className="inline-block mt-2 px-3 py-1 bg-app-success/10 text-app-success text-xs rounded-full font-medium">
                           {milestone.achievement}
                         </span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -211,11 +213,11 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-app-text mb-6">
-              Our <span className="text-app-primary">Values</span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Our <span className="text-orange-600">Values</span>
             </h2>
-            <p className="text-xl text-app-muted max-w-3xl mx-auto">
-              The principles that guide everything we do and every decision we make
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The principles that guide everything we do and drive our commitment to revolutionizing India's PG ecosystem.
             </p>
           </motion.div>
 
@@ -226,15 +228,13 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group hover:scale-105 transition-transform duration-300"
+                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow border border-gray-100"
               >
-                <div className="bg-app-accent rounded-2xl p-8 h-full border border-app-border hover:shadow-xl transition-shadow duration-300">
-                  <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${value.color} text-white mb-6`}>
-                    <value.icon className="w-8 h-8" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-app-text mb-4">{value.title}</h3>
-                  <p className="text-app-muted leading-relaxed">{value.description}</p>
+                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl ${value.color} mb-6`}>
+                  <value.icon className="w-8 h-8 text-white" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">{value.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{value.description}</p>
               </motion.div>
             ))}
           </div>
@@ -242,7 +242,7 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-app-accent">
+      <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -250,11 +250,11 @@ const About = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-5xl font-bold text-app-text mb-6">
-              Meet Our <span className="text-app-primary">Team</span>
+            <h2 className="text-3xl lg:text-5xl font-bold text-gray-900 mb-6">
+              Meet Our <span className="text-orange-600">Team</span>
             </h2>
-            <p className="text-xl text-app-muted max-w-3xl mx-auto">
-              The passionate individuals working tirelessly to transform India's PG ecosystem
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              The passionate individuals working tirelessly to transform how India finds homes.
             </p>
           </motion.div>
 
@@ -265,20 +265,14 @@ const About = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group"
+                className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative mb-6">
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-24 h-24 rounded-full mx-auto object-cover ring-4 ring-app-primary/20"
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-app-text mb-2">{member.name}</h3>
-                  <p className="text-app-primary font-semibold mb-4">{member.role}</p>
-                  <p className="text-app-muted leading-relaxed">{member.description}</p>
+                <div className="relative w-32 h-32 mx-auto mb-6 bg-orange-100 rounded-full flex items-center justify-center border-4 border-orange-200">
+                  <span className="text-4xl font-bold text-orange-600">AJ</span>
                 </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
+                <p className="text-orange-600 font-semibold mb-4">{member.role}</p>
+                <p className="text-gray-600">{member.description}</p>
               </motion.div>
             ))}
           </div>
@@ -286,32 +280,34 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-app-primary to-app-primary/90 text-white">
+      <section className="py-20 bg-gradient-to-r from-orange-600 to-orange-700 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
           >
             <h2 className="text-3xl lg:text-5xl font-bold mb-6">
               Ready to Find Your Perfect PG?
             </h2>
-            <p className="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">
-              Join 50,000+ students and professionals who've found their ideal home with DwellDash
+            <p className="text-xl mb-8 text-orange-100">
+              Join {getStat('tenants')} happy tenants who found their ideal accommodation through DwellDash
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/properties" 
-                className="inline-flex items-center px-8 py-4 bg-white text-app-primary rounded-xl font-bold hover:bg-gray-100 transition-colors"
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+              <Link
+                to="/properties"
+                className="inline-flex items-center px-8 py-4 bg-white text-orange-600 rounded-xl font-bold hover:bg-gray-100 transition-colors"
               >
+                <Building2 className="w-5 h-5 mr-2" />
                 Browse Properties
-                <ArrowRight className="w-5 h-5 ml-2" />
               </Link>
-              <Link 
+              <Link
                 to="/register"
-                className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-app-primary transition-colors"
+                className="inline-flex items-center px-8 py-4 border-2 border-white text-white rounded-xl font-bold hover:bg-white hover:text-orange-600 transition-colors"
               >
-                List Your Property
+                <Users className="w-5 h-5 mr-2" />
+                Join Now
               </Link>
             </div>
           </motion.div>

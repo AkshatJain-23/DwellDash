@@ -7,6 +7,7 @@ import toast from 'react-hot-toast'
 import ImageWithFallback from '../components/ImageWithFallback'
 import CityInput from '../components/CityInput'
 import WhatsAppChat from '../components/WhatsAppChat'
+import PropertyCard from '../components/PropertyCard'
 import { POPULAR_CITIES, PROPERTY_TYPES, GENDER_PREFERENCES } from '../utils/constants'
 import { useAuth } from '../contexts/AuthContext'
 
@@ -48,7 +49,12 @@ const Properties = () => {
     housekeeping: '🧹',
     'study-area': '📚',
     cctv: '📹',
-    biometric: '👆'
+    biometric: '👆',
+    rooftop: '🏠',
+    gaming: '🎮',
+    library: '📚',
+    balcony: '🌿',
+    'beach-access': '🏖️'
   }
 
   useEffect(() => {
@@ -101,14 +107,6 @@ const Properties = () => {
       amenities: ''
     })
     setSearchParams({})
-  }
-
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      maximumFractionDigits: 0
-    }).format(price)
   }
 
   const handleWhatsAppChat = (property, e) => {
@@ -250,6 +248,18 @@ const Properties = () => {
               </div>
             </motion.div>
           )}
+
+          {/* Results Info */}
+          <div className="flex items-center justify-between">
+            <div className="text-sm text-gray-600">
+              Showing {properties.length} of {pagination.totalCount} properties
+            </div>
+            {properties.length > 0 && (
+              <div className="text-sm text-gray-500">
+                💡 Click any property to expand details, or use "View Full Details" for complete information
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -266,118 +276,44 @@ const Properties = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {properties.map((property, index) => (
-              <motion.div
+              <PropertyCard
                 key={property.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <Link to={`/properties/${property.id}`} className="block">
-                  <div className="property-card">
-                    {/* Property Image */}
-                    <div className="h-48 bg-gray-200 rounded-t-lg relative overflow-hidden">
-                      <ImageWithFallback
-                        src={property.images && property.images.length > 0 ? 
-                          (property.images[0].startsWith('http') ? property.images[0] : `http://localhost:5000${property.images[0]}`) 
-                          : null}
-                        alt={property.title}
-                        className="w-full h-full object-cover"
-                        fallbackIcon={Bed}
-                      />
-                      <div className="absolute top-2 right-2">
-                        <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                          property.gender === 'male' ? 'bg-blue-100 text-blue-800' :
-                          property.gender === 'female' ? 'bg-pink-100 text-pink-800' :
-                          'bg-green-100 text-green-800'
-                        }`}>
-                          {property.gender === 'any' ? 'Co-living' : property.gender}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Property Details */}
-                    <div className="p-4">
-                      <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-lg font-semibold text-gray-900 line-clamp-2">
-                          {property.title}
-                        </h3>
-                      </div>
-
-                      <div className="flex items-center text-gray-600 mb-2">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        <span className="text-sm">{property.city}</span>
-                      </div>
-
-                      <p className="text-gray-600 text-sm mb-3 line-clamp-2">
-                        {property.description}
-                      </p>
-
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="flex items-center">
-                          <IndianRupee className="w-4 h-4 text-green-600" />
-                          <span className="text-lg font-bold text-green-600">
-                            {formatPrice(property.rent)}
-                          </span>
-                          <span className="text-sm text-gray-500 ml-1">/month</span>
-                        </div>
-                        <div className="flex items-center text-sm text-gray-500">
-                          <Users className="w-4 h-4 mr-1" />
-                          {property.propertyType.replace('-', ' ')}
-                        </div>
-                      </div>
-
-                      {/* Amenities */}
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {property.amenities?.slice(0, 4).map((amenity) => {
-                          const IconComponent = amenityIcons[amenity]
-                          return (
-                            <div
-                              key={amenity}
-                              className="flex items-center bg-gray-100 rounded-full px-2 py-1 text-xs text-gray-600"
-                            >
-                              {typeof IconComponent === 'string' ? (
-                                <span className="mr-1">{IconComponent}</span>
-                              ) : IconComponent ? (
-                                <IconComponent className="w-3 h-3 mr-1" />
-                              ) : null}
-                              {amenity.replace('-', ' ')}
-                            </div>
-                          )
-                        })}
-                        {property.amenities?.length > 4 && (
-                          <div className="flex items-center bg-gray-100 rounded-full px-2 py-1 text-xs text-gray-600">
-                            +{property.amenities.length - 4} more
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Chat with Owner Button - Show if user is not the owner OR if owner is browsing as tenant */}
-                      {(user?.id !== property.ownerId || isBrowsingAsTenant()) ? (
-                        <button
-                          onClick={(e) => handleWhatsAppChat(property, e)}
-                          className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center gap-2 text-sm"
-                        >
-                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.924 15.386a1 1 0 0 0-.217-.324l-3.004-3.004a1 1 0 0 0-1.414 0L15.56 12.79a.25.25 0 0 1-.354 0L12.79 10.374a.25.25 0 0 1 0-.354l.732-.732a1 1 0 0 0 0-1.414L10.518 4.87a1 1 0 0 0-1.414 0L7.69 6.284a3 3 0 0 0-.879 2.121v.001a21.496 21.496 0 0 0 6.862 15.518a3 3 0 0 0 4.243 0l1.414-1.414a1 1 0 0 0 .217-.324L20.924 15.386z"/>
-                          </svg>
-                          Chat with Owner
-                        </button>
-                      ) : (
-                        <div className="w-full bg-blue-100 text-blue-800 font-medium py-2 px-4 rounded-md flex items-center justify-center gap-2 text-sm">
-                          <Users className="w-4 h-4" />
-                          Your Property
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
+                property={property}
+                index={index}
+                onWhatsAppChat={handleWhatsAppChat}
+                amenityIcons={amenityIcons}
+              />
             ))}
+          </div>
+        )}
+
+        {/* Pagination */}
+        {pagination.totalPages > 1 && (
+          <div className="flex justify-center mt-8">
+            <nav className="flex items-center space-x-2">
+              {Array.from({ length: pagination.totalPages }, (_, i) => i + 1).map((page) => (
+                <button
+                  key={page}
+                  onClick={() => {
+                    const newParams = new URLSearchParams(searchParams)
+                    newParams.set('page', page.toString())
+                    setSearchParams(newParams)
+                  }}
+                  className={`px-3 py-2 text-sm rounded-md ${
+                    page === pagination.currentPage
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-white text-gray-700 hover:bg-gray-50 border'
+                  }`}
+                >
+                  {page}
+                </button>
+              ))}
+            </nav>
           </div>
         )}
       </div>
 
-      {/* WhatsApp Chat - Show if user is authenticated and (not the owner OR if owner is browsing as tenant) */}
+      {/* WhatsApp Chat */}
       {selectedProperty && user && (user?.id !== selectedProperty.ownerId || isBrowsingAsTenant()) && (
         <WhatsAppChat
           isOpen={isWhatsAppChatOpen}

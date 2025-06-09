@@ -68,7 +68,7 @@ const IntegratedChatbot = () => {
     } else if (queryLower.includes('cities') || queryLower.includes('location') || queryLower.includes('where')) {
       response = "We operate in 50+ cities! 🏙️\n\nIncluding Delhi, Mumbai, Bangalore, Chennai, Pune, Hyderabad, Gurgaon, Noida, Kolkata, Ahmedabad, and more.\n\nWhich city are you looking for? 📍"
     } else if (queryLower.includes('contact') || queryLower.includes('support') || queryLower.includes('help')) {
-      response = "I'm here to help! 💬\n\n📧 Email: dwelldash3@gmail.com\n📞 Call: +91 98765 43210 (Mon-Sat 9AM-8PM)\n🏢 Visit our offices\n\nWhat can I help you with today?"
+      response = "I'm here to help! 💬\n\n📧 Email: dwelldash3@gmail.com\n📞 Call: +91 84260 76800 (Mon-Sat 9AM-8PM)\n🏢 Visit our offices\n\nWhat can I help you with today?"
     } else {
       // Handle common conversational patterns and irrelevant topics
       const greetings = ['hi', 'hello', 'hey', 'good morning', 'good afternoon', 'good evening']

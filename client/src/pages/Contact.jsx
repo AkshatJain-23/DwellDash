@@ -18,16 +18,16 @@ const Contact = () => {
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email Support",
-      details: "support@dwelldash.com",
+      title: "Email Us",
+      details: "dwelldash3@gmail.com",
       subtext: "24/7 Email Support",
       color: "bg-app-primary"
     },
     {
       icon: Phone,
-      title: "Phone Support",
-      details: "+91 98765 43210",
-      subtext: "Mon-Sat, 9 AM - 8 PM",
+      title: "Call Us",
+      details: "+91 84260 76800",
+      subtext: "Mon-Sat 9:00 AM - 8:00 PM",
       color: "bg-app-success"
     },
     {

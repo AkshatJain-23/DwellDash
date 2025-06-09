@@ -1,9 +1,11 @@
-import { Mail, Phone, MapPin, Building2, Users, Shield, Star, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Building2, Users, Shield, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useStats } from '../contexts/StatsContext'
 import DwellDashLogo from './DwellDashLogo'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
+  const { getStat, getRawStat } = useStats()
 
   const quickLinks = [
     { name: 'Browse PGs', href: '/properties' },
@@ -17,11 +19,12 @@ const Footer = () => {
     'Noida', 'Gurgaon', 'Kolkata', 'Ahmedabad', 'Kochi', 'Indore'
   ]
 
+  // Dynamic features using live stats
   const features = [
     { icon: Shield, text: 'Zero Brokerage' },
     { icon: Star, text: 'Verified Properties' },
-    { icon: Users, text: '50,000+ Happy Tenants' },
-    { icon: Building2, text: '8,000+ Properties' }
+    { icon: Users, text: `${getStat('tenants')} Happy Tenants` },
+    { icon: Building2, text: `${getStat('properties')} Properties` }
   ]
 
   return (
@@ -39,7 +42,7 @@ const Footer = () => {
               India's most trusted PG booking platform. Find verified accommodations with zero brokerage and complete transparency.
             </p>
 
-            {/* Key Features */}
+            {/* Key Features with Live Stats */}
             <div className="grid grid-cols-2 gap-3 mb-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-center space-x-2 text-sm text-gray-300">
@@ -49,21 +52,7 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
+
           </div>
 
           {/* Quick Links */}
@@ -119,6 +108,16 @@ const Footer = () => {
                 </Link>
               ))}
             </div>
+
+            {/* Trust Indicators */}
+            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+              <h4 className="text-white font-semibold mb-2">Trusted Platform</h4>
+              <div className="space-y-1 text-sm text-gray-300">
+                <div>✓ {getRawStat('satisfaction')}% Customer Satisfaction</div>
+                <div>✓ Zero Brokerage Guarantee</div>
+                <div>✓ Verified Properties Only</div>
+              </div>
+            </div>
           </div>
 
           {/* Contact & Support */}
@@ -129,8 +128,8 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-app-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm font-medium">Email Support</p>
-                  <a href="mailto:support@dwelldash.com" className="text-white hover:text-app-primary transition-colors">
-                    support@dwelldash.com
+                  <a href="mailto:dwelldash3@gmail.com" className="text-white hover:text-app-primary transition-colors">
+                    dwelldash3@gmail.com
                   </a>
                 </div>
               </div>
@@ -139,8 +138,8 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-app-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm font-medium">Phone Support</p>
-                  <a href="tel:+919876543210" className="text-white hover:text-app-primary transition-colors">
-                    +91 98765 43210
+                  <a href="tel:+918426076800" className="text-white hover:text-app-primary transition-colors">
+                    +91 84260 76800
                   </a>
                 </div>
               </div>
@@ -155,45 +154,40 @@ const Footer = () => {
                   </p>
                 </div>
               </div>
-            </div>
 
-            <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
-              <h4 className="text-white font-semibold mb-2">24/7 Support</h4>
-              <p className="text-gray-300 text-sm">
-                Need help? Our support team is available round the clock to assist you.
-              </p>
+              <div className="mt-6 p-4 bg-white/5 rounded-lg border border-white/10">
+                <h4 className="text-white font-semibold mb-2">Support Hours</h4>
+                <div className="space-y-1 text-sm text-gray-300">
+                  <div>Monday - Friday: 9 AM - 7 PM</div>
+                  <div>Saturday: 10 AM - 5 PM</div>
+                  <div>Sunday: Closed</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/10 bg-app-secondary/80">
+      {/* Bottom Footer */}
+      <div className="border-t border-white/10">
         <div className="container mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6">
-              <p className="text-gray-300 text-sm">
-                © {currentYear} DwellDash. All rights reserved.
-              </p>
-              <div className="flex items-center space-x-1 text-gray-300 text-xs">
-                <Shield className="w-4 h-4 text-app-success" />
-                <span>SSL Secured</span>
-              </div>
+            <div className="text-gray-400 text-sm">
+              © {currentYear} DwellDash. All rights reserved.
             </div>
-
-            <div className="flex flex-wrap justify-center md:justify-end items-center space-x-6 text-sm">
-              <Link to="/privacy" className="text-gray-300 hover:text-app-primary transition-colors">
+            <div className="flex flex-wrap gap-6 text-sm text-gray-400">
+              <Link to="/privacy" className="hover:text-app-primary transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="text-gray-300 hover:text-app-primary transition-colors">
+              <Link to="/terms" className="hover:text-app-primary transition-colors">
                 Terms of Service
               </Link>
-              <a href="#" className="text-gray-300 hover:text-app-primary transition-colors">
+              <Link to="/refund" className="hover:text-app-primary transition-colors">
+                Refund Policy
+              </Link>
+              <Link to="/sitemap" className="hover:text-app-primary transition-colors">
                 Sitemap
-              </a>
-              <a href="#" className="text-gray-300 hover:text-app-primary transition-colors">
-                Help Center
-              </a>
+              </Link>
             </div>
           </div>
         </div>
