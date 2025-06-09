@@ -1,28 +1,18 @@
 {
-  "name": "pgfinder-app",
+  "name": "dwelldash",
   "version": "1.0.0",
-  "description": "Full-stack PG listing platform similar to NoBroker for Paying Guest accommodations across India",
-  "main": "server/index.js",
+  "description": "DwellDash - PG Accommodation Platform",
   "scripts": {
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "cd server && npm run dev",
-    "client": "cd client && npm run dev",
-    "build": "cd client && npm run build",
-    "start": "cd server && npm start",
-    "install-all": "npm install && cd server && npm install && cd ../client && npm install",
+    "build": "cd client && npm install && npm run build",
     "install-client": "cd client && npm install",
-    "install-server": "cd server && npm install",
-    "build-production": "npm run install-all && npm run build",
-    "start-production": "NODE_ENV=production npm run start"
-  },
-  "keywords": ["pg", "property", "rental", "fullstack", "react", "nodejs"],
-  "author": "PGFinder Team",
-  "license": "MIT",
-  "devDependencies": {
-    "concurrently": "^8.2.2"
+    "start": "cd server && npm start",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\""
   },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=8.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 } 
