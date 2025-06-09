@@ -72,7 +72,7 @@ const Dashboard = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-600"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
       </div>
     )
   }
@@ -96,8 +96,8 @@ const Dashboard = () => {
                 className="bg-white rounded-lg shadow-sm p-6"
               >
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
-                    <Building className="w-6 h-6 text-primary-600" />
+                                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Building className="w-6 h-6 text-blue-600" />
                   </div>
                   <div className="ml-4">
                     <p className="text-sm text-gray-600">Total Properties</p>

@@ -152,10 +152,10 @@ const IntegratedChatbot = () => {
   return (
     <div className="bg-white rounded-lg shadow-lg border border-gray-200 h-[600px] flex flex-col">
       {/* Chat Header */}
-      <div className="flex items-center p-4 border-b border-gray-200 bg-light-secondary rounded-t-lg">
+              <div className="flex items-center p-4 border-b border-gray-200 bg-blue-600 rounded-t-lg">
         <div className="flex items-center">
-          <div className="w-10 h-10 bg-light-accent rounded-full flex items-center justify-center">
-            <Bot className="w-5 h-5 text-light-secondary" />
+                      <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                          <Bot className="w-5 h-5 text-blue-600" />
           </div>
           <div className="ml-3">
             <h3 className="text-white font-semibold">DwellBot</h3>
@@ -176,16 +176,16 @@ const IntegratedChatbot = () => {
             {message.type === 'bot' && (
               <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                 message.type === 'user' 
-                  ? 'bg-light-secondary' 
-                  : 'bg-light-accent'
-              }`}>
-                <Bot className="w-4 h-4 text-light-secondary" />
-              </div>
+                                  ? 'bg-blue-600'
+                : 'bg-blue-100'
+                              }`}>
+                  <Bot className="w-4 h-4 text-blue-600" />
+                </div>
             )}
             <div className={`rounded-lg p-3 max-w-xs ${
               message.type === 'user'
-                ? 'bg-light-secondary text-white'
-                : 'bg-gray-100 text-gray-900'
+                                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-100 text-gray-900'
             }`}>
               <p className="text-sm whitespace-pre-line">{message.content}</p>
             </div>
@@ -195,12 +195,12 @@ const IntegratedChatbot = () => {
         {/* Loading indicator */}
         {isLoading && (
           <div className="flex items-start space-x-2">
-            <div className="w-8 h-8 bg-light-accent rounded-full flex items-center justify-center">
-              <Bot className="w-4 h-4 text-light-secondary" />
+                          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                <Bot className="w-4 h-4 text-blue-600" />
             </div>
             <div className="bg-gray-100 rounded-lg p-3">
               <div className="flex items-center">
-                <Loader className="w-4 h-4 animate-spin text-light-secondary" />
+                <Loader className="w-4 h-4 animate-spin text-blue-600" />
                 <p className="text-sm text-gray-900">DwellBot is thinking...</p>
               </div>
             </div>
@@ -217,7 +217,7 @@ const IntegratedChatbot = () => {
               <button
                 key={index}
                 onClick={() => setInputMessage(question)}
-                className="text-xs bg-light-highlight text-gray-700 px-3 py-2 rounded hover:bg-light-secondary hover:text-white transition-colors text-left"
+                className="text-xs bg-blue-50 text-gray-700 px-3 py-2 rounded hover:bg-blue-600 hover:text-white transition-colors text-left"
               >
                 {question}
               </button>
@@ -235,13 +235,13 @@ const IntegratedChatbot = () => {
             onChange={(e) => setInputMessage(e.target.value)}
             onKeyPress={handleKeyPress}
             placeholder="Ask about properties, prices, locations..."
-            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-light-secondary"
+            className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
             disabled={isLoading}
           />
           <button
             onClick={handleSendMessage}
             disabled={!inputMessage.trim() || isLoading}
-            className="bg-light-secondary text-white px-4 py-2 rounded-lg hover:bg-light-primary disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center"
           >
             <Send className="w-4 h-4" />
           </button>

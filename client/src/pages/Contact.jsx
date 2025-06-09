@@ -81,8 +81,8 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-light-secondary via-light-primary to-light-accent text-gray-800">
-        <div className="absolute inset-0 bg-light-primary opacity-10"></div>
+              <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white">
+          <div className="absolute inset-0 bg-blue-500 opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -110,10 +110,10 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-light-highlight rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300"
+                                  className="bg-blue-50 rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-light-accent rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <info.icon className="w-6 h-6 text-light-secondary" />
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                                      <info.icon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
                 <p className="text-gray-800 font-medium mb-1">{info.details}</p>
@@ -125,7 +125,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Map Section */}
-      <section className="py-16 bg-light-primary">
+              <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
@@ -145,7 +145,7 @@ const Contact = () => {
                     <input
                       {...register('firstName', { required: 'First name is required' })}
                       type="text"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       placeholder="Enter your first name"
                     />
                     {errors.firstName && (
@@ -159,7 +159,7 @@ const Contact = () => {
                     <input
                       {...register('lastName', { required: 'Last name is required' })}
                       type="text"
-                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       placeholder="Enter your last name"
                     />
                     {errors.lastName && (
@@ -181,7 +181,7 @@ const Contact = () => {
                       }
                     })}
                     type="email"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Enter your email"
                   />
                   {errors.email && (
@@ -196,7 +196,7 @@ const Contact = () => {
                   <input
                     {...register('phone')}
                     type="tel"
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Enter your phone number"
                   />
                 </div>
@@ -207,7 +207,7 @@ const Contact = () => {
                   </label>
                   <select
                     {...register('subject', { required: 'Subject is required' })}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   >
                     <option value="">Select a subject</option>
                     <option value="general">General Inquiry</option>
@@ -228,7 +228,7 @@ const Contact = () => {
                   <textarea
                     {...register('message', { required: 'Message is required' })}
                     rows={5}
-                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-light-secondary focus:ring-light-secondary"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     placeholder="Tell us how we can help you..."
                   />
                   {errors.message && (
@@ -239,7 +239,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-light-secondary hover:bg-light-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   {isSubmitting ? (
                     <div className="flex items-center">
@@ -274,15 +274,15 @@ const Contact = () => {
               <div className="bg-white rounded-lg p-6 shadow-lg">
                 <h4 className="text-lg font-semibold text-gray-900 mb-4">Other Ways to Reach Us</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex items-center p-3 bg-light-highlight rounded-lg">
-                    <Phone className="w-6 h-6 text-light-secondary mr-3" />
+                  <div className="flex items-center p-3 bg-blue-50 rounded-lg">
+                    <Phone className="w-6 h-6 text-blue-600 mr-3" />
                     <div>
                       <h5 className="font-medium text-gray-900 text-sm">Call Support</h5>
                       <p className="text-xs text-gray-600">+91 98765 43210</p>
                     </div>
                   </div>
-                  <div className="flex items-center p-3 bg-light-highlight rounded-lg">
-                    <Mail className="w-6 h-6 text-light-secondary mr-3" />
+                  <div className="flex items-center p-3 bg-blue-50 rounded-lg">
+                    <Mail className="w-6 h-6 text-blue-600 mr-3" />
                     <div>
                       <h5 className="font-medium text-gray-900 text-sm">Email Support</h5>
                       <p className="text-xs text-gray-600">dwelldash3@gmail.com</p>
@@ -319,20 +319,20 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-light-highlight rounded-lg p-6"
+                className="bg-blue-50 rounded-lg p-6"
               >
                 <h3 className="text-xl font-bold text-gray-900 mb-4">{office.city} Office</h3>
                 <div className="space-y-3">
                   <div className="flex items-start">
-                    <MapPin className="w-5 h-5 text-light-secondary mr-2 mt-0.5" />
+                    <MapPin className="w-5 h-5 text-blue-600 mr-2 mt-0.5" />
                     <p className="text-sm text-gray-700">{office.address}</p>
                   </div>
                   <div className="flex items-center">
-                    <Phone className="w-5 h-5 text-light-secondary mr-2" />
+                    <Phone className="w-5 h-5 text-blue-600 mr-2" />
                     <p className="text-sm text-gray-700">{office.phone}</p>
                   </div>
                   <div className="flex items-center">
-                    <Mail className="w-5 h-5 text-light-secondary mr-2" />
+                    <Mail className="w-5 h-5 text-blue-600 mr-2" />
                     <p className="text-sm text-gray-700">{office.email}</p>
                   </div>
                 </div>

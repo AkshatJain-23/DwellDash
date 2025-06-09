@@ -126,7 +126,7 @@ const EditProperty = () => {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary-600"></div>
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
       </div>
     )
   }
@@ -350,7 +350,7 @@ const EditProperty = () => {
                   onClick={() => toggleAmenity(amenity)}
                   className={`p-3 rounded-lg border text-left transition-colors ${
                     selectedAmenities.includes(amenity)
-                      ? 'border-primary-600 bg-primary-50 text-primary-700'
+                      ? 'border-blue-600 bg-blue-50 text-blue-700'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >

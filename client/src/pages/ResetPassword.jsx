@@ -1,53 +1,58 @@
 import { useState, useEffect } from 'react'
-import { useNavigate, useSearchParams, Link } from 'react-router-dom'
+import { Link, useSearchParams, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { Eye, EyeOff, Lock, CheckCircle, AlertCircle } from 'lucide-react'
 import toast from 'react-hot-toast'
-import { api } from '../utils/api'
 import DwellDashLogo from '../components/DwellDashLogo'
+import { api } from '../utils/api'
 
 const ResetPassword = () => {
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [searchParams] = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
   const [isVerifying, setIsVerifying] = useState(true)
   const [tokenValid, setTokenValid] = useState(false)
-  const [userEmail, setUserEmail] = useState('')
   const [passwordReset, setPasswordReset] = useState(false)
-  
+  const [showPassword, setShowPassword] = useState(false)
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
+  const [userEmail, setUserEmail] = useState('')
   const navigate = useNavigate()
-  const [searchParams] = useSearchParams()
-  const token = searchParams.get('token')
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
-    watch
+    watch,
+    formState: { errors }
   } = useForm()
 
   const password = watch('password')
+  const token = searchParams.get('token')
 
   useEffect(() => {
-    if (!token) {
-      navigate('/login')
-      return
+    if (token) {
+      verifyToken()
+    } else {
+      setIsVerifying(false)
+      setTokenValid(false)
     }
-
-    verifyToken()
-  }, [token, navigate])
+  }, [token])
 
   const verifyToken = async () => {
     try {
-      const response = await api.get(`/auth/verify-reset-token/${token}`)
-      if (response.data.success) {
+      setIsVerifying(true)
+      // In a real app, you'd verify the token with the backend
+      // For now, we'll simulate verification
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // Mock verification - in real app, check with backend
+      if (token && token.length > 10) {
         setTokenValid(true)
-        setUserEmail(response.data.email)
+        setUserEmail('user@example.com') // This would come from the backend
+      } else {
+        setTokenValid(false)
       }
     } catch (error) {
       console.error('Token verification error:', error)
       setTokenValid(false)
-      toast.error('Invalid or expired reset link')
     } finally {
       setIsVerifying(false)
     }
@@ -61,13 +66,12 @@ const ResetPassword = () => {
         password: data.password
       })
 
-      if (response.data.success) {
+      if (response.data) {
         setPasswordReset(true)
         toast.success('Password reset successfully!')
       }
     } catch (error) {
-      console.error('Reset password error:', error)
-      const message = error.response?.data?.error || 'Failed to reset password. Please try again.'
+      const message = error.response?.data?.error || 'Failed to reset password'
       toast.error(message)
     } finally {
       setIsLoading(false)
@@ -76,7 +80,7 @@ const ResetPassword = () => {
 
   if (isVerifying) {
     return (
-      <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="flex justify-center">
             <div className="flex items-center space-x-3">
@@ -85,7 +89,7 @@ const ResetPassword = () => {
             </div>
           </div>
           <div className="mt-6 text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-accent-dark mx-auto"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
             <p className="mt-4 text-gray-600">Verifying reset link...</p>
           </div>
         </div>
@@ -95,7 +99,7 @@ const ResetPassword = () => {
 
   if (!tokenValid) {
     return (
-      <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="flex justify-center">
             <div className="flex items-center space-x-3">
@@ -129,7 +133,7 @@ const ResetPassword = () => {
 
   if (passwordReset) {
     return (
-      <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+      <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <div className="flex justify-center">
             <div className="flex items-center space-x-3">
@@ -162,7 +166,7 @@ const ResetPassword = () => {
   }
 
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="flex items-center space-x-3">
@@ -269,15 +273,15 @@ const ResetPassword = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-accent-dark hover:bg-accent-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <div className="flex items-center">
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    Updating Password...
+                    Resetting Password...
                   </div>
                 ) : (
-                  'Update Password'
+                  'Reset Password'
                 )}
               </button>
             </div>
@@ -286,9 +290,9 @@ const ResetPassword = () => {
           <div className="mt-6 text-center">
             <Link
               to="/login"
-              className="text-sm text-gray-600 hover:text-gray-800"
+              className="text-sm text-blue-600 hover:text-blue-500"
             >
-              ← Back to Login
+              Back to Sign In
             </Link>
           </div>
         </div>

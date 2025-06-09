@@ -18,13 +18,13 @@ import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import ImageTest from './pages/ImageTest'
 import ProtectedRoute from './components/ProtectedRoute'
-import RAGChatbot from './components/RAGChatbot'
+import EnhancedRAGChatbot from './components/EnhancedRAGChatbot'
 
 function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex flex-col transition-colors duration-300">
+        <div className="min-h-screen bg-gray-50 flex flex-col">
         <Navbar />
         <main className="flex-1">
           <Routes>
@@ -57,7 +57,7 @@ function App() {
           </Routes>
         </main>
         <Footer />
-        <RAGChatbot />
+        <EnhancedRAGChatbot />
         </div>
       </AuthProvider>
     </ThemeProvider>

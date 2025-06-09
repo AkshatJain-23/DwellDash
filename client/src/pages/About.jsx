@@ -96,8 +96,8 @@ const About = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-light-secondary via-light-primary to-light-accent text-gray-800">
-        <div className="absolute inset-0 bg-light-primary opacity-10"></div>
+              <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 text-white">
+          <div className="absolute inset-0 bg-blue-500 opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -144,7 +144,7 @@ const About = () => {
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="bg-light-primary rounded-lg p-8"
+              className="bg-blue-100 rounded-lg p-8"
             >
               <h3 className="text-2xl font-bold text-gray-900 mb-6">Our Impact</h3>
               <div className="grid grid-cols-2 gap-6">
@@ -156,7 +156,7 @@ const About = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                   >
-                    <div className={`text-3xl font-bold text-light-secondary mb-2 ${
+                    <div className={`text-3xl font-bold text-blue-600 mb-2 ${
                       isLoadingStats ? 'animate-pulse' : ''
                     }`}>
                       {stat.number}
@@ -188,7 +188,7 @@ const About = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-light-primary">
+              <section className="py-16 bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -213,8 +213,8 @@ const About = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-white rounded-lg p-6 text-center shadow-sm hover:shadow-md transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-light-accent rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <feature.icon className="w-6 h-6 text-light-secondary" />
+                                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                  <feature.icon className="w-6 h-6 text-blue-600" />
                 </div>
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{feature.title}</h3>
                 <p className="text-gray-700">{feature.description}</p>
@@ -248,13 +248,13 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="bg-light-highlight rounded-lg p-6 text-center"
+                                  className="bg-blue-50 rounded-lg p-6 text-center"
               >
-                <div className="w-20 h-20 bg-light-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Users className="w-10 h-10 text-light-secondary" />
+                                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-10 h-10 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-light-secondary font-medium mb-3">{member.role}</p>
+                                  <p className="text-blue-600 font-medium mb-3">{member.role}</p>
                 <p className="text-gray-700 text-sm">{member.description}</p>
               </motion.div>
             ))}
@@ -263,7 +263,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-light-secondary text-white">
+              <section className="py-16 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -280,13 +280,13 @@ const About = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 to="/properties" 
-                className="btn bg-white text-light-secondary hover:bg-light-highlight px-8 py-3 rounded-full font-semibold transition-colors"
+                className="btn bg-white text-blue-600 hover:bg-blue-50 px-8 py-3 rounded-full font-semibold transition-colors"
               >
                 Find Your PG
               </Link>
               <Link 
                 to="/contact" 
-                className="btn border-2 border-white text-white hover:bg-white hover:text-light-secondary px-8 py-3 rounded-full font-semibold transition-colors"
+                className="btn border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-full font-semibold transition-colors"
               >
                 Get in Touch
               </Link>

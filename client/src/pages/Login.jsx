@@ -41,7 +41,7 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="flex items-center space-x-3">
@@ -58,7 +58,7 @@ const Login = () => {
           Or{' '}
           <Link
             to="/register"
-            className="font-medium text-accent-dark hover:text-accent-medium"
+            className="font-medium text-blue-600 hover:text-blue-500"
           >
             create a new account
           </Link>
@@ -139,7 +139,7 @@ const Login = () => {
                   id="remember-me"
                   name="remember-me"
                   type="checkbox"
-                  className="h-4 w-4 text-accent-dark focus:ring-accent-medium border-gray-300 rounded"
+                  className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
                 />
                 <label htmlFor="remember-me" className="ml-2 block text-sm text-gray-900">
                   Remember me
@@ -150,7 +150,7 @@ const Login = () => {
                 <button 
                   type="button"
                   onClick={() => setShowForgotPassword(true)}
-                  className="font-medium text-accent-dark hover:text-accent-medium"
+                  className="font-medium text-blue-600 hover:text-blue-500"
                 >
                   Forgot your password?
                 </button>
@@ -161,7 +161,7 @@ const Login = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-accent-dark hover:bg-accent-medium focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isLoading ? (
                   <div className="flex items-center">

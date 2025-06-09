@@ -194,7 +194,7 @@ We will respond to your inquiries within 30 days and work with you to resolve an
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="bg-light-primary">
+              <section className="bg-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
@@ -218,14 +218,14 @@ We will respond to your inquiries within 30 days and work with you to resolve an
       </section>
 
       {/* Quick Overview */}
-      <section className="py-8 bg-light-accent">
+              <section className="py-8 bg-blue-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div
-              className="bg-white rounded-lg p-6 border-l-4 border-light-secondary"
+              className="bg-white rounded-lg p-6 border-l-4 border-blue-600"
             >
               <div className="flex">
-                <AlertCircle className="w-6 h-6 text-light-secondary mr-3 mt-0.5" />
+                                  <AlertCircle className="w-6 h-6 text-blue-600 mr-3 mt-0.5" />
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Quick Overview</h3>
                   <p className="text-gray-700">
@@ -241,7 +241,7 @@ We will respond to your inquiries within 30 days and work with you to resolve an
       </section>
 
       {/* Privacy Highlights */}
-      <section className="py-12 bg-light-accent">
+              <section className="py-12 bg-blue-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-4">Your Privacy Rights</h2>
@@ -274,7 +274,7 @@ We will respond to your inquiries within 30 days and work with you to resolve an
                 key={index}
                 className="bg-white rounded-lg p-6 text-center"
               >
-                <item.icon className="w-12 h-12 text-light-secondary mx-auto mb-4" />
+                <item.icon className="w-12 h-12 text-blue-600 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-gray-900 mb-2">{item.title}</h3>
                 <p className="text-gray-700">{item.description}</p>
               </div>
@@ -290,11 +290,11 @@ We will respond to your inquiries within 30 days and work with you to resolve an
             {sections.map((section, index) => (
               <div
                 key={index}
-                className="bg-light-highlight rounded-lg p-6 shadow-sm"
+                className="bg-blue-50 rounded-lg p-6 shadow-sm"
               >
                 <div className="flex items-start">
-                  <div className="w-10 h-10 bg-light-accent rounded-lg flex items-center justify-center mr-4 mt-1">
-                    <section.icon className="w-5 h-5 text-light-secondary" />
+                                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-4 mt-1">
+                                          <section.icon className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <h2 className="text-xl font-bold text-gray-900">
@@ -312,7 +312,7 @@ We will respond to your inquiries within 30 days and work with you to resolve an
       </section>
 
       {/* Contact CTA */}
-      <section className="py-12 bg-light-secondary text-white">
+              <section className="py-12 bg-blue-600 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Questions About Your Privacy?</h2>
           <p className="text-lg mb-6">
@@ -321,13 +321,13 @@ We will respond to your inquiries within 30 days and work with you to resolve an
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:privacy@dwelldash.com"
-              className="bg-white text-light-secondary px-6 py-3 rounded-lg font-semibold hover:bg-light-highlight transition-colors"
+              className="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
             >
               Email Privacy Team
             </a>
             <a
               href="/contact"
-              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-light-secondary transition-colors"
+              className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors"
             >
               Contact Support
             </a>

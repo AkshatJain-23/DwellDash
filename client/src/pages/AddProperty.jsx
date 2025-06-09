@@ -298,7 +298,7 @@ const AddProperty = () => {
                   onClick={() => toggleAmenity(amenity)}
                   className={`p-3 rounded-lg border text-left transition-colors ${
                     selectedAmenities.includes(amenity)
-                      ? 'border-primary-600 bg-primary-50 text-primary-700'
+                      ? 'border-blue-600 bg-blue-50 text-blue-700'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >

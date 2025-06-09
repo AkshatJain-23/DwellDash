@@ -39,7 +39,7 @@ const Register = () => {
   }
 
   return (
-    <div className="min-h-screen bg-primary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
           <div className="flex items-center space-x-3">
@@ -56,7 +56,7 @@ const Register = () => {
           Or{' '}
           <Link
             to="/login"
-            className="font-medium text-primary-600 hover:text-primary-500"
+            className="font-medium text-blue-600 hover:text-blue-500"
           >
             sign in to your existing account
           </Link>
@@ -239,15 +239,15 @@ const Register = () => {
                 id="terms"
                 name="terms"
                 type="checkbox"
-                className="h-4 w-4 text-light-secondary focus:ring-light-secondary border-gray-300 rounded"
+                className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               />
               <label htmlFor="terms" className="ml-2 block text-sm text-gray-900">
                 I agree to the{' '}
-                <a href="/terms" className="text-light-secondary hover:text-light-primary">
+                <a href="/terms" className="text-blue-600 hover:text-blue-500">
                   Terms and Conditions
                 </a>{' '}
                 and{' '}
-                <a href="/privacy" className="text-light-secondary hover:text-light-primary">
+                <a href="/privacy" className="text-blue-600 hover:text-blue-500">
                   Privacy Policy
                 </a>
               </label>
@@ -260,7 +260,7 @@ const Register = () => {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-light-secondary hover:bg-light-primary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-light-secondary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isLoading ? (
                   <div className="flex items-center">
