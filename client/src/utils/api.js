@@ -136,15 +136,55 @@ const mockProperties = [
   }
 ]
 
+// Mock users storage
+let mockUsers = [
+  {
+    id: "1",
+    name: "Demo Owner",
+    email: "owner@demo.com",
+    role: "owner",
+    phone: "+91 98765 43210",
+    createdAt: "2025-06-07T11:06:13.969Z"
+  },
+  {
+    id: "2", 
+    name: "Demo Tenant",
+    email: "tenant@demo.com", 
+    role: "tenant",
+    phone: "+91 98765 43211",
+    createdAt: "2025-06-07T11:06:13.969Z"
+  }
+]
+
 // Check if we're in development or if backend is available
 const isBackendAvailable = () => {
   return import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL !== '/api'
 }
 
+// Mock JWT token generation
+const generateMockToken = (user) => {
+  const payload = {
+    userId: user.id,
+    email: user.email,
+    role: user.role
+  }
+  // In a real app, this would be a proper JWT. For demo, we'll use base64
+  return btoa(JSON.stringify(payload))
+}
+
+// Parse mock token
+const parseMockToken = (token) => {
+  try {
+    return JSON.parse(atob(token))
+  } catch {
+    return null
+  }
+}
+
 // Mock API functions
 const mockAPI = {
   get: (url) => {
-    return new Promise((resolve) => {
+    return new Promise((resolve, reject) => {
       setTimeout(() => {
         if (url.startsWith('/properties')) {
           const urlParams = new URLSearchParams(url.split('?')[1] || '')
@@ -197,7 +237,23 @@ const mockAPI = {
             )
           }
           
-          if (url.includes('/properties/') && !url.includes('?')) {
+          if (url.includes('/properties/owner/my-properties')) {
+            // Owner's properties
+            const token = localStorage.getItem('token')
+            if (!token) {
+              reject({ response: { status: 401, data: { error: 'No token provided' } } })
+              return
+            }
+            
+            const decoded = parseMockToken(token)
+            if (!decoded) {
+              reject({ response: { status: 401, data: { error: 'Invalid token' } } })
+              return
+            }
+            
+            const ownerProperties = mockProperties.filter(p => p.ownerId === decoded.userId)
+            resolve({ data: ownerProperties })
+          } else if (url.includes('/properties/') && !url.includes('?')) {
             // Single property request
             const propertyId = url.split('/properties/')[1]
             const property = mockProperties.find(p => p.id === propertyId)
@@ -213,6 +269,37 @@ const mockAPI = {
               }
             })
           }
+        } else if (url === '/auth/me') {
+          // Get current user
+          const token = localStorage.getItem('token')
+          if (!token) {
+            reject({ response: { status: 401, data: { error: 'No token provided' } } })
+            return
+          }
+          
+          const decoded = parseMockToken(token)
+          if (!decoded) {
+            reject({ response: { status: 401, data: { error: 'Invalid token' } } })
+            return
+          }
+          
+          const user = mockUsers.find(u => u.id === decoded.userId)
+          if (!user) {
+            reject({ response: { status: 404, data: { error: 'User not found' } } })
+            return
+          }
+          
+          resolve({
+            data: {
+              user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                phone: user.phone
+              }
+            }
+          })
         } else if (url === '/stats') {
           resolve({
             data: [
@@ -228,7 +315,84 @@ const mockAPI = {
       }, 300) // Simulate network delay
     })
   },
-  post: () => Promise.reject(new Error('Backend not available. Please deploy the server to add properties.')),
+  
+  post: (url, data) => {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        if (url === '/auth/register') {
+          // Mock registration
+          const { name, email, password, role, phone } = data
+          
+          // Check if user already exists
+          const existingUser = mockUsers.find(u => u.email === email)
+          if (existingUser) {
+            reject({ response: { status: 400, data: { error: 'User already exists' } } })
+            return
+          }
+          
+          // Create new user
+          const newUser = {
+            id: Date.now().toString(),
+            name,
+            email,
+            role,
+            phone: phone || '',
+            createdAt: new Date().toISOString()
+          }
+          
+          mockUsers.push(newUser)
+          
+          // Generate token
+          const token = generateMockToken(newUser)
+          
+          resolve({
+            data: {
+              token,
+              user: {
+                id: newUser.id,
+                name: newUser.name,
+                email: newUser.email,
+                role: newUser.role,
+                phone: newUser.phone
+              }
+            }
+          })
+        } else if (url === '/auth/login') {
+          // Mock login
+          const { email, password } = data
+          
+          // Find user
+          const user = mockUsers.find(u => u.email === email)
+          if (!user) {
+            reject({ response: { status: 400, data: { error: 'Invalid credentials' } } })
+            return
+          }
+          
+          // In a real app, we'd check password hash
+          // For demo, accept any password
+          
+          // Generate token
+          const token = generateMockToken(user)
+          
+          resolve({
+            data: {
+              token,
+              user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                phone: user.phone
+              }
+            }
+          })
+        } else {
+          reject(new Error('Backend not available. Please deploy the server for full functionality.'))
+        }
+      }, 500) // Simulate network delay for auth operations
+    })
+  },
+  
   put: () => Promise.reject(new Error('Backend not available. Please deploy the server to edit properties.')),
   delete: () => Promise.reject(new Error('Backend not available. Please deploy the server to delete properties.'))
 }
