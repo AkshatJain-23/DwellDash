@@ -18,7 +18,7 @@ const mockProperties = [
       "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
       "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center"
     ],
-    contactPhone: "+91 98765 43210",
+    contactPhone: "+91 8426076800",
     availableFrom: "2024-01-15",
     ownerId: "1",
     createdAt: "2025-06-07T11:06:13.969Z",
@@ -143,7 +143,7 @@ let mockUsers = [
     name: "Demo Owner",
     email: "owner@demo.com",
     role: "owner",
-    phone: "+91 98765 43210",
+    phone: "+91 8426076800",
     createdAt: "2025-06-07T11:06:13.969Z"
   },
   {
@@ -158,7 +158,9 @@ let mockUsers = [
 
 // Check if we're in development or if backend is available
 const isBackendAvailable = () => {
-  return import.meta.env.VITE_API_URL && import.meta.env.VITE_API_URL !== '/api'
+  // Always try to use real backend first
+  // Only fall back to mock if explicitly set to use mock
+  return import.meta.env.VITE_USE_MOCK_API !== 'true'
 }
 
 // Mock JWT token generation
@@ -396,6 +398,13 @@ const mockAPI = {
   put: () => Promise.reject(new Error('Backend not available. Please deploy the server to edit properties.')),
   delete: () => Promise.reject(new Error('Backend not available. Please deploy the server to delete properties.'))
 }
+
+console.log('🔧 API Configuration:', {
+  isBackendAvailable: isBackendAvailable(),
+  VITE_USE_MOCK_API: import.meta.env.VITE_USE_MOCK_API,
+  VITE_API_URL: import.meta.env.VITE_API_URL,
+  baseURL: import.meta.env.VITE_API_URL || '/api'
+})
 
 export const api = isBackendAvailable() ? axios.create({
   baseURL: import.meta.env.VITE_API_URL || '/api',

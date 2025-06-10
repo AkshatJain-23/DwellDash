@@ -40,16 +40,37 @@ const upload = multer({
 
 // In-memory storage
 const propertiesFile = path.join(__dirname, '../data/properties.json');
+const usersFile = path.join(__dirname, '../data/users.json');
 let properties = [];
+let users = [];
 
-// Load properties from file
+// Load users data - reload to get latest data
+const loadUsers = () => {
+  try {
+    if (fs.existsSync(usersFile)) {
+      users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+      console.log('Users loaded, count:', users.length);
+    }
+  } catch (error) {
+    console.error('Error loading users:', error);
+    users = [];
+  }
+};
+
+// Load properties and users from file
 try {
   if (fs.existsSync(propertiesFile)) {
-    properties = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
+    const data = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
+    // Handle both formats: array or object with properties key
+    properties = Array.isArray(data) ? data : (data.properties || []);
   }
 } catch (error) {
   console.log('No existing properties file found, starting fresh');
+  properties = [];
 }
+
+// Initial load of users
+loadUsers();
 
 // Save properties to file
 const saveProperties = () => {
@@ -57,6 +78,7 @@ const saveProperties = () => {
   if (!fs.existsSync(dataDir)) {
     fs.mkdirSync(dataDir, { recursive: true });
   }
+  // Save as array format for consistency
   fs.writeFileSync(propertiesFile, JSON.stringify(properties, null, 2));
 };
 
@@ -79,6 +101,9 @@ const authenticateToken = (req, res, next) => {
 // Get all properties with search and filters
 router.get('/', (req, res) => {
   try {
+    // Reload users data to get latest information
+    loadUsers();
+    
     let filteredProperties = [...properties];
     
     const { 
@@ -151,8 +176,18 @@ router.get('/', (req, res) => {
     const endIndex = page * limit;
     const paginatedProperties = filteredProperties.slice(startIndex, endIndex);
 
+    // Add basic owner information to each property
+    const propertiesWithOwners = paginatedProperties.map(property => {
+      const owner = users.find(u => u.id === property.ownerId);
+      return {
+        ...property,
+        ownerName: owner ? owner.name : 'Unknown Owner',
+        area: property.address ? property.address.split(',')[0] : property.city
+      };
+    });
+
     res.json({
-      properties: paginatedProperties,
+      properties: propertiesWithOwners,
       totalCount: filteredProperties.length,
       currentPage: parseInt(page),
       totalPages: Math.ceil(filteredProperties.length / limit)
@@ -166,12 +201,45 @@ router.get('/', (req, res) => {
 // Get single property
 router.get('/:id', (req, res) => {
   try {
+    // Reload users data to get latest information
+    loadUsers();
+    
     const property = properties.find(p => p.id === req.params.id);
     if (!property) {
       return res.status(404).json({ error: 'Property not found' });
     }
-    res.json(property);
+
+    // Find owner information
+    const owner = users.find(u => u.id === property.ownerId);
+    
+    // Add owner information to property
+    const propertyWithOwner = {
+      ...property,
+      ownerName: owner ? owner.name : 'Unknown Owner',
+      ownerEmail: owner ? owner.email : 'No email available',
+      contactNumber: property.contactPhone || (owner ? owner.phone : 'No contact available'),
+      // Better area extraction - take everything before first comma or use city as fallback
+      area: property.address ? 
+        (property.address.includes(',') ? 
+          property.address.split(',')[0].trim() : 
+          property.address.trim()) : 
+        property.city,
+      // Ensure full address is available
+      fullAddress: property.address || `${property.city}, India`
+    };
+
+    console.log('Property with owner info:', {
+      id: propertyWithOwner.id,
+      title: propertyWithOwner.title,
+      ownerName: propertyWithOwner.ownerName,
+      ownerEmail: propertyWithOwner.ownerEmail,
+      area: propertyWithOwner.area,
+      fullAddress: propertyWithOwner.fullAddress
+    });
+
+    res.json(propertyWithOwner);
   } catch (error) {
+    console.error('Single property fetch error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
@@ -187,8 +255,14 @@ router.post('/', authenticateToken, upload.array('images', 10), [
   body('gender').isIn(['male', 'female', 'any']).withMessage('Invalid gender preference')
 ], (req, res) => {
   try {
+    console.log('=== Property Creation Request ===');
+    console.log('User:', req.user);
+    console.log('Body:', req.body);
+    console.log('Files:', req.files);
+
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
+      console.log('Validation errors:', errors.array());
       return res.status(400).json({ errors: errors.array() });
     }
 
@@ -208,6 +282,7 @@ router.post('/', authenticateToken, upload.array('images', 10), [
 
     // Process uploaded images
     const images = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
+    console.log('Processed images:', images);
 
     const property = {
       id: Date.now().toString(),
@@ -228,13 +303,19 @@ router.post('/', authenticateToken, upload.array('images', 10), [
       isActive: true
     };
 
+    console.log('New property object:', property);
+
     properties.push(property);
+    console.log('Properties array length after push:', properties.length);
+    
     saveProperties();
+    console.log('Properties saved successfully');
 
     res.status(201).json(property);
   } catch (error) {
     console.error('Property creation error:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error stack:', error.stack);
+    res.status(500).json({ error: 'Server error', details: error.message });
   }
 });
 

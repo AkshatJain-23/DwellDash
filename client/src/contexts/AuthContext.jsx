@@ -14,25 +14,49 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null)
   const [loading, setLoading] = useState(true)
-  const [token, setToken] = useState(localStorage.getItem('token'))
+  const [token, setToken] = useState(() => {
+    try {
+      return localStorage.getItem('token')
+    } catch (error) {
+      console.error('Error accessing localStorage:', error)
+      return null
+    }
+  })
   const [viewMode, setViewMode] = useState(() => {
-    // Default view mode based on user role, with localStorage preference
-    const savedViewMode = localStorage.getItem('viewMode')
-    return savedViewMode || 'default'
+    try {
+      const savedViewMode = localStorage.getItem('viewMode')
+      return savedViewMode || 'default'
+    } catch (error) {
+      console.error('Error accessing localStorage:', error)
+      return 'default'
+    }
   })
 
   useEffect(() => {
-    if (token) {
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      fetchUser()
-    } else {
-      setLoading(false)
+    const initializeAuth = async () => {
+      try {
+        if (token) {
+          api.defaults.headers.common['Authorization'] = `Bearer ${token}`
+          await fetchUser()
+        } else {
+          setLoading(false)
+        }
+      } catch (error) {
+        console.error('Error initializing auth:', error)
+        setLoading(false)
+      }
     }
+
+    initializeAuth()
   }, [token])
 
   // Save view mode preference to localStorage
   useEffect(() => {
-    localStorage.setItem('viewMode', viewMode)
+    try {
+      localStorage.setItem('viewMode', viewMode)
+    } catch (error) {
+      console.error('Error saving viewMode to localStorage:', error)
+    }
   }, [viewMode])
 
   const fetchUser = async () => {
@@ -41,7 +65,16 @@ export const AuthProvider = ({ children }) => {
       setUser(response.data.user)
     } catch (error) {
       console.error('Failed to fetch user:', error)
-      logout()
+      // Don't call logout here to avoid infinite loops
+      // Just clear the invalid token
+      try {
+        localStorage.removeItem('token')
+        setToken(null)
+        setUser(null)
+        delete api.defaults.headers.common['Authorization']
+      } catch (storageError) {
+        console.error('Error clearing auth data:', storageError)
+      }
     } finally {
       setLoading(false)
     }
@@ -52,7 +85,12 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post('/auth/login', { email, password })
       const { token, user } = response.data
       
-      localStorage.setItem('token', token)
+      try {
+        localStorage.setItem('token', token)
+      } catch (error) {
+        console.error('Error saving token to localStorage:', error)
+      }
+      
       setToken(token)
       setUser(user)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -62,6 +100,7 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true }
     } catch (error) {
+      console.error('Login error:', error)
       const message = error.response?.data?.error || 'Login failed'
       return { success: false, error: message }
     }
@@ -72,7 +111,12 @@ export const AuthProvider = ({ children }) => {
       const response = await api.post('/auth/register', userData)
       const { token, user } = response.data
       
-      localStorage.setItem('token', token)
+      try {
+        localStorage.setItem('token', token)
+      } catch (error) {
+        console.error('Error saving token to localStorage:', error)
+      }
+      
       setToken(token)
       setUser(user)
       api.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -82,14 +126,20 @@ export const AuthProvider = ({ children }) => {
       
       return { success: true }
     } catch (error) {
+      console.error('Registration error:', error)
       const message = error.response?.data?.error || 'Registration failed'
       return { success: false, error: message }
     }
   }
 
   const logout = () => {
-    localStorage.removeItem('token')
-    localStorage.removeItem('viewMode')
+    try {
+      localStorage.removeItem('token')
+      localStorage.removeItem('viewMode')
+    } catch (error) {
+      console.error('Error clearing localStorage:', error)
+    }
+    
     setToken(null)
     setUser(null)
     setViewMode('default')

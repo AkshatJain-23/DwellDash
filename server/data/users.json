@@ -1,29 +1,20 @@
 [
   {
-    "id": "1749359110145",
+    "id": "1749545921851",
     "name": "Akshat Jain",
-    "email": "owner@test.com",
-    "password": "$2a$10$zm8QIOwoBa9XcMdWN50Gou/4MCnh5636OJwNHXi11/nnEnYP6pP.a",
+    "email": "akshatjain6574@gmail.com",
+    "password": "$2a$10$Zq8xqDs88shHUShWA3xP.e5YwGTxpN17PiUSP4J7rxBtCu6KvSVIW",
     "role": "owner",
     "phone": "+918426076800",
-    "createdAt": "2025-06-08T05:05:10.145Z"
+    "createdAt": "2025-06-10T08:58:41.851Z"
   },
   {
-    "id": "1749360478855",
+    "id": "1749563494664",
     "name": "Akshat Jain",
-    "email": "tenant@test.com",
-    "password": "$2a$10$0yuR2uDdHx4UyYxSDJ0J3Oj1zUK6IEeaDlecyfYOSO6zUlIVtvPBi",
+    "email": "jain2003akshat@gmail.com",
+    "password": "$2a$10$/USoYRW24xorxNmn7qW2HuZ8ba8OF8/PovCcC5BO0AE4Yw2LTI83W",
     "role": "tenant",
     "phone": "+918426076800",
-    "createdAt": "2025-06-08T05:27:58.856Z"
-  },
-  {
-    "id": "1749368327735",
-    "name": "DwellDash Admin",
-    "email": "dwelldash3@gmail.com",
-    "password": "$2a$10$37K9Eg.cwt.sKn9dIF.DBOVLSGaEcu7Wh19Ork.nRW7VRfqPs564O",
-    "role": "owner",
-    "phone": "+918426076800",
-    "createdAt": "2025-06-08T07:38:47.735Z"
+    "createdAt": "2025-06-10T13:51:34.664Z"
   }
 ]

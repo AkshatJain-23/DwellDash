@@ -26,13 +26,22 @@ let users = [];
 let resetTokens = [];
 
 // Load users from file
+const loadUsers = () => {
 try {
   if (fs.existsSync(usersFile)) {
     users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+      console.log('Auth: Users loaded:', users.length, 'users found');
+    } else {
+      users = [];
   }
 } catch (error) {
-  console.log('No existing users file found, starting fresh');
+    console.log('Auth: Error loading users file:', error);
+    users = [];
 }
+};
+
+// Initial load
+loadUsers();
 
 // Load reset tokens from file
 try {
@@ -76,9 +85,13 @@ router.post('/register', [
 
     const { name, email, password, role, phone } = req.body;
 
+    // Reload users to ensure we have the latest data
+    loadUsers();
+
     // Check if user already exists
     const existingUser = users.find(user => user.email === email);
     if (existingUser) {
+      console.log('Auth: User already exists:', email);
       return res.status(400).json({ error: 'User already exists' });
     }
 
@@ -140,6 +153,9 @@ router.post('/login', [
 
     const { email, password } = req.body;
 
+    // Reload users to ensure we have the latest data
+    loadUsers();
+
     // Find user
     const user = users.find(user => user.email === email);
     if (!user) {
@@ -184,6 +200,10 @@ router.get('/me', (req, res) => {
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
+    
+    // Reload users to ensure we have the latest data
+    loadUsers();
+    
     const user = users.find(user => user.id === decoded.userId);
     
     if (!user) {

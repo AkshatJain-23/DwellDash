@@ -18,6 +18,20 @@ class RAGService {
     
     // Initialize embeddings cache
     this.embeddingsCache = new Map();
+
+    // Enhanced category weights for better relevance
+    this.categoryWeights = {
+      'Getting Started': 1.5,
+      'Safety & Security': 1.4,
+      'Booking Process': 1.3,
+      'Customer Support': 1.3,
+      'Property Listing': 1.2,
+      'Learning Resources': 1.2,
+      'Contact Information': 1.1,
+      'Company Information': 1.0,
+      'Privacy & Cookies': 0.9,
+      'Policies': 0.8
+    };
   }
 
   loadKnowledgeBase() {
@@ -25,7 +39,7 @@ class RAGService {
       const knowledgeBasePath = path.join(__dirname, '../data/dwellbot-knowledge-base.json');
       const rawData = fs.readFileSync(knowledgeBasePath, 'utf8');
       this.knowledgeBase = JSON.parse(rawData);
-      console.log('Knowledge base loaded successfully');
+      console.log(`Knowledge base loaded successfully with ${this.knowledgeBase.knowledge_base.length} items`);
     } catch (error) {
       console.error('Error loading knowledge base:', error);
       // Fallback knowledge base
@@ -45,10 +59,16 @@ class RAGService {
     }
   }
 
-  // Simple text similarity using cosine similarity
+  // Enhanced text similarity with better preprocessing
   calculateSimilarity(text1, text2) {
-    const words1 = text1.toLowerCase().split(/\s+/);
-    const words2 = text2.toLowerCase().split(/\s+/);
+    // Normalize text
+    const normalize = (text) => text.toLowerCase()
+      .replace(/[^\w\s]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    const words1 = normalize(text1).split(' ').filter(word => word.length > 2);
+    const words2 = normalize(text2).split(' ').filter(word => word.length > 2);
     
     // Create word frequency maps
     const freq1 = {};
@@ -59,6 +79,8 @@ class RAGService {
     
     // Get all unique words
     const allWords = [...new Set([...words1, ...words2])];
+    
+    if (allWords.length === 0) return 0;
     
     // Create vectors
     const vector1 = allWords.map(word => freq1[word] || 0);
@@ -73,35 +95,78 @@ class RAGService {
     return dotProduct / (magnitude1 * magnitude2);
   }
 
-  // Find relevant knowledge based on query
-  findRelevantKnowledge(query, topK = 3) {
+  // Enhanced intent detection
+  detectIntent(query) {
     const queryLower = query.toLowerCase();
+    
+    // Common intent patterns
+    const intents = {
+      'getting_started': ['how to start', 'new user', 'begin', 'getting started', 'first time', 'beginner'],
+      'search_help': ['how to search', 'find property', 'filters', 'search tips'],
+      'booking': ['how to book', 'booking process', 'reserve', 'rent'],
+      'safety': ['safety', 'secure', 'protection', 'verification', 'emergency'],
+      'support': ['help', 'contact', 'support', 'problem', 'issue', 'assistance'],
+      'pricing': ['cost', 'price', 'fee', 'charge', 'free', 'commission'],
+      'refund': ['refund', 'cancel', 'money back', 'cancellation'],
+      'about': ['about', 'company', 'story', 'mission', 'team'],
+      'tutorials': ['tutorial', 'guide', 'learn', 'video', 'how to']
+    };
+
+    for (const [intent, keywords] of Object.entries(intents)) {
+      for (const keyword of keywords) {
+        if (queryLower.includes(keyword)) {
+          return intent;
+        }
+      }
+    }
+    return 'general';
+  }
+
+  // Find relevant knowledge based on query with enhanced scoring
+  findRelevantKnowledge(query, topK = 5) {
+    const queryLower = query.toLowerCase();
+    const intent = this.detectIntent(query);
     const relevantItems = [];
 
     // Search through knowledge base
     for (const item of this.knowledgeBase.knowledge_base) {
       let score = 0;
 
-      // Exact keyword matches
+      // Base category weight
+      const categoryWeight = this.categoryWeights[item.category] || 1.0;
+      
+      // Exact keyword matches (weighted heavily)
       for (const keyword of item.keywords) {
         if (queryLower.includes(keyword.toLowerCase())) {
-          score += 2;
+          score += 3 * categoryWeight;
         }
       }
 
-      // Title similarity
-      score += this.calculateSimilarity(query, item.title) * 1.5;
+      // Intent-based scoring
+      if (intent === 'getting_started' && item.category === 'Getting Started') score += 2;
+      if (intent === 'safety' && item.category === 'Safety & Security') score += 2;
+      if (intent === 'support' && item.category === 'Customer Support') score += 2;
+      if (intent === 'booking' && item.category === 'Booking Process') score += 2;
+      if (intent === 'tutorials' && item.category === 'Learning Resources') score += 2;
 
-      // Content similarity
-      score += this.calculateSimilarity(query, item.content) * 1;
+      // Title similarity (high weight)
+      score += this.calculateSimilarity(query, item.title) * 2 * categoryWeight;
 
-      // Category match
+      // Content similarity (medium weight)
+      score += this.calculateSimilarity(query, item.content) * 1.2 * categoryWeight;
+
+      // Category name match
       if (queryLower.includes(item.category.toLowerCase())) {
-        score += 1;
+        score += 1.5 * categoryWeight;
+      }
+
+      // Boost score for comprehensive content
+      if (item.content.length > 500) {
+        score += 0.3;
       }
 
       if (score > 0.1) {
-        relevantItems.push({ ...item, score });
+        relevantItems.push({ ...item, score, intent });
       }
     }
 
@@ -111,21 +176,51 @@ class RAGService {
       .slice(0, topK);
   }
 
-  // Check for FAQ matches
+  // Enhanced FAQ matching
   findRelevantFAQ(query) {
     const queryLower = query.toLowerCase();
+    let bestMatch = null;
+    let bestScore = 0;
     
     for (const faq of this.knowledgeBase.faq) {
-      const questionSimilarity = this.calculateSimilarity(query, faq.question);
-      if (questionSimilarity > 0.3) {
+      // Check for exact phrase matches
+      if (queryLower.includes(faq.question.toLowerCase().substring(0, 20))) {
         return faq;
       }
+
+      const questionSimilarity = this.calculateSimilarity(query, faq.question);
+      const answerSimilarity = this.calculateSimilarity(query, faq.answer) * 0.5;
+      const totalScore = questionSimilarity + answerSimilarity;
+
+      if (totalScore > bestScore && totalScore > 0.3) {
+        bestScore = totalScore;
+        bestMatch = faq;
+      }
     }
-    return null;
+    
+    return bestMatch;
   }
 
-  // Generate response using Groq LLM
-  async generateResponse(query, context) {
+  // Build enhanced context from relevant knowledge
+  buildContext(relevantItems, faq = null) {
+    let context = '';
+    
+    if (faq) {
+      context += `FAQ: Q: ${faq.question} A: ${faq.answer}\n\n`;
+    }
+
+    if (relevantItems.length > 0) {
+      context += 'Relevant Information:\n';
+      relevantItems.forEach((item, index) => {
+        context += `${index + 1}. ${item.title} (${item.category}):\n${item.content}\n\n`;
+      });
+    }
+
+    return context.trim();
+  }
+
+  // Generate response using Groq LLM with enhanced prompting
+  async generateResponse(query, context, intent = 'general') {
     try {
       const systemPrompt = `You are DwellBot, an AI assistant for DwellDash - India's trusted PG booking platform. 
 
@@ -134,18 +229,24 @@ Your personality:
 - Knowledgeable about real estate and PG accommodations
 - Focused on DwellDash services
 - Concise but informative responses
+- Empathetic to user concerns, especially safety and first-time users
 
 Guidelines:
 - Use the provided context to answer questions accurately
+- For new users, be extra helpful and guide them to Getting Started resources
+- For safety concerns, prioritize comprehensive information and emergency contacts
 - If asked about topics unrelated to DwellDash, politely redirect to platform services
-- Always be helpful and maintain a positive tone
+- Always maintain a positive tone and be solution-oriented
 - For specific queries about bookings or properties, provide detailed guidance
-- Include relevant contact information when appropriate
+- Include relevant contact information when appropriate (dwelldash3@gmail.com, +91 8426076800)
+- Mention specific pages/resources when relevant (e.g., "Check our Safety Guidelines page")
 
 Context information:
 ${context}
 
-Answer the user's question based on this context. Keep responses under 150 words unless detailed explanation is needed.`;
+User intent detected: ${intent}
+
+Answer the user's question based on this context. Keep responses under 200 words unless detailed explanation is needed. Be conversational and helpful.`;
 
       const completion = await this.groq.chat.completions.create({
         messages: [
@@ -153,8 +254,8 @@ Answer the user's question based on this context. Keep responses under 150 words
           { role: "user", content: query }
         ],
         model: "llama3-8b-8192", // Free model on Groq
-        temperature: 0.3,
-        max_tokens: 200,
+        temperature: 0.4,
+        max_tokens: 300,
         top_p: 1,
         stream: false,
       });
@@ -164,105 +265,118 @@ Answer the user's question based on this context. Keep responses under 150 words
     } catch (error) {
       console.error('Groq API error:', error);
       // Fallback to rule-based response
-      return this.generateFallbackResponse(query, context);
+      return this.generateFallbackResponse(query, context, intent);
     }
   }
 
-  // Fallback response generation without LLM
-  generateFallbackResponse(query, context) {
+  // Enhanced fallback response generation
+  generateFallbackResponse(query, context, intent = 'general') {
     const queryLower = query.toLowerCase();
+
+    // Intent-based responses
+    if (intent === 'getting_started') {
+      return "Welcome to DwellDash! As a new user, I recommend following our 6-step Getting Started Guide: 1) Create account, 2) Search properties, 3) Browse & compare, 4) Contact owners, 5) Visit properties, 6) Book your PG. Check our Getting Started Guide page for detailed instructions. Need help? Contact us at dwelldash3@gmail.com or +91 8426076800.";
+    }
+
+    if (intent === 'safety') {
+      return "Your safety is our priority! DwellDash provides comprehensive safety through property verification, owner background checks, 24/7 support, and detailed Safety Guidelines. For emergencies, call +91 8426076800 immediately. Visit our Safety Guidelines page for complete security measures and tips.";
+    }
+
+    if (intent === 'support') {
+      return "I'm here to help! DwellDash offers multiple support options: Email dwelldash3@gmail.com (2-hour response for urgent issues), Phone +91 8426076800 (24/7 emergency, business hours Mon-Sat 9AM-8PM), and this AI chat 24/7. What specific help do you need?";
+    }
 
     // Greeting responses
     if (queryLower.includes('hello') || queryLower.includes('hi') || queryLower.includes('hey')) {
-      return "Hello! I'm DwellBot, your AI assistant for DwellDash. I can help you with finding PG accommodations, listing properties, pricing information, and platform support. What would you like to know?";
+      return "Hello! I'm DwellBot, your AI assistant for DwellDash. I can help you with finding PG accommodations, safety guidelines, platform tutorials, booking assistance, and more. New to DwellDash? Check our Getting Started Guide! What can I help you with today?";
     }
 
     // Thank you responses
     if (queryLower.includes('thank') || queryLower.includes('thanks')) {
-      return "You're welcome! I'm here to help with any questions about DwellDash. Is there anything else you'd like to know about our platform?";
+      return "You're very welcome! I'm always here to help with DwellDash services. Whether you need help with property search, safety tips, or platform guidance, just ask! Is there anything else you'd like to know?";
     }
 
     // Use context if available
     if (context && context.trim()) {
-      return `Based on your query about DwellDash: ${context.substring(0, 200)}${context.length > 200 ? '...' : ''}\n\nFor more specific help, please contact our support at dwelldash3@gmail.com or +91 98765 43210.`;
+      return `Based on your query: ${context.substring(0, 250)}${context.length > 250 ? '...' : ''}\n\nFor more detailed assistance, visit our Help Center or contact support at dwelldash3@gmail.com or +91 8426076800.`;
     }
 
-    // Generic helpful response
-    return "I can help you with finding PG accommodations, listing properties, pricing information, safety features, and platform support. What specific information are you looking for?";
+    // Enhanced generic helpful response
+    return "I can help you with finding PG accommodations, safety guidelines, getting started guides, video tutorials, booking assistance, pricing information, and platform support. Try asking about specific topics like 'how to get started', 'safety tips', or 'how to book a PG'. What would you like to know?";
   }
 
-  // Main chat function
+  // Main chat function with enhanced processing
   async chat(userMessage) {
     try {
       const query = userMessage.trim();
       
       if (!query) {
-        return "Please ask me a question about DwellDash services.";
+        return "Please ask me a question about DwellDash services. I can help with getting started, safety tips, property search, booking guidance, and more!";
       }
 
-      // Check for FAQ match first
-      const faqMatch = this.findRelevantFAQ(query);
-      if (faqMatch) {
-        return faqMatch.answer;
-      }
+      // Detect intent
+      const intent = this.detectIntent(query);
 
-      // Find relevant knowledge
-      const relevantKnowledge = this.findRelevantKnowledge(query);
-      
-      if (relevantKnowledge.length === 0) {
-        // Handle irrelevant topics
-        const irrelevantTopics = [
-          'weather', 'food', 'movie', 'music', 'sports', 'politics', 'news', 'joke', 'game', 
-          'recipe', 'travel', 'health', 'fitness', 'fashion', 'entertainment', 'celebrity',
-          'technology', 'programming', 'science', 'math', 'history', 'geography'
-        ];
+      // Find relevant FAQ first
+      const relevantFAQ = this.findRelevantFAQ(query);
+
+      // Find relevant knowledge with higher limit for complex queries
+      const topK = query.length > 50 ? 5 : 3;
+      const relevantKnowledge = this.findRelevantKnowledge(query, topK);
+
+      // Build context
+      const context = this.buildContext(relevantKnowledge, relevantFAQ);
+
+      // Generate response
+      if (context) {
+        const response = await this.generateResponse(query, context, intent);
         
-        const isIrrelevant = irrelevantTopics.some(topic => query.toLowerCase().includes(topic));
-        
-        if (isIrrelevant) {
-          return "I'm specifically designed to help with DwellDash services. I can assist you with finding PG accommodations, listing properties, pricing information, safety features, and platform support. What would you like to know about DwellDash?";
+        // Add helpful suggestions for specific intents
+        let suggestions = this.getQuickSuggestions(intent);
+        if (suggestions.length > 0) {
+          return response + '\n\n' + suggestions;
         }
         
-        return this.generateFallbackResponse(query, '');
+        return response;
+      } else {
+        // No relevant context found, provide general guidance
+        return this.generateFallbackResponse(query, '', intent);
       }
 
-      // Create context from relevant knowledge
-      const context = relevantKnowledge
-        .map(item => `${item.title}: ${item.content}`)
-        .join('\n\n');
-
-      // Generate response using Groq LLM
-      const response = await this.generateResponse(query, context);
-      
-      return response;
-
     } catch (error) {
-      console.error('RAG Service error:', error);
-      return "I apologize for the technical difficulty. Please try asking your question again, or contact our support team at dwelldash3@gmail.com for immediate assistance.";
+      console.error('Chat error:', error);
+      return "I apologize, but I'm experiencing some technical difficulties. Please try again or contact our support team at dwelldash3@gmail.com or +91 8426076800 for immediate assistance.";
     }
   }
 
-  // Get quick suggestions based on query
-  getQuickSuggestions(query) {
-    const suggestions = [
-      "How do I list my property?",
-      "How to book a PG?",
-      "What are your fees?",
-      "Is DwellDash safe?",
-      "Which cities do you cover?",
-      "How can I contact support?"
+  // Enhanced quick suggestions based on intent
+  getQuickSuggestions(intent) {
+    const suggestions = {
+      'getting_started': "💡 Quick tip: Start by visiting our Getting Started Guide page for a complete walkthrough!",
+      'safety': "🔒 For detailed safety information, check our Safety Guidelines page.",
+      'tutorials': "📚 Explore our Video Tutorials page for step-by-step visual guides.",
+      'booking': "📋 Need booking help? Our Getting Started Guide covers the complete process.",
+      'support': "📞 For urgent issues, call +91 8426076800 anytime."
+    };
+
+    return suggestions[intent] || '';
+  }
+
+  // Get contextual quick responses
+  getQuickResponses() {
+    return this.knowledgeBase.quick_responses || [
+      "I can help you with DwellDash services!"
     ];
+  }
 
-    // Filter suggestions based on query
-    if (query && query.length > 2) {
-      const filtered = suggestions.filter(suggestion => 
-        !suggestion.toLowerCase().includes(query.toLowerCase().substring(0, 10))
-      );
-      return filtered.slice(0, 3);
-    }
-
-    return suggestions.slice(0, 3);
+  // Get knowledge base stats
+  getStats() {
+    return {
+      totalKnowledgeItems: this.knowledgeBase.knowledge_base.length,
+      totalFAQs: this.knowledgeBase.faq.length,
+      categories: [...new Set(this.knowledgeBase.knowledge_base.map(item => item.category))]
+    };
   }
 }
 
-module.exports = new RAGService(); 
+module.exports = RAGService; 

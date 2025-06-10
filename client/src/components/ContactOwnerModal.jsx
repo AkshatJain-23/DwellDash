@@ -148,7 +148,7 @@ const ContactOwnerModal = ({ isOpen, onClose, property }) => {
                       })}
                       type="tel"
                       className="input pl-10"
-                      placeholder="+91 98765 43210"
+                      placeholder="+91 8426076800"
                     />
                   </div>
                   {errors.phone && (

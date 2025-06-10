@@ -30,6 +30,7 @@ app.use('/api/users', require('./routes/users'));
 app.use('/api/messages', require('./routes/messages'));
 app.use('/api/stats', require('./routes/stats'));
 app.use('/api/chatbot', require('./routes/chatbot'));
+app.use('/api/favorites', require('./routes/favorites'));
 
 // Health check
 app.get('/api/health', (req, res) => {

@@ -8,8 +8,10 @@ const router = express.Router();
 // Messages storage (now supporting conversations)
 const messagesFile = path.join(__dirname, '../data/messages.json');
 const conversationsFile = path.join(__dirname, '../data/conversations.json');
+const usersFile = path.join(__dirname, '../data/users.json');
 let messages = [];
 let conversations = [];
+let users = [];
 
 // Load messages from file
 try {
@@ -27,6 +29,15 @@ try {
   }
 } catch (error) {
   console.log('No existing conversations file found, starting fresh');
+}
+
+// Load users from file
+try {
+  if (fs.existsSync(usersFile)) {
+    users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+  }
+} catch (error) {
+  console.log('No existing users file found, starting fresh');
 }
 
 // Save messages to file
@@ -237,14 +248,20 @@ router.get('/conversations/owner/:ownerId', (req, res) => {
     // Sort by most recent activity
     ownerConversations.sort((a, b) => new Date(b.lastMessageAt) - new Date(a.lastMessageAt));
     
-    // Add unread count for each conversation
-    const conversationsWithUnread = ownerConversations.map(conv => ({
+    // Add unread count and tenant information for each conversation
+    const conversationsWithUnread = ownerConversations.map(conv => {
+      const tenant = users.find(u => u.email === conv.tenantEmail);
+      
+      return {
       ...conv,
+        tenantName: conv.tenantName || (tenant ? tenant.name : 'Unknown Tenant'),
+        tenantPhone: tenant ? tenant.phone : null,
       unreadCount: conv.messages.filter(msg => 
         msg.sender === 'tenant' && msg.status !== 'read'
       ).length,
       lastMessage: conv.messages[conv.messages.length - 1] || null
-    }));
+      };
+    });
     
     res.json(conversationsWithUnread);
   } catch (error) {
@@ -263,14 +280,21 @@ router.get('/conversations/tenant/:tenantEmail', (req, res) => {
     // Sort by most recent activity
     tenantConversations.sort((a, b) => new Date(b.lastMessageAt) - new Date(a.lastMessageAt));
     
-    // Add unread count for each conversation
-    const conversationsWithUnread = tenantConversations.map(conv => ({
+    // Add unread count and owner information for each conversation
+    const conversationsWithUnread = tenantConversations.map(conv => {
+      const owner = users.find(u => u.id === conv.ownerId);
+      
+      return {
       ...conv,
+        ownerName: owner ? owner.name : 'Unknown Owner',
+        ownerEmail: owner ? owner.email : 'No email',
+        ownerPhone: owner ? owner.phone : null,
       unreadCount: conv.messages.filter(msg => 
         msg.sender === 'owner' && msg.status !== 'read'
       ).length,
       lastMessage: conv.messages[conv.messages.length - 1] || null
-    }));
+      };
+    });
     
     res.json(conversationsWithUnread);
   } catch (error) {
@@ -289,7 +313,20 @@ router.get('/conversations/:conversationId', (req, res) => {
       return res.status(404).json({ error: 'Conversation not found' });
     }
     
-    res.json(conversation);
+    // Add owner and tenant information
+    const owner = users.find(u => u.id === conversation.ownerId);
+    const tenant = users.find(u => u.email === conversation.tenantEmail);
+    
+    const enrichedConversation = {
+      ...conversation,
+      ownerName: owner ? owner.name : 'Unknown Owner',
+      ownerEmail: owner ? owner.email : 'No email',
+      ownerPhone: owner ? owner.phone : null,
+      tenantName: conversation.tenantName || (tenant ? tenant.name : 'Unknown Tenant'),
+      tenantPhone: tenant ? tenant.phone : null
+    };
+    
+    res.json(enrichedConversation);
   } catch (error) {
     console.error('Failed to fetch conversation:', error);
     res.status(500).json({ error: 'Failed to fetch conversation' });

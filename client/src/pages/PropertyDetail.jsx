@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { api } from '../utils/api'
-import { ArrowLeft, MapPin, IndianRupee, Calendar, Phone, Mail, Users, Bed, Wifi, Car, Utensils, Shield } from 'lucide-react'
+import { ArrowLeft, MapPin, IndianRupee, Calendar, Phone, Mail, Users, Bed, Wifi, Car, Utensils, Shield, Heart, LogIn } from 'lucide-react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
 import ImageWithFallback from '../components/ImageWithFallback'
 import WhatsAppChat from '../components/WhatsAppChat'
 import { useAuth } from '../contexts/AuthContext'
+import FavoriteButton from '../components/FavoriteButton'
 
 const PropertyDetail = () => {
   const { id } = useParams()
@@ -101,10 +102,21 @@ const PropertyDetail = () => {
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Properties
           </Link>
-          <h1 className="text-3xl font-bold text-gray-900">{property.title}</h1>
-          <div className="flex items-center text-gray-600 mt-2">
-            <MapPin className="w-4 h-4 mr-1" />
-            <span>{property.address}</span>
+          <div className="flex items-start justify-between">
+            <div className="flex-1">
+              <h1 className="text-3xl font-bold text-gray-900">{property.title}</h1>
+              <div className="flex items-center text-gray-600 mt-2">
+                <MapPin className="w-4 h-4 mr-1" />
+                <span>{property.address}</span>
+              </div>
+            </div>
+            <div className="ml-4">
+              <FavoriteButton 
+                propertyId={property.id} 
+                className="p-3 bg-white border border-gray-200 rounded-full shadow-sm hover:shadow-md"
+                size="w-6 h-6"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -119,7 +131,7 @@ const PropertyDetail = () => {
                 {property.images && property.images.length > 0 ? (
                   <>
                     <ImageWithFallback
-                      src={property.images[currentImageIndex].startsWith('http') ? property.images[currentImageIndex] : `http://localhost:5000${property.images[currentImageIndex]}`}
+                      src={property.images[currentImageIndex].startsWith('http') ? property.images[currentImageIndex] : property.images[currentImageIndex]}
                       alt={property.title}
                       className="w-full h-full object-cover"
                     />
@@ -159,7 +171,7 @@ const PropertyDetail = () => {
                         }`}
                       >
                         <ImageWithFallback
-                          src={image.startsWith('http') ? image : `http://localhost:5000${image}`}
+                          src={image.startsWith('http') ? image : image}
                           alt={`${property.title} ${index + 1}`}
                           className="w-full h-full object-cover"
                         />
@@ -251,35 +263,54 @@ const PropertyDetail = () => {
                 <div className="border-t pt-6">
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Contact Owner</h3>
                   
-                  <div className="space-y-3">
-                    <a
-                      href={`tel:${property.contactPhone}`}
-                      className="w-full btn-primary flex items-center justify-center"
-                    >
-                      <Phone className="w-4 h-4 mr-2" />
-                      Call {property.contactPhone}
-                    </a>
-                    
-                    <button 
-                      onClick={() => {
-                        if (!user) {
-                          navigate('/login')
-                          return
-                        }
-                        setIsWhatsAppChatOpen(true)
-                      }}
-                      className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center"
-                    >
-                      <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20.924 15.386a1 1 0 0 0-.217-.324l-3.004-3.004a1 1 0 0 0-1.414 0L15.56 12.79a.25.25 0 0 1-.354 0L12.79 10.374a.25.25 0 0 1 0-.354l.732-.732a1 1 0 0 0 0-1.414L10.518 4.87a1 1 0 0 0-1.414 0L7.69 6.284a3 3 0 0 0-.879 2.121v.001a21.496 21.496 0 0 0 6.862 15.518a3 3 0 0 0 4.243 0l1.414-1.414a1 1 0 0 0 .217-.324L20.924 15.386z"/>
-                      </svg>
-                      Chat with Owner
-                    </button>
-                  </div>
+                  {user ? (
+                    <div className="space-y-3">
+                      <a
+                        href={`tel:${property.contactPhone}`}
+                        className="w-full btn-primary flex items-center justify-center"
+                      >
+                        <Phone className="w-4 h-4 mr-2" />
+                        Call {property.contactPhone}
+                      </a>
+                      
+                      <button 
+                        onClick={() => setIsWhatsAppChatOpen(true)}
+                        className="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-md transition-colors flex items-center justify-center"
+                      >
+                        <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M20.924 15.386a1 1 0 0 0-.217-.324l-3.004-3.004a1 1 0 0 0-1.414 0L15.56 12.79a.25.25 0 0 1-.354 0L12.79 10.374a.25.25 0 0 1 0-.354l.732-.732a1 1 0 0 0 0-1.414L10.518 4.87a1 1 0 0 0-1.414 0L7.69 6.284a3 3 0 0 0-.879 2.121v.001a21.496 21.496 0 0 0 6.862 15.518a3 3 0 0 0 4.243 0l1.414-1.414a1 1 0 0 0 .217-.324L20.924 15.386z"/>
+                        </svg>
+                        Chat with Owner
+                      </button>
 
-                  <div className="mt-4 text-center text-xs text-gray-500">
-                    Please mention DwellDash when contacting
-                  </div>
+                      <div className="mt-4 text-center text-xs text-gray-500">
+                        Please mention DwellDash when contacting
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 text-center">
+                      <LogIn className="w-12 h-12 text-blue-600 mx-auto mb-4" />
+                      <h4 className="font-semibold text-gray-900 mb-2">Login Required</h4>
+                      <p className="text-gray-600 mb-4">
+                        Please sign in to view contact details and message the property owner.
+                      </p>
+                      <div className="space-y-2">
+                        <Link
+                          to="/login"
+                          className="w-full btn-primary inline-flex items-center justify-center"
+                        >
+                          <LogIn className="w-4 h-4 mr-2" />
+                          Sign In
+                        </Link>
+                        <Link
+                          to="/register"
+                          className="w-full bg-gray-100 hover:bg-gray-200 text-gray-700 font-medium py-2 px-4 rounded-md transition-colors inline-flex items-center justify-center"
+                        >
+                          Create Account
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 

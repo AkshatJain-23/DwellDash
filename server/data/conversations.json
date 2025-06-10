@@ -1,1 +1,166 @@
-[]
+[
+  {
+    "id": "1749546763006",
+    "propertyId": "1749545967172",
+    "ownerId": "1749545921851",
+    "tenantEmail": "jain2003akshat@gmail.com",
+    "tenantName": "Akshat Jain",
+    "propertyTitle": "Comfortable PG for Bachelores",
+    "createdAt": "2025-06-10T09:12:43.006Z",
+    "lastMessageAt": "2025-06-10T14:32:52.652Z",
+    "messages": [
+      {
+        "id": "1749546763006_msg",
+        "text": "im interested",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T09:12:43.006Z",
+        "status": "read"
+      },
+      {
+        "id": "1749548771109_owner_reply",
+        "text": "Please call me at your convenience to discuss the details.",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T09:46:11.109Z",
+        "status": "read"
+      },
+      {
+        "id": "1749558909066_msg",
+        "text": "interested in PG",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T12:35:09.066Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565757315_owner_reply",
+        "text": "Please call me at your convenience to discuss the details.",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:29:17.315Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565972652_tenant_reply",
+        "text": "What's included in the rent?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:32:52.652Z",
+        "status": "read"
+      }
+    ]
+  },
+  {
+    "id": "1749558998098",
+    "propertyId": "1749547861961",
+    "ownerId": "1749545921851",
+    "tenantEmail": "jain2003akshat@gmail.com",
+    "tenantName": "Akshat Jain",
+    "propertyTitle": "Private Room PG Facility in Ludhiana",
+    "createdAt": "2025-06-10T12:36:38.098Z",
+    "lastMessageAt": "2025-06-10T14:32:16.792Z",
+    "messages": [
+      {
+        "id": "1749558998098_msg",
+        "text": "interested",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T12:36:38.098Z",
+        "status": "read"
+      },
+      {
+        "id": "1749559038609_owner_reply",
+        "text": "Please call me at your convenience to discuss the details.",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T12:37:18.609Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565788764_owner_reply",
+        "text": "Thank you for your interest in the property!",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:29:48.764Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565936792_tenant_reply",
+        "text": "When can I schedule a visit?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:32:16.792Z",
+        "status": "sent"
+      }
+    ]
+  },
+  {
+    "id": "1749563511649",
+    "propertyId": "1749547861962",
+    "ownerId": "1749545921851",
+    "tenantEmail": "jain2003akshat@gmail.com",
+    "tenantName": "Akshat Jain",
+    "propertyTitle": "Modern PG for Young Professionals in Bangalore",
+    "createdAt": "2025-06-10T13:51:51.649Z",
+    "lastMessageAt": "2025-06-10T14:32:42.364Z",
+    "messages": [
+      {
+        "id": "1749563511649_msg",
+        "text": "interested",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T13:51:51.649Z",
+        "status": "read"
+      },
+      {
+        "id": "1749563989674_tenant_reply",
+        "text": "When can I schedule a visit?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T13:59:49.674Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565326883_owner_reply",
+        "text": "Please call me at your convenience to discuss the details.",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:22:06.883Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565690749_tenant_reply",
+        "text": "When can I schedule a visit?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:28:10.749Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565776936_owner_reply",
+        "text": "yes lemme know the timings",
+        "sender": "owner",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:29:36.936Z",
+        "status": "read"
+      },
+      {
+        "id": "1749565962364_tenant_reply",
+        "text": "What's included in the rent?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T14:32:42.364Z",
+        "status": "sent"
+      }
+    ]
+  }
+]

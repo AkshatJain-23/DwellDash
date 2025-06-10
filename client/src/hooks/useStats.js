@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
+import { api } from '../utils/api'
 
 const useStats = () => {
   // Start with impressive fallback data that will show immediately
@@ -16,25 +16,30 @@ const useStats = () => {
     const fetchStats = async () => {
       try {
         console.log('Fetching live stats from API...')
-        const response = await axios.get('/api/stats')
+        const response = await api.get('/stats')
         console.log('API Response:', response.data)
         
+        // Handle both mock API response format and real API response format
+        let apiStats = response.data
         if (response.data.success && response.data.data) {
-          const apiStats = response.data.data
-          console.log('API Stats received:', apiStats)
-          
-          // Transform API data to match our UI structure
+          apiStats = response.data.data
+        }
+        
+        console.log('API Stats received:', apiStats)
+        
+        // If we get an array of stats from API, transform them
+        if (Array.isArray(apiStats)) {
           const transformedStats = [
             {
-              number: apiStats.find(s => s.label.includes('PGs'))?.number || "2.8K+",
+              number: apiStats.find(s => s.label && s.label.toLowerCase().includes('pg'))?.number || "2.8K+",
               label: "Verified PGs"
             },
             {
-              number: apiStats.find(s => s.label.includes('Tenants'))?.number || "5.2K+",
+              number: apiStats.find(s => s.label && s.label.toLowerCase().includes('tenant'))?.number || "5.2K+",
               label: "Happy Tenants"
             },
             {
-              number: apiStats.find(s => s.label.includes('Cities'))?.number || "18+",
+              number: apiStats.find(s => s.label && s.label.toLowerCase().includes('cit'))?.number || "18+",
               label: "Cities"
             },
             {

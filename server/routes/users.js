@@ -11,13 +11,19 @@ const router = express.Router();
 const usersFile = path.join(__dirname, '../data/users.json');
 let users = [];
 
+const loadUsers = () => {
 try {
   if (fs.existsSync(usersFile)) {
     users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
+      console.log('Users loaded:', users.length, 'users found');
   }
 } catch (error) {
-  console.log('No existing users file found');
+    console.log('Error loading users file:', error);
 }
+};
+
+// Initial load
+loadUsers();
 
 const saveUsers = () => {
   const dataDir = path.join(__dirname, '../data');
@@ -156,6 +162,148 @@ router.get('/all', authenticateToken, (req, res) => {
 
     res.json(userList);
   } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+});
+
+// Delete user account
+router.delete('/:id', authenticateToken, async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    // Reload users to ensure we have the latest data
+    loadUsers();
+    
+    console.log('Delete user request:', {
+      requestedId: id,
+      requestingUserId: req.user.userId,
+      requestingUserRole: req.user.role
+    });
+    
+    // Check if user is deleting their own account or is admin
+    if (req.user.userId !== id && req.user.role !== 'admin') {
+      console.log('Authorization failed: User can only delete their own account');
+      return res.status(403).json({ error: 'Not authorized to delete this account' });
+    }
+
+    // Find user index
+    const userIndex = users.findIndex(u => u.id === id);
+    console.log('User lookup:', {
+      searchingForId: id,
+      userIndex: userIndex,
+      totalUsers: users.length,
+      existingUserIds: users.map(u => u.id)
+    });
+    
+    if (userIndex === -1) {
+      console.log('User not found in database');
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    const user = users[userIndex];
+    console.log('Found user for deletion:', {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role
+    });
+
+    // Load other data files for cleanup
+    const propertiesFile = path.join(__dirname, '../data/properties.json');
+    const messagesFile = path.join(__dirname, '../data/messages.json');
+    const conversationsFile = path.join(__dirname, '../data/conversations.json');
+
+    let properties = [];
+    let messages = [];
+    let conversations = [];
+
+    // Load existing data
+    try {
+      if (fs.existsSync(propertiesFile)) {
+        properties = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
+      }
+      if (fs.existsSync(messagesFile)) {
+        messages = JSON.parse(fs.readFileSync(messagesFile, 'utf8'));
+      }
+      if (fs.existsSync(conversationsFile)) {
+        conversations = JSON.parse(fs.readFileSync(conversationsFile, 'utf8'));
+      }
+    } catch (error) {
+      console.log('Error loading data files:', error);
+    }
+
+    // If user is owner, delete all their properties first
+    if (user.role === 'owner') {
+      const userProperties = properties.filter(p => p.ownerId === id);
+      
+      // Remove user properties
+      for (let i = properties.length - 1; i >= 0; i--) {
+        if (properties[i].ownerId === id) {
+          properties.splice(i, 1);
+        }
+      }
+
+      // Save updated properties
+      fs.writeFileSync(propertiesFile, JSON.stringify(properties, null, 2));
+      console.log(`Deleted ${userProperties.length} properties for user ${user.name}`);
+    }
+
+    // Remove user from conversations and messages
+    // For tenants, match by email; for owners, match by ID
+    const userConversations = conversations.filter(c => 
+      c.ownerId === id || c.tenantEmail === user.email || c.tenantId === id
+    );
+
+    console.log(`Found ${userConversations.length} conversations involving user ${user.name}`);
+
+    // Remove messages for user conversations
+    for (const conv of userConversations) {
+      for (let i = messages.length - 1; i >= 0; i--) {
+        if (messages[i].conversationId === conv.id) {
+          messages.splice(i, 1);
+        }
+      }
+    }
+
+    // Also remove standalone messages that might reference this user
+    for (let i = messages.length - 1; i >= 0; i--) {
+      if (messages[i].ownerId === id || messages[i].senderEmail === user.email) {
+        messages.splice(i, 1);
+      }
+    }
+
+    // Remove conversations involving the user
+    let deletedConversationsCount = 0;
+    for (let i = conversations.length - 1; i >= 0; i--) {
+      if (conversations[i].ownerId === id || conversations[i].tenantEmail === user.email || conversations[i].tenantId === id) {
+        conversations.splice(i, 1);
+        deletedConversationsCount++;
+      }
+    }
+
+    console.log(`Deleted ${deletedConversationsCount} conversations and associated messages for user ${user.name}`);
+
+    // Save updated messages and conversations
+    fs.writeFileSync(messagesFile, JSON.stringify(messages, null, 2));
+    fs.writeFileSync(conversationsFile, JSON.stringify(conversations, null, 2));
+
+    // Remove user
+    users.splice(userIndex, 1);
+    saveUsers();
+
+    console.log(`User account deleted: ${user.name} (${user.email})`);
+
+    res.json({ 
+      message: 'Account deleted successfully',
+      deletedUser: {
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    });
+
+  } catch (error) {
+    console.error('Delete user error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

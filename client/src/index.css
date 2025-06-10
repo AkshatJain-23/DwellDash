@@ -141,6 +141,21 @@
   background: #a8a8a8;
 }
 
+/* Hide scrollbar for property carousel */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
+}
+
+/* Smooth scroll behavior */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
 /* Image gallery overrides - mobile responsive */
 .image-gallery-slide img {
   max-height: 300px;

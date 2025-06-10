@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
 import { Menu, X, Home, Plus, User, LogOut, Eye, Users, Building2, Search, Heart } from 'lucide-react'
 import DwellDashLogo from './DwellDashLogo'
+import NotificationSystem from './NotificationSystem'
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -90,6 +91,9 @@ const Navbar = () => {
           <div className="flex items-center space-x-4">
             {isAuthenticated ? (
               <>
+                {/* Notification System */}
+                <NotificationSystem user={user} />
+
                 {/* Owner specific actions */}
                 {user?.role === 'owner' && !isBrowsingAsTenant() && (
                   <Link
@@ -294,6 +298,17 @@ const Navbar = () => {
                     <Building2 className="w-5 h-5" />
                     <span>Dashboard</span>
                   </Link>
+
+                  {user?.role === 'tenant' && (
+                    <Link
+                      to="/favorites"
+                      onClick={closeMobileMenu}
+                      className="flex items-center space-x-2 text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
+                    >
+                      <Heart className="w-5 h-5" />
+                      <span>Favorites</span>
+                    </Link>
+                  )}
                   
                   <button
                     onClick={handleLogout}

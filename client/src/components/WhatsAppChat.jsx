@@ -101,7 +101,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
           },
           {
             id: 2,
-            text: `I'm available to answer questions about rent, amenities, viewing schedule, or anything else you'd like to know! 😊`,
+            text: `I'm available to answer questions about rent, amenities, viewing schedule, or anything else you'd like to know! Feel free to call me at your convenience to discuss the details. 😊`,
             sender: 'owner',
             timestamp: new Date(Date.now() + 1000),
             status: 'read'
@@ -243,7 +243,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
     } else if (lowerMessage.includes('location') || lowerMessage.includes('metro') || lowerMessage.includes('transport')) {
       reply = `Great location! Nearest metro is just 5 mins walk. Bus stop right outside. Easy connectivity to major IT hubs and colleges. Very convenient for daily commute.`
     } else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('interested')) {
-      reply = `Owner will get back to you shortly`
+      reply = `The owner will get back to you shortly. Please feel free to call or message for immediate assistance.`
     } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
       reply = `You're welcome! Feel free to ask any other questions. I'm here to help. When would you like to visit the property?`
     } else {
@@ -389,12 +389,12 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
               {/* Property Card */}
               <div 
                 className="bg-white rounded-lg p-3 shadow-sm border border-gray-200 mb-4 cursor-pointer hover:bg-gray-50 transition-colors"
-                onClick={() => window.open(`/properties/${property?.id}`, '_blank')}
+                onClick={() => window.open(`/property/${property?.id}`, '_blank')}
               >
                 <div className="flex items-center space-x-3">
                   {property?.images?.[0] ? (
                     <img 
-                      src={property.images[0].startsWith('http') ? property.images[0] : `http://localhost:5000${property.images[0]}`}
+                      src={property.images[0].startsWith('http') ? property.images[0] : property.images[0]}
                       alt="Property" 
                       className="w-16 h-16 rounded-lg object-cover flex-shrink-0"
                       onError={(e) => {

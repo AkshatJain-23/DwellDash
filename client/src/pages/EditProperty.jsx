@@ -330,7 +330,7 @@ const EditProperty = () => {
                   })}
                   type="tel"
                   className="input"
-                  placeholder="+91 98765 43210"
+                                      placeholder="+91 8426076800"
                 />
                 {errors.contactPhone && (
                   <p className="mt-1 text-sm text-red-600">{errors.contactPhone.message}</p>
@@ -372,7 +372,7 @@ const EditProperty = () => {
                   {existingImages.map((image, index) => (
                     <div key={index} className="relative">
                       <ImageWithFallback
-                        src={`http://localhost:5000${image}`}
+                        src={image}
                         alt={`Current ${index + 1}`}
                         className="w-full h-24 object-cover rounded-lg"
                       />

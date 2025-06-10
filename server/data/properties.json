@@ -1,181 +1,3211 @@
 [
   {
-    "id": "1",
-    "title": "Comfortable PG for Working Professionals in Koramangala",
-    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in the heart of Koramangala with easy access to IT companies, restaurants, and shopping centers. The property offers modern amenities including high-speed WiFi, AC rooms, and nutritious meals.",
-    "rent": 15000,
-    "deposit": 30000,
-    "city": "Bangalore",
-    "address": "123 Koramangala 5th Block, Near Forum Mall, Bangalore, Karnataka 560095",
-    "propertyType": "single-room",
+    "id": "1749545967172",
+    "title": "Comfortable PG for Bachelores",
+    "description": "Lavish PG in the center of the city.",
+    "rent": 10000,
+    "deposit": 3000,
+    "city": "Jaipur",
+    "address": "C6-104, Chitrakoot, Vaishali Nagar, Jaipur",
+    "propertyType": "flat",
     "gender": "any",
     "amenities": [
       "wifi",
       "ac",
       "meals",
-      "laundry",
-      "parking",
-      "security"
+      "laundry"
     ],
     "images": [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43210",
-    "availableFrom": "2024-01-15",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T08:59:27.172Z",
     "isActive": true
   },
   {
-    "id": "2",
-    "title": "Premium Ladies PG in Bandra West",
-    "description": "Exclusive ladies-only PG accommodation in prime Bandra West location. Features include fully furnished rooms, 24/7 security, housekeeping services, and home-cooked meals. Walking distance to Bandra station and major corporate offices.",
-    "rent": 25000,
-    "deposit": 50000,
-    "city": "Mumbai",
-    "address": "456 Bandra West, Near Linking Road, Mumbai, Maharashtra 400050",
-    "propertyType": "shared-room",
-    "gender": "female",
+    "id": "1749547861961",
+    "title": "Private Room PG Facility in Ludhiana",
+    "description": "Cozy and comfortable PG accommodation in a residential area. Features include WiFi, AC, meals, laundry, and round-the-clock security.",
+    "rent": 3852,
+    "deposit": 9057,
+    "city": "Ludhiana",
+    "address": "787 University Area, Phase 1, Ludhiana, Punjab",
+    "propertyType": "hostel",
+    "gender": "male",
     "amenities": [
-      "wifi",
-      "ac",
-      "meals",
-      "laundry",
-      "security",
-      "housekeeping"
+      "cctv",
+      "shuttle"
     ],
     "images": [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43211",
-    "availableFrom": "2024-02-01",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-23",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
     "isActive": true
   },
   {
-    "id": "3",
-    "title": "Budget-Friendly PG for Students in Lajpat Nagar",
-    "description": "Affordable PG accommodation designed for students and young professionals. Located near Delhi University and metro station. Includes basic amenities like WiFi, meals, and study area. Perfect for those looking for economical housing options.",
-    "rent": 8000,
-    "deposit": 16000,
-    "city": "Delhi",
-    "address": "789 Lajpat Nagar II, Near Metro Station, New Delhi, Delhi 110024",
-    "propertyType": "shared-room",
-    "gender": "male",
+    "id": "1749547861962",
+    "title": "Modern PG for Young Professionals in Bangalore",
+    "description": "Affordable yet comfortable PG accommodation near metro station and major transportation hubs. Ideal for budget-conscious professionals.",
+    "rent": 22209,
+    "deposit": 45365,
+    "city": "Bangalore",
+    "address": "47 City Center, Sector 1, Bangalore, Karnataka",
+    "propertyType": "flat",
+    "gender": "any",
     "amenities": [
-      "wifi",
-      "meals",
-      "study-area",
-      "security"
+      "housekeeping",
+      "power-backup",
+      "laundry",
+      "parking",
+      "gym",
+      "swimming-pool"
     ],
     "images": [
       "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center"
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43212",
-    "availableFrom": "2024-01-20",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-08",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
     "isActive": true
   },
   {
-    "id": "4",
-    "title": "Luxury PG with Swimming Pool in Anna Nagar",
-    "description": "Premium PG accommodation with world-class amenities including swimming pool, gym, and recreational facilities. Located in upscale Anna Nagar with easy access to IT corridor and shopping malls. Perfect for professionals seeking luxury living.",
-    "rent": 20000,
-    "deposit": 40000,
-    "city": "Chennai",
-    "address": "321 Anna Nagar West, Near Express Avenue Mall, Chennai, Tamil Nadu 600040",
-    "propertyType": "single-room",
-    "gender": "any",
+    "id": "1749547861963",
+    "title": "Modern PG for Young Professionals in Allahabad",
+    "description": "Private room accommodation offering personal space and privacy while enjoying the benefits of community living and shared amenities.",
+    "rent": 4117,
+    "deposit": 7502,
+    "city": "Allahabad",
+    "address": "960 Station Road, Block B, Allahabad, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "female",
     "amenities": [
-      "wifi",
-      "ac",
-      "meals",
-      "gym",
-      "swimming-pool",
       "parking",
+      "meals",
+      "laundry",
       "security"
     ],
     "images": [
       "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center"
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43213",
-    "availableFrom": "2024-02-15",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
     "isActive": true
   },
   {
-    "id": "5",
-    "title": "Modern PG for IT Professionals in Hinjewadi",
-    "description": "State-of-the-art PG facility designed specifically for IT professionals working in Hinjewadi IT Park. Features include high-speed internet, power backup, modern kitchen, and shuttle service to major IT companies.",
-    "rent": 12000,
-    "deposit": 24000,
-    "city": "Pune",
-    "address": "654 Hinjewadi Phase 1, Near Rajiv Gandhi Infotech Park, Pune, Maharashtra 411057",
+    "id": "1749547861964",
+    "title": "Fully Furnished PG Accommodation in Bhiwandi",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 13709,
+    "deposit": 26043,
+    "city": "Bhiwandi",
+    "address": "983 Main Market, Sector 1, Bhiwandi, Maharashtra",
     "propertyType": "single-room",
-    "gender": "any",
+    "gender": "male",
     "amenities": [
-      "wifi",
+      "swimming-pool",
       "ac",
-      "meals",
-      "shuttle",
-      "power-backup",
       "parking"
     ],
     "images": [
       "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
       "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1615529182904-14819c35db37?w=800&h=600&fit=crop&crop=center"
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43214",
-    "availableFrom": "2024-01-10",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-23",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
     "isActive": true
   },
   {
-    "id": "6",
-    "title": "Cozy PG for Girls in Jubilee Hills",
-    "description": "Safe and comfortable PG accommodation exclusively for girls in the prestigious Jubilee Hills area. Features include CCTV surveillance, biometric access, nutritious meals, and proximity to major shopping and entertainment hubs.",
-    "rent": 18000,
-    "deposit": 36000,
-    "city": "Hyderabad",
-    "address": "987 Jubilee Hills, Near GVK One Mall, Hyderabad, Telangana 500033",
+    "id": "1749547861965",
+    "title": "Boys PG with Excellent Facilities in Kalyan-Dombivli",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 26192,
+    "deposit": 61782,
+    "city": "Kalyan-Dombivli",
+    "address": "10 City Center, Block A, Kalyan-Dombivli, Maharashtra",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "security",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1594736797933-d0bc02e4bcad?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861966",
+    "title": "Family-like PG Environment in Madurai",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 11582,
+    "deposit": 17507,
+    "city": "Madurai",
+    "address": "147 IT Park, Block A, Madurai, Tamil Nadu",
     "propertyType": "single-room",
     "gender": "female",
     "amenities": [
-      "wifi",
-      "ac",
       "meals",
-      "security",
+      "laundry",
+      "wifi",
       "cctv",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861967",
+    "title": "Shared Accommodation for Students in Rajkot",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 8244,
+    "deposit": 18903,
+    "city": "Rajkot",
+    "address": "974 Main Market, Block A, Rajkot, Gujarat",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "study-area",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-23",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861968",
+    "title": "Shared Accommodation for Students in Bareilly",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 2644,
+    "deposit": 4655,
+    "city": "Bareilly",
+    "address": "69 IT Park, Block A, Bareilly, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "ac",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861969",
+    "title": "Fully Furnished PG Accommodation in Malegaon",
+    "description": "Premium PG accommodation featuring modern amenities, 24/7 security, housekeeping services, and nutritious home-cooked meals.",
+    "rent": 1830,
+    "deposit": 3045,
+    "city": "Malegaon",
+    "address": "328 Main Market, Phase 2, Malegaon, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "female",
+    "amenities": [
+      "meals",
+      "ac"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-20",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.961Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861971",
+    "title": "Executive PG with All Facilities in Gwalior",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 5179,
+    "deposit": 9586,
+    "city": "Gwalior",
+    "address": "900 City Center, Sector 2, Gwalior, Madhya Pradesh",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "parking",
+      "housekeeping",
+      "power-backup",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1625505826533-4deaa0e2fe16?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861972",
+    "title": "Modern PG for Young Professionals in Ajmer",
+    "description": "Cozy and comfortable PG accommodation in a residential area. Features include WiFi, AC, meals, laundry, and round-the-clock security.",
+    "rent": 2532,
+    "deposit": 5607,
+    "city": "Ajmer",
+    "address": "393 City Center, Sector 1, Ajmer, Rajasthan",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "study-area",
+      "shuttle"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1581404917879-264c1c66fe24?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861973",
+    "title": "Co-living Space with Modern Amenities in Jhansi",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 8042,
+    "deposit": 17661,
+    "city": "Jhansi",
+    "address": "702 Mall Road, Phase 1, Jhansi, Uttar Pradesh",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861974",
+    "title": "Fully Furnished PG Accommodation in Jalandhar",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 3761,
+    "deposit": 7535,
+    "city": "Jalandhar",
+    "address": "751 Main Market, Phase 2, Jalandhar, Punjab",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "ac",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1542652694-40abf526446e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-26",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861975",
+    "title": "Spacious PG near IT Hub in Mysore",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 10071,
+    "deposit": 20202,
+    "city": "Mysore",
+    "address": "373 Main Market, Phase 2, Mysore, Karnataka",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "shuttle",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-15",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861976",
+    "title": "Luxurious PG Accommodation in Gurgaon",
+    "description": "Experience the warmth of family-like environment with caring management, home-cooked food, and friendly community atmosphere.",
+    "rent": 13127,
+    "deposit": 25873,
+    "city": "Gurgaon",
+    "address": "222 University Area, Sector 1, Gurgaon, Haryana",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "shuttle",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-29",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861977",
+    "title": "Corporate PG for IT Professionals in Pune",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 31577,
+    "deposit": 71805,
+    "city": "Pune",
+    "address": "877 Station Road, Block A, Pune, Maharashtra",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "biometric",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1554344728-c0bf12c2ecaa?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-15",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861978",
+    "title": "Cozy PG in Prime Location in Mysore",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 7361,
+    "deposit": 17843,
+    "city": "Mysore",
+    "address": "146 Mall Road, Phase 2, Mysore, Karnataka",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "power-backup",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-20",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861979",
+    "title": "Executive PG with All Facilities in Loni",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 5189,
+    "deposit": 11253,
+    "city": "Loni",
+    "address": "937 Station Road, Phase 1, Loni, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "ac",
+      "wifi",
+      "gym",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1596357395217-80de13130e92?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1559116315-702b0b4774ce?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861980",
+    "title": "Affordable PG near Metro Station in Chandigarh",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 21585,
+    "deposit": 37088,
+    "city": "Chandigarh",
+    "address": "711 Mall Road, Phase 1, Chandigarh, Chandigarh",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "biometric",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544548045-6c4b999c653c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861981",
+    "title": "Fully Furnished PG Accommodation in Chennai",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 16765,
+    "deposit": 34975,
+    "city": "Chennai",
+    "address": "549 Mall Road, Sector 2, Chennai, Tamil Nadu",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "study-area",
+      "cctv",
+      "housekeeping",
+      "ac",
+      "swimming-pool",
+      "shuttle"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-23",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861982",
+    "title": "Co-living Space with Modern Amenities in Ranchi",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 7181,
+    "deposit": 15654,
+    "city": "Ranchi",
+    "address": "784 Station Road, Sector 2, Ranchi, Jharkhand",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "meals",
+      "wifi",
+      "biometric",
+      "study-area",
+      "security",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861983",
+    "title": "Deluxe PG with Home-like Environment in Belgaum",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 4511,
+    "deposit": 11156,
+    "city": "Belgaum",
+    "address": "761 Station Road, Phase 1, Belgaum, Karnataka",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "meals",
+      "housekeeping",
+      "laundry",
+      "shuttle",
+      "gym",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861984",
+    "title": "Budget-Friendly PG for Students in Ghaziabad",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 13560,
+    "deposit": 28550,
+    "city": "Ghaziabad",
+    "address": "783 City Center, Sector 1, Ghaziabad, Uttar Pradesh",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "gym"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-09",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861985",
+    "title": "Spacious PG near IT Hub in Gorakhpur",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 2691,
+    "deposit": 4614,
+    "city": "Gorakhpur",
+    "address": "831 University Area, Phase 1, Gorakhpur, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861986",
+    "title": "Boys PG with Excellent Facilities in Indore",
+    "description": "Modern PG facility strategically located near major IT hubs and business districts. Perfect for working professionals with easy commute options.",
+    "rent": 7599,
+    "deposit": 12850,
+    "city": "Indore",
+    "address": "476 IT Park, Block B, Indore, Madhya Pradesh",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "cctv",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861987",
+    "title": "PG near University Campus in Mira-Bhayandar",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 15906,
+    "deposit": 32448,
+    "city": "Mira-Bhayandar",
+    "address": "408 Mall Road, Block B, Mira-Bhayandar, Maharashtra",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "ac",
+      "wifi",
+      "gym",
+      "housekeeping",
+      "shuttle",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-28",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861988",
+    "title": "PG near University Campus in Guwahati",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 9484,
+    "deposit": 14830,
+    "city": "Guwahati",
+    "address": "604 University Area, Block A, Guwahati, Assam",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "study-area",
+      "security",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-12",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861989",
+    "title": "PG near University Campus in Rajkot",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 3655,
+    "deposit": 7100,
+    "city": "Rajkot",
+    "address": "97 Station Road, Phase 1, Rajkot, Gujarat",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "parking",
+      "ac",
+      "laundry",
       "biometric"
     ],
     "images": [
       "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center",
-      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861990",
+    "title": "Co-living Space with Modern Amenities in Gwalior",
+    "description": "Affordable yet comfortable PG accommodation near metro station and major transportation hubs. Ideal for budget-conscious professionals.",
+    "rent": 8487,
+    "deposit": 19266,
+    "city": "Gwalior",
+    "address": "245 Mall Road, Block B, Gwalior, Madhya Pradesh",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "gym",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1594736797933-d0bc02e4bcad?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861991",
+    "title": "Corporate PG for IT Professionals in Ajmer",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 2337,
+    "deposit": 5244,
+    "city": "Ajmer",
+    "address": "465 Station Road, Phase 2, Ajmer, Rajasthan",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861992",
+    "title": "Spacious PG near IT Hub in Raipur",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 10572,
+    "deposit": 23417,
+    "city": "Raipur",
+    "address": "739 City Center, Phase 1, Raipur, Chhattisgarh",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "biometric",
+      "laundry",
+      "study-area",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.962Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861994",
+    "title": "Affordable PG near Metro Station in Jabalpur",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 8614,
+    "deposit": 13835,
+    "city": "Jabalpur",
+    "address": "140 Main Market, Sector 1, Jabalpur, Madhya Pradesh",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "cctv",
+      "power-backup",
+      "wifi",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-25",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861995",
+    "title": "Corporate PG for IT Professionals in Bhilai",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 3446,
+    "deposit": 5230,
+    "city": "Bhilai",
+    "address": "543 IT Park, Sector 2, Bhilai, Chhattisgarh",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "ac",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1625505826533-4deaa0e2fe16?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-13",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861996",
+    "title": "Premium PG with Modern Amenities in Amravati",
+    "description": "Cozy and comfortable PG accommodation in a residential area. Features include WiFi, AC, meals, laundry, and round-the-clock security.",
+    "rent": 4155,
+    "deposit": 9188,
+    "city": "Amravati",
+    "address": "31 City Center, Sector 1, Amravati, Maharashtra",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "power-backup",
+      "security",
+      "swimming-pool",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1581404917879-264c1c66fe24?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861997",
+    "title": "Budget-Friendly PG for Students in Belgaum",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 6004,
+    "deposit": 9535,
+    "city": "Belgaum",
+    "address": "883 Mall Road, Sector 1, Belgaum, Karnataka",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "meals",
+      "study-area",
+      "ac",
+      "housekeeping",
+      "laundry",
+      "biometric"
+    ],
+    "images": [
       "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-21",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861998",
+    "title": "Spacious PG near IT Hub in Meerut",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 3186,
+    "deposit": 4835,
+    "city": "Meerut",
+    "address": "721 University Area, Block A, Meerut, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "parking",
+      "laundry",
+      "shuttle",
+      "ac"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-31",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547861999",
+    "title": "Cozy PG in Prime Location in Gaya",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 2793,
+    "deposit": 4551,
+    "city": "Gaya",
+    "address": "218 Main Market, Block B, Gaya, Bihar",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "biometric",
+      "study-area",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-04",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862000",
+    "title": "Shared Accommodation for Students in Jamnagar",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 5304,
+    "deposit": 11938,
+    "city": "Jamnagar",
+    "address": "515 IT Park, Sector 1, Jamnagar, Gujarat",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "meals",
+      "power-backup",
+      "parking",
+      "shuttle",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862001",
+    "title": "Modern PG for Young Professionals in Aurangabad",
+    "description": "Experience the warmth of family-like environment with caring management, home-cooked food, and friendly community atmosphere.",
+    "rent": 9883,
+    "deposit": 22717,
+    "city": "Aurangabad",
+    "address": "77 City Center, Sector 2, Aurangabad, Maharashtra",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "swimming-pool",
+      "ac",
+      "biometric",
+      "meals",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862002",
+    "title": "Fully Furnished PG Accommodation in Salem",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 9375,
+    "deposit": 21274,
+    "city": "Salem",
+    "address": "689 Mall Road, Sector 1, Salem, Tamil Nadu",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "laundry",
+      "biometric",
+      "study-area",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1554344728-c0bf12c2ecaa?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862003",
+    "title": "Cozy PG in Prime Location in Varanasi",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 3851,
+    "deposit": 9224,
+    "city": "Varanasi",
+    "address": "640 Station Road, Sector 1, Varanasi, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "study-area",
+      "shuttle",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1596357395217-80de13130e92?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1559116315-702b0b4774ce?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-30",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862004",
+    "title": "Private Room PG Facility in Bhubaneswar",
+    "description": "Experience the warmth of family-like environment with caring management, home-cooked food, and friendly community atmosphere.",
+    "rent": 7929,
+    "deposit": 12953,
+    "city": "Bhubaneswar",
+    "address": "334 City Center, Sector 2, Bhubaneswar, Odisha",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "security",
+      "laundry",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544548045-6c4b999c653c?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-13",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862005",
+    "title": "Executive PG with All Facilities in Faridabad",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 10216,
+    "deposit": 25466,
+    "city": "Faridabad",
+    "address": "821 Main Market, Phase 1, Faridabad, Haryana",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "housekeeping",
+      "cctv",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862006",
+    "title": "Affordable PG near Metro Station in Akola",
+    "description": "Hostel-style accommodation with shared facilities and economical pricing. Perfect for students and budget-conscious individuals.",
+    "rent": 3788,
+    "deposit": 7697,
+    "city": "Akola",
+    "address": "769 Station Road, Phase 1, Akola, Maharashtra",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "laundry",
+      "ac",
+      "power-backup",
+      "gym"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-20",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862007",
+    "title": "Luxurious PG Accommodation in Coimbatore",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 9235,
+    "deposit": 21527,
+    "city": "Coimbatore",
+    "address": "908 Mall Road, Phase 2, Coimbatore, Tamil Nadu",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "laundry",
+      "shuttle",
+      "wifi",
+      "ac",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-13",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862008",
+    "title": "Budget-Friendly PG for Students in Jabalpur",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 2982,
+    "deposit": 7013,
+    "city": "Jabalpur",
+    "address": "737 University Area, Phase 1, Jabalpur, Madhya Pradesh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "parking",
+      "wifi",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-23",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862009",
+    "title": "Family-like PG Environment in Mangalore",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 3594,
+    "deposit": 5414,
+    "city": "Mangalore",
+    "address": "363 City Center, Phase 1, Mangalore, Karnataka",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "gym",
+      "ac",
+      "security",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-18",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862010",
+    "title": "Affordable PG near Metro Station in Vadodara",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 13854,
+    "deposit": 22588,
+    "city": "Vadodara",
+    "address": "983 University Area, Phase 1, Vadodara, Gujarat",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "wifi",
+      "housekeeping",
+      "gym",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-28",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862011",
+    "title": "Luxurious PG Accommodation in Meerut",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 4669,
+    "deposit": 8500,
+    "city": "Meerut",
+    "address": "696 Main Market, Block B, Meerut, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "swimming-pool",
+      "biometric",
+      "parking",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-11",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862012",
+    "title": "Executive PG with All Facilities in Meerut",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 3631,
+    "deposit": 6681,
+    "city": "Meerut",
+    "address": "980 City Center, Sector 2, Meerut, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "cctv",
+      "biometric",
+      "parking",
+      "security",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-26",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862013",
+    "title": "Family-like PG Environment in Thiruvananthapuram",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 16411,
+    "deposit": 33175,
+    "city": "Thiruvananthapuram",
+    "address": "170 City Center, Block A, Thiruvananthapuram, Kerala",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "swimming-pool",
+      "wifi",
+      "shuttle",
+      "parking",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-08",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862014",
+    "title": "Deluxe PG with Home-like Environment in Tiruchirappalli",
+    "description": "Private room accommodation offering personal space and privacy while enjoying the benefits of community living and shared amenities.",
+    "rent": 6062,
+    "deposit": 10449,
+    "city": "Tiruchirappalli",
+    "address": "753 IT Park, Block A, Tiruchirappalli, Tamil Nadu",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1594736797933-d0bc02e4bcad?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862015",
+    "title": "Comfortable PG for Working Professionals in Amravati",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 6876,
+    "deposit": 12296,
+    "city": "Amravati",
+    "address": "760 Station Road, Sector 2, Amravati, Maharashtra",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-04",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862016",
+    "title": "Safe and Secure PG for Girls in Ulhasnagar",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 6514,
+    "deposit": 13268,
+    "city": "Ulhasnagar",
+    "address": "178 Mall Road, Sector 1, Ulhasnagar, Maharashtra",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "meals",
+      "housekeeping",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-01",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862017",
+    "title": "Hostel-style Accommodation in Visakhapatnam",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 8124,
+    "deposit": 20204,
+    "city": "Visakhapatnam",
+    "address": "860 Station Road, Phase 2, Visakhapatnam, Andhra Pradesh",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "housekeeping",
+      "wifi",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-22",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862018",
+    "title": "Private Room PG Facility in Amritsar",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 8196,
+    "deposit": 16146,
+    "city": "Amritsar",
+    "address": "222 IT Park, Sector 1, Amritsar, Punjab",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "meals",
+      "shuttle",
+      "wifi",
+      "parking",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1625505826533-4deaa0e2fe16?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862019",
+    "title": "Safe and Secure PG for Girls in Guntur",
+    "description": "Cozy and comfortable PG accommodation in a residential area. Features include WiFi, AC, meals, laundry, and round-the-clock security.",
+    "rent": 2640,
+    "deposit": 5546,
+    "city": "Guntur",
+    "address": "278 City Center, Phase 2, Guntur, Andhra Pradesh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "shuttle",
+      "swimming-pool",
+      "gym",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862020",
+    "title": "Comfortable PG for Working Professionals in Kochi",
+    "description": "Premium PG accommodation featuring modern amenities, 24/7 security, housekeeping services, and nutritious home-cooked meals.",
+    "rent": 13057,
+    "deposit": 32172,
+    "city": "Kochi",
+    "address": "949 Mall Road, Block B, Kochi, Kerala",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "cctv",
+      "gym",
+      "security",
+      "wifi",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1581404917879-264c1c66fe24?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862021",
+    "title": "Modern PG for Young Professionals in Indore",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 13632,
+    "deposit": 23999,
+    "city": "Indore",
+    "address": "219 Station Road, Phase 1, Indore, Madhya Pradesh",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "cctv",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862022",
+    "title": "Boys PG with Excellent Facilities in Dhanbad",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 6367,
+    "deposit": 13434,
+    "city": "Dhanbad",
+    "address": "924 City Center, Phase 1, Dhanbad, Jharkhand",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "study-area",
+      "housekeeping",
+      "cctv",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1542652694-40abf526446e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-15",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862023",
+    "title": "Deluxe PG with Home-like Environment in Bhubaneswar",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 4275,
+    "deposit": 7929,
+    "city": "Bhubaneswar",
+    "address": "614 University Area, Block B, Bhubaneswar, Odisha",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "meals",
+      "shuttle",
+      "study-area",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862024",
+    "title": "Modern PG for Young Professionals in Bhilai",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 3122,
+    "deposit": 6065,
+    "city": "Bhilai",
+    "address": "808 Main Market, Block A, Bhilai, Chhattisgarh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "cctv",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-20",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862025",
+    "title": "Affordable PG near Metro Station in Pune",
+    "description": "Modern PG facility strategically located near major IT hubs and business districts. Perfect for working professionals with easy commute options.",
+    "rent": 11681,
+    "deposit": 26964,
+    "city": "Pune",
+    "address": "867 Main Market, Sector 2, Pune, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "swimming-pool",
+      "study-area",
+      "biometric",
+      "ac",
+      "gym"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1554344728-c0bf12c2ecaa?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-26",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862026",
+    "title": "Safe and Secure PG for Girls in Ludhiana",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 10980,
+    "deposit": 17311,
+    "city": "Ludhiana",
+    "address": "808 Station Road, Phase 2, Ludhiana, Punjab",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "meals",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1596357395217-80de13130e92?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-30",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862027",
+    "title": "Co-living Space with Modern Amenities in Vasai-Virar",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 15880,
+    "deposit": 35777,
+    "city": "Vasai-Virar",
+    "address": "629 IT Park, Sector 1, Vasai-Virar, Maharashtra",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "parking",
+      "wifi",
+      "meals",
+      "biometric",
+      "study-area",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1559116315-702b0b4774ce?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-12",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862028",
+    "title": "Corporate PG for IT Professionals in Visakhapatnam",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 7232,
+    "deposit": 17459,
+    "city": "Visakhapatnam",
+    "address": "89 Station Road, Block B, Visakhapatnam, Andhra Pradesh",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "shuttle",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544548045-6c4b999c653c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862029",
+    "title": "Cozy PG in Prime Location in Coimbatore",
+    "description": "Premium PG accommodation featuring modern amenities, 24/7 security, housekeeping services, and nutritious home-cooked meals.",
+    "rent": 12915,
+    "deposit": 20452,
+    "city": "Coimbatore",
+    "address": "493 Main Market, Phase 1, Coimbatore, Tamil Nadu",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "ac",
+      "study-area",
+      "parking",
+      "meals"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862030",
+    "title": "Hostel-style Accommodation in Gaya",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 3529,
+    "deposit": 6281,
+    "city": "Gaya",
+    "address": "826 University Area, Phase 2, Gaya, Bihar",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "wifi",
+      "parking",
+      "housekeeping",
+      "meals",
+      "study-area",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-30",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862031",
+    "title": "PG near University Campus in Thiruvananthapuram",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 11840,
+    "deposit": 19664,
+    "city": "Thiruvananthapuram",
+    "address": "722 Main Market, Block A, Thiruvananthapuram, Kerala",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "laundry",
+      "power-backup",
+      "housekeeping",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862032",
+    "title": "Private Room PG Facility in Jaipur",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 5965,
+    "deposit": 14603,
+    "city": "Jaipur",
+    "address": "49 Station Road, Sector 2, Jaipur, Rajasthan",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "power-backup",
+      "housekeeping",
+      "meals",
+      "shuttle"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862033",
+    "title": "Premium PG with Modern Amenities in Ujjain",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 5242,
+    "deposit": 8977,
+    "city": "Ujjain",
+    "address": "811 IT Park, Sector 2, Ujjain, Madhya Pradesh",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.963Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862035",
+    "title": "Luxurious PG Accommodation in Mangalore",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 5868,
+    "deposit": 14544,
+    "city": "Mangalore",
+    "address": "777 Main Market, Phase 2, Mangalore, Karnataka",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "shuttle",
+      "power-backup",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-29",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862036",
+    "title": "Safe and Secure PG for Girls in Tiruchirappalli",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 4273,
+    "deposit": 10018,
+    "city": "Tiruchirappalli",
+    "address": "764 IT Park, Block A, Tiruchirappalli, Tamil Nadu",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "gym",
+      "wifi",
+      "security",
+      "ac",
+      "study-area",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-30",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862037",
+    "title": "Co-living Space with Modern Amenities in Srinagar",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 4406,
+    "deposit": 10994,
+    "city": "Srinagar",
+    "address": "183 Main Market, Phase 1, Srinagar, Jammu and Kashmir",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "parking",
+      "wifi",
+      "security",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862038",
+    "title": "Corporate PG for IT Professionals in Chennai",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 19351,
+    "deposit": 29087,
+    "city": "Chennai",
+    "address": "256 University Area, Phase 2, Chennai, Tamil Nadu",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "shuttle",
+      "meals",
+      "power-backup",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1594736797933-d0bc02e4bcad?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862039",
+    "title": "Deluxe PG with Home-like Environment in Erode",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 8044,
+    "deposit": 18181,
+    "city": "Erode",
+    "address": "241 Main Market, Phase 2, Erode, Tamil Nadu",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "parking",
+      "biometric",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862040",
+    "title": "Family-like PG Environment in Bikaner",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 5271,
+    "deposit": 11542,
+    "city": "Bikaner",
+    "address": "166 IT Park, Phase 2, Bikaner, Rajasthan",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "parking",
+      "housekeeping",
+      "wifi",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862041",
+    "title": "Modern PG for Young Professionals in Surat",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 5680,
+    "deposit": 11007,
+    "city": "Surat",
+    "address": "210 Mall Road, Sector 2, Surat, Gujarat",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "security",
+      "study-area",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862042",
+    "title": "Shared Accommodation for Students in Saharanpur",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 3327,
+    "deposit": 8055,
+    "city": "Saharanpur",
+    "address": "133 Station Road, Sector 2, Saharanpur, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "gym",
+      "ac",
+      "wifi",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862043",
+    "title": "Boys PG with Excellent Facilities in Bhopal",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 9728,
+    "deposit": 18478,
+    "city": "Bhopal",
+    "address": "128 IT Park, Sector 1, Bhopal, Madhya Pradesh",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "laundry",
+      "parking",
+      "gym",
+      "ac",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1625505826533-4deaa0e2fe16?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862044",
+    "title": "Safe and Secure PG for Girls in Thane",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 20242,
+    "deposit": 35156,
+    "city": "Thane",
+    "address": "926 Station Road, Block B, Thane, Maharashtra",
+    "propertyType": "single-room",
+    "gender": "any",
+    "amenities": [
+      "housekeeping",
+      "wifi",
+      "biometric",
+      "power-backup",
+      "laundry",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1581404917879-264c1c66fe24?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-13",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862045",
+    "title": "Fully Furnished PG Accommodation in Jabalpur",
+    "description": "Executive-level PG accommodation with premium amenities including gym, swimming pool, power backup, and shuttle service to major locations.",
+    "rent": 7671,
+    "deposit": 15969,
+    "city": "Jabalpur",
+    "address": "852 Main Market, Phase 2, Jabalpur, Madhya Pradesh",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "laundry",
+      "meals",
+      "security",
+      "parking",
+      "housekeeping",
+      "wifi"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862046",
+    "title": "Shared Accommodation for Students in Kanpur",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 10041,
+    "deposit": 24268,
+    "city": "Kanpur",
+    "address": "972 Mall Road, Block A, Kanpur, Uttar Pradesh",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "gym"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1542652694-40abf526446e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-28",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862047",
+    "title": "PG near University Campus in Madurai",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 14608,
+    "deposit": 26098,
+    "city": "Madurai",
+    "address": "458 Station Road, Sector 2, Madurai, Tamil Nadu",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "security",
+      "laundry",
+      "ac",
+      "power-backup",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-08",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862048",
+    "title": "Spacious PG near IT Hub in Allahabad",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 4398,
+    "deposit": 10409,
+    "city": "Allahabad",
+    "address": "755 University Area, Phase 2, Allahabad, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "security",
+      "parking",
+      "gym",
+      "cctv",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-09",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862049",
+    "title": "Shared Accommodation for Students in Kalyan-Dombivli",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 16077,
+    "deposit": 35506,
+    "city": "Kalyan-Dombivli",
+    "address": "395 University Area, Phase 2, Kalyan-Dombivli, Maharashtra",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "biometric",
+      "cctv",
+      "power-backup"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1554344728-c0bf12c2ecaa?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862050",
+    "title": "Affordable PG near Metro Station in Raipur",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 3330,
+    "deposit": 5871,
+    "city": "Raipur",
+    "address": "762 City Center, Block B, Raipur, Chhattisgarh",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "meals",
+      "wifi",
+      "biometric",
+      "cctv",
+      "study-area"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862051",
+    "title": "PG near University Campus in Gulbarga",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 3620,
+    "deposit": 6610,
+    "city": "Gulbarga",
+    "address": "342 IT Park, Phase 1, Gulbarga, Karnataka",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "study-area",
+      "housekeeping",
+      "parking",
+      "shuttle",
+      "ac"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1596357395217-80de13130e92?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1559116315-702b0b4774ce?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-27",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862052",
+    "title": "Shared Accommodation for Students in Jammu",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 5456,
+    "deposit": 8471,
+    "city": "Jammu",
+    "address": "261 Main Market, Block B, Jammu, Jammu and Kashmir",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "parking",
+      "meals",
+      "swimming-pool",
+      "wifi",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544548045-6c4b999c653c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862053",
+    "title": "Private Room PG Facility in Maheshtala",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 6798,
+    "deposit": 13208,
+    "city": "Maheshtala",
+    "address": "59 Main Market, Block A, Maheshtala, West Bengal",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "parking",
+      "ac",
+      "security",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-01",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862054",
+    "title": "Family-like PG Environment in Navi Mumbai",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 7802,
+    "deposit": 15848,
+    "city": "Navi Mumbai",
+    "address": "92 IT Park, Block B, Navi Mumbai, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "female",
+    "amenities": [
+      "shuttle",
+      "housekeeping",
+      "wifi",
+      "swimming-pool",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-09",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.964Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862056",
+    "title": "Private Room PG Facility in Kanpur",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 8920,
+    "deposit": 14730,
+    "city": "Kanpur",
+    "address": "104 University Area, Sector 2, Kanpur, Uttar Pradesh",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "power-backup",
+      "study-area",
+      "biometric",
+      "gym",
+      "shuttle",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564078516393-cf04bd966897?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-30",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862057",
+    "title": "Hostel-style Accommodation in Faridabad",
+    "description": "Safe and secure accommodation exclusively designed for the comfort and safety of residents. Features CCTV surveillance and biometric access.",
+    "rent": 7231,
+    "deposit": 17515,
+    "city": "Faridabad",
+    "address": "299 IT Park, Block A, Faridabad, Haryana",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "gym",
+      "laundry",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862058",
+    "title": "Fully Furnished PG Accommodation in Varanasi",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 2929,
+    "deposit": 6572,
+    "city": "Varanasi",
+    "address": "605 City Center, Phase 1, Varanasi, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "biometric",
+      "power-backup",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center",
       "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
     ],
-    "contactPhone": "+91 98765 43215",
-    "availableFrom": "2024-02-10",
-    "ownerId": "1",
-    "createdAt": "2025-06-07T11:06:13.969Z",
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862059",
+    "title": "Fully Furnished PG Accommodation in Solapur",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 2627,
+    "deposit": 4421,
+    "city": "Solapur",
+    "address": "771 Station Road, Phase 1, Solapur, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "power-backup",
+      "security",
+      "housekeeping",
+      "cctv",
+      "shuttle"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e5b0cb26?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862060",
+    "title": "Luxurious PG Accommodation in Tirunelveli",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 9624,
+    "deposit": 17431,
+    "city": "Tirunelveli",
+    "address": "801 Mall Road, Sector 1, Tirunelveli, Tamil Nadu",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "wifi",
+      "meals",
+      "shuttle",
+      "gym",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-06",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862061",
+    "title": "PG near University Campus in Tiruchirappalli",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 5470,
+    "deposit": 12825,
+    "city": "Tiruchirappalli",
+    "address": "397 IT Park, Phase 1, Tiruchirappalli, Tamil Nadu",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "study-area",
+      "gym",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1631049035182-249067d7618e?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-24",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862062",
+    "title": "Executive PG with All Facilities in Delhi",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 26252,
+    "deposit": 61071,
+    "city": "Delhi",
+    "address": "902 City Center, Sector 2, Delhi, Delhi",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "gym",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-07",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862063",
+    "title": "Deluxe PG with Home-like Environment in Nashik",
+    "description": "Specially designed accommodation with enhanced security features, separate entry, and female staff for added comfort and safety.",
+    "rent": 16102,
+    "deposit": 39452,
+    "city": "Nashik",
+    "address": "426 City Center, Phase 1, Nashik, Maharashtra",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "laundry",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1594736797933-d0bc02e4bcad?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862064",
+    "title": "Corporate PG for IT Professionals in Durgapur",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 10176,
+    "deposit": 15971,
+    "city": "Durgapur",
+    "address": "360 Station Road, Phase 2, Durgapur, West Bengal",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "power-backup",
+      "gym"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862065",
+    "title": "Shared Accommodation for Students in Hubli-Dharwad",
+    "description": "Private room accommodation offering personal space and privacy while enjoying the benefits of community living and shared amenities.",
+    "rent": 8686,
+    "deposit": 20832,
+    "city": "Hubli-Dharwad",
+    "address": "498 City Center, Phase 1, Hubli-Dharwad, Karnataka",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "power-backup",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1565623833408-d77e39b88af6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862066",
+    "title": "Cozy PG in Prime Location in Thane",
+    "description": "Spacious and well-furnished PG accommodation perfect for working professionals. Located in a prime area with easy access to IT companies, restaurants, and shopping centers.",
+    "rent": 6535,
+    "deposit": 15881,
+    "city": "Thane",
+    "address": "204 Mall Road, Phase 2, Thane, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "gym",
+      "housekeeping",
+      "security",
+      "wifi",
+      "shuttle",
+      "laundry"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-17",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862067",
+    "title": "Cozy PG in Prime Location in Moradabad",
+    "description": "Fully furnished accommodation with modern amenities including high-speed internet, power backup, and housekeeping services.",
+    "rent": 3068,
+    "deposit": 7644,
+    "city": "Moradabad",
+    "address": "34 Mall Road, Phase 1, Moradabad, Uttar Pradesh",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "parking",
+      "wifi",
+      "power-backup",
+      "security",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1574180045827-681f8a1a9622?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1625505826533-4deaa0e2fe16?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-16",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862068",
+    "title": "Private Room PG Facility in Warangal",
+    "description": "Modern PG facility strategically located near major IT hubs and business districts. Perfect for working professionals with easy commute options.",
+    "rent": 3664,
+    "deposit": 8906,
+    "city": "Warangal",
+    "address": "323 Main Market, Block A, Warangal, Telangana",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "parking",
+      "laundry",
+      "housekeeping",
+      "wifi",
+      "study-area"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-26",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862069",
+    "title": "Executive PG with All Facilities in Saharanpur",
+    "description": "Budget-friendly PG accommodation designed for students and young professionals. Clean, safe, and well-maintained with all basic amenities.",
+    "rent": 1943,
+    "deposit": 3829,
+    "city": "Saharanpur",
+    "address": "516 University Area, Sector 2, Saharanpur, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "swimming-pool",
+      "parking",
+      "power-backup",
+      "biometric",
+      "laundry",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-17",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862070",
+    "title": "Modern PG for Young Professionals in Rourkela",
+    "description": "Premium PG accommodation featuring modern amenities, 24/7 security, housekeeping services, and nutritious home-cooked meals.",
+    "rent": 5892,
+    "deposit": 11309,
+    "city": "Rourkela",
+    "address": "95 University Area, Block B, Rourkela, Odisha",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "study-area",
+      "housekeeping",
+      "meals",
+      "power-backup",
+      "parking",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-13",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862071",
+    "title": "Boys PG with Excellent Facilities in Bhilai",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 4446,
+    "deposit": 8305,
+    "city": "Bhilai",
+    "address": "244 City Center, Sector 2, Bhilai, Chhattisgarh",
+    "propertyType": "shared-room",
+    "gender": "female",
+    "amenities": [
+      "swimming-pool",
+      "cctv",
+      "study-area"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551298370-9c50423cc6f6?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-10",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862072",
+    "title": "Spacious PG near IT Hub in Vadodara",
+    "description": "Modern PG facility strategically located near major IT hubs and business districts. Perfect for working professionals with easy commute options.",
+    "rent": 7284,
+    "deposit": 17617,
+    "city": "Vadodara",
+    "address": "890 Mall Road, Sector 1, Vadodara, Gujarat",
+    "propertyType": "shared-room",
+    "gender": "any",
+    "amenities": [
+      "swimming-pool",
+      "cctv",
+      "study-area",
+      "parking",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-26",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862073",
+    "title": "Corporate PG for IT Professionals in Gurgaon",
+    "description": "Private room accommodation offering personal space and privacy while enjoying the benefits of community living and shared amenities.",
+    "rent": 34364,
+    "deposit": 83323,
+    "city": "Gurgaon",
+    "address": "177 Main Market, Phase 1, Gurgaon, Haryana",
+    "propertyType": "flat",
+    "gender": "male",
+    "amenities": [
+      "meals",
+      "parking"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1555854877-bab0e564b8d5?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-21",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862074",
+    "title": "Hostel-style Accommodation in Varanasi",
+    "description": "Affordable yet comfortable PG accommodation near metro station and major transportation hubs. Ideal for budget-conscious professionals.",
+    "rent": 3318,
+    "deposit": 6300,
+    "city": "Varanasi",
+    "address": "177 Mall Road, Phase 2, Varanasi, Uttar Pradesh",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "meals",
+      "biometric",
+      "power-backup",
+      "ac",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1554344728-c0bf12c2ecaa?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862075",
+    "title": "Spacious PG near IT Hub in Ahmedabad",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 10212,
+    "deposit": 16369,
+    "city": "Ahmedabad",
+    "address": "302 Mall Road, Block A, Ahmedabad, Gujarat",
+    "propertyType": "shared-room",
+    "gender": "male",
+    "amenities": [
+      "study-area",
+      "meals",
+      "biometric",
+      "cctv",
+      "shuttle",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1596357395217-80de13130e92?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-09",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862076",
+    "title": "Co-living Space with Modern Amenities in Nagpur",
+    "description": "Shared accommodation perfect for students with study rooms, library access, and group study areas for collaborative learning.",
+    "rent": 4301,
+    "deposit": 10007,
+    "city": "Nagpur",
+    "address": "914 Station Road, Sector 2, Nagpur, Maharashtra",
+    "propertyType": "hostel",
+    "gender": "any",
+    "amenities": [
+      "study-area",
+      "meals",
+      "biometric",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1584464491033-06628f3a6b7b?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556912998-c57cc6b63cd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-17",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862077",
+    "title": "Boys PG with Excellent Facilities in Ajmer",
+    "description": "Premium PG accommodation featuring modern amenities, 24/7 security, housekeeping services, and nutritious home-cooked meals.",
+    "rent": 7461,
+    "deposit": 18107,
+    "city": "Ajmer",
+    "address": "448 Station Road, Phase 2, Ajmer, Rajasthan",
+    "propertyType": "flat",
+    "gender": "any",
+    "amenities": [
+      "shuttle",
+      "cctv",
+      "housekeeping"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1593079831268-3381b0db4a77?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862078",
+    "title": "Luxurious PG Accommodation in Mysore",
+    "description": "Corporate-grade accommodation with high-speed internet, conference rooms, and shuttle services to major IT parks and business centers.",
+    "rent": 11298,
+    "deposit": 28029,
+    "city": "Mysore",
+    "address": "25 Station Road, Block B, Mysore, Karnataka",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "cctv",
+      "meals",
+      "security",
+      "power-backup",
+      "shuttle",
+      "biometric"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-09-03",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862079",
+    "title": "Shared Accommodation for Students in Rajkot",
+    "description": "Modern PG facility strategically located near major IT hubs and business districts. Perfect for working professionals with easy commute options.",
+    "rent": 3748,
+    "deposit": 5952,
+    "city": "Rajkot",
+    "address": "780 Main Market, Phase 1, Rajkot, Gujarat",
+    "propertyType": "hostel",
+    "gender": "male",
+    "amenities": [
+      "cctv",
+      "meals",
+      "ac",
+      "housekeeping",
+      "study-area"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1522444195799-478538b28823?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-06-14",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862080",
+    "title": "Affordable PG near Metro Station in Meerut",
+    "description": "Home-like environment with caring staff and nutritious meals. Perfect for those who want to feel at home while away from family.",
+    "rent": 6768,
+    "deposit": 11426,
+    "city": "Meerut",
+    "address": "884 City Center, Sector 1, Meerut, Uttar Pradesh",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "housekeeping",
+      "meals",
+      "shuttle",
+      "study-area",
+      "laundry",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1554995207-c18c203602cb?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1448932223592-d1fc686e76ea?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-02",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862081",
+    "title": "Executive PG with All Facilities in Noida",
+    "description": "Luxurious PG facility with world-class amenities including swimming pool, gym, and recreational facilities. Perfect for those who seek comfort and convenience.",
+    "rent": 25598,
+    "deposit": 49793,
+    "city": "Noida",
+    "address": "126 Main Market, Phase 1, Noida, Uttar Pradesh",
+    "propertyType": "flat",
+    "gender": "female",
+    "amenities": [
+      "study-area",
+      "shuttle",
+      "parking",
+      "laundry",
+      "gym",
+      "security"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1484101403633-562f891dc89a?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-25",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862082",
+    "title": "Cozy PG in Prime Location in Hyderabad",
+    "description": "Well-maintained accommodation with all modern facilities including gym, recreational area, and study rooms for focused learning.",
+    "rent": 7248,
+    "deposit": 16314,
+    "city": "Hyderabad",
+    "address": "517 IT Park, Sector 2, Hyderabad, Telangana",
+    "propertyType": "hostel",
+    "gender": "female",
+    "amenities": [
+      "study-area",
+      "laundry",
+      "swimming-pool",
+      "security",
+      "cctv"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-08-04",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862083",
+    "title": "Affordable PG near Metro Station in Ahmedabad",
+    "description": "Contemporary co-living space with shared common areas, modern kitchen, and recreational facilities for a vibrant community living experience.",
+    "rent": 12845,
+    "deposit": 20952,
+    "city": "Ahmedabad",
+    "address": "794 IT Park, Phase 1, Ahmedabad, Gujarat",
+    "propertyType": "single-room",
+    "gender": "female",
+    "amenities": [
+      "security",
+      "study-area",
+      "swimming-pool"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-28",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
+    "isActive": true
+  },
+  {
+    "id": "1749547862084",
+    "title": "Shared Accommodation for Students in Ahmedabad",
+    "description": "Conveniently located near major educational institutions with study-friendly environment and academic support facilities.",
+    "rent": 16918,
+    "deposit": 35885,
+    "city": "Ahmedabad",
+    "address": "930 University Area, Block A, Ahmedabad, Gujarat",
+    "propertyType": "single-room",
+    "gender": "male",
+    "amenities": [
+      "biometric",
+      "security",
+      "study-area"
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1544984243-ec57ea16fe25?w=800&h=600&fit=crop&crop=center",
+      "https://images.unsplash.com/photo-1560448204-61dc36dc98c8?w=800&h=600&fit=crop&crop=center"
+    ],
+    "contactPhone": "+918426076800",
+    "availableFrom": "2025-07-11",
+    "ownerId": "1749545921851",
+    "createdAt": "2025-06-10T09:31:01.965Z",
     "isActive": true
   }
 ]

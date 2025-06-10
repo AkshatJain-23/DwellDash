@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const ragService = require('../services/ragService');
+const RAGService = require('../services/ragService');
 const rateLimit = require('express-rate-limit');
+
+// Initialize RAG service
+const ragService = new RAGService();
 
 // Rate limiting for chatbot - 30 messages per minute per IP
 const chatbotRateLimit = rateLimit({
@@ -46,8 +49,8 @@ router.post('/chat', chatbotRateLimit, async (req, res) => {
     const response = await ragService.chat(message);
     const responseTime = Date.now() - startTime;
 
-    // Get quick suggestions
-    const suggestions = ragService.getQuickSuggestions(message);
+    // Get contextual quick responses
+    const quickResponses = ragService.getQuickResponses();
 
     // Log conversation for analytics (optional)
     console.log(`Chatbot conversation - Session: ${sessionId || 'anonymous'}, Query: "${message}", Response Time: ${responseTime}ms`);
@@ -56,7 +59,7 @@ router.post('/chat', chatbotRateLimit, async (req, res) => {
       success: true,
       data: {
         response: response,
-        suggestions: suggestions,
+        quickResponses: quickResponses.slice(0, 3), // Limit to 3 suggestions
         responseTime: responseTime,
         timestamp: new Date().toISOString()
       }
@@ -67,37 +70,58 @@ router.post('/chat', chatbotRateLimit, async (req, res) => {
     res.status(500).json({
       success: false,
       error: 'Internal server error. Please try again.',
-      fallback: "I apologize for the technical difficulty. Please contact our support team at dwelldash3@gmail.com or +91 98765 43210 for immediate assistance."
+      fallback: "I apologize for the technical difficulty. Please contact our support team at dwelldash3@gmail.com or +91 8426076800 for immediate assistance."
     });
   }
 });
 
-// Get conversation suggestions
+// Get conversation suggestions with enhanced categories
 router.get('/suggestions', (req, res) => {
   try {
     const suggestions = [
       {
         category: "Getting Started",
+        icon: "🚀",
         questions: [
-          "How do I book a PG?",
-          "How do I list my property?",
-          "Is DwellDash free?"
+          "How do I get started with DwellDash?",
+          "Complete guide for new users",
+          "Step by step booking process"
+        ]
+      },
+      {
+        category: "Safety & Security",
+        icon: "🔒",
+        questions: [
+          "Are properties verified?",
+          "Safety guidelines for PG living",
+          "Emergency contact information"
+        ]
+      },
+      {
+        category: "Learning Resources",
+        icon: "📚",
+        questions: [
+          "Video tutorials available?",
+          "How to search effectively?",
+          "Tips for property visits"
         ]
       },
       {
         category: "Support",
+        icon: "🎧",
         questions: [
           "How to contact support?",
-          "What if I have issues?",
-          "How to cancel booking?"
+          "Refund and cancellation policy",
+          "Technical help needed"
         ]
       },
       {
-        category: "Safety",
+        category: "About DwellDash",
+        icon: "🏢",
         questions: [
-          "Are properties verified?",
-          "Is payment secure?",
-          "What safety measures exist?"
+          "What is DwellDash?",
+          "Company mission and story",
+          "Which cities are covered?"
         ]
       }
     ];
@@ -116,16 +140,50 @@ router.get('/suggestions', (req, res) => {
   }
 });
 
-// Get quick facts about DwellDash
+// Get enhanced quick facts about DwellDash
 router.get('/facts', (req, res) => {
   try {
     const facts = [
-      "🏠 50+ cities covered across India",
-      "✅ All properties verified by our team",
-      "💰 Zero brokerage for tenants",
-      "🔒 Secure payment processing",
-      "📞 24/7 customer support",
-      "⭐ Thousands of happy customers"
+      {
+        icon: "🏠",
+        text: "50+ cities covered across India",
+        category: "Coverage"
+      },
+      {
+        icon: "✅",
+        text: "All properties verified by our team",
+        category: "Verification"
+      },
+      {
+        icon: "💰",
+        text: "Zero brokerage for tenants",
+        category: "Pricing"
+      },
+      {
+        icon: "🔒",
+        text: "Secure payment processing",
+        category: "Security"
+      },
+      {
+        icon: "📞",
+        text: "24/7 customer support",
+        category: "Support"
+      },
+      {
+        icon: "⭐",
+        text: "50,000+ happy tenants",
+        category: "Trust"
+      },
+      {
+        icon: "📱",
+        text: "Mobile-optimized web platform",
+        category: "Access"
+      },
+      {
+        icon: "🚀",
+        text: "Founded in 2023, growing rapidly",
+        category: "Company"
+      }
     ];
 
     res.json({
@@ -142,20 +200,52 @@ router.get('/facts', (req, res) => {
   }
 });
 
+// Get knowledge base statistics
+router.get('/stats', (req, res) => {
+  try {
+    const stats = ragService.getStats();
+    
+    res.json({
+      success: true,
+      data: {
+        ...stats,
+        service: 'DwellBot RAG Chatbot',
+        lastUpdated: new Date().toISOString()
+      }
+    });
+
+  } catch (error) {
+    console.error('Stats API error:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to load stats'
+    });
+  }
+});
+
 // Health check for chatbot service
 router.get('/health', (req, res) => {
   try {
+    const stats = ragService.getStats();
+    
     const health = {
       status: 'healthy',
       service: 'DwellBot RAG Chatbot',
-      version: '1.0.0',
+      version: '2.0.0',
       uptime: process.uptime(),
       timestamp: new Date().toISOString(),
       features: {
         rag_enabled: true,
         llm_provider: 'Groq',
         knowledge_base: 'loaded',
-        rate_limiting: 'active'
+        rate_limiting: 'active',
+        intent_detection: 'enabled',
+        enhanced_scoring: 'active'
+      },
+      knowledge_base: {
+        total_items: stats.totalKnowledgeItems,
+        total_faqs: stats.totalFAQs,
+        categories: stats.categories.length
       }
     };
 

@@ -93,6 +93,10 @@ const OwnerChatPanel = ({ ownerId, ownerName }) => {
       
       // Update stats
       fetchStats()
+
+      // Clear any related notifications (they will be refreshed in the next poll cycle)
+      // This helps ensure notifications disappear when user opens the chat
+      
     } catch (error) {
       console.error('Failed to fetch conversation details:', error)
       toast.error('Failed to load conversation')
@@ -211,7 +215,7 @@ const OwnerChatPanel = ({ ownerId, ownerName }) => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden" data-role="chat-panel" id="messages-section">
       {/* Header */}
       <div className="bg-blue-600 text-white px-6 py-4">
         <div className="flex items-center justify-between">
@@ -328,12 +332,21 @@ const OwnerChatPanel = ({ ownerId, ownerName }) => {
               </div>
               <div className="flex gap-2">
                 <a
-                  href={`mailto:${selectedConversation.tenantEmail}`}
+                  href={`mailto:${selectedConversation.tenantEmail}?subject=Re: ${selectedConversation.propertyTitle}&body=Hello ${selectedConversation.tenantName}, Thank you for your interest in my property.`}
                   className="p-2 bg-blue-100 hover:bg-blue-200 rounded-full transition-colors"
                   title="Send Email"
                 >
                   <Mail className="w-4 h-4 text-blue-600" />
                 </a>
+                {selectedConversation.tenantPhone && (
+                  <a
+                    href={`tel:${selectedConversation.tenantPhone}`}
+                    className="p-2 bg-blue-100 hover:bg-blue-200 rounded-full transition-colors"
+                    title="Call Tenant"
+                  >
+                    <Phone className="w-4 h-4 text-blue-600" />
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -376,7 +389,6 @@ const OwnerChatPanel = ({ ownerId, ownerName }) => {
                   key={index}
                   type="button"
                   onClick={() => {
-                    // Use setValue from react-hook-form to properly set the value
                     setValue('message', reply)
                     if (inputRef.current) {
                       inputRef.current.focus()

@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin, Building2, Users, Shield, Star, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
+import { Mail, Phone, MapPin, Building2, Users, Shield, Star } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import DwellDashLogo from './DwellDashLogo'
 
@@ -49,21 +49,7 @@ const Footer = () => {
               ))}
             </div>
 
-            {/* Social Links */}
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Facebook className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-app-primary transition-colors">
-                <Instagram className="w-5 h-5" />
-              </a>
-            </div>
+
           </div>
 
           {/* Quick Links */}
@@ -129,8 +115,8 @@ const Footer = () => {
                 <Mail className="w-5 h-5 text-app-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm font-medium">Email Support</p>
-                  <a href="mailto:support@dwelldash.com" className="text-white hover:text-app-primary transition-colors">
-                    support@dwelldash.com
+                  <a href="mailto:dwelldash3@gmail.com" className="text-white hover:text-app-primary transition-colors">
+                    dwelldash3@gmail.com
                   </a>
                 </div>
               </div>
@@ -139,8 +125,8 @@ const Footer = () => {
                 <Phone className="w-5 h-5 text-app-primary mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-gray-300 text-sm font-medium">Phone Support</p>
-                  <a href="tel:+919876543210" className="text-white hover:text-app-primary transition-colors">
-                    +91 98765 43210
+                  <a href="tel:+918426076800" className="text-white hover:text-app-primary transition-colors">
+                    +91 8426076800
                   </a>
                 </div>
               </div>
@@ -188,12 +174,12 @@ const Footer = () => {
               <Link to="/terms" className="text-gray-300 hover:text-app-primary transition-colors">
                 Terms of Service
               </Link>
-              <a href="#" className="text-gray-300 hover:text-app-primary transition-colors">
+              <Link to="/sitemap" className="text-gray-300 hover:text-app-primary transition-colors">
                 Sitemap
-              </a>
-              <a href="#" className="text-gray-300 hover:text-app-primary transition-colors">
+              </Link>
+              <Link to="/help" className="text-gray-300 hover:text-app-primary transition-colors">
                 Help Center
-              </a>
+              </Link>
             </div>
           </div>
         </div>
