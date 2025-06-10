@@ -1,181 +1,274 @@
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
-
-// Authentication middleware
-const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '');
-  
-  if (!token) {
-    return res.status(401).json({ error: 'Access denied. No token provided.' });
-  }
-
-  try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
-    req.user = decoded;
-    next();
-  } catch (error) {
-    console.error('Token verification error:', error);
-    res.status(403).json({ error: 'Invalid token.' });
-  }
-};
-
+const mongoose = require('mongoose');
 const router = express.Router();
+const Favorite = require('../models/Favorite');
+const Property = require('../models/Property');
+const { auth } = require('../middleware/auth');
 
-// File paths
-const favoritesFile = path.join(__dirname, '../data/favorites.json');
-
-// Load favorites data
-let favorites = [];
-const loadFavorites = () => {
+// Get all favorites for a user
+router.get('/', auth, async (req, res) => {
   try {
-    if (fs.existsSync(favoritesFile)) {
-      const data = fs.readFileSync(favoritesFile, 'utf8');
-      favorites = JSON.parse(data);
-    }
-  } catch (error) {
-    console.error('Error loading favorites:', error);
-    favorites = [];
-  }
-};
+    const favorites = await Favorite.find({ user: req.user.userId })
+      .populate({
+        path: 'property',
+        populate: {
+          path: 'owner',
+          select: 'name email phone'
+        }
+      })
+      .sort({ createdAt: -1 });
 
-// Save favorites data
-const saveFavorites = () => {
-  try {
-    const dataDir = path.join(__dirname, '../data');
-    if (!fs.existsSync(dataDir)) {
-      fs.mkdirSync(dataDir, { recursive: true });
-    }
-    fs.writeFileSync(favoritesFile, JSON.stringify(favorites, null, 2));
+    res.json(favorites);
   } catch (error) {
-    console.error('Error saving favorites:', error);
-  }
-};
-
-// Initialize favorites data
-loadFavorites();
-
-// Get user's favorites
-router.get('/', authenticateToken, (req, res) => {
-  try {
-    const userFavorites = favorites.filter(fav => fav.userId === req.user.userId);
-    res.json(userFavorites);
-  } catch (error) {
-    console.error('Failed to fetch favorites:', error);
-    res.status(500).json({ error: 'Failed to fetch favorites' });
+    console.error('Error fetching favorites:', error);
+    res.status(500).json({ message: 'Error fetching favorites' });
   }
 });
 
-// Add property to favorites
-router.post('/add', [
-  authenticateToken,
-  body('propertyId').notEmpty().withMessage('Property ID is required')
-], (req, res) => {
+// Add a property to favorites
+router.post('/:propertyId', auth, async (req, res) => {
   try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+    const { propertyId } = req.params;
+
+    console.log(`🔍 Favorites: Attempting to add property ${propertyId} for user ${req.user.userId}`);
+
+    // Check if property exists - handle both ObjectId and legacy numeric IDs
+    let property;
+    let actualPropertyId;
+    
+    // First try as MongoDB ObjectId
+    if (mongoose.Types.ObjectId.isValid(propertyId)) {
+      console.log(`   Searching as ObjectId: ${propertyId}`);
+      property = await Property.findById(propertyId);
+      actualPropertyId = propertyId;
+    }
+    
+    // If not found and it's a numeric string, find the property by any matching field
+    if (!property && /^\d+$/.test(propertyId)) {
+      console.log(`   Searching as legacy numeric ID: ${propertyId}`);
+      
+      // Search for properties where any ID field matches
+      // This handles the case where properties have numeric IDs from JSON migration
+      const properties = await Property.find({});
+      property = properties.find(p => 
+        p._id.toString() === propertyId ||
+        p.id === propertyId ||
+        p.legacyId === propertyId ||
+        p.originalId === propertyId
+      );
+      
+      if (property) {
+        actualPropertyId = property._id; // Use the MongoDB ObjectId
+        console.log(`   Found property by numeric ID, MongoDB ID: ${actualPropertyId}`);
+      }
     }
 
-    const { propertyId } = req.body;
-    const userId = req.user.userId;
+    if (!property) {
+      console.log(`   ❌ Property not found: ${propertyId}`);
+      return res.status(404).json({ message: 'Property not found' });
+    }
 
-    // Check if already in favorites
-    const existingFavorite = favorites.find(fav => 
-      fav.userId === userId && fav.propertyId === propertyId
-    );
+    console.log(`   ✅ Property found: ${property.title}`);
+
+    // Check if already favorited (using the MongoDB ObjectId)
+    const existingFavorite = await Favorite.findOne({
+      user: req.user.userId,
+      property: actualPropertyId
+    });
 
     if (existingFavorite) {
-      return res.status(400).json({ error: 'Property already in favorites' });
+      console.log(`   ⚠️ Already favorited`);
+      return res.status(400).json({ message: 'Property already in favorites' });
     }
 
-    // Add to favorites
-    const newFavorite = {
-      id: Date.now().toString(),
-      userId,
-      propertyId,
-      addedAt: new Date().toISOString()
-    };
+    // Create new favorite using the MongoDB ObjectId
+    const favorite = new Favorite({
+      user: req.user.userId,
+      property: actualPropertyId
+    });
 
-    favorites.push(newFavorite);
-    saveFavorites();
+    await favorite.save();
+    console.log(`   ✅ Favorite created: ${favorite._id}`);
 
-    res.status(201).json({ message: 'Property added to favorites', favorite: newFavorite });
+    await favorite.populate({
+      path: 'property',
+      populate: {
+        path: 'owner',
+        select: 'name email phone'
+      }
+    });
+
+    res.status(201).json(favorite);
   } catch (error) {
-    console.error('Failed to add favorite:', error);
-    res.status(500).json({ error: 'Failed to add to favorites' });
+    console.error('❌ Error adding to favorites:', error);
+    res.status(500).json({ message: 'Error adding to favorites' });
   }
 });
 
-// Remove property from favorites
-router.delete('/remove/:propertyId', authenticateToken, (req, res) => {
+// Remove a property from favorites
+router.delete('/:propertyId', auth, async (req, res) => {
   try {
     const { propertyId } = req.params;
-    const userId = req.user.userId;
 
-    const favoriteIndex = favorites.findIndex(fav => 
-      fav.userId === userId && fav.propertyId === propertyId
-    );
+    console.log(`🗑️ Favorites DELETE: Attempting to remove property ${propertyId} for user ${req.user.userId}`);
+    console.log(`   Step 1: Property ID type: ${typeof propertyId}`);
+    console.log(`   Step 2: Property ID length: ${propertyId.length}`);
 
-    if (favoriteIndex === -1) {
-      return res.status(404).json({ error: 'Property not found in favorites' });
+    // Handle both ObjectId and legacy numeric IDs for deletion too
+    let actualPropertyId;
+    
+    if (mongoose.Types.ObjectId.isValid(propertyId)) {
+      console.log(`   Step 3a: Property ID is valid ObjectId: ${propertyId}`);
+      actualPropertyId = propertyId;
+    } else if (/^\d+$/.test(propertyId)) {
+      console.log(`   Step 3b: Property ID is numeric string: ${propertyId}, searching for property...`);
+      // Find the property to get its MongoDB ObjectId
+      const properties = await Property.find({});
+      console.log(`   Step 3b.1: Found ${properties.length} total properties`);
+      
+      const property = properties.find(p => 
+        p._id.toString() === propertyId ||
+        p.id === propertyId ||
+        p.legacyId === propertyId ||
+        p.originalId === propertyId
+      );
+      
+      if (property) {
+        actualPropertyId = property._id;
+        console.log(`   Step 3b.2: Found property: ${property.title}, MongoDB ID: ${actualPropertyId}`);
+      } else {
+        console.log(`   Step 3b.3: ❌ Property not found with numeric ID: ${propertyId}`);
+        
+        // List a few properties for debugging
+        console.log('   Available properties:');
+        properties.slice(0, 3).forEach(p => {
+          console.log(`     - ${p.title}: _id=${p._id}, id=${p.id}`);
+        });
+        
+        return res.status(404).json({ message: 'Property not found' });
+      }
+    } else {
+      console.log(`   Step 3c: ❌ Invalid property ID format: ${propertyId}`);
+      return res.status(400).json({ message: 'Invalid property ID format' });
     }
 
-    favorites.splice(favoriteIndex, 1);
-    saveFavorites();
+    console.log(`   Step 4: Searching for favorite with property ID: ${actualPropertyId}`);
 
+    const favorite = await Favorite.findOneAndDelete({
+      user: req.user.userId,
+      property: actualPropertyId
+    });
+
+    if (!favorite) {
+      console.log(`   Step 5: ❌ Favorite not found for user ${req.user.userId} and property ${actualPropertyId}`);
+      
+      // Let's check what favorites this user actually has
+      const userFavorites = await Favorite.find({ user: req.user.userId }).populate('property');
+      console.log(`   Step 5.1: User has ${userFavorites.length} favorites:`);
+      userFavorites.forEach(fav => {
+        console.log(`     - Property: ${fav.property?.title || 'Unknown'} (ID: ${fav.property?._id})`);
+      });
+      
+      return res.status(404).json({ message: 'Favorite not found' });
+    }
+
+    console.log(`   Step 6: ✅ Favorite removed successfully: ${favorite._id}`);
     res.json({ message: 'Property removed from favorites' });
   } catch (error) {
-    console.error('Failed to remove favorite:', error);
-    res.status(500).json({ error: 'Failed to remove from favorites' });
+    console.error('❌ Error removing from favorites:', error);
+    res.status(500).json({ message: 'Error removing from favorites' });
   }
 });
 
-// Check if property is in user's favorites
-router.get('/check/:propertyId', authenticateToken, (req, res) => {
+// Check if a property is favorited by user
+router.get('/check/:propertyId', auth, async (req, res) => {
   try {
     const { propertyId } = req.params;
-    const userId = req.user.userId;
 
-    const isFavorite = favorites.some(fav => 
-      fav.userId === userId && fav.propertyId === propertyId
-    );
+    // Handle both ObjectId and legacy numeric IDs
+    let actualPropertyId;
+    
+    if (mongoose.Types.ObjectId.isValid(propertyId)) {
+      actualPropertyId = propertyId;
+    } else if (/^\d+$/.test(propertyId)) {
+      // Find the property to get its MongoDB ObjectId
+      const properties = await Property.find({});
+      const property = properties.find(p => 
+        p._id.toString() === propertyId ||
+        p.id === propertyId ||
+        p.legacyId === propertyId ||
+        p.originalId === propertyId
+      );
+      
+      if (property) {
+        actualPropertyId = property._id;
+      } else {
+        return res.json({ isFavorited: false });
+      }
+    } else {
+      return res.status(400).json({ message: 'Invalid property ID format' });
+    }
 
-    res.json({ isFavorite });
+    const favorite = await Favorite.findOne({
+      user: req.user.userId,
+      property: actualPropertyId
+    });
+
+    res.json({ isFavorited: !!favorite });
   } catch (error) {
-    console.error('Failed to check favorite status:', error);
-    res.status(500).json({ error: 'Failed to check favorite status' });
+    console.error('Error checking favorite status:', error);
+    res.status(500).json({ message: 'Error checking favorite status' });
   }
 });
 
-// Get user's favorite properties with details
-router.get('/properties', authenticateToken, (req, res) => {
+// Get favorite count for a property
+router.get('/count/:propertyId', async (req, res) => {
   try {
-    const userFavorites = favorites.filter(fav => fav.userId === req.user.userId);
+    const { propertyId } = req.params;
+
+    // Handle both ObjectId and legacy numeric IDs
+    let actualPropertyId;
     
-    // Load properties data
-    const propertiesFile = path.join(__dirname, '../data/properties.json');
-    let properties = [];
-    if (fs.existsSync(propertiesFile)) {
-      const propertiesData = fs.readFileSync(propertiesFile, 'utf8');
-      properties = JSON.parse(propertiesData);
+    if (mongoose.Types.ObjectId.isValid(propertyId)) {
+      actualPropertyId = propertyId;
+    } else if (/^\d+$/.test(propertyId)) {
+      // Find the property to get its MongoDB ObjectId
+      const properties = await Property.find({});
+      const property = properties.find(p => 
+        p._id.toString() === propertyId ||
+        p.id === propertyId ||
+        p.legacyId === propertyId ||
+        p.originalId === propertyId
+      );
+      
+      if (property) {
+        actualPropertyId = property._id;
+      } else {
+        return res.json({ count: 0 });
+      }
+    } else {
+      return res.status(400).json({ message: 'Invalid property ID format' });
     }
 
-    // Get favorite properties with details
-    const favoriteProperties = userFavorites.map(fav => {
-      const property = properties.find(p => p.id === fav.propertyId);
-      return {
-        ...fav,
-        property: property || null
-      };
-    }).filter(fav => fav.property !== null);
+    const count = await Favorite.countDocuments({ property: actualPropertyId });
 
-    res.json(favoriteProperties);
+    res.json({ count });
   } catch (error) {
-    console.error('Failed to fetch favorite properties:', error);
-    res.status(500).json({ error: 'Failed to fetch favorite properties' });
+    console.error('Error getting favorite count:', error);
+    res.status(500).json({ message: 'Error getting favorite count' });
+  }
+});
+
+// Get user's favorite property IDs (for quick checking)
+router.get('/property-ids', auth, async (req, res) => {
+  try {
+    const favorites = await Favorite.find({ user: req.user.userId }).select('property');
+    const propertyIds = favorites.map(fav => fav.property.toString());
+
+    res.json(propertyIds);
+  } catch (error) {
+    console.error('Error fetching favorite property IDs:', error);
+    res.status(500).json({ message: 'Error fetching favorite property IDs' });
   }
 });
 

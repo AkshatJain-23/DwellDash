@@ -1,7 +1,6 @@
 const Groq = require('groq-sdk');
 const { NlpManager } = require('node-nlp');
-const fs = require('fs');
-const path = require('path');
+const { KnowledgeBase, FAQ } = require('../models/KnowledgeBase');
 
 class RAGService {
   constructor() {
@@ -13,7 +12,7 @@ class RAGService {
     // Initialize NLP manager for text processing
     this.nlpManager = new NlpManager({ languages: ['en'], forceNER: true });
     
-    // Load knowledge base
+    // Load knowledge base from MongoDB
     this.loadKnowledgeBase();
     
     // Initialize embeddings cache
@@ -34,29 +33,69 @@ class RAGService {
     };
   }
 
-  loadKnowledgeBase() {
+  async loadKnowledgeBase() {
     try {
-      const knowledgeBasePath = path.join(__dirname, '../data/dwellbot-knowledge-base.json');
-      const rawData = fs.readFileSync(knowledgeBasePath, 'utf8');
-      this.knowledgeBase = JSON.parse(rawData);
-      console.log(`Knowledge base loaded successfully with ${this.knowledgeBase.knowledge_base.length} items`);
+      console.log('📚 Loading knowledge base from MongoDB...');
+      
+      // Load knowledge base entries from MongoDB
+      const knowledgeEntries = await KnowledgeBase.find({ active: true }).lean();
+      const faqEntries = await FAQ.find({ active: true }).lean();
+
+      // Structure data in the expected format
+      this.knowledgeBase = {
+        knowledge_base: knowledgeEntries,
+        faq: faqEntries
+      };
+
+      console.log(`✅ Knowledge base loaded from MongoDB: ${knowledgeEntries.length} entries, ${faqEntries.length} FAQs`);
+      
+      // Cache quick responses based on categories
+      this.cacheQuickResponses();
+      
     } catch (error) {
-      console.error('Error loading knowledge base:', error);
-      // Fallback knowledge base
+      console.error('❌ Error loading knowledge base from MongoDB:', error);
+      
+      // Fallback knowledge base if MongoDB fails
       this.knowledgeBase = {
         knowledge_base: [
           {
             id: "fallback",
             category: "General",
             title: "DwellDash Information",
-            content: "DwellDash is India's trusted PG booking platform. We help you find verified accommodations with zero brokerage for tenants.",
-            keywords: ["dwelldash", "pg", "accommodation", "booking"]
+            content: "DwellDash is India's trusted PG booking platform. We help you find verified accommodations with zero brokerage for tenants. Contact support at dwelldash3@gmail.com or +91 8426076800.",
+            keywords: ["dwelldash", "pg", "accommodation", "booking", "help", "support"]
           }
         ],
-        faq: [],
-        quick_responses: ["I can help you with DwellDash services."]
+        faq: [
+          {
+            question: "Is DwellDash free for tenants?",
+            answer: "Yes, DwellDash is completely free for tenants. No registration fees, no booking charges, no hidden costs."
+          }
+        ]
       };
+      
+      console.log('📋 Using fallback knowledge base');
     }
+  }
+
+  // Cache quick responses for better performance
+  cacheQuickResponses() {
+    this.quickResponsesCache = [
+      "How do I get started with DwellDash?",
+      "What safety measures does DwellDash provide?",
+      "Is DwellDash free for tenants?",
+      "How to contact customer support?",
+      "Which cities are covered by DwellDash?",
+      "How to book a PG through DwellDash?",
+      "What types of accommodations are available?",
+      "How to verify properties on DwellDash?"
+    ];
+  }
+
+  // Refresh knowledge base from MongoDB
+  async refreshKnowledgeBase() {
+    await this.loadKnowledgeBase();
+    console.log('🔄 Knowledge base refreshed from MongoDB');
   }
 
   // Enhanced text similarity with better preprocessing
@@ -136,7 +175,7 @@ class RAGService {
       const categoryWeight = this.categoryWeights[item.category] || 1.0;
       
       // Exact keyword matches (weighted heavily)
-      for (const keyword of item.keywords) {
+      for (const keyword of item.keywords || []) {
         if (queryLower.includes(keyword.toLowerCase())) {
           score += 3 * categoryWeight;
         }

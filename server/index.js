@@ -4,6 +4,10 @@ const path = require('path');
 const fs = require('fs');
 require('dotenv').config();
 
+// MongoDB connection
+const connectDB = require('./config/database');
+connectDB();
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -31,6 +35,7 @@ app.use('/api/messages', require('./routes/messages'));
 app.use('/api/stats', require('./routes/stats'));
 app.use('/api/chatbot', require('./routes/chatbot'));
 app.use('/api/favorites', require('./routes/favorites'));
+app.use('/api/support', require('./routes/support'));
 
 // Health check
 app.get('/api/health', (req, res) => {

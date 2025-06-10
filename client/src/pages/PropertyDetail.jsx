@@ -320,13 +320,13 @@ const PropertyDetail = () => {
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                     <h3 className="font-semibold text-blue-800 mb-2">Your Property</h3>
                     <p className="text-sm text-blue-700">
-                      This is your property listing. You can edit or manage it from your dashboard.
+                      This is your property listing. You can edit or manage it from your profile.
                     </p>
                     <Link 
-                      to="/dashboard" 
+                      to="/profile" 
                       className="inline-block mt-2 text-sm bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700 transition-colors"
                     >
-                      Go to Dashboard
+                      Go to Profile
                     </Link>
                   </div>
                 </div>
@@ -342,7 +342,7 @@ const PropertyDetail = () => {
                     </p>
                     <div className="flex gap-2">
                       <Link 
-                        to="/dashboard" 
+                        to="/profile" 
                         className="text-sm bg-amber-600 text-white px-3 py-1 rounded hover:bg-amber-700 transition-colors"
                       >
                         Manage Property

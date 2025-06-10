@@ -1,79 +1,39 @@
 const express = require('express')
 const router = express.Router()
-const fs = require('fs').promises
-const path = require('path')
+const Stats = require('../models/Stats')
+const User = require('../models/User')
+const Property = require('../models/Property')
+const Conversation = require('../models/Conversation')
 
 // Get platform statistics
 router.get('/', async (req, res) => {
   try {
-    // Read data files
-    const usersPath = path.join(__dirname, '../data/users.json')
-    const propertiesPath = path.join(__dirname, '../data/properties.json')
-    const conversationsPath = path.join(__dirname, '../data/conversations.json')
-    const sampleStatsPath = path.join(__dirname, '../data/sample-stats.json')
+    // Try to get stats from MongoDB first
+    let stats = await Stats.getCurrentStats()
+    
+    // Get real-time counts from database
+    const [userCount, propertyCount, conversationCount] = await Promise.all([
+      User.countDocuments(),
+      Property.countDocuments(),
+      Conversation.countDocuments()
+    ])
 
-    let users = []
-    let properties = []
-    let conversations = []
-    let sampleStats = null
+    // Get unique cities from properties
+    const cities = await Property.distinct('city')
+    const totalCities = cities.length
 
-    // Read sample stats if available
-    try {
-      const sampleStatsData = await fs.readFile(sampleStatsPath, 'utf8')
-      sampleStats = JSON.parse(sampleStatsData)
-    } catch (error) {
-      console.log('Sample stats file not found, using real data calculations')
-    }
-
-    // Read users data
-    try {
-      const usersData = await fs.readFile(usersPath, 'utf8')
-      users = JSON.parse(usersData)
-    } catch (error) {
-      console.log('Users file not found or empty, using empty array')
-    }
-
-    // Read properties data
-    try {
-      const propertiesData = await fs.readFile(propertiesPath, 'utf8')
-      properties = JSON.parse(propertiesData)
-    } catch (error) {
-      console.log('Properties file not found or empty, using empty array')
-    }
-
-    // Read conversations data
-    try {
-      const conversationsData = await fs.readFile(conversationsPath, 'utf8')
-      conversations = JSON.parse(conversationsData)
-    } catch (error) {
-      console.log('Conversations file not found or empty, using empty array')
-    }
-
-    // Calculate statistics
-    let totalUsers, totalProperties, totalCities, satisfactionRate
-
-    if (sampleStats) {
-      // Use enhanced sample data for impressive statistics
-      totalUsers = sampleStats.totalUsers
-      totalProperties = sampleStats.totalProperties
-      totalCities = sampleStats.totalCities
-      satisfactionRate = sampleStats.satisfactionRate
+    // Calculate real-time stats
+    let totalUsers = Math.max(stats.totalUsers, userCount)
+    let totalProperties = Math.max(stats.totalProperties, propertyCount)
+    
+    // Use sample data for impressive display but fall back to real data
+    if (stats.isRealTime && stats.totalUsers > userCount) {
+      totalUsers = stats.totalUsers
+      totalProperties = stats.totalProperties
     } else {
-      // Fall back to real data calculations
-      totalUsers = users.length
-      totalProperties = properties.length
-      
-      // Count unique cities from properties
-      const cities = new Set()
-      properties.forEach(property => {
-        if (property.city) {
-          cities.add(property.city.toLowerCase())
-        }
-      })
-      totalCities = cities.size
-
-      // Calculate tenant satisfaction rate
-      satisfactionRate = totalUsers > 0 ? Math.min(95, Math.round(85 + (totalProperties / totalUsers) * 10)) : 95
+      // Update with real counts if they're higher
+      totalUsers = userCount
+      totalProperties = propertyCount
     }
 
     // Format numbers with appropriate suffixes
@@ -86,34 +46,10 @@ router.get('/', async (req, res) => {
       return num.toString() + '+'
     }
 
-    const stats = {
-      totalUsers: {
-        count: totalUsers,
-        formatted: formatNumber(totalUsers),
-        label: 'Happy Tenants'
-      },
-      totalProperties: {
-        count: totalProperties,
-        formatted: formatNumber(totalProperties),
-        label: 'Verified Properties'
-      },
-      totalCities: {
-        count: totalCities,
-        formatted: totalCities.toString() + '+',
-        label: 'Cities Covered'
-      },
-      satisfactionRate: {
-        count: satisfactionRate,
-        formatted: satisfactionRate + '%',
-        label: 'Satisfaction Rate'
-      }
-    }
-
-    // Return formatted stats array for the frontend
     const formattedStats = [
-      { number: stats.totalProperties.formatted, label: 'Verified PGs' },
-      { number: stats.totalUsers.formatted, label: 'Happy Tenants' },
-      { number: stats.totalCities.formatted, label: 'Cities' },
+      { number: formatNumber(totalProperties), label: 'Verified PGs' },
+      { number: formatNumber(totalUsers), label: 'Happy Tenants' },
+      { number: Math.max(totalCities, stats.totalCities).toString() + '+', label: 'Cities' },
       { number: 'Zero', label: 'Brokerage' }
     ]
 
@@ -123,15 +59,17 @@ router.get('/', async (req, res) => {
       rawData: {
         users: totalUsers,
         properties: totalProperties,
-        cities: totalCities,
-        satisfaction: satisfactionRate
+        cities: Math.max(totalCities, stats.totalCities),
+        satisfaction: stats.satisfactionRate,
+        conversations: conversationCount
       },
       isRealTime: true,
-      lastUpdated: new Date().toISOString()
+      lastUpdated: stats.lastCalculated || new Date().toISOString(),
+      source: 'mongodb'
     })
 
   } catch (error) {
-    console.error('Error fetching statistics:', error)
+    console.error('Error fetching statistics from MongoDB:', error)
     
     // Return fallback statistics if there's an error
     const fallbackStats = [
@@ -150,8 +88,43 @@ router.get('/', async (req, res) => {
         cities: 18,
         satisfaction: 94
       },
-      message: 'Using fallback statistics due to data access error',
-      isRealTime: false
+      message: 'Using fallback statistics due to MongoDB access error',
+      isRealTime: false,
+      source: 'fallback'
+    })
+  }
+})
+
+// Update statistics (admin endpoint)
+router.post('/update', async (req, res) => {
+  try {
+    const { totalUsers, totalProperties, totalCities, satisfactionRate, monthlyGrowth } = req.body
+
+    const updatedStats = await Stats.updateStats({
+      totalUsers: totalUsers || 5243,
+      totalProperties: totalProperties || 2847,
+      totalCities: totalCities || 18,
+      satisfactionRate: satisfactionRate || 94,
+      monthlyGrowth: monthlyGrowth || {
+        users: 12.5,
+        properties: 8.3,
+        cities: 2
+      },
+      lastCalculated: new Date(),
+      isRealTime: true
+    })
+
+    res.json({
+      success: true,
+      message: 'Statistics updated successfully',
+      data: updatedStats
+    })
+
+  } catch (error) {
+    console.error('Error updating statistics:', error)
+    res.status(500).json({
+      success: false,
+      error: 'Failed to update statistics'
     })
   }
 })

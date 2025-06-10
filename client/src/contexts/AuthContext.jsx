@@ -165,6 +165,11 @@ export const AuthProvider = ({ children }) => {
     return user?.role === 'owner' && viewMode === 'tenant'
   }
 
+  // Update user data in context
+  const updateUser = (updatedUserData) => {
+    setUser(updatedUserData)
+  }
+
   const value = {
     user,
     login,
@@ -175,7 +180,8 @@ export const AuthProvider = ({ children }) => {
     viewMode,
     toggleViewMode,
     getEffectiveRole,
-    isBrowsingAsTenant
+    isBrowsingAsTenant,
+    updateUser
   }
 
   return (

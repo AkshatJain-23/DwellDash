@@ -13,10 +13,11 @@ import Properties from './pages/Properties'
 import PropertyDetail from './pages/PropertyDetail'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import Dashboard from './pages/Dashboard'
 import AddProperty from './pages/AddProperty'
 import EditProperty from './pages/EditProperty'
 import Favorites from './pages/Favorites'
+import Profile from './pages/Profile'
+import Conversations from './pages/Conversations'
 import Terms from './pages/Terms'
 import Privacy from './pages/Privacy'
 import ResetPassword from './pages/ResetPassword'
@@ -54,11 +55,6 @@ function App() {
               <Route path="/blog" element={<Blog />} />
               <Route path="/cookies" element={<Cookies />} />
               <Route path="/refunds" element={<Refunds />} />
-              <Route path="/dashboard" element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              } />
               <Route path="/add-property" element={
                 <ProtectedRoute>
                   <AddProperty />
@@ -72,6 +68,16 @@ function App() {
               <Route path="/favorites" element={
                 <ProtectedRoute>
                   <Favorites />
+                </ProtectedRoute>
+              } />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              } />
+              <Route path="/conversations" element={
+                <ProtectedRoute>
+                  <Conversations />
                 </ProtectedRoute>
               } />
             </Routes>

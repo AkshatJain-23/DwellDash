@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const RAGService = require('../services/ragService');
+const { KnowledgeBase, FAQ } = require('../models/KnowledgeBase');
 const rateLimit = require('express-rate-limit');
 
 // Initialize RAG service
@@ -71,6 +72,53 @@ router.post('/chat', chatbotRateLimit, async (req, res) => {
       success: false,
       error: 'Internal server error. Please try again.',
       fallback: "I apologize for the technical difficulty. Please contact our support team at dwelldash3@gmail.com or +91 8426076800 for immediate assistance."
+    });
+  }
+});
+
+// Refresh knowledge base from MongoDB
+router.post('/refresh-knowledge', async (req, res) => {
+  try {
+    await ragService.refreshKnowledgeBase();
+    
+    res.json({
+      success: true,
+      message: 'Knowledge base refreshed successfully from MongoDB'
+    });
+  } catch (error) {
+    console.error('Error refreshing knowledge base:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to refresh knowledge base'
+    });
+  }
+});
+
+// Get knowledge base statistics
+router.get('/knowledge-stats', async (req, res) => {
+  try {
+    const [kbCount, faqCount] = await Promise.all([
+      KnowledgeBase.countDocuments({ active: true }),
+      FAQ.countDocuments({ active: true })
+    ]);
+
+    const categories = await KnowledgeBase.distinct('category', { active: true });
+
+    res.json({
+      success: true,
+      data: {
+        knowledgeBaseEntries: kbCount,
+        faqEntries: faqCount,
+        totalCategories: categories.length,
+        categories: categories,
+        lastUpdated: new Date().toISOString()
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching knowledge stats:', error);
+    res.status(500).json({
+      success: false,
+      error: 'Failed to fetch knowledge base statistics'
     });
   }
 });
@@ -200,65 +248,35 @@ router.get('/facts', (req, res) => {
   }
 });
 
-// Get knowledge base statistics
-router.get('/stats', (req, res) => {
+// Get current health status
+router.get('/health', async (req, res) => {
   try {
-    const stats = ragService.getStats();
-    
+    // Check knowledge base connectivity
+    const kbHealth = await KnowledgeBase.findOne().select('_id').lean();
+    const faqHealth = await FAQ.findOne().select('_id').lean();
+
     res.json({
       success: true,
       data: {
-        ...stats,
-        service: 'DwellBot RAG Chatbot',
-        lastUpdated: new Date().toISOString()
+        status: 'healthy',
+        knowledgeBase: kbHealth ? 'connected' : 'disconnected',
+        faq: faqHealth ? 'connected' : 'disconnected',
+        ragService: 'active',
+        timestamp: new Date().toISOString()
       }
-    });
-
-  } catch (error) {
-    console.error('Stats API error:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Failed to load stats'
-    });
-  }
-});
-
-// Health check for chatbot service
-router.get('/health', (req, res) => {
-  try {
-    const stats = ragService.getStats();
-    
-    const health = {
-      status: 'healthy',
-      service: 'DwellBot RAG Chatbot',
-      version: '2.0.0',
-      uptime: process.uptime(),
-      timestamp: new Date().toISOString(),
-      features: {
-        rag_enabled: true,
-        llm_provider: 'Groq',
-        knowledge_base: 'loaded',
-        rate_limiting: 'active',
-        intent_detection: 'enabled',
-        enhanced_scoring: 'active'
-      },
-      knowledge_base: {
-        total_items: stats.totalKnowledgeItems,
-        total_faqs: stats.totalFAQs,
-        categories: stats.categories.length
-      }
-    };
-
-    res.json({
-      success: true,
-      data: health
     });
 
   } catch (error) {
     console.error('Health check error:', error);
-    res.status(500).json({
-      success: false,
-      error: 'Health check failed'
+    res.json({
+      success: true,
+      data: {
+        status: 'degraded',
+        knowledgeBase: 'error',
+        faq: 'error',
+        ragService: 'fallback_mode',
+        timestamp: new Date().toISOString()
+      }
     });
   }
 });

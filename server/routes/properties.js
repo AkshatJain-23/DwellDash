@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const { body, validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken');
+const Property = require('../models/Property');
+const User = require('../models/User');
 
 const router = express.Router();
 
@@ -38,50 +40,6 @@ const upload = multer({
   }
 });
 
-// In-memory storage
-const propertiesFile = path.join(__dirname, '../data/properties.json');
-const usersFile = path.join(__dirname, '../data/users.json');
-let properties = [];
-let users = [];
-
-// Load users data - reload to get latest data
-const loadUsers = () => {
-  try {
-    if (fs.existsSync(usersFile)) {
-      users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
-      console.log('Users loaded, count:', users.length);
-    }
-  } catch (error) {
-    console.error('Error loading users:', error);
-    users = [];
-  }
-};
-
-// Load properties and users from file
-try {
-  if (fs.existsSync(propertiesFile)) {
-    const data = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
-    // Handle both formats: array or object with properties key
-    properties = Array.isArray(data) ? data : (data.properties || []);
-  }
-} catch (error) {
-  console.log('No existing properties file found, starting fresh');
-  properties = [];
-}
-
-// Initial load of users
-loadUsers();
-
-// Save properties to file
-const saveProperties = () => {
-  const dataDir = path.join(__dirname, '../data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  // Save as array format for consistency
-  fs.writeFileSync(propertiesFile, JSON.stringify(properties, null, 2));
-};
-
 // Auth middleware
 const authenticateToken = (req, res, next) => {
   const token = req.header('Authorization')?.replace('Bearer ', '');
@@ -99,13 +57,8 @@ const authenticateToken = (req, res, next) => {
 };
 
 // Get all properties with search and filters
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
   try {
-    // Reload users data to get latest information
-    loadUsers();
-    
-    let filteredProperties = [...properties];
-    
     const { 
       search, 
       city, 
@@ -118,79 +71,96 @@ router.get('/', (req, res) => {
       limit = 12
     } = req.query;
 
-    // Search by title or description
+    // Build MongoDB query
+    let query = { available: true };
+
+    // Search by title, description, or address
     if (search) {
-      const searchTerm = search.toLowerCase();
-      filteredProperties = filteredProperties.filter(property => 
-        property.title.toLowerCase().includes(searchTerm) ||
-        property.description.toLowerCase().includes(searchTerm) ||
-        property.address.toLowerCase().includes(searchTerm)
-      );
+      const searchRegex = new RegExp(search, 'i');
+      query.$or = [
+        { title: searchRegex },
+        { description: searchRegex },
+        { address: searchRegex }
+      ];
     }
 
     // Filter by city
     if (city) {
-      filteredProperties = filteredProperties.filter(property => 
-        property.city.toLowerCase() === city.toLowerCase()
-      );
+      query.city = new RegExp(city, 'i');
     }
 
-    // Filter by rent range
+    // Filter by rent range (using price field from MongoDB)
     if (minRent) {
-      filteredProperties = filteredProperties.filter(property => 
-        property.rent >= parseInt(minRent)
-      );
+      query.price = { ...query.price, $gte: parseInt(minRent) };
     }
     if (maxRent) {
-      filteredProperties = filteredProperties.filter(property => 
-        property.rent <= parseInt(maxRent)
-      );
+      query.price = { ...query.price, $lte: parseInt(maxRent) };
     }
 
     // Filter by property type
     if (propertyType) {
-      filteredProperties = filteredProperties.filter(property => 
-        property.propertyType === propertyType
-      );
-    }
-
-    // Filter by gender
-    if (gender) {
-      filteredProperties = filteredProperties.filter(property => 
-        property.gender === gender || property.gender === 'any'
-      );
+      query.type = propertyType;
     }
 
     // Filter by amenities
     if (amenities) {
       const requestedAmenities = amenities.split(',');
-      filteredProperties = filteredProperties.filter(property => 
-        requestedAmenities.every(amenity => 
-          property.amenities.includes(amenity)
-        )
-      );
+      query.amenities = { $in: requestedAmenities };
     }
 
     // Pagination
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    const paginatedProperties = filteredProperties.slice(startIndex, endIndex);
+    const skip = (page - 1) * limit;
+    
+    // Get properties with owner information
+    const [properties, totalCount] = await Promise.all([
+      Property.find(query)
+        .populate('owner', 'name email')
+        .skip(skip)
+        .limit(parseInt(limit))
+        .sort({ createdAt: -1 }),
+      Property.countDocuments(query)
+    ]);
 
-    // Add basic owner information to each property
-    const propertiesWithOwners = paginatedProperties.map(property => {
-      const owner = users.find(u => u.id === property.ownerId);
-      return {
-        ...property,
-        ownerName: owner ? owner.name : 'Unknown Owner',
-        area: property.address ? property.address.split(',')[0] : property.city
-      };
-    });
+    // Format response to match frontend expectations
+    const formattedProperties = properties.map(property => ({
+      id: property._id,
+      title: property.title,
+      description: property.description,
+      rent: property.price, // Map price to rent for frontend compatibility
+      price: property.price,
+      deposit: property.price * 2, // Default deposit calculation
+      city: property.city,
+      address: property.address,
+      state: property.state,
+      zipCode: property.zipCode,
+      propertyType: property.type,
+      type: property.type,
+      bedrooms: property.bedrooms,
+      bathrooms: property.bathrooms,
+      area: property.area,
+      furnished: property.furnished,
+      parking: property.parking,
+      petFriendly: property.petFriendly,
+      available: property.available,
+      isActive: property.available,
+      availableFrom: property.availableFrom,
+      images: property.images,
+      amenities: property.amenities,
+      coordinates: property.coordinates,
+      ownerName: property.owner?.name || 'Unknown Owner',
+      ownerEmail: property.owner?.email,
+      ownerId: property.owner?._id,
+      contactPhone: '+918426076800', // Default contact
+      createdAt: property.createdAt,
+      viewCount: property.viewCount || 0,
+      featured: property.featured || false
+    }));
 
     res.json({
-      properties: propertiesWithOwners,
-      totalCount: filteredProperties.length,
+      properties: formattedProperties,
+      totalCount,
       currentPage: parseInt(page),
-      totalPages: Math.ceil(filteredProperties.length / limit)
+      totalPages: Math.ceil(totalCount / limit)
     });
   } catch (error) {
     console.error('Properties fetch error:', error);
@@ -198,194 +168,266 @@ router.get('/', (req, res) => {
   }
 });
 
-// Get single property
-router.get('/:id', (req, res) => {
+// Get property by ID
+router.get('/:id', async (req, res) => {
   try {
-    // Reload users data to get latest information
-    loadUsers();
+    const property = await Property.findById(req.params.id).populate('owner', 'name email phone');
     
-    const property = properties.find(p => p.id === req.params.id);
     if (!property) {
       return res.status(404).json({ error: 'Property not found' });
     }
 
-    // Find owner information
-    const owner = users.find(u => u.id === property.ownerId);
-    
-    // Add owner information to property
-    const propertyWithOwner = {
-      ...property,
-      ownerName: owner ? owner.name : 'Unknown Owner',
-      ownerEmail: owner ? owner.email : 'No email available',
-      contactNumber: property.contactPhone || (owner ? owner.phone : 'No contact available'),
-      // Better area extraction - take everything before first comma or use city as fallback
-      area: property.address ? 
-        (property.address.includes(',') ? 
-          property.address.split(',')[0].trim() : 
-          property.address.trim()) : 
-        property.city,
-      // Ensure full address is available
-      fullAddress: property.address || `${property.city}, India`
+    // Increment view count
+    property.viewCount = (property.viewCount || 0) + 1;
+    await property.save();
+
+    // Format response
+    const formattedProperty = {
+      id: property._id,
+      title: property.title,
+      description: property.description,
+      rent: property.price,
+      price: property.price,
+      deposit: property.price * 2,
+      city: property.city,
+      address: property.address,
+      state: property.state,
+      zipCode: property.zipCode,
+      propertyType: property.type,
+      type: property.type,
+      bedrooms: property.bedrooms,
+      bathrooms: property.bathrooms,
+      area: property.area,
+      furnished: property.furnished,
+      parking: property.parking,
+      petFriendly: property.petFriendly,
+      available: property.available,
+      isActive: property.available,
+      availableFrom: property.availableFrom,
+      images: property.images,
+      amenities: property.amenities,
+      coordinates: property.coordinates,
+      ownerName: property.owner?.name || 'Unknown Owner',
+      ownerEmail: property.owner?.email,
+      ownerId: property.owner?._id,
+      contactPhone: property.owner?.phone || '+918426076800',
+      createdAt: property.createdAt,
+      viewCount: property.viewCount,
+      featured: property.featured || false
     };
 
-    console.log('Property with owner info:', {
-      id: propertyWithOwner.id,
-      title: propertyWithOwner.title,
-      ownerName: propertyWithOwner.ownerName,
-      ownerEmail: propertyWithOwner.ownerEmail,
-      area: propertyWithOwner.area,
-      fullAddress: propertyWithOwner.fullAddress
-    });
-
-    res.json(propertyWithOwner);
+    res.json(formattedProperty);
   } catch (error) {
-    console.error('Single property fetch error:', error);
+    console.error('Property fetch error:', error);
+    if (error.name === 'CastError') {
+      return res.status(400).json({ error: 'Invalid property ID' });
+    }
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Create new property
-router.post('/', authenticateToken, upload.array('images', 10), [
-  body('title').trim().isLength({ min: 5 }).withMessage('Title must be at least 5 characters'),
-  body('description').trim().isLength({ min: 20 }).withMessage('Description must be at least 20 characters'),
-  body('rent').isNumeric().withMessage('Rent must be a number'),
-  body('city').trim().isLength({ min: 2 }).withMessage('City is required'),
-  body('address').trim().isLength({ min: 10 }).withMessage('Address must be at least 10 characters'),
-  body('propertyType').isIn(['single-room', 'shared-room', 'flat', 'hostel']).withMessage('Invalid property type'),
-  body('gender').isIn(['male', 'female', 'any']).withMessage('Invalid gender preference')
-], (req, res) => {
+// Create new property (authenticated users only)
+router.post('/', authenticateToken, [
+  body('title').trim().isLength({ min: 1 }).withMessage('Title is required'),
+  body('description').trim().isLength({ min: 1 }).withMessage('Description is required'),
+  body('address').trim().isLength({ min: 1 }).withMessage('Address is required'),
+  body('city').trim().isLength({ min: 1 }).withMessage('City is required'),
+  body('price').isNumeric().withMessage('Price must be a number'),
+  body('type').isIn(['apartment', 'house', 'condo', 'studio', 'room', 'pg', 'hostel', 'flat', 'single-room', 'shared-room']).withMessage('Invalid property type'),
+], async (req, res) => {
   try {
-    console.log('=== Property Creation Request ===');
-    console.log('User:', req.user);
-    console.log('Body:', req.body);
-    console.log('Files:', req.files);
-
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      console.log('Validation errors:', errors.array());
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ error: errors.array()[0].msg });
     }
 
-    const {
-      title,
-      description,
-      rent,
-      deposit,
-      city,
-      address,
-      propertyType,
-      gender,
-      amenities,
-      contactPhone,
-      availableFrom
-    } = req.body;
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
 
-    // Process uploaded images
-    const images = req.files ? req.files.map(file => `/uploads/${file.filename}`) : [];
-    console.log('Processed images:', images);
+    const newProperty = new Property({
+      title: req.body.title,
+      description: req.body.description,
+      address: req.body.address,
+      city: req.body.city,
+      state: req.body.state || 'Unknown',
+      zipCode: req.body.zipCode || '000000',
+      price: parseFloat(req.body.price),
+      type: req.body.type,
+      bedrooms: parseInt(req.body.bedrooms) || 1,
+      bathrooms: parseInt(req.body.bathrooms) || 1,
+      area: parseInt(req.body.area) || 500,
+      furnished: req.body.furnished === 'true',
+      parking: req.body.parking === 'true',
+      petFriendly: req.body.petFriendly === 'true',
+      available: true,
+      availableFrom: req.body.availableFrom ? new Date(req.body.availableFrom) : new Date(),
+      images: req.body.images || [],
+      amenities: req.body.amenities || [],
+      owner: user._id,
+      coordinates: req.body.coordinates || { lat: 26.9124, lng: 75.7873 }
+    });
 
-    const property = {
-      id: Date.now().toString(),
-      title,
-      description,
-      rent: parseInt(rent),
-      deposit: parseInt(deposit) || 0,
-      city,
-      address,
-      propertyType,
-      gender,
-      amenities: typeof amenities === 'string' ? amenities.split(',') : (amenities || []),
-      images,
-      contactPhone,
-      availableFrom,
-      ownerId: req.user.userId,
-      createdAt: new Date().toISOString(),
-      isActive: true
-    };
+    const savedProperty = await newProperty.save();
+    await savedProperty.populate('owner', 'name email');
 
-    console.log('New property object:', property);
-
-    properties.push(property);
-    console.log('Properties array length after push:', properties.length);
-    
-    saveProperties();
-    console.log('Properties saved successfully');
-
-    res.status(201).json(property);
+    res.status(201).json({
+      message: 'Property created successfully',
+      property: {
+        id: savedProperty._id,
+        ...savedProperty.toObject(),
+        ownerName: savedProperty.owner.name
+      }
+    });
   } catch (error) {
     console.error('Property creation error:', error);
-    console.error('Error stack:', error.stack);
-    res.status(500).json({ error: 'Server error', details: error.message });
+    res.status(500).json({ error: 'Failed to create property' });
   }
 });
 
-// Update property
-router.put('/:id', authenticateToken, upload.array('images', 10), (req, res) => {
+// Update property (owner only)
+router.put('/:id', authenticateToken, async (req, res) => {
   try {
-    const propertyIndex = properties.findIndex(p => p.id === req.params.id);
-    if (propertyIndex === -1) {
+    const property = await Property.findById(req.params.id);
+    
+    if (!property) {
       return res.status(404).json({ error: 'Property not found' });
     }
 
-    const property = properties[propertyIndex];
-    
-    // Check if user owns this property
-    if (property.ownerId !== req.user.userId) {
-      return res.status(403).json({ error: 'Access denied' });
+    // Check if user is the owner
+    if (property.owner.toString() !== req.user.userId) {
+      return res.status(403).json({ error: 'Not authorized to update this property' });
     }
 
-    // Update property fields
-    const updates = { ...req.body };
-    if (req.files && req.files.length > 0) {
-      const newImages = req.files.map(file => `/uploads/${file.filename}`);
-      updates.images = [...(property.images || []), ...newImages];
-    }
-    
-    if (updates.amenities && typeof updates.amenities === 'string') {
-      updates.amenities = updates.amenities.split(',');
-    }
+    // Update fields
+    const allowedUpdates = [
+      'title', 'description', 'address', 'city', 'state', 'zipCode', 
+      'price', 'type', 'bedrooms', 'bathrooms', 'area', 'furnished', 
+      'parking', 'petFriendly', 'available', 'availableFrom', 'images', 
+      'amenities', 'coordinates'
+    ];
 
-    properties[propertyIndex] = { ...property, ...updates, updatedAt: new Date().toISOString() };
-    saveProperties();
+    allowedUpdates.forEach(field => {
+      if (req.body[field] !== undefined) {
+        property[field] = req.body[field];
+      }
+    });
 
-    res.json(properties[propertyIndex]);
+    const updatedProperty = await property.save();
+    await updatedProperty.populate('owner', 'name email');
+
+    res.json({
+      message: 'Property updated successfully',
+      property: updatedProperty
+    });
   } catch (error) {
     console.error('Property update error:', error);
-    res.status(500).json({ error: 'Server error' });
+    res.status(500).json({ error: 'Failed to update property' });
   }
 });
 
-// Delete property
-router.delete('/:id', authenticateToken, (req, res) => {
+// Delete property (owner only)
+router.delete('/:id', authenticateToken, async (req, res) => {
   try {
-    const propertyIndex = properties.findIndex(p => p.id === req.params.id);
-    if (propertyIndex === -1) {
+    const property = await Property.findById(req.params.id);
+    
+    if (!property) {
       return res.status(404).json({ error: 'Property not found' });
     }
 
-    const property = properties[propertyIndex];
-    
-    // Check if user owns this property
-    if (property.ownerId !== req.user.userId) {
-      return res.status(403).json({ error: 'Access denied' });
+    // Check if user is the owner
+    if (property.owner.toString() !== req.user.userId) {
+      return res.status(403).json({ error: 'Not authorized to delete this property' });
     }
 
-    properties.splice(propertyIndex, 1);
-    saveProperties();
+    await Property.findByIdAndDelete(req.params.id);
 
     res.json({ message: 'Property deleted successfully' });
   } catch (error) {
     console.error('Property deletion error:', error);
+    res.status(500).json({ error: 'Failed to delete property' });
+  }
+});
+
+// Upload property images
+router.post('/:id/images', authenticateToken, upload.array('images', 5), async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+    
+    if (!property) {
+      return res.status(404).json({ error: 'Property not found' });
+    }
+
+    // Check if user is the owner
+    if (property.owner.toString() !== req.user.userId) {
+      return res.status(403).json({ error: 'Not authorized to upload images for this property' });
+    }
+
+    const imageUrls = req.files.map(file => `/uploads/${file.filename}`);
+    property.images.push(...imageUrls);
+    
+    await property.save();
+
+    res.json({
+      message: 'Images uploaded successfully',
+      images: imageUrls
+    });
+  } catch (error) {
+    console.error('Image upload error:', error);
+    res.status(500).json({ error: 'Failed to upload images' });
+  }
+});
+
+// Get cities with property counts
+router.get('/meta/cities', async (req, res) => {
+  try {
+    const cities = await Property.aggregate([
+      { $match: { available: true } },
+      { 
+        $group: { 
+          _id: '$city', 
+          count: { $sum: 1 } 
+        } 
+      },
+      { $sort: { count: -1 } },
+      { $limit: 20 }
+    ]);
+
+    const formattedCities = cities.map(city => ({
+      name: city._id,
+      count: city.count
+    }));
+
+    res.json(formattedCities);
+  } catch (error) {
+    console.error('Cities fetch error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });
 
-// Get properties by owner
-router.get('/owner/my-properties', authenticateToken, (req, res) => {
+// Get property types with counts
+router.get('/meta/types', async (req, res) => {
   try {
-    const ownerProperties = properties.filter(p => p.ownerId === req.user.userId);
-    res.json(ownerProperties);
+    const types = await Property.aggregate([
+      { $match: { available: true } },
+      { 
+        $group: { 
+          _id: '$type', 
+          count: { $sum: 1 } 
+        } 
+      },
+      { $sort: { count: -1 } }
+    ]);
+
+    const formattedTypes = types.map(type => ({
+      name: type._id,
+      count: type.count
+    }));
+
+    res.json(formattedTypes);
   } catch (error) {
+    console.error('Types fetch error:', error);
     res.status(500).json({ error: 'Server error' });
   }
 });

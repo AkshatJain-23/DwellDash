@@ -1,116 +1,79 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const { body, validationResult } = require('express-validator');
-const fs = require('fs');
-const path = require('path');
-
 const router = express.Router();
+const bcrypt = require('bcryptjs');
+const User = require('../models/User');
+const Property = require('../models/Property');
+const { auth } = require('../middleware/auth');
+const { body, validationResult } = require('express-validator');
 
-// Load users from file (same as auth.js)
-const usersFile = path.join(__dirname, '../data/users.json');
-let users = [];
-
-const loadUsers = () => {
-try {
-  if (fs.existsSync(usersFile)) {
-    users = JSON.parse(fs.readFileSync(usersFile, 'utf8'));
-      console.log('Users loaded:', users.length, 'users found');
-  }
-} catch (error) {
-    console.log('Error loading users file:', error);
-}
-};
-
-// Initial load
-loadUsers();
-
-const saveUsers = () => {
-  const dataDir = path.join(__dirname, '../data');
-  if (!fs.existsSync(dataDir)) {
-    fs.mkdirSync(dataDir, { recursive: true });
-  }
-  fs.writeFileSync(usersFile, JSON.stringify(users, null, 2));
-};
-
-// Auth middleware
-const authenticateToken = (req, res, next) => {
-  const token = req.header('Authorization')?.replace('Bearer ', '');
-  if (!token) {
-    return res.status(401).json({ error: 'Access denied' });
-  }
-
+// Get current user profile
+router.get('/profile', auth, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'your-secret-key');
-    req.user = decoded;
-    next();
-  } catch (error) {
-    res.status(403).json({ error: 'Invalid token' });
-  }
-};
-
-// Get user profile
-router.get('/profile', authenticateToken, (req, res) => {
-  try {
-    const user = users.find(u => u.id === req.user.userId);
+    const user = await User.findById(req.user.userId).select('-password');
     if (!user) {
-      return res.status(404).json({ error: 'User not found' });
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    res.json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      phone: user.phone,
-      createdAt: user.createdAt
-    });
+    res.json(user);
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error fetching user profile:', error);
+    res.status(500).json({ message: 'Error fetching user profile' });
   }
 });
 
 // Update user profile
-router.put('/profile', authenticateToken, [
+router.put('/profile', [
+  auth,
   body('name').optional().trim().isLength({ min: 2 }).withMessage('Name must be at least 2 characters'),
-  body('phone').optional().isMobilePhone('en-IN').withMessage('Invalid phone number')
-], (req, res) => {
+  body('email').optional().isEmail().withMessage('Please provide a valid email'),
+  body('phone').optional().isMobilePhone().withMessage('Please provide a valid phone number')
+], async (req, res) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const userIndex = users.findIndex(u => u.id === req.user.userId);
-    if (userIndex === -1) {
-      return res.status(404).json({ error: 'User not found' });
+    const { name, email, phone, address, bio } = req.body;
+    const updateData = {};
+
+    if (name) updateData.name = name;
+    if (email) {
+      // Check if email is already taken by another user
+      const existingUser = await User.findOne({ 
+        email, 
+        _id: { $ne: req.user.userId } 
+      });
+      if (existingUser) {
+        return res.status(400).json({ message: 'Email already in use' });
+      }
+      updateData.email = email;
+    }
+    if (phone) updateData.phone = phone;
+    if (address) updateData.address = address;
+    if (bio) updateData.bio = bio;
+
+    const user = await User.findByIdAndUpdate(
+      req.user.userId,
+      updateData,
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    const { name, phone } = req.body;
-    const user = users[userIndex];
-
-    if (name) user.name = name;
-    if (phone) user.phone = phone;
-    user.updatedAt = new Date().toISOString();
-
-    users[userIndex] = user;
-    saveUsers();
-
-    res.json({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      phone: user.phone
-    });
+    res.json(user);
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error updating user profile:', error);
+    res.status(500).json({ message: 'Error updating user profile' });
   }
 });
 
 // Change password
-router.put('/change-password', authenticateToken, [
-  body('currentPassword').exists().withMessage('Current password is required'),
+router.put('/change-password', [
+  auth,
+  body('currentPassword').notEmpty().withMessage('Current password is required'),
   body('newPassword').isLength({ min: 6 }).withMessage('New password must be at least 6 characters')
 ], async (req, res) => {
   try {
@@ -120,191 +83,195 @@ router.put('/change-password', authenticateToken, [
     }
 
     const { currentPassword, newPassword } = req.body;
-    const userIndex = users.findIndex(u => u.id === req.user.userId);
-    
-    if (userIndex === -1) {
-      return res.status(404).json({ error: 'User not found' });
+
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    const user = users[userIndex];
-
-    // Verify current password
+    // Check current password
     const isMatch = await bcrypt.compare(currentPassword, user.password);
     if (!isMatch) {
-      return res.status(400).json({ error: 'Current password is incorrect' });
+      return res.status(400).json({ message: 'Current password is incorrect' });
     }
 
     // Hash new password
-    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(newPassword, salt);
+
     user.password = hashedPassword;
-    user.updatedAt = new Date().toISOString();
+    await user.save();
 
-    users[userIndex] = user;
-    saveUsers();
-
-    res.json({ message: 'Password updated successfully' });
+    res.json({ message: 'Password changed successfully' });
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error changing password:', error);
+    res.status(500).json({ message: 'Error changing password' });
   }
 });
 
-// Get all users (admin only - for future use)
-router.get('/all', authenticateToken, (req, res) => {
+// Get user by ID (for property owner details)
+router.get('/:userId', async (req, res) => {
   try {
-    // For now, allow all authenticated users to see basic user info
-    const userList = users.map(user => ({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-      createdAt: user.createdAt
-    }));
+    const { userId } = req.params;
 
-    res.json(userList);
+    const user = await User.findById(userId).select('-password -email');
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Get user's properties count
+    const propertiesCount = await Property.countDocuments({ owner: userId });
+
+    res.json({
+      ...user.toObject(),
+      propertiesCount
+    });
   } catch (error) {
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error fetching user:', error);
+    res.status(500).json({ message: 'Error fetching user' });
+  }
+});
+
+// Get user's properties
+router.get('/:userId/properties', async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const page = parseInt(req.query.page) || 1;
+    const limit = parseInt(req.query.limit) || 10;
+    const skip = (page - 1) * limit;
+
+    const properties = await Property.find({ owner: userId })
+      .select('-owner')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
+
+    const total = await Property.countDocuments({ owner: userId });
+
+    res.json({
+      properties,
+      pagination: {
+        page,
+        limit,
+        total,
+        pages: Math.ceil(total / limit)
+      }
+    });
+  } catch (error) {
+    console.error('Error fetching user properties:', error);
+    res.status(500).json({ message: 'Error fetching user properties' });
+  }
+});
+
+// Search users (for admin purposes)
+router.get('/', auth, async (req, res) => {
+  try {
+    // Only allow admins to search all users
+    const currentUser = await User.findById(req.user.userId);
+    if (currentUser.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    const { search, role, page = 1, limit = 10 } = req.query;
+    const skip = (page - 1) * limit;
+
+    let query = {};
+    
+    if (search) {
+      query.$or = [
+        { name: { $regex: search, $options: 'i' } },
+        { email: { $regex: search, $options: 'i' } }
+      ];
+    }
+
+    if (role) {
+      query.role = role;
+    }
+
+    const users = await User.find(query)
+      .select('-password')
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(parseInt(limit));
+
+    const total = await User.countDocuments(query);
+
+    res.json({
+      users,
+      pagination: {
+        page: parseInt(page),
+        limit: parseInt(limit),
+        total,
+        pages: Math.ceil(total / limit)
+      }
+    });
+  } catch (error) {
+    console.error('Error searching users:', error);
+    res.status(500).json({ message: 'Error searching users' });
+  }
+});
+
+// Update user role (admin only)
+router.put('/:userId/role', [
+  auth,
+  body('role').isIn(['tenant', 'owner', 'admin']).withMessage('Invalid role')
+], async (req, res) => {
+  try {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+
+    // Check if current user is admin
+    const currentUser = await User.findById(req.user.userId);
+    if (currentUser.role !== 'admin') {
+      return res.status(403).json({ message: 'Access denied' });
+    }
+
+    const { userId } = req.params;
+    const { role } = req.body;
+
+    const user = await User.findByIdAndUpdate(
+      userId,
+      { role },
+      { new: true, runValidators: true }
+    ).select('-password');
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (error) {
+    console.error('Error updating user role:', error);
+    res.status(500).json({ message: 'Error updating user role' });
   }
 });
 
 // Delete user account
-router.delete('/:id', authenticateToken, async (req, res) => {
+router.delete('/account', auth, async (req, res) => {
   try {
-    const { id } = req.params;
-    
-    // Reload users to ensure we have the latest data
-    loadUsers();
-    
-    console.log('Delete user request:', {
-      requestedId: id,
-      requestingUserId: req.user.userId,
-      requestingUserRole: req.user.role
-    });
-    
-    // Check if user is deleting their own account or is admin
-    if (req.user.userId !== id && req.user.role !== 'admin') {
-      console.log('Authorization failed: User can only delete their own account');
-      return res.status(403).json({ error: 'Not authorized to delete this account' });
+    const user = await User.findById(req.user.userId);
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
     }
 
-    // Find user index
-    const userIndex = users.findIndex(u => u.id === id);
-    console.log('User lookup:', {
-      searchingForId: id,
-      userIndex: userIndex,
-      totalUsers: users.length,
-      existingUserIds: users.map(u => u.id)
-    });
-    
-    if (userIndex === -1) {
-      console.log('User not found in database');
-      return res.status(404).json({ error: 'User not found' });
-    }
-
-    const user = users[userIndex];
-    console.log('Found user for deletion:', {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role
-    });
-
-    // Load other data files for cleanup
-    const propertiesFile = path.join(__dirname, '../data/properties.json');
-    const messagesFile = path.join(__dirname, '../data/messages.json');
-    const conversationsFile = path.join(__dirname, '../data/conversations.json');
-
-    let properties = [];
-    let messages = [];
-    let conversations = [];
-
-    // Load existing data
-    try {
-      if (fs.existsSync(propertiesFile)) {
-        properties = JSON.parse(fs.readFileSync(propertiesFile, 'utf8'));
-      }
-      if (fs.existsSync(messagesFile)) {
-        messages = JSON.parse(fs.readFileSync(messagesFile, 'utf8'));
-      }
-      if (fs.existsSync(conversationsFile)) {
-        conversations = JSON.parse(fs.readFileSync(conversationsFile, 'utf8'));
-      }
-    } catch (error) {
-      console.log('Error loading data files:', error);
-    }
-
-    // If user is owner, delete all their properties first
+    // If user is owner, check if they have properties
     if (user.role === 'owner') {
-      const userProperties = properties.filter(p => p.ownerId === id);
-      
-      // Remove user properties
-      for (let i = properties.length - 1; i >= 0; i--) {
-        if (properties[i].ownerId === id) {
-          properties.splice(i, 1);
-        }
-      }
-
-      // Save updated properties
-      fs.writeFileSync(propertiesFile, JSON.stringify(properties, null, 2));
-      console.log(`Deleted ${userProperties.length} properties for user ${user.name}`);
-    }
-
-    // Remove user from conversations and messages
-    // For tenants, match by email; for owners, match by ID
-    const userConversations = conversations.filter(c => 
-      c.ownerId === id || c.tenantEmail === user.email || c.tenantId === id
-    );
-
-    console.log(`Found ${userConversations.length} conversations involving user ${user.name}`);
-
-    // Remove messages for user conversations
-    for (const conv of userConversations) {
-      for (let i = messages.length - 1; i >= 0; i--) {
-        if (messages[i].conversationId === conv.id) {
-          messages.splice(i, 1);
-        }
+      const propertiesCount = await Property.countDocuments({ owner: req.user.userId });
+      if (propertiesCount > 0) {
+        return res.status(400).json({ 
+          message: 'Cannot delete account while you have active properties. Please remove all properties first.' 
+        });
       }
     }
 
-    // Also remove standalone messages that might reference this user
-    for (let i = messages.length - 1; i >= 0; i--) {
-      if (messages[i].ownerId === id || messages[i].senderEmail === user.email) {
-        messages.splice(i, 1);
-      }
-    }
+    await User.findByIdAndDelete(req.user.userId);
 
-    // Remove conversations involving the user
-    let deletedConversationsCount = 0;
-    for (let i = conversations.length - 1; i >= 0; i--) {
-      if (conversations[i].ownerId === id || conversations[i].tenantEmail === user.email || conversations[i].tenantId === id) {
-        conversations.splice(i, 1);
-        deletedConversationsCount++;
-      }
-    }
-
-    console.log(`Deleted ${deletedConversationsCount} conversations and associated messages for user ${user.name}`);
-
-    // Save updated messages and conversations
-    fs.writeFileSync(messagesFile, JSON.stringify(messages, null, 2));
-    fs.writeFileSync(conversationsFile, JSON.stringify(conversations, null, 2));
-
-    // Remove user
-    users.splice(userIndex, 1);
-    saveUsers();
-
-    console.log(`User account deleted: ${user.name} (${user.email})`);
-
-    res.json({ 
-      message: 'Account deleted successfully',
-      deletedUser: {
-        name: user.name,
-        email: user.email,
-        role: user.role
-      }
-    });
-
+    res.json({ message: 'Account deleted successfully' });
   } catch (error) {
-    console.error('Delete user error:', error);
-    res.status(500).json({ error: 'Server error' });
+    console.error('Error deleting user account:', error);
+    res.status(500).json({ message: 'Error deleting user account' });
   }
 });
 

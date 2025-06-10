@@ -143,20 +143,20 @@ const Home = () => {
           console.log('🏠 Property:', property.title, 'Images:', property.images, 'Final URL:', imageUrl);
           
           return {
-            id: property.id,
-            title: property.title,
-            location: `${property.address.split(',').slice(0, 2).join(', ')}`,
-            price: `₹${property.rent.toLocaleString()}`,
-            originalPrice: property.deposit ? `₹${(property.rent * 1.2).toLocaleString()}` : null,
-            type: property.propertyType === 'single-room' ? 'Private Room' : 
-                  property.propertyType === 'shared-room' ? 'Shared Room' : 'PG Room',
-            rating: 4.2 + Math.random() * 0.8,
-            reviews: Math.floor(Math.random() * 200) + 50,
+          id: property.id,
+          title: property.title,
+          location: `${property.address.split(',').slice(0, 2).join(', ')}`,
+          price: `₹${property.rent.toLocaleString()}`,
+          originalPrice: property.deposit ? `₹${(property.rent * 1.2).toLocaleString()}` : null,
+          type: property.propertyType === 'single-room' ? 'Private Room' : 
+                property.propertyType === 'shared-room' ? 'Shared Room' : 'PG Room',
+          rating: 4.2 + Math.random() * 0.8,
+          reviews: Math.floor(Math.random() * 200) + 50,
             image: imageUrl,
-            amenities: property.amenities?.slice(0, 4) || ['WiFi', 'Security'],
-            verified: true,
-            featured: Math.random() > 0.5,
-            distance: ['500m from Metro', '1.2 km from IT park', '800m from Station', '1 km from Mall'][Math.floor(Math.random() * 4)]
+          amenities: property.amenities?.slice(0, 4) || ['WiFi', 'Security'],
+          verified: true,
+          featured: Math.random() > 0.5,
+          distance: ['500m from Metro', '1.2 km from IT park', '800m from Station', '1 km from Mall'][Math.floor(Math.random() * 4)]
           }
         })
         

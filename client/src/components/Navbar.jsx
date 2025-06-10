@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Menu, X, Home, Plus, User, LogOut, Eye, Users, Building2, Search, Heart } from 'lucide-react'
+import { Menu, X, Home, Plus, User, LogOut, Eye, Users, Search, Heart, MessageCircle, Settings } from 'lucide-react'
 import DwellDashLogo from './DwellDashLogo'
 import NotificationSystem from './NotificationSystem'
 
@@ -155,12 +155,21 @@ const Navbar = () => {
                       </div>
                       
                       <Link
-                        to="/dashboard"
+                        to="/conversations"
                         onClick={closeProfileDropdown}
                         className="flex items-center space-x-2 px-4 py-2 text-sm text-app-text hover:bg-app-accent transition-colors"
                       >
-                        <Building2 className="w-4 h-4" />
-                        <span>Dashboard</span>
+                        <MessageCircle className="w-4 h-4" />
+                        <span>Conversations</span>
+                      </Link>
+                      
+                      <Link
+                        to="/profile"
+                        onClick={closeProfileDropdown}
+                        className="flex items-center space-x-2 px-4 py-2 text-sm text-app-text hover:bg-app-accent transition-colors"
+                      >
+                        <Settings className="w-4 h-4" />
+                        <span>Edit Profile</span>
                       </Link>
                       
                       {user?.role === 'tenant' && (
@@ -291,12 +300,21 @@ const Navbar = () => {
                   )}
                   
                   <Link
-                    to="/dashboard"
+                    to="/conversations"
                     onClick={closeMobileMenu}
                     className="flex items-center space-x-2 text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
                   >
-                    <Building2 className="w-5 h-5" />
-                    <span>Dashboard</span>
+                    <MessageCircle className="w-5 h-5" />
+                    <span>Conversations</span>
+                  </Link>
+
+                  <Link
+                    to="/profile"
+                    onClick={closeMobileMenu}
+                    className="flex items-center space-x-2 text-app-text hover:text-app-primary hover:bg-app-accent px-3 py-2 rounded-lg text-base font-medium transition-colors"
+                  >
+                    <Settings className="w-5 h-5" />
+                    <span>Edit Profile</span>
                   </Link>
 
                   {user?.role === 'tenant' && (

@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 import { 
   Mail, Phone, MapPin, Clock, Send, MessageCircle, 
   HelpCircle, ChevronDown, ChevronUp, CheckCircle,
@@ -7,9 +8,12 @@ import {
 } from 'lucide-react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { api } from '../utils/api'
 import IntegratedChatbot from '../components/IntegratedChatbot'
 
 const Contact = () => {
+  const navigate = useNavigate()
+  const contactFormRef = useRef(null)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [expandedFAQ, setExpandedFAQ] = useState(null)
 
@@ -17,6 +21,7 @@ const Contact = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors }
   } = useForm()
 
@@ -136,12 +141,13 @@ const Contact = () => {
   const onSubmit = async (data) => {
     setIsSubmitting(true)
     try {
-      // Simulate form submission
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      toast.success('Message sent successfully! We\'ll get back to you within 2 hours.')
+      const response = await api.post('/auth/contact', data)
+      toast.success(response.data.message)
       reset()
     } catch (error) {
-      toast.error('Failed to send message. Please try again.')
+      console.error('Failed to send message:', error)
+      const errorMessage = error.response?.data?.error || error.response?.data?.errors?.[0]?.msg || 'Failed to send message. Please try again.'
+      toast.error(errorMessage)
     } finally {
       setIsSubmitting(false)
     }
@@ -149,6 +155,46 @@ const Contact = () => {
 
   const toggleFAQ = (index) => {
     setExpandedFAQ(expandedFAQ === index ? null : index)
+  }
+
+  // Handle quick support category actions
+  const handleQuickSupportAction = (item) => {
+    switch (item.title) {
+      case 'Property Owners':
+        // Scroll to contact form and pre-fill subject
+        contactFormRef.current?.scrollIntoView({ behavior: 'smooth' })
+        setValue('subject', 'property-listing')
+        setValue('message', 'Hi, I am interested in listing my property on DwellDash. Could you please provide me with more information about the process, requirements, and any associated fees?')
+        toast.success('Form pre-filled for property listing inquiry')
+        break
+        
+      case 'Tenants':
+        // Navigate to property search
+        navigate('/properties')
+        toast.success('Redirecting to property search')
+        break
+        
+      case 'Safety & Security':
+        // Scroll to contact form and pre-fill for safety concerns
+        contactFormRef.current?.scrollIntoView({ behavior: 'smooth' })
+        setValue('subject', 'safety')
+        setValue('message', 'Hi, I would like to report a safety or security concern. Please provide me with the proper channels and process for reporting such issues.')
+        toast.success('Form pre-filled for safety inquiry')
+        break
+        
+      case 'Technical Support':
+        // Scroll to contact form and pre-fill for technical issues
+        contactFormRef.current?.scrollIntoView({ behavior: 'smooth' })
+        setValue('subject', 'technical')
+        setValue('message', 'Hi, I am experiencing a technical issue with the DwellDash platform. Could you please assist me with troubleshooting?')
+        toast.success('Form pre-filled for technical support')
+        break
+        
+      default:
+        // Default action - scroll to contact form
+        contactFormRef.current?.scrollIntoView({ behavior: 'smooth' })
+        break
+    }
   }
 
   return (
@@ -282,7 +328,10 @@ const Contact = () => {
                   </div>
                   <h4 className="font-semibold text-app-text mb-2">{item.title}</h4>
                   <p className="text-app-muted text-sm mb-4">{item.description}</p>
-                  <button className="text-app-primary font-medium text-sm hover:underline">
+                  <button
+                    onClick={() => handleQuickSupportAction(item)}
+                    className="text-app-primary font-medium text-sm hover:underline"
+                  >
                     {item.action} →
                   </button>
                 </motion.div>
@@ -303,6 +352,7 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
               className="bg-white rounded-2xl p-8 shadow-xl"
+              ref={contactFormRef}
             >
               <div className="flex items-center space-x-3 mb-6">
                 <div className="bg-app-primary/10 p-3 rounded-xl">

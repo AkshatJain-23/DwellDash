@@ -20,7 +20,7 @@ const FavoriteButton = ({ propertyId, className = "", size = "w-5 h-5" }) => {
   const checkFavoriteStatus = async () => {
     try {
       const response = await api.get(`/favorites/check/${propertyId}`)
-      setIsFavorite(response.data.isFavorite)
+      setIsFavorite(response.data.isFavorited)
     } catch (error) {
       console.error('Failed to check favorite status:', error)
     }
@@ -41,17 +41,17 @@ const FavoriteButton = ({ propertyId, className = "", size = "w-5 h-5" }) => {
     setLoading(true)
     try {
       if (isFavorite) {
-        await api.delete(`/favorites/remove/${propertyId}`)
+        await api.delete(`/favorites/${propertyId}`)
         setIsFavorite(false)
         toast.success('Removed from favorites')
       } else {
-        await api.post('/favorites/add', { propertyId })
+        await api.post(`/favorites/${propertyId}`)
         setIsFavorite(true)
         toast.success('Added to favorites')
       }
     } catch (error) {
       console.error('Failed to toggle favorite:', error)
-      const errorMessage = error.response?.data?.error || 'Failed to update favorites'
+      const errorMessage = error.response?.data?.message || 'Failed to update favorites'
       toast.error(errorMessage)
     } finally {
       setLoading(false)

@@ -78,11 +78,6 @@ const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/dashboard" className="text-gray-300 hover:text-app-primary transition-colors text-sm">
-                    Owner Dashboard
-                  </Link>
-                </li>
-                <li>
                   <a href="#" className="text-gray-300 hover:text-app-primary transition-colors text-sm">
                     Pricing Plans
                   </a>

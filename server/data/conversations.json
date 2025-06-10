@@ -7,7 +7,7 @@
     "tenantName": "Akshat Jain",
     "propertyTitle": "Comfortable PG for Bachelores",
     "createdAt": "2025-06-10T09:12:43.006Z",
-    "lastMessageAt": "2025-06-10T14:32:52.652Z",
+    "lastMessageAt": "2025-06-10T19:24:27.118Z",
     "messages": [
       {
         "id": "1749546763006_msg",
@@ -52,6 +52,24 @@
         "senderName": "Akshat Jain",
         "timestamp": "2025-06-10T14:32:52.652Z",
         "status": "read"
+      },
+      {
+        "id": "1749576661894_tenant_reply",
+        "text": "When can I schedule a visit?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T17:31:01.894Z",
+        "status": "read"
+      },
+      {
+        "id": "1749583467118_msg",
+        "text": "hello",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T19:24:27.118Z",
+        "status": "sent"
       }
     ]
   },
@@ -63,7 +81,7 @@
     "tenantName": "Akshat Jain",
     "propertyTitle": "Private Room PG Facility in Ludhiana",
     "createdAt": "2025-06-10T12:36:38.098Z",
-    "lastMessageAt": "2025-06-10T14:32:16.792Z",
+    "lastMessageAt": "2025-06-10T17:31:16.200Z",
     "messages": [
       {
         "id": "1749558998098_msg",
@@ -97,7 +115,15 @@
         "sender": "tenant",
         "senderName": "Akshat Jain",
         "timestamp": "2025-06-10T14:32:16.792Z",
-        "status": "sent"
+        "status": "read"
+      },
+      {
+        "id": "1749576676200_tenant_reply",
+        "text": "I'm very interested in this property!",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T17:31:16.200Z",
+        "status": "read"
       }
     ]
   },
@@ -109,7 +135,7 @@
     "tenantName": "Akshat Jain",
     "propertyTitle": "Modern PG for Young Professionals in Bangalore",
     "createdAt": "2025-06-10T13:51:51.649Z",
-    "lastMessageAt": "2025-06-10T14:32:42.364Z",
+    "lastMessageAt": "2025-06-10T17:31:09.191Z",
     "messages": [
       {
         "id": "1749563511649_msg",
@@ -159,6 +185,44 @@
         "sender": "tenant",
         "senderName": "Akshat Jain",
         "timestamp": "2025-06-10T14:32:42.364Z",
+        "status": "read"
+      },
+      {
+        "id": "1749576669191_tenant_reply",
+        "text": "I'm very interested in this property!",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T17:31:09.191Z",
+        "status": "read"
+      }
+    ]
+  },
+  {
+    "id": "1749579076557",
+    "propertyId": "1749578959122",
+    "ownerId": "684874445e8aa254b5317858",
+    "tenantEmail": "jain2003akshat@gmail.com",
+    "tenantName": "Akshat Jain",
+    "propertyTitle": "Comfortable PG for Bachelores",
+    "createdAt": "2025-06-10T18:11:16.557Z",
+    "lastMessageAt": "2025-06-10T19:17:12.515Z",
+    "messages": [
+      {
+        "id": "1749579076557_msg",
+        "text": "interested in your pg",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "senderEmail": "jain2003akshat@gmail.com",
+        "senderPhone": "+918426076800",
+        "timestamp": "2025-06-10T18:11:16.557Z",
+        "status": "read"
+      },
+      {
+        "id": "1749583032514_tenant_reply",
+        "text": "Are there any additional charges?",
+        "sender": "tenant",
+        "senderName": "Akshat Jain",
+        "timestamp": "2025-06-10T19:17:12.515Z",
         "status": "sent"
       }
     ]

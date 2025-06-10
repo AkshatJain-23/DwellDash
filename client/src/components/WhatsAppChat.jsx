@@ -94,16 +94,9 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
         const welcomeMessages = [
           {
             id: 1,
-            text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
+            text: `Hello! Thanks for your interest in my property "${property?.title}". Owner will get back to you shortly. Please feel free to call or message for immediate assistance.`,
             sender: 'owner',
             timestamp: new Date(),
-            status: 'read'
-          },
-          {
-            id: 2,
-            text: `I'm available to answer questions about rent, amenities, viewing schedule, or anything else you'd like to know! Feel free to call me at your convenience to discuss the details. 😊`,
-            sender: 'owner',
-            timestamp: new Date(Date.now() + 1000),
             status: 'read'
           }
         ]
@@ -118,7 +111,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
       setMessages([
         {
           id: 1,
-          text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
+                      text: `Hello! Thanks for your interest in my property "${property?.title}". Owner will get back to you shortly. Please feel free to call or message for immediate assistance.`,
           sender: 'owner',
           timestamp: new Date(),
           status: 'read'
@@ -160,16 +153,19 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
 
     try {
       const messageData = {
-        propertyId: property.id,
-        ownerId: property.ownerId,
-        senderName: user.name,
-        senderEmail: user.email,
-        senderPhone: user.phone || '+91 0000000000',
+        propertyId: property._id || property.id,
+        ownerId: property.owner?._id || property.ownerId || property.owner,
+        senderName: user?.name || 'Guest User',
+        senderEmail: user?.email || 'guest@example.com',
+        senderPhone: user?.phone || '+91 0000000000',
         message: data.message,
-        propertyTitle: property.title
+        propertyTitle: property.title || 'Property'
       };
       
       console.log('Sending message with data:', messageData);
+      console.log('Property object:', property);
+      console.log('User object:', user);
+      
       const response = await api.post('/messages', messageData)
 
       // Update message status to sent
@@ -200,6 +196,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
     } catch (error) {
       console.error('Send message error:', error)
       console.error('Error response:', error.response?.data)
+      console.error('Error status:', error.response?.status)
       setIsTyping(false)
       // Update message status to failed
       setMessages(prev => 
@@ -211,9 +208,17 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
       )
       
       // Show specific error message if available
-      const errorMessage = error.response?.data?.errors?.[0]?.msg || 
-                          error.response?.data?.error || 
-                          'Failed to send message'
+      let errorMessage = 'Failed to send message'
+      
+      if (error.response?.data?.errors && Array.isArray(error.response.data.errors)) {
+        errorMessage = error.response.data.errors.map(err => err.msg).join(', ')
+      } else if (error.response?.data?.error) {
+        errorMessage = error.response.data.error
+      } else if (error.message) {
+        errorMessage = error.message
+      }
+      
+      console.log('Formatted error message:', errorMessage)
       toast.error(errorMessage)
     }
   }
@@ -247,14 +252,8 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
     } else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
       reply = `You're welcome! Feel free to ask any other questions. I'm here to help. When would you like to visit the property?`
     } else {
-      // Generic helpful reply
-      const genericReplies = [
-        `Thanks for your query! I'll be happy to help. Could you be more specific about what you'd like to know?`,
-        `Sure! I can provide all the details you need. What specific information would help you decide?`,
-        `Great question! Let me know what other details you need. I'm available for a property visit anytime.`,
-        `I understand your concern. Feel free to ask anything about the property. I'm here to help!`
-      ]
-      reply = genericReplies[Math.floor(Math.random() * genericReplies.length)]
+      // Default response - Owner will get back to you shortly
+      reply = `Owner will get back to you shortly. Please feel free to call or message for immediate assistance.`
     }
 
     // Add owner reply to messages
@@ -362,7 +361,7 @@ const WhatsAppChat = ({ isOpen, onClose, property, ownerName, ownerPhone }) => {
                       localStorage.removeItem(chatKey)
                       setMessages([{
                         id: 1,
-                        text: `Hello! Thanks for your interest in my property "${property?.title}". How can I help you?`,
+                        text: `Hello! Thanks for your interest in my property "${property?.title}". Owner will get back to you shortly. Please feel free to call or message for immediate assistance.`,
                         sender: 'owner',
                         timestamp: new Date(),
                         status: 'read'

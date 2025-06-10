@@ -27,7 +27,7 @@ const Favorites = () => {
   const fetchFavorites = async () => {
     setLoading(true)
     try {
-      const response = await api.get('/favorites/properties')
+      const response = await api.get('/favorites/')
       setFavorites(response.data)
     } catch (error) {
       console.error('Failed to fetch favorites:', error)
@@ -39,11 +39,45 @@ const Favorites = () => {
 
   const removeFavorite = async (propertyId) => {
     try {
-      await api.delete(`/favorites/remove/${propertyId}`)
-      setFavorites(favorites.filter(fav => fav.property.id !== propertyId))
+      console.log('🗑️ Favorites: Attempting to remove property from favorites');
+      console.log('Property ID received:', propertyId);
+      console.log('Property ID type:', typeof propertyId);
+      
+      // Try to find the property in our current favorites to get the correct ID
+      const targetFavorite = favorites.find(fav => 
+        fav.property.id === propertyId || fav.property._id === propertyId
+      );
+      
+      if (targetFavorite) {
+        console.log('Found target favorite:', targetFavorite.property.title);
+        console.log('Target property _id:', targetFavorite.property._id);
+        console.log('Target property id:', targetFavorite.property.id);
+      } else {
+        console.log('⚠️ Target favorite not found in current list');
+        console.log('Available favorites:', favorites.map(fav => ({ 
+          id: fav.property.id, 
+          _id: fav.property._id, 
+          title: fav.property.title 
+        })));
+      }
+      
+      // Try with the MongoDB _id first (more reliable), then fallback to the provided ID
+      const idToUse = targetFavorite?.property._id || propertyId;
+      console.log('Using ID for removal:', idToUse);
+      
+      await api.delete(`/favorites/${idToUse}`)
+      
+      // Filter using both id and _id to be safe
+      setFavorites(favorites.filter(fav => 
+        fav.property.id !== propertyId && fav.property._id !== propertyId
+      ))
+      
       toast.success('Property removed from favorites')
+      console.log('✅ Successfully removed from favorites');
     } catch (error) {
       console.error('Failed to remove favorite:', error)
+      console.error('Error response:', error.response?.data)
+      console.error('Error status:', error.response?.status)
       toast.error('Failed to remove from favorites')
     }
   }
