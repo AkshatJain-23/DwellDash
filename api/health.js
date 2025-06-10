@@ -1,5 +1,5 @@
 // Health check endpoint for Vercel
-module.exports = async function handler(req, res) {
+export default async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
@@ -15,7 +15,8 @@ module.exports = async function handler(req, res) {
       message: 'DwellDash API is running successfully on Vercel!',
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || 'development',
-      platform: process.env.VERCEL ? 'Vercel' : 'Local'
+      platform: process.env.VERCEL ? 'Vercel' : 'Local',
+      status: 'healthy'
     });
   } catch (error) {
     res.status(500).json({
@@ -23,4 +24,4 @@ module.exports = async function handler(req, res) {
       message: error.message
     });
   }
-}; 
+} 
