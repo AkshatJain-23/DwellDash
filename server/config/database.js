@@ -7,13 +7,19 @@ const connectDB = async () => {
 
   const atlasConnect = async () => {
     try {
-      // Use the exact connection string provided
-      const atlasURI = 'mongodb+srv://akshatt23:AkshatJain2003@cluster0.px1ra7o.mongodb.net/dwelldash?retryWrites=true&w=majority&appName=Cluster0';
+      // Use environment variable for connection string
+      const atlasURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/dwelldash';
+      
+      if (!process.env.MONGODB_URI) {
+        console.error('❌ MONGODB_URI environment variable not found!');
+        console.log('📝 Please set MONGODB_URI in your .env file');
+        throw new Error('MongoDB connection string not configured');
+      }
       
       console.log(`🔄 Connecting to MongoDB Atlas... (Attempt ${retryCount + 1}/${maxRetries})`);
-      console.log('🔗 Using connection string for: cluster0.px1ra7o.mongodb.net');
-      console.log('👤 Username: akshatt23');
-      console.log('🗄️ Target Database: dwelldash');
+      console.log('🔗 Using connection string for:', process.env.MONGODB_URI.split('@')[1]?.split('/')[0] || 'localhost');
+      console.log('👤 Username:', process.env.MONGODB_URI.split('://')[1]?.split(':')[0] || 'unknown');
+      console.log('🗄️ Target Database:', process.env.MONGODB_URI.split('/').pop()?.split('?')[0] || 'dwelldash');
       
       const options = {
         useNewUrlParser: true,
@@ -52,14 +58,14 @@ const connectDB = async () => {
       // Specific error handling with debugging
       if (error.message.includes('ENOTFOUND') || error.message.includes('querySrv')) {
         console.error('🔧 DNS Resolution Issue:');
-        console.error('   • Network/DNS cannot resolve cluster0.px1ra7o.mongodb.net');
+        console.error('   • Network/DNS cannot resolve MongoDB Atlas host');
         console.error('   • Try switching to mobile hotspot');
         console.error('   • Check if network blocks MongoDB Atlas');
       } else if (error.message.includes('authentication') || error.message.includes('auth')) {
         console.error('🔧 Authentication Issue:');
-        console.error('   • Username: akshatt23');
-        console.error('   • Check if password is correct: AkshatJain2003');
+        console.error('   • Check if username and password are correct');
         console.error('   • Verify user exists in MongoDB Atlas');
+        console.error('   • Ensure MONGODB_URI is properly formatted');
       } else if (error.message.includes('timeout')) {
         console.error('🔧 Timeout Issue:');
         console.error('   • Network connection too slow');
@@ -113,12 +119,11 @@ const connectDB = async () => {
     console.error('Final error:', finalError.message);
     
     console.log('\n🔧 DEBUG INFORMATION:');
-    console.log('Connection String: mongodb+srv://akshatt23:***@cluster0.px1ra7o.mongodb.net/dwelldash');
+    console.log('Connection String: [Hidden for security]');
     console.log('Expected Database: dwelldash');
-    console.log('Expected Username: akshatt23');
     
     console.log('\n🔧 TROUBLESHOOTING STEPS:');
-    console.log('1. Verify MongoDB Atlas cluster is running');
+    console.log('1. Verify MONGODB_URI environment variable is set');
     console.log('2. Check Network Access (IP whitelist) in Atlas');
     console.log('3. Verify username/password in Atlas Database Access');
     console.log('4. Try switching to mobile hotspot/different network');
