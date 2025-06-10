@@ -27,8 +27,10 @@ export default defineConfig({
     },
   },
   define: {
-    // Force use of real backend
-    'import.meta.env.VITE_USE_MOCK_API': '"false"',
-    'import.meta.env.VITE_API_URL': '"http://localhost:5000/api"',
+    // Use environment variable for API URL, fallback to current domain in production
+    'import.meta.env.VITE_API_URL': JSON.stringify(
+      process.env.VITE_API_URL || 
+      (process.env.NODE_ENV === 'production' ? '' : 'http://localhost:5000')
+    ),
   },
 }) 
