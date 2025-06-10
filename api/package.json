@@ -1,0 +1,8 @@
+{
+  "name": "dwelldash-api",
+  "version": "1.0.0",
+  "dependencies": {
+    "mongoose": "^7.5.0",
+    "dotenv": "^16.3.1"
+  }
+} 

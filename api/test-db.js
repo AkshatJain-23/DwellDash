@@ -1,6 +1,5 @@
 // Vercel serverless function to test MongoDB connection
-const connectDB = require('../server/config/database');
-const mongoose = require('mongoose');
+require('dotenv').config();
 
 module.exports = async function handler(req, res) {
   // Set CORS headers
@@ -40,11 +39,33 @@ module.exports = async function handler(req, res) {
       });
     }
 
+    // Direct MongoDB connection test using mongoose
+    const mongoose = require('mongoose');
+    
     // Attempt connection
     console.log('🔗 Attempting connection...');
     const startTime = Date.now();
     
-    await connectDB();
+    // Serverless-optimized connection options
+    const options = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+      connectTimeoutMS: 10000,
+      bufferCommands: false,
+      bufferMaxEntries: 0,
+      maxPoolSize: 1,
+      minPoolSize: 0,
+      maxIdleTimeMS: 30000,
+      retryWrites: true,
+      retryReads: true,
+      heartbeatFrequencyMS: 30000,
+      ssl: true,
+      authSource: 'admin',
+    };
+
+    await mongoose.connect(process.env.MONGODB_URI, options);
     
     const connectionTime = Date.now() - startTime;
     console.log(`✅ Connection successful in ${connectionTime}ms`);
@@ -58,6 +79,9 @@ module.exports = async function handler(req, res) {
     console.log('- Database name:', dbName);
     console.log('- Collections count:', collections.length);
     console.log('- Connection state:', connectionState);
+    
+    // Close connection after test
+    await mongoose.disconnect();
     
     res.status(200).json({
       success: true,
