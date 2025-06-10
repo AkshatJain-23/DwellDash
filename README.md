@@ -76,4 +76,6 @@ pgfinder-app/
 - Role-based access control
 - Mobile-friendly interface
 
-Built with modern web technologies and best practices for the Indian PG accommodation market. 
+Built with modern web technologies and best practices for the Indian PG accommodation market.
+
+<!-- Deployment trigger: Fixed Vite build for Vercel -->
