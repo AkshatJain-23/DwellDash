@@ -9,18 +9,17 @@ const connectDB = async () => {
   }
 
   try {
-    // Local MongoDB connection string
-    const localURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/dwelldash';
+    // MongoDB connection string - supports both local and cloud
+    const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/dwelldash';
     
-    // Validate that we're using local MongoDB
-    if (!localURI.includes('localhost') && !localURI.includes('127.0.0.1')) {
-      console.warn('⚠️  Warning: MONGODB_URI does not appear to be local. Falling back to localhost.');
-      localURI = 'mongodb://localhost:27017/dwelldash';
+    // Determine if we're connecting to local or cloud MongoDB
+    const isLocal = mongoURI.includes('localhost') || mongoURI.includes('127.0.0.1');
+    const connectionType = isLocal ? 'Local' : 'Cloud';
+    
+    console.log('🏠 Database:', mongoURI.split('/').pop()?.split('?')[0] || 'dwelldash');
+    if (isLocal) {
+      console.log('🖥️  Host: localhost:27017');
     }
-    
-    console.log('🔄 Connecting to Local MongoDB...');
-    console.log('🏠 Database:', localURI.split('/').pop() || 'dwelldash');
-    console.log('🖥️  Host: localhost:27017');
     
     // Optimized connection options for local MongoDB
     const options = {
@@ -33,10 +32,10 @@ const connectDB = async () => {
       heartbeatFrequencyMS: 10000,      // Check connection every 10 seconds
     };
 
-    // Connect to local MongoDB
-    await mongoose.connect(localURI, options);
+    // Connect to MongoDB
+    await mongoose.connect(mongoURI, options);
     
-    console.log('✅ Local MongoDB connected successfully!');
+    console.log(`✅ ${connectionType} MongoDB connected successfully!`);
     console.log(`📊 Database: ${mongoose.connection.db.databaseName}`);
     console.log(`🌐 Host: ${mongoose.connection.host}:${mongoose.connection.port}`);
     console.log(`🔗 Connection State: ${mongoose.connection.readyState} (1=connected)`);
