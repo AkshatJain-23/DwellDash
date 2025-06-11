@@ -407,7 +407,7 @@ console.log('🔧 API Configuration:', {
 })
 
 export const api = isBackendAvailable() ? axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: '/api', // Use proxy setup from vite.config.js
   timeout: 10000,
 }) : mockAPI
 
