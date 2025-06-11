@@ -157,3 +157,68 @@ For support and queries:
 **Built with ❤️ by Akshat Jain**
 
 *Last Updated: June 2025 - Build Optimized for Vercel Deployment*
+
+## 🚀 Quick Deploy Links
+
+**Frontend (Vercel)**: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/AkshatJain-23/DwellDash)
+
+**Backend (Railway)**: [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https://github.com/AkshatJain-23/DwellDash&plugins=mongodb)
+
+## 📋 Deployment Instructions
+
+### 1. Database Setup (MongoDB Atlas - Free)
+1. Go to [mongodb.com/atlas](https://mongodb.com/atlas)
+2. Create free cluster (M0 Sandbox)
+3. Create database user and get connection string
+4. Whitelist all IPs (0.0.0.0/0) for access
+
+### 2. Backend Deployment (Railway - Free)
+1. Go to [railway.app](https://railway.app)
+2. Deploy from GitHub (this repository)
+3. Set Root Directory: `server`
+4. Add environment variables:
+   ```
+   MONGODB_URI=your_atlas_connection_string
+   NODE_ENV=production
+   PORT=5000
+   JWT_SECRET=your_secure_secret_key
+   ```
+
+### 3. Frontend Deployment (Vercel - Free)
+1. Go to [vercel.com](https://vercel.com)
+2. Import this GitHub repository
+3. Set Root Directory: `client`
+4. Add environment variable:
+   ```
+   VITE_API_URL=your_railway_backend_url
+   ```
+
+## 🔧 Local Development Setup
+
+### Prerequisites
+- Node.js 18+
+- MongoDB Community Server (local)
+- Git
+
+### Backend Setup
+```bash
+cd server
+npm install
+# Create .env file with local MongoDB
+echo "MONGODB_URI=mongodb://localhost:27017/dwelldash" > .env
+echo "JWT_SECRET=your_local_secret" >> .env
+echo "NODE_ENV=development" >> .env
+npm start
+```
+
+### Frontend Setup
+```bash
+cd client  
+npm install
+npm run dev
+```
+
+## 🌐 Live URLs
+- **Frontend**: https://dwelldash.vercel.app
+- **Backend**: https://your-app.railway.app
+- **API Health**: https://your-app.railway.app/api/health
