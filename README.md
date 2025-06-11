@@ -78,9 +78,6 @@ The application uses **local MongoDB** for:
 
 **Collections**: Properties, Users, Messages, Conversations, FAQs, Knowledge Base, Analytics
 
-## 👥 Demo Accounts
-
-
 ## 📁 Project Structure
 
 ```
@@ -116,3 +113,47 @@ Built for the Indian PG accommodation market with modern web technologies and be
 - `npm run dev` - Start development servers
 - `npm run build` - Build for production
 - `npm run install-client` - Install client dependencies
+
+## 🚀 **Deployment**
+
+### **Frontend (Vercel):**
+- Automatic deployment from main branch
+- Environment variables configured
+- CDN optimization enabled
+
+### **Backend Options:**
+- **Local Development** - MongoDB local setup
+- **AWS EC2** - Full deployment with MongoDB
+- **Heroku** - Quick deployment option
+- **DigitalOcean** - Scalable cloud deployment
+
+## 🤝 **Contributing**
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 **Acknowledgments**
+
+- React community for excellent documentation
+- MongoDB for robust database solutions
+- Vercel for seamless deployment platform
+- Open source contributors
+
+## 📞 **Support**
+
+For support and queries:
+- Create an issue on GitHub
+- Contact: akshatjain.dev@email.com
+
+---
+
+**Built with ❤️ by Akshat Jain**
+
+*Last Updated: June 2025 - Build Optimized for Vercel Deployment*
